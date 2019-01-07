@@ -177,11 +177,11 @@ def test():
 {: .language-python}
 # Run train and test for network
 ~~~
-train_losses = []
+training_losses = []
 train_counter = []
 test_losses = []
-test_counter = [i*len(train_loader.dataset) for i in range(n_epochs + 1)]
 n_epochs = 10
+test_counter = [i*len(train_loader.dataset) for i in range(n_epochs + 1)]
 test()
 for epoch in range(n_epochs):
     train(epoch)
