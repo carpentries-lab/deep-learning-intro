@@ -20,7 +20,7 @@ For a motivation of this survey type, see [Greg Wilsons Template in Teaching Tec
 
 You are provided with a python list of integer values. The list has length 1024 and you would like to obtain all entries from index 50 to 101. How would you do this? 
 
-1. I can do that. Give me something that understands python and I'll show you.
+1. I can do that. Give me an editor or notebook and I'll show you.
 2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good to do this.
 3. I am unclear about this, I'd have to consult a colleague or a search engine to do this.
 4. I am not sure what to do.
