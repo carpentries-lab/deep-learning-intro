@@ -47,7 +47,9 @@ Eric ran a large array of clinical trials in his hospital to improve children ph
 > After following this lesson, learners will be able to:
 >  
 > - Prepare input data for use for deep learning
-> - Design and train a Deep Neural Network
+> - Design and train a Neural Network for tabular data
+> - Evaluate the performance of a classification network
+> - Design and train a Neural Network for image data
 > - Troubleshoot the learning process
 > - Measure the performance of the network
 > - Visualizing data and results
@@ -88,7 +90,7 @@ After this module, learners can ...
 - select a layer type depending on the input data
 - develop a 3-5 layer network 
 
-### Evaluate the performance of a network
+### Evaluate the performance of a classification network
 
 How to judge the performance of a trained network.
 
