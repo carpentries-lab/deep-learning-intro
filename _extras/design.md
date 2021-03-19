@@ -60,7 +60,7 @@ Eric ran a large array of clinical trials in his hospital to improve children ph
 
 The following offers more details to each learning objective based on Bloom's Taxonomy. For hints on how to use this approach, see [lesson 15 of the instructor training](https://carpentries.github.io/instructor-training/15-lesson-study/index.html)
 
-### Prepare input data for use for deep learning
+### (lesson 1) Prepare input data for use for deep learning
 
 This includes cleaning data, filling missing values, normalizing, and transforming categorical columns into dummy encoding.
 
@@ -74,7 +74,7 @@ After this module, learners can ...
 - argue for or against strategies to normalize data
 - formulate techniques to prepare (clean) data for training a deep learning network
 
-### Design and train a Neural Network for tabular data
+### (lesson 2) Design and train a Neural Network for tabular data
 
 This includes knowledge for using a naive multilayer perceptron. __Which dataset to use?__
 
@@ -90,7 +90,7 @@ After this module, learners can ...
 - select a layer type depending on the input data
 - develop a 3-5 layer network 
 
-### Evaluate the performance of a classification network
+### (lesson 3) Evaluate the performance of a classification network
 
 How to judge the performance of a trained network.
 
@@ -105,7 +105,7 @@ After this module, learners can ...
 - describe how to split a dataset into training/test/validation set
 - execute a plot to draw the loss per epoch for training and test set
 
-### Design and train a Neural Network for image data
+### (lesson 4) Design and train a Neural Network for image data
 
 This lesson discusses convolutions in neural networks for image data. We will use the `cifar10` or `mnist` or `fashion_mnist` dataset coming with keras.
 
@@ -120,7 +120,7 @@ After this module, learners can ...
 - differentiate a dense layer and a convolutional layer
 
 
-### Monitoring and Troubleshooting the learning process
+### (lesson 5) Monitoring and Troubleshooting the learning process
 
 Often when designing neural networks training will not automatically work very well. This requires setting the parameters of the training algorithm correctly, modifying the design of the network or changing the data pre-processing. After training, the performance of the network should be checked to prevent overfitting.
 
@@ -134,7 +134,7 @@ After this module, learners can ...
 - critique a provided network design
 - describe how Drop-Out Layers work
 
-### Visualizing Data and Results
+### (lesson 6) Visualizing Data and Results
 
 Within each episode how to visualize data and results
 
@@ -146,7 +146,7 @@ After this module, learners can ...
 - examine the results of a partners network
 - critique the results of a partners network
 
-### Re-use existing network architectures with and without pre-trained weights
+### (lesson 7) Re-use existing network architectures with and without pre-trained weights
 
 Re-use of architectures is common in deep learning. Especially when using pre-trained weights (transfer-learning) it can also be very powerful.
 
