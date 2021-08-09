@@ -98,18 +98,6 @@ You are provided with a CSV file. The file has 35000 rows. The file has 45 colum
 
 ## ML
 
-### Training Preparation
-
-A fundamental ingredient of machine learning, is training an algorithm in such a way, that is can represent the distribution of the data as best as possible. For this, a training dataset is typically split up in several parts. You are receiving a piece of code from a colleague which performs this task on a dataset. For this, your peer has taken a table of 50 000 rows. The table was split at row ID `45000` and all rows up to this point have been stored as the training dataset. The remaining rows have been used as the test set. This design choice makes you uneasy.
-
-1. If that happens, I discuss the matter with them immediately and suggest a solution.
-2. I don't recall the exact reason, by I know from where I can copy & paste a fix.
-3. I am not sure why this can produce an error. I'd consult a colleague or a search engine of my liking.
-4. I am unclear why this is an error.
-
-> Opinion: This question is quite tedious. It tips on the assumption that values in the given columns could be ordered. As if they are, then splitting at a fixed row ID can lead to problems during training. The standard train-test split does split a dataset based on randomly selected row indices which does fix this problem.
-
-
 ### Overfitting & Underfitting
 
 A student intern project is handed over to you. While going through the project report, you notice the claim, that the machine learning algorithm used works optimally on the training data. The report describes, that the CNN in use has `450707` parameters. It was trained on `4000` samples. Each sample having 32 `float32` values to it. The prediction of the network fits perfectly on each datum of the test set. Moreover, the predictions even follows some of the noise in the data. This troubles your mind.
