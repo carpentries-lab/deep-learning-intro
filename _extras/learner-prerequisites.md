@@ -100,7 +100,12 @@ You are provided with a CSV file. The file has 35000 rows. The file has 45 colum
 
 ### Overfitting & Underfitting
 
-A student intern project is handed over to you. While going through the project report, you notice the claim, that the machine learning algorithm used works optimally on the training data. The report describes, that the CNN in use has `450707` parameters. It was trained on `4000` samples. Each sample having 32 `float32` values to it. The prediction of the network fits perfectly on each datum of the test set. Moreover, the predictions even follows some of the noise in the data. This troubles your mind.
+A student intern project is handed over to you. While going through the project report, you notice the claim, that the machine learning algorithm used works optimally on the training data. The report describes, that the CNN in use has `450707` parameters. It was trained on `4000` samples. Each sample having 32 `float32` values to it. The prediction of the network fits perfectly on each datum of the test set. Moreover, the predictions even follows some of the noise in the data. 
+
+1. There is something wrong with the network design or training procedure, and I can suggest a solution
+2. There is something wrong with the network design or training procedure, but I don't know how to solve it
+3. The network design and training procedure seem good, as it learned the training data well
+4. I don't know how to judge whether the network design and training procedure are good
 
 1. I've observed this behavior in the past. If that happens, I discuss the matter with them immediately and suggest a solution.
 2. I don't recall the exact reason, by I know from where I can copy & paste a fix.
