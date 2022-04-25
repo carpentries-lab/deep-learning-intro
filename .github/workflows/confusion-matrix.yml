@@ -26,6 +26,9 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip setuptools wheel pyyaml==5.3.1 requests tensorflow-cpu seaborn scikit-learn pandas 
 
+      - name: Checkout the lesson
+        uses: actions/checkout@v2
+
       - name: Install Code Checker
         run: |
           #python3 -m pip install --upgrade git+https://github.com/bpmweel/cce.git#egg=cce
@@ -33,9 +36,6 @@ jobs:
           python3 -m pip install --upgrade pytest
           cp bin/cce /usr/local/bin/cce
           chmod 755 /usr/local/bin/cce
-
-      - name: Checkout the lesson
-        uses: actions/checkout@v2
 
       - name: Extract Episode 02
         run: |
