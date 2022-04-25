@@ -1,0 +1,50 @@
+name: Test Confusion Matrix
+on:
+  push:
+    branches:
+      - gh-pages
+      - main
+      - code-check-action
+  pull_request: []
+  workflow_dispatch:
+
+jobs:
+  code-check:
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install Python modules
+        run: |
+          python3 -m pip install --upgrade pip setuptools wheel pyyaml==5.3.1 requests tensorflow seaborn scikit-learn pandas 
+
+      - name: Install Code Checker
+        run: |
+          #python3 -m pip install --upgrade git+https://github.com/bpmweel/cce.git#egg=cce
+          #fix to code checker which works on calls to imports inside functions
+          python3 -m pip install --upgrade pytest
+          wget -O /usr/local/bin/cce https://raw.githubusercontent.com/colinsauze/cce/master/cce/main.py 
+          chmod 755 /usr/local/bin/cce
+
+      - name: Checkout the lesson
+        uses: actions/checkout@v2
+
+      - name: Download prerequisite files
+        run: |
+          wget -O weather_prediction_dataset.csv https://zenodo.org/record/4980359/files/weather_prediction_dataset.csv?download=1
+          wget -O weather_prediction_dataset_light.csv https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1
+
+      - name: Run code checker
+        run: |
+          cce -f _episodes/02-keras.md > episode2.py 2>&1
+          cat episode2.py
+          python episode2.py
+          
