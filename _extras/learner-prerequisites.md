@@ -2,7 +2,7 @@
 title: Learner Prerequisites
 ---
 
-This page collects questions that learners can answer in order to judge if they bring all prequisites to the course. 
+This page collects questions that learners can answer in order to judge if they bring all prequisites to the course. Note this page is not meant as a full survey. It is rather provided to offer a resource to pick cherries from.
 
 # Required Pre-Knowledge
 
