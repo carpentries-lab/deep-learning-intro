@@ -103,7 +103,7 @@ parser.add_argument("-f", "--file", help="The file to extract from", required=Tr
 parser.add_argument(
     "-o",
     "--output",
-    help="Whether to write the code content to stdout",
+    help="Whether to write the code content to a file (if empty, extacted script will be run!)",
     default=None,
     type=str,
 )
@@ -113,24 +113,25 @@ contents = extract_from_file(args.file)
 if args.output:
     with open(args.output, "w") as outf:
         outf.writelines(contents)
-
-errors = 0
-f = StringIO()
-with redirect_stdout(f):
-    try:
-        exec(contents)
-    except Exception as e:
-        logging.error("Exception occurred while trying to run code:")
-        logging.error(e, exc_info=True)
-        logging.error("Code: ")
-        logging.error(contents)
-        errors = errors + 1
-s = f.getvalue()
-if errors > 0:
-    logging.error(s)
-    sys.exit(errors)
-else:
-    logging.info("Success!")
     sys.exit(0)
+else:
+    errors = 0
+    f = StringIO()
+    with redirect_stdout(f):
+        try:
+            exec(contents)
+        except Exception as e:
+            logging.error("Exception occurred while trying to run code:")
+            logging.error(e, exc_info=True)
+            logging.error("Code: ")
+            logging.error(contents)
+            errors = errors + 1
+    s = f.getvalue()
+    if errors > 0:
+        logging.error(s)
+        sys.exit(errors)
+    else:
+        logging.info("Success running the script!")
+        sys.exit(0)
 # elif args.output_code:
 #     print(contents)
