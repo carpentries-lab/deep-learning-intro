@@ -37,14 +37,12 @@ jobs:
       - name: Checkout the lesson
         uses: actions/checkout@v2
 
-      - name: Download prerequisite files
-        run: |
-          wget -O weather_prediction_dataset.csv https://zenodo.org/record/4980359/files/weather_prediction_dataset.csv?download=1
-          wget -O weather_prediction_dataset_light.csv https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1
-
-      - name: Run code checker
+      - name: Extract Episode 02
         run: |
           cce -f _episodes/02-keras.md > episode2.py 2>&1
           cat episode2.py
+
+      - name: Run Training of Episode 02
+        run: |
           python episode2.py
           
