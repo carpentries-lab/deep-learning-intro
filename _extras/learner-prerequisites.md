@@ -36,18 +36,6 @@ You are provided a list of 512 random float values. These values range between 0
 4. I am not sure what to do.
 
 
-### Modularization
-
-You need to open 102 data files and extract an object from them. For this, you compose a small function to open a single file which requires 3 input parameters. The parameters are a file location, the name of the object to retrieve and a parameter that controls the verbosity of the function. The latter parameter has the default value "False".  
-
-1. I can do that. Give me something that understands python and I'll show you.
-2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good to do this.
-3. I am unclear about this, I'd have to consult a colleague or a search engine to do this.
-4. I am not sure what to do.
-
-> Opinion: Learners might be confused by `extract an object from them`. On the other side, if this questions asks about a specific format, e.g. `You need to open 102 npyz files and extract the array "samples" from each.` The question tends to infer the knowledge about a specific API rather than learning if the students can compose a function.
-
-
 ## Pandas
 
 ### Data Cleaning Techniques 1
