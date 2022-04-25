@@ -104,10 +104,10 @@ A student intern project is handed over to you. While going through the project 
 
 You are given the task to classify data into three categories. After the first round of training your algorithm, your accuracy turns out at `61%` using only default parameters from example code taken from the web. You talk to a collaborator. While explaining your results casually, you are presented with the comment "Ah, this machine learning stuff is not worth a dime!". 
 
-1. If that claim is brought forward, I explain why it is potentially based on wrong assumptions.
-2. I don't recall the exact reason, by I know from where I can look up how to estimate a reference accuracy to compare to.
-3. I am not sure. I'd consult a colleague or a search engine of my liking.
-4. I am unclear why this statement yields a misconception.
+1. I disagree with this claim based on the accuracy value alone, and can argue why it is potentially based on wrong assumptions
+2. I suspect this accuracy value alone is not enough to come this conclusion, but I have to look up how we should further evaluate
+3. The collaborator is right, this accuracy is too low.
+4. I have no idea whether the collaborator is right.
 
 ### Clustering
 
