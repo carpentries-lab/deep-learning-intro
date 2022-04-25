@@ -41,8 +41,12 @@ jobs:
         run: |
           cce -f _episodes/02-keras.md > episode2.py 2>&1
           cat episode2.py
+          grep ERROR episode2.py
+        shell: bash {0} # opt out of fail-fast
 
       - name: Run Training of Episode 02
         run: |
+          head ./episode2.py
           python episode2.py
+        shell: bash {0} # opt out of fail-fast
           
