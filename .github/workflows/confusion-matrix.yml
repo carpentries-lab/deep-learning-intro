@@ -31,7 +31,7 @@ jobs:
           #python3 -m pip install --upgrade git+https://github.com/bpmweel/cce.git#egg=cce
           #fix to code checker which works on calls to imports inside functions
           python3 -m pip install --upgrade pytest
-          wget -O /usr/local/bin/cce https://raw.githubusercontent.com/colinsauze/cce/master/cce/main.py 
+          cp bin/cce /usr/local/bin/cce
           chmod 755 /usr/local/bin/cce
 
       - name: Checkout the lesson
@@ -39,9 +39,8 @@ jobs:
 
       - name: Extract Episode 02
         run: |
-          cce -f _episodes/02-keras.md > episode2.py 2>&1
+          cce -f _episodes/02-keras.md -o episode2.py 
           cat episode2.py
-          grep ERROR episode2.py
         shell: bash {0} # opt out of fail-fast
 
       - name: Run Training of Episode 02
