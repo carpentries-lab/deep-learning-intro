@@ -24,7 +24,6 @@ keypoints:
 - "Deep Learning is well suited to classification and prediction problems such as image recognition."
 - "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, tuning Hyperparameters, measuring performance before we can classify data."
 - "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
-math: true
 ---
 
 ## What is Deep Learning?
@@ -71,7 +70,13 @@ The image above is by Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/lice
 > _Note: You can use whatever you like: brain only, pen&paper, Python, Excel..._
 >
 > > ## Solution
-> > The output is $f(b + \sum_{i=1}^n x_i w_i) = 1.25$
+> > Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25
+> >
+> > Add the bias: 0.25 + 1 = 1.25
+> >
+> > Apply activation function: max(1.25, 0) = 1.25
+> >
+> > So, neuron output = 1.25
 > {:.solution}
 {:.challenge}
 
