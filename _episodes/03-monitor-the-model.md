@@ -30,7 +30,7 @@ years 2000 to 2010. For all locations the data contains the variables ‘mean te
 
 ![18 locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
 
- A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.  
+ A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.
 
 ## 2. Identify inputs and outputs
 
@@ -100,11 +100,12 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > >
 > > To see what type of features the data contains we could run something like:
 > > ~~~
-> > print({x.split("_")[-1] for x in data.columns if x not in ["MONTH", "DATE"]})
+> > import string
+> > print({x.lstrip(string.ascii_uppercase + "_") for x in data.columns if x not in ["MONTH", "DATE"]})
 > > ~~~
 > > {:.language-python}
 > > ~~~
-> > {'precipitation', 'max', 'radiation', 'humidity', 'sunshine', 'min', 'pressure', 'mean', 'cover'}
+> > {'cloud_cover', 'precipitation', 'sunshine', 'global_radiation', 'temp_mean', 'humidity', 'pressure', 'temp_min', 'temp_max'}
 > > ~~~
 > > {:.output}
 > > An alternative way which is slightly more complicated but gives better results is using regex.
@@ -113,7 +114,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > feature_names = set()
 > > for col in data.columns:
 > >     feature_names.update(re.findall('[^A-Z]{2,}', col))
-> >     
+> >
 > > feature_names
 > > ~~~
 > > In total there are 9 different measured variables.
@@ -174,11 +175,11 @@ Now we want to work on a *regression task*, thus not predicting a class label (o
 > As we want to design a neural network architecture for a regression task,
 > see if you can first come up with the answers to the following questions:
 > 1. What must be the dimension of our input layer?
-> 2. We want to to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?  
+> 2. We want to to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
 Hint: A layer with `relu` activation, with `sigmoid` activation or no activation at all?
 >
 > > ## Solution
-> >  
+> >
 > > 1. The shape of the input layer has to correspond to the number of features in our data: 89
 > > 2. The output is a single value per prediction, so the output layer can consist of a dense layer with only one node. The *softmax* activiation function works well for a classification task, but here we do not want to restrict the possible outcomes to the range of zero and one. In fact, we can omit the activation in the output layer.
 > >
@@ -226,15 +227,15 @@ model.summary()
 ~~~
 Model: "weather_prediction_model"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input (InputLayer)           [(None, 89)]              0         
+input (InputLayer)           [(None, 89)]              0
 _________________________________________________________________
-dense (Dense)                (None, 100)               9000      
+dense (Dense)                (None, 100)               9000
 _________________________________________________________________
-dense_1 (Dense)              (None, 50)                5050      
+dense_1 (Dense)              (None, 50)                5050
 _________________________________________________________________
-dense_2 (Dense)              (None, 1)                 51        
+dense_2 (Dense)              (None, 1)                 51
 =================================================================
 Total params: 14,101
 Trainable params: 14,101
@@ -376,7 +377,7 @@ axes[1].set_ylabel("true sunshine hours")
 > 2. Is there a noteable difference between training set and test set? And if so, any idea why?
 >
 > > ## Solution
-> > 
+> >
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
@@ -453,7 +454,7 @@ Judging from the numbers alone, our neural network prediction would be performin
 > Looking at this baseline: Would you consider this a simple or a hard problem to solve?
 >
 > > ## Solution
-> > 
+> >
 > > This really depends on your definition of hard! The baseline gives a more accurate prediction than just
 > > randomly predicting a number, so the problem is not impossible to solve with machine learning. However, given the structure of the data and our expectations with respect to quality of prediction, it may remain hard to find a good algorithm which exceeds our baseline by orders of magnitude.
 > >
@@ -464,13 +465,13 @@ Judging from the numbers alone, our neural network prediction would be performin
 
 As we saw when comparing the predictions for the training and the test set, deep learning models are prone to overfitting. Instead of iterating through countless cycles of model trainings and subsequent evaluations with a reserved test set, it is common practice to work with a second split off dataset to monitor the model during training.
 This is the *validation set* which can be regarded as a second test set. As with the test set, the datapoints of the *validation set* are not used for the actual model training itself. Instead, we evaluate the model with the *validation set* after every epoch during training, for instance to stop if we see signs of clear overfitting.
-Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.   
+Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.
 
 > ## Test vs. validation set
-> Not everybody agrees on the terminology of test set versus validation set. You might find 
+> Not everybody agrees on the terminology of test set versus validation set. You might find
 > examples in literature where these terms are used the other way around.
-> 
-> We are sticking to the definition that is consistent with the Keras API. In there, the validation 
+>
+> We are sticking to the definition that is consistent with the Keras API. In there, the validation
 > set can be used during training, and the test set is reserved for afterwards.
 {: .callout }
 
@@ -580,7 +581,7 @@ Most similar to classical machine learning might to **reduce the number of param
 > >                     batch_size = 32,
 > >                     epochs = 200,
 > >                     validation_data=(X_val, y_val), verbose = 2)
-> > 
+> >
 > > history_df = pd.DataFrame.from_dict(history.history)
 > > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
 > > plt.xlabel("epochs")
@@ -707,17 +708,17 @@ This new layer appears in the model summary as well.
 ~~~
 Model: "model_batchnorm"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input_1 (InputLayer)         [(None, 89)]              0         
+input_1 (InputLayer)         [(None, 89)]              0
 _________________________________________________________________
-batch_normalization (BatchNo (None, 89)                356       
+batch_normalization (BatchNo (None, 89)                356
 _________________________________________________________________
-dense (Dense)             (None, 100)               9000      
+dense (Dense)             (None, 100)               9000
 _________________________________________________________________
-dense_1 (Dense)             (None, 50)                5050      
+dense_1 (Dense)             (None, 50)                5050
 _________________________________________________________________
-dense_2 (Dense)             (None, 1)                 51        
+dense_2 (Dense)             (None, 1)                 51
 =================================================================
 Total params: 14,457
 Trainable params: 14,279
@@ -800,7 +801,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 >    Is the prediction better compared to what we had before?
 >
 > > ## Solution
-> > 
+> >
 > > Use 9 years out of the total dataset. This means 3 times as many
 > > rows as we used previously, but by removing columns not containing
 > > "BASEL" we reduce the number of columns from 89 to 11.
@@ -824,20 +825,20 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
-> > Function to create a network including the BatchNorm layer:   
+> > Function to create a network including the BatchNorm layer:
 > > ~~~
 > > def create_nn():
 > >     # Input layer
 > >     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
-> > 
+> >
 > >     # Dense layers
 > >     layers_dense = keras.layers.BatchNormalization()(inputs)
 > >     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
 > >     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
-> > 
+> >
 > >     # Output layer
 > >     outputs = keras.layers.Dense(1)(layers_dense)
-> > 
+> >
 > >     # Defining the model and compiling it
 > >     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
 > > ~~~
