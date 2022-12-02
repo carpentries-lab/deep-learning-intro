@@ -136,7 +136,7 @@ y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
 ~~~
 {:.language-python}
 
-In general, it is important to check if the data contains any unexpected values such as `9999` or `NaN` or `NoneType`. You can use the pandas `data.describe()` function for this. If so, such values must be removed or replaced.
+In general, it is important to check if the data contains any unexpected values such as `9999` or `NaN` or `NoneType`. You can use the pandas `data.describe()` or `data.isnull()` function for this. If so, such values must be removed or replaced.
 In the present case the data is luckily well prepared and shouldn't contain such values, so that this step can be omitted.
 
 ### Split data and labels into training, validation, and test set
