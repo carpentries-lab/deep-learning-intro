@@ -702,10 +702,6 @@ An alternative, more common approach, is to add **BatchNormalization** layers ([
 Similar to dropout, batch normalization is available as a network layer in Keras and can be added to the network in a similar way.
 It does not require any additional parameter setting.
 
-```python
-from tensorflow.keras.layers import BatchNormalization
-```
-
 The `BatchNormalization` can be inserted as yet another layer into the architecture.
 
 ```python
@@ -714,7 +710,7 @@ def create_nn():
     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
 
     # Dense layers
-    layers_dense = keras.layers.BatchNormalization()(inputs)
+    layers_dense = keras.layers.BatchNormalization()(inputs) # This is new!
     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
 
