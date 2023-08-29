@@ -64,7 +64,7 @@ bibliography: paper.bib
 This article describes a hands-on introduction to the first steps in deep learning, 
 intended for researchers who are familiar with (non-deep) machine learning.
 
-The use of deep learning has seen a sharp increase of popularity and applicability over the last decade. 
+The use of deep learning has seen a sharp increase in popularity and applicability over the last decade. 
 While deep learning can be a useful tool for researchers from a wide range of domains, 
 taking the first steps in the world of deep learning can be somewhat intimidating. 
 This introduction aims to cover the basics of deep learning in a practical and hands-on manner, 
