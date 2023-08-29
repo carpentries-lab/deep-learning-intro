@@ -122,10 +122,11 @@ feel confident in applying this deep learning workflow to their own work.
 
 
 # Feedback
-This course was taught 7 times over the course of 3 years, both online and in person, at the Netherlands eScience Center. 
-**@Peter @Colin how often did you teach this at which institutes?**
+This course was taught 12 times over the course of 3 years, both online and in person, by the Netherlands eScience Center
+(Netherlands, https://www.esciencecenter.nl/) and Helmholz-Zentrum Dresden-Rossendorf (Germany, https://www.hzdr.de/).
 Apart from the core group of contributors, the workshop was also taught at 3 independent institutes, namely:
-University of Wisconson-Madison, University of Auckland, and EMBL Heidelberg.
+University of Wisconson-Madison (US, https://www.wisc.edu/), University of Auckland (New Zealand, https://www.auckland.ac.nz/), 
+and EMBL Heidelberg (Germany, https://www.embl.org/sites/heidelberg/).
 In general, adoption of the lesson material by the instructors not involved in the project went well.
 
 ## Student responses
