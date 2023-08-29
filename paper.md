@@ -90,7 +90,7 @@ During the course learners type in the commands that are explained by the instru
 This ensures that learners master the programmatic implementation of deep learning at the end of the course. 
 
 Researchers can often only free a limited amount of time (maximum 5 consecutive days), since they are so involved in their daily work.
-To accomplish this, we created a lesson that can be taught in 2 consecutive days or 4 mornings.
+To accomplish this, we created a lesson that can be taught in 2 consecutive days or 4 half days.
 
 From the feedback we gathered from students enrolled in our workshops and instructors not involved in our project we see that indeed there is a 
 need for a low-threshold lesson that lets researchers take the first steps in the field of deep learning.
