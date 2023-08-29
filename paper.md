@@ -80,12 +80,14 @@ There are many great free online course materials on deep learning,
 for example: fast.ai's Practical Deep Learning for Coders, MORE ONLINE COURSES
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
-Also, the amount and diversity of the existing online courses is overwhelming, but they are generally not targeted towards academic researchers.
-What works well for researchers is to both make them familiar with the key concepts, and also let them 
+Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
+In addition, the amount and diversity of the existing online courses is overwhelming, but they are generally not targeted towards academic researchers.
+What works well for learners is to both make them familiar with the key concepts, and also let them 
 practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
-The key to getting there is live coding: Before the course learners have to setup a working environment on their own computer.
+The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
 During the course learners type in the commands that are explained by the instructor on their own computer.
 This ensures that learners master the programmatic implementation of deep learning at the end of the course. 
+We believe that this makes our lesson a unique and crucial resource.
 
 Researchers can often only free a limited amount of time (maximum 5 consecutive days), since they are so involved in their daily work.
 To accomplish this, we created a lesson that can be taught in 2 consecutive days or 4 half days.
