@@ -111,7 +111,7 @@ This makes the lesson material both suited as a self-study resource, a syllabus 
 as well as lesson material for the instructor. With the 'instructor view' we even include instructor notes 
 at the level of the lesson content.
 
-The lesson is split up in a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
+The lesson is split into a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
 Each of the deep learning problems is approached using the same 10-step deep learning workflow.
 By going through the deep learning cycle 3 times on different problems we hope that after the lesson learners will
 feel confident in applying this deep learning workflow to their own work.
