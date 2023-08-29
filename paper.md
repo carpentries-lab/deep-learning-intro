@@ -104,10 +104,14 @@ The lesson is built up of small blocks. In each block first the instructor demon
 and students follow along on their own computer. Then, the students work independently on exercises individually
 or in groups to test their skills.
 
-The lesson material is built in the new Carpentries lesson template (REFERENCE). 
-This makes the lesson material both suited as a self-study resource, a syllabus to share with students after the workshop,
-as well as lesson material for the instructor. With the 'instructor view' we even include instructor notes 
-at the level of the lesson content.
+The lesson material is built in the new lesson template: Carpentries Workbench (REFERENCE). 
+This makes the lesson material a complete self-study resource. 
+But it also serves as lesson material for the instructor teaching the lesson through live-coding, 
+in that case the lesson material is only shared with students after the workshop as a reference.
+The lesson material can be toggled to the 'instructor view'. This allows to provide instructor notes on how to approach teaching the lesson,
+and these can even be included at the level of the lesson content.
+In addition, the Carpentries Workbench prioritises accessibility of the content, for example by having clearly visible figure captions
+and promoting alt-texts for pictures.
 
 The lesson is split into a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
 Each of the deep learning problems is approached using the same 10-step deep learning workflow.
