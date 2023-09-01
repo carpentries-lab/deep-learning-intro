@@ -132,16 +132,17 @@ In general, adoption of the lesson material by the instructors not involved in t
 The feedback gathered from our own and others' teachings was used to polish the lesson further.
 
 ## Student responses
-The feedback we gathered from students is in general very positive, further confirming our statement of need.
+The feedback we gathered from students is in general very positive, 
+with some responses from students to the question 'What was your favourite or most useful part of the workshop. Why?' further confirming our statement of need:
+
+> _I enjoyed the live coding and playing with the models to see how it would effect the results. 
+> It felt hands on and made it easy for me to understand the concepts._
+
+> _Well-defined steps to be followed in training a model is very useful. Examples we worked on are quite nice._
+
+> _The doing part, that really helps to get the theory into practice._
+
 We use the student's feedback to continuously improve the lesson. 
-Some responses from students to the question 'What was your favourite or most useful part of the workshop. Why?' further support the need for this workshop:
-
-_I enjoyed the live coding and playing with the models to see how it would effect the results. 
-It felt hands on and made it easy for me to understand the concepts._
-
-_Well-defined steps to be followed in training a model is very useful. Examples we worked on are quite nice._
-
-_The doing part, that really helps to get the theory into practice._
 
 |                                                                                            |          STRONGLY DISAGREE    |     DISAGREE    |     UNDECIDED    |     AGREE    |     STRONGLY AGREE    |     TOTAL    |     WEIGHTED AVERAGE    |
 |--------------------------------------------------------------------------------------------|-------------------------------|-----------------|------------------|--------------|-----------------------|--------------|-------------------------|
