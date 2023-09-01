@@ -47,7 +47,7 @@ affiliations:
    index: 2
  - name: Düsseldorf University of Applied Sciences, Düsseldorf, Germany
    index: 3
- - name: Helmholtz-Zentrum, Dresden-Rossendorf, Germany
+ - name: Helmholtz-Zentrum Dresden-Rossendorf, Dresden, Germany
    index: 4
  - name: National Oceanography Centre, Liverpool, Great-Britain
    index: 5
