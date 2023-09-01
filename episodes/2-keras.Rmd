@@ -1,7 +1,7 @@
 ---
 title: "Classification by a neural network using Keras"
-teaching: 30-60
-exercises: 45-50
+teaching: 45
+exercises: 50
 ---
 
 ::: questions
@@ -111,15 +111,18 @@ penguins.head()
 
  All columns but the 'species' columns are features that we can use.
 
-There are 344 samples and 7 columns, so 6 features:
+Let's look at the shape of the dataset:
 
  ```python
  penguins.shape
  ```
 
+There are 344 samples and 7 columns, so 6 features
+
 ### Visualization
 Looking at numbers like this usually does not give a very good intuition about the data we are
 working with, so let us create a visualization.
+
 #### Pair Plot
 One nice visualization for datasets with relatively few attributes is the Pair Plot.
 This can be created using `sns.pairplot(...)`. It shows a scatterplot of each attribute plotted against each of the other attributes.
@@ -165,14 +168,6 @@ determine the relevant inputs and outputs.
 ## 3. Prepare data
 The input data and target data are not yet in a format that is suitable to use for training a neural network.
 
-### Change types if needed
-First, the species column is our categorical target, however pandas still sees it as the
-generic type `Object`. We can convert this to the pandas categorical type:
-```python
-penguins['species'] = penguins['species'].astype('category')
-```
-
-This will make later interaction with this column a little easier.
 
 For now we will only use the numerical features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g` only,
 so let's drop the categorical columns:
@@ -281,8 +276,7 @@ Therefore we will need to set two random seeds, one for numpy and one for tensor
 ```python
 from numpy.random import seed
 seed(1)
-from tensorflow.random import set_seed
-set_seed(2)
+keras.utils.set_random_seed(2)
 ```
 
 ### Build a neural network from scratch
@@ -350,6 +344,17 @@ model.summary()
 ```
 
 The model summary here can show you some information about the neural network we have defined.
+
+::: callout
+## Trainable and non-trainable parameters
+Keras distinguishes between two types of weights, namely:
+
+- trainable parameters: these are weights of the neurons that are modified when we train the model in order to minimize our loss function (we will learn about loss functions shortly!).
+
+- non-trainable parameters: these are weights of the neurons that are not changed when we train the model. These could be for many reasons - using a pre-trained model, choice of a particular filter for a convolutional neural network, and statistical weights for batch normalization are some examples.  
+
+If these reasons are not clear right away, don't worry! In later episodes of this course, we will touch upon a couple of these concepts.
+::: 
 
 ::: challenge
 ## Create the neural network

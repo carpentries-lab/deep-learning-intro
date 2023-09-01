@@ -25,3 +25,10 @@ The following exercises work well to do in groups / break-out rooms:
 - Create a similar scatter plot for a reasonable baseline
 - Open question: What could be next steps to further improve the model?
 All other exercises are small and can be done individually.
+
+## Presentation slides
+There are no official presentation slides for this workshop, but this material does include some example
+slides from when this course was taught by different institutions. These slides can be found in 
+the 
+[slides](https://github.com/carpentries-incubator/deep-learning-intro/tree/main/instructors/slides)
+folder.

@@ -371,24 +371,26 @@ We can plot the training process using the history:
 ```python
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
-def plot_history(metrics):
+def plot_history(history, metrics):
     """
     Plot the training history
 
     Args:
+        history (keras History object that is returned by model.fit())
         metrics(str, list): Metric or a list of metrics to plot
     """
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-
-plot_history(['accuracy', 'val_accuracy'])
+    plt.ylabel("metric")
+plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model'}
 
 ```python
-plot_history(['loss', 'val_loss'])
+plot_history(history, ['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
@@ -472,11 +474,11 @@ To train the network and plot the results:
 compile_model(model)
 history = model.fit(train_images, train_labels, epochs=20,
                    validation_data=(test_images, test_labels))
-plot_history(['accuracy', 'val_accuracy'])
+plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 ```python
-plot_history(['loss', 'val_loss'])
+plot_history(history, ['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_2.png){alt: "Plot of training loss and validation loss vs epochs for the trained model"}
@@ -600,7 +602,7 @@ history = model_dropout.fit(train_images, train_labels, epochs=20,
 
 And inspect the training results:
 ```python
-plot_history(['accuracy', 'val_accuracy'])
+plot_history(history, ['accuracy', 'val_accuracy'])
 
 test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=2)
 ```
@@ -611,7 +613,7 @@ test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=
 ![](../fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 
 ```python
-plot_history(['loss', 'val_loss'])
+plot_history(history, ['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_3.png){alt="Plot of training loss and validation loss vs epochs for the trained model"}

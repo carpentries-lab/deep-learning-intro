@@ -359,19 +359,20 @@ We will create a function for it, because we will make use of this more often in
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_history(metrics):
+def plot_history(history, metrics):
     """
     Plot the training history
 
     Args:
-        metrics(str, list): Metric or a list of metrics to plot
+        history (keras History object that is returned by model.fit())
+        metrics (str, list): Metric or a list of metrics to plot
     """
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-    plt.ylabel("RMSE")
+    plt.ylabel("metric")
 
-plot_history('root_mean_squared_error')
+plot_history(history, 'root_mean_squared_error')
 ```
 
 ![](../fig/03_training_history_1_rmse.png){alt='Plot of the RMSE over epochs for the trained model that shows a decreasing error metric'}
@@ -539,7 +540,7 @@ history = model.fit(X_train, y_train,
 With this we can plot both the performance on the training data and on the validation data!
 
 ```python
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_2_rmse.png){alt='Plot of RMSE vs epochs for the training set and the validation set which depicts a divergence between the two around 10 epochs.'}
@@ -574,12 +575,16 @@ We can keep the network architecture unchanged (2 dense layers + a one-node outp
 Try to lower the number of nodes in one or both of the two dense layers and observe the changes to the training and validation losses.
 If time is short: Suggestion is to run one network with only 10 and 5 nodes in the first and second layer.
 
-* Is it possible to get rid of overfitting this way?
-* Does the overall performance suffer or does it mostly stay the same?
-* How low can you go with the number of parameters without notable effect on the performance on the validation set?
+1. Is it possible to get rid of overfitting this way?
+2. Does the overall performance suffer or does it mostly stay the same?
+3. (optional) How low can you go with the number of parameters without notable effect on the performance on the validation set?
 
 :::: solution
 ## Solution
+
+Let's first adapt our `create_nn` function so that we can tweak the number of nodes in the 2 layers
+by passing arguments to the function:
+
 ```python
 def create_nn(nodes1=100, nodes2=50):
    # Input layer
@@ -590,6 +595,12 @@ def create_nn(nodes1=100, nodes2=50):
    # Output layer
    outputs = keras.layers.Dense(1)(layers_dense)
    return keras.Model(inputs=inputs, outputs=outputs, name="model_small")
+```
+
+Let's see if it works by creating a much smaller network with 10 nodes in the first layer,
+and 5 nodes in the second layer:
+
+```python
 model = create_nn(10, 5)
 model.summary()
 ```
@@ -610,31 +621,30 @@ Total params: 961
 Trainable params: 961
 Non-trainable params: 0
 ```
+
+Let's compile and train this network:
 ```python
 compile_model(model)
 history = model.fit(X_train, y_train,
                    batch_size = 32,
                    epochs = 200,
                    validation_data=(X_val, y_val))
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets.'}
 
-There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
-In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performs equally well.
+1. With this smaller model we have reduced overfitting a bit, since the training and validation loss are now closer to each other, and the validation loss does now reach a plateau and does not further increase.
+We have not completely avoided overfitting though. 
+2. In the case of this small example model, the validation RMSE seems to end up around 3.2, which is much better than the 4.08 we had before. Note that you can double check the actual score by calling `model.evaluate()` on the test set.
+3. In general, it quickly becomes a complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but the model still performs equally well. A model with 3 neurons in both layers seems to be around this spot, reaching an RMSE of 3.1 on the validation set. 
+Reducing the number of nodes further increases the validation RMSE again.
 ::::
 :::
 
 We saw that reducing the number of parameters can be a strategy to avoid overfitting.
 In practice, however, this is usually not the (main) way to go when it comes to deep learning.
 One reason is, that finding the sweet spot can be really hard and time consuming. And it has to be repeated every time the model is adapted, e.g. when more training data becomes available.
-
-::: callout
-## Sweet Spots
-Note: There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
-In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performes equally well.
-:::
 
 ### Early stopping: stop when things are looking best
 Arguable **the** most common technique to avoid (severe) overfitting in deep learning is called **early stopping**.
@@ -668,7 +678,7 @@ history = model.fit(X_train, y_train,
 
 As before, we can plot the losses during training:
 ```python
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets.'}
@@ -749,7 +759,7 @@ history = model.fit(X_train, y_train,
                     validation_data=(X_val, y_val),
                     callbacks=[earlystopper])
 
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_5_rmse_batchnorm.png){alt='Output of plotting sample'}
@@ -787,17 +797,17 @@ a complex phenomenon with correlations over large distances and time scales,
 but what happens if we limit ourselves to only one city?
 
 1. Since we will be reducing the number of features quite significantly,
-  we should afford to include more data. Instead of using only 3 years, use
+  we could afford to include more data. Instead of using only 3 years, use
   8 or 9 years!
-2. Remove all cities from the training data that are not for Basel.
+2. Only use the features in the dataset that are for Basel, remove the data for other cities.
   You can use something like:
   ```python
   cols = [c for c in X_data.columns if c[:5] == 'BASEL']
   X_data = X_data[cols]
   ```
 3. Now rerun the last model we defined which included the BatchNorm layer.
-  Recreate the scatter plot comparing your prediction with the baseline
-  prediction based on yesterday's sunshine hours, and compute also the RMSE.
+  Recreate the scatter plot comparing your predictions with the true values,
+  and evaluate the model by computing the RMSE on the test score.
   Note that even though we will use many more observations than previously,
   the network should still train quickly because we reduce the number of
   features (columns).
@@ -808,20 +818,23 @@ but what happens if we limit ourselves to only one city?
   
 :::: solution
 ## Solution
-Use 9 years out of the total dataset. This means 3 times as many
-rows as we used previously, but by removing columns not containing
-"BASEL" we reduce the number of columns from 89 to 11.
+### 1. Use 9 years out of the dataset
 ```python
 nr_rows = 365*9
 # data
 X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+
 # labels (sunshine hours the next day)
 y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
+```
+
+### 2. Only use features for Basel
+```python
 # only use columns with 'BASEL'
 cols = [c for c in X_data.columns if c[:5] == 'BASEL']
 X_data = X_data[cols]
 ```
-
+### 3. Rerun the model and evaluate it
 Do the train-test-validation split:
 ```python
 X_train, X_holdout, y_train, y_holdout = train_test_split(X_data, y_data, test_size=0.3, random_state=0)
@@ -836,6 +849,7 @@ model = create_nn()
 compile_model(model)
 model.summary()
 ```
+
 Fit with early stopping and output showing performance on validation set:
 ```python
 history = model.fit(X_train, y_train,
@@ -844,22 +858,48 @@ history = model.fit(X_train, y_train,
                    validation_data=(X_val, y_val),
                    callbacks=[earlystopper],
                    verbose = 2)
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
+
 Create a scatter plot to compare with true observations:
 ```python
 y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ```
-Compare the mean squared error with baseline prediction. It should be
-similar or even a little better than what we saw with the larger model!
+![](../fig/03_scatter_plot_basel_model.png){alt='Scatterplot of predictions and true number of sunshine hours'}
+
+
+Compute the RMSE on the test set:
 ```python
-from sklearn.metrics import mean_squared_error
-y_baseline_prediction = X_test['BASEL_sunshine']
-rmse_nn = mean_squared_error(y_test, y_test_predicted, squared=False)
-rmse_baseline = mean_squared_error(y_test, y_baseline_prediction, squared=False)
-print('NN RMSE: {:.2f}, baseline RMSE: {:.2f}'.format(rmse_nn, rmse_baseline))
+test_metrics = model.evaluate(X_test, y_test, return_dict=True)
+print(f'Test RMSE: {test_metrics["root_mean_squared_error"]}')
 ```
+```output
+Test RMSE: 3.3761725425720215
+```
+
+This RMSE is already a lot better compared to what we had before and certainly better than the baseline.
+Additionally, it could be further improved with hyperparameter tuning.
+
+Note that because we ran `train_test_split()` again, we are evaluating on a different test set than before.
+In the real world it is important to always compare results on the exact same test set.
+
+### 4. (optional) Train a model on all years and all features available.
+You can tweak the above code to use all years and all features:
+```python
+# We cannot take all rows, because we need to be able to take the sunshine hours of the next day
+nr_rows = len(data) - 2
+
+# data
+X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+
+# labels (sunshine hours the next day)
+y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
+```
+For the rest you can use the same code as above to train and evaluate the model
+
+This results in an RMSE on the test set of 3.23 (your result can be different, but should be in the same range).
+From this we can conclude that adding more training data results in even better performance!
 ::::
 :::
 

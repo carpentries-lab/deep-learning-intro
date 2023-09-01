@@ -50,12 +50,13 @@ A neural network is an artificial intelligence technique loosely based on the wa
 ##### A single neuron
 A neural network consists of connected computational units called **neurons**. Each neuron ...
 
-- has one or more inputs, e.g. input data expressed as floating point numbers
+- has one or more inputs ($x_1, x_2, ...$), e.g. input data expressed as floating point numbers
 - most of the time, each neuron conducts 3 main operations:
-  + take the weighted sum of the inputs
+  + take the weighted sum of the inputs where ($w_1, w_2, ... $) indicate weights
   + add an extra constant weight (i.e. a bias term) to this weighted sum
-  + apply a non-linear function to the output so far (using a predefined activation function)
-- return one output value, again a floating point number
+  + apply a non-linear function to the output so far (using a predefined activation function such as the ReLU function)
+- return one output value, again a floating point number.
+- one example equation to calculate the output for a neuron is: $output = ReLU(\sum_{i} (x_i*w_i) + bias)$
 
 
 ![](../fig/01_neuron.png){alt='A diagram of a single artificial neuron combining inputs and weights using an activation function.' width='600px'}
