@@ -59,7 +59,8 @@ affiliations:
    index: 6
  - name: Aalto University, Espoo, Finland
    index: 7
- - name: The Carpentries, Heidelberg, Germany
+ - name: The Carpentries, USA
+   index: 8
 date: 8 August 2023
 bibliography: paper.bib
 
