@@ -99,7 +99,7 @@ need for a low-threshold lesson that lets researchers take the first steps in th
 This impression was validated by other instructors who taught the lesson independently to their own audiences and provided us with feedback on their experience.
 
 # Instructional design
-This lesson material was designed using the concepts from the Carpentries Curriculum Development Handbook (REFERENCE https://cdh.carpentries.org/).
+This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook (REFERENCE https://cdh.carpentries.org/).
 Most importantly, we used 'backward design': We started with identifying learning objectives: the core skills and concepts that learners need to acquire as a result of the lesson.
 Then, these learning objectives were used to create exercises that test whether the objectives are met.
 Eventually, the content is written in such a way that it matches what learners need to learn to successfully apply these skills.
