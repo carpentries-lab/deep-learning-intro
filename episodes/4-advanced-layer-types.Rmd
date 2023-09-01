@@ -281,6 +281,36 @@ That results in a large number of connections, so a large number of parameters. 
 ::::
 :::
 
+::: callout
+## Search for existing architectures or pretrained models
+So far in this course we have built neural networks from scratch, because we want you to fully understand the basics of Keras.
+In the real world however, you would first search for existing solutions to your problem.
+The CIFAR10 dataset lends itself extremely well for using existing models, since it is a standard
+machine learning problem that is often used in deep learning research.
+You could for example search for 'CIFAR10 state-of-the-art Keras', and see if you can find any Keras implementations
+of more advanced architectures that you could reuse.
+A lot of the best-performing architectures for the CIFAR10 problem are convolutional neural networks or at least have some elements in common.
+Therefore, we will introduce convolutional neural networks here, and the best way to teach you is by
+developing a neural network from scratch!
+:::
+
+::: instructor
+## Demonstrate searching for existing architectures
+At this point it can be nice to apply above callout box and demonstrate searching for state-of-the-art implementations.
+If you google for 'CIFAR10 state-of-the-art Keras' one of the top search results links to [this repo](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model)
+where you will find [this notebook](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model/blob/master/CIFAR-10%20Best.ipynb).
+
+It can be a nice learning opportunity to go through the notebook and show that the learners should
+already be familiar with a lot of the syntax (for example Conv2D, Dense, BatchNorm layers, adam optimizer, the deep learning workflow).
+You can show that even though the model is much deeper, the input and output layer are still the same.
+The aim is to demonstrate that what we are learning is really the basis for more complex models,
+and you do not need to reinvent the wheel.
+
+Later in this episode when we evaluate the model it can be interesting to show how well
+this more complex model performs on this dataset (93.3% accuracy).
+:::
+
+## Pooling layers
 Often in convolutional neural networks, the convolutional layers are intertwined with **Pooling layers**. As opposed to the convolutional layer, the pooling layer actually alters the dimensions of the image and reduces it by a scaling factor. It is basically decreasing the resolution of your picture. The rationale behind this is that higher layers of the network should focus on higher-level features of the image. By introducing a pooling layer, the subsequent convolutional layer has a broader 'view' on the original image.
 
 Let's put it into practice. We compose a Convolutional network with two convolutional layers and two pooling layers.
