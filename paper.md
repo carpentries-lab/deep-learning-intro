@@ -39,6 +39,10 @@ authors:
   - name: Pranav Chandramouli
     orcid: 0000-0002-7896-2969
     affiliation: 1
+  - name: Toby Hodges
+    orcid: 0000-0003-1766-456X
+    affiliation: 8
+    
 
 affiliations:
  - name: Netherlands eScience Center, Amsterdam, The Netherlands
@@ -55,6 +59,7 @@ affiliations:
    index: 6
  - name: Aalto University, Espoo, Finland
    index: 7
+ - name: The Carpentries, Heidelberg, Germany
 date: 8 August 2023
 bibliography: paper.bib
 
