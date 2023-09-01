@@ -102,7 +102,7 @@ This impression was validated by other instructors who taught the lesson indepen
 This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook (REFERENCE https://cdh.carpentries.org/).
 Most importantly, we used 'backward design': we started with identifying learning objectives, the core skills and concepts that learners should acquire as a result of the lesson.
 Next, exercises were designed to assess whether these objectives are met.
-Eventually, the content is written in such a way that it matches what learners need to learn to successfully apply these skills.
+Eventually, the content is written to teach the skills and concepts learners need to successfully complete the exercises and, it follows, meet the learning objectives.
 
 Furthermore, the lesson is built around live coding. 
 The lesson is built up of small blocks. In each block first the instructor demonstrates how to do something,
