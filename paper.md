@@ -79,17 +79,13 @@ such as convolutional layers.
 
 # Statement of Need
 There are many free online course materials on deep learning, 
-for example: fast.ai's Practical Deep Learning for Coders, 
-Udemy's Basics of Deep Learning (https://www.udemy.com/course/basics-of-deep-learning/),
-Tensorflow 2.0 | Recurrent Neural Networks, LSTMs, GRUs (https://www.udemy.com/course/tensorflow-20-recurrent-neural-networks-lstms-grus/),
-https://www.udemy.com/course/complete-deep-learning-course-with-python/ 
-https://www.coursera.org/specializations/deep-learning
-https://www.freecodecamp.org/news/learn-pytorch-for-deep-learning-in-day/
+see for example [@noauthor_practical_nodate;@noauthor_free_nodate;@noauthor_free_nodate-1;@noauthor_free_nodate-2;@noauthor_deep_nodate;@noauthor_learn_2022] , 
+
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
 In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
 
-Many computing centers offer (local) deep learning courses, such as https://ssl.eventilla.com/event/8aPek. 
+Many computing centers offer (local) deep learning courses, such as @noauthor_practical_nodate-1. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
 
 What works well for learners is to both make them familiar with the key concepts, and also let them 
@@ -107,7 +103,7 @@ need for a low-threshold lesson that lets researchers take the first steps in th
 This impression was validated by other instructors who taught the lesson independently to their own audiences and provided us with feedback on their experience.
 
 # Instructional design
-This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook (REFERENCE https://cdh.carpentries.org/).
+This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook [@becker_carpentries_nodate].
 Most importantly, we used 'backward design': we started with identifying learning objectives, the core skills and concepts that learners should acquire as a result of the lesson.
 Next, exercises were designed to assess whether these objectives are met.
 Eventually, the content is written to teach the skills and concepts learners need to successfully complete the exercises and, it follows, meet the learning objectives.
@@ -121,7 +117,7 @@ promoting learning by
 helping learners build up a functioning mental model of the domain and 
 transfer new knowledge from working memory to long-term memory.
 
-The lesson material is built in the new lesson template: Carpentries Workbench (REFERENCE). 
+The lesson material is built in the new lesson template: Carpentries Workbench [@noauthor_carpentries_nodate]. 
 This makes the lesson material a complete self-study resource. 
 But it also serves as lesson material for the instructor teaching the lesson through live-coding, 
 in that case the lesson material is only shared with students after the workshop as a reference.
@@ -131,9 +127,8 @@ In addition, the Carpentries Workbench prioritises accessibility of the content,
 and promoting alt-texts for pictures.
 
 The lesson is split into a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
-Each of the deep learning problems is approached using the same 10-step deep learning workflow (REFERENCE https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
+Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
 By going through the deep learning cycle three times with different problems, learners become increasingly confident in applying this deep learning workflow to their own projects.
-
 
 # Feedback
 This course was taught 12 times over the course of 3 years, both online and in-person, by the Netherlands eScience Center
