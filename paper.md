@@ -84,7 +84,7 @@ such as convolutional layers.
 
 # Statement of Need
 There are many free online course materials on deep learning, 
-see for example @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
+see for example: @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
@@ -97,7 +97,7 @@ What works well for learners is to both make them familiar with the key concepts
 practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
 During the course, learners type in the commands that are explained by the instructor on their own computer.
-This is done with the Software Carpentry [@wilson_software_2006] philosophy in mind.
+This design is based on the Software Carpentry [@wilson_software_2006] philosophy.
 Live coding ensures that learners master the programmatic implementation of deep learning at the end of the course.
 We believe that this makes our lesson a unique and crucial resource.
 
@@ -177,10 +177,11 @@ Table 2: Quality of the different episodes of the workshop as rated by students 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
 # Conclusion
-This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and python.
+This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and Python.
 It can also be taught in a broader curriculum after an introduction to Python programming (for example: @azalee_bostroem_software_2016) 
 and an introduction to machine learning (for example: @noauthor_scikit-learn_2023).
 Concluding, the described lesson material is a unique and essential resource aimed at researchers and designed specifically for a live-coding teaching style.
+Hopefully, it will help many researchers to set their first steps in a successful application of deep learning to their own domain.
 
 # Acknowledgements
 We would like to thank all instructors and helpers that taught the course, 
