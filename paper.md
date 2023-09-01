@@ -92,7 +92,8 @@ What works well for learners is to both make them familiar with the key concepts
 practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
 During the course, learners type in the commands that are explained by the instructor on their own computer.
-This ensures that learners master the programmatic implementation of deep learning at the end of the course. 
+This is done with the Software Carpentry [@wilson_software_2006] philosophy in mind.
+Live coding ensures that learners master the programmatic implementation of deep learning at the end of the course.
 We believe that this makes our lesson a unique and crucial resource.
 
 Researchers can often only free a limited amount of time (maximum 5 consecutive days), since they are so involved in their daily work.
