@@ -79,13 +79,13 @@ such as convolutional layers.
 
 # Statement of Need
 There are many free online course materials on deep learning, 
-see for example [@noauthor_practical_nodate;@noauthor_free_nodate;@noauthor_free_nodate-1;@noauthor_free_nodate-2;@noauthor_deep_nodate;@noauthor_learn_2022] , 
+see for example @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
 In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
 
-Many computing centers offer (local) deep learning courses, such as @noauthor_practical_nodate-1. 
+Many computing centers offer (local) deep learning courses, such as @noauthor_csc-_nodate. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
 
 What works well for learners is to both make them familiar with the key concepts, and also let them 
