@@ -171,6 +171,12 @@ The results from these 2 workshops are a good representation of the general feed
 Table 2: Quality of the different episodes of the workshop as rated by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
+# Conclusion
+This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and python.
+It can also be taught in a broader curriculum after an introduction to Python programming (for example: @azalee_bostroem_software_2016) 
+and an introduction to machine learning (for example: @noauthor_scikit-learn_2023).
+Concluding, the described lesson material is a unique and essential resource aimed at researchers and designed specifically for a live-coding teaching style.
+
 # Acknowledgements
 We would like to thank all instructors and helpers that taught the course, 
 and the community of people that left contributions to the project, no matter how big or small. 
