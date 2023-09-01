@@ -108,6 +108,10 @@ Live coding is central to this approach:
 the lesson is built up of small blocks. In each block first the instructor demonstrates how to do something,
 and students follow along on their own computer. Then, the students work independently on exercises individually
 or in groups to test their skills.
+This approach integrates opportunities for guided practice throughout the lesson,
+promoting learning by 
+helping learners build up a functioning mental model of the domain and 
+transfer new knowledge from working memory to long-term memory.
 
 The lesson material is built in the new lesson template: Carpentries Workbench (REFERENCE). 
 This makes the lesson material a complete self-study resource. 
