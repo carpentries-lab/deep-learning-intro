@@ -287,6 +287,7 @@ So far in this course we have built neural networks from scratch, because we wan
 In the real world however, you would first search for existing solutions to your problem.
 The CIFAR10 dataset lends itself extremely well for using existing models, since it is a standard
 machine learning problem that is often used in deep learning research.
+
 You could for example search for 'CIFAR10 state-of-the-art Keras', and see if you can find any Keras implementations
 of more advanced architectures that you could reuse.
 A lot of the best-performing architectures for the CIFAR10 problem are convolutional neural networks or at least have some elements in common.
