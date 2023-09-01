@@ -83,7 +83,7 @@ for example: fast.ai's Practical Deep Learning for Coders, MORE ONLINE COURSES
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
-In addition, the amount and diversity of the existing online courses is overwhelming, but they are generally not targeted towards academic researchers.
+In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
 What works well for learners is to both make them familiar with the key concepts, and also let them 
 practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
