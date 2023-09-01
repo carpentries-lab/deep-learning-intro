@@ -129,6 +129,7 @@ Apart from the core group of contributors, the workshop was also taught at 3 ind
 University of Wisconson-Madison (US, https://www.wisc.edu/), University of Auckland (New Zealand, https://www.auckland.ac.nz/), 
 and EMBL Heidelberg (Germany, https://www.embl.org/sites/heidelberg/).
 In general, adoption of the lesson material by the instructors not involved in the project went well.
+The feedback gathered from our own and others' teachings was used to polish the lesson further.
 
 ## Student responses
 The feedback we gathered from students is in general very positive, further confirming our statement of need.
