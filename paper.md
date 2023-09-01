@@ -94,8 +94,9 @@ We believe that this makes our lesson a unique and crucial resource.
 Researchers can often only free a limited amount of time (maximum 5 consecutive days), since they are so involved in their daily work.
 To accomplish this, we created a lesson that can be taught in 2 consecutive days or 4 half days.
 
-From the feedback we gathered from students enrolled in our workshops and instructors not involved in our project we see that indeed there is a 
+Demand for our workshops and feedback gathered from students demonstrated the
 need for a low-threshold lesson that lets researchers take the first steps in the field of deep learning.
+This impression was validated by other instructors who taught the lesson independently to their own audiences and provided us with feedback on their experience.
 
 # Instructional design
 This lesson material was designed using the concepts from the Carpentries Curriculum Development Handbook (REFERENCE https://cdh.carpentries.org/).
