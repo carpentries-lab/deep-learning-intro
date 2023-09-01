@@ -116,7 +116,8 @@ or in groups to test their skills.
 This approach integrates opportunities for guided practice throughout the lesson,
 promoting learning by 
 helping learners build up a functioning mental model of the domain and 
-transfer new knowledge from working memory to long-term memory.
+transfer new knowledge from working memory to long-term memory. 
+This is in accordance with research-based successful teaching strategies [@lang_small_2021].
 
 The lesson material is built in the new lesson template: Carpentries Workbench [@noauthor_carpentries_nodate]. 
 This makes the lesson material a complete self-study resource. 
