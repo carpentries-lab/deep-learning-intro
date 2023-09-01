@@ -78,7 +78,7 @@ monitor and troubleshoot the training process, and implement different layer typ
 such as convolutional layers.
 
 # Statement of Need
-There are many great free online course materials on deep learning, 
+There are many free online course materials on deep learning, 
 for example: fast.ai's Practical Deep Learning for Coders, MORE ONLINE COURSES
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
