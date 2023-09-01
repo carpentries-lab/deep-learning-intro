@@ -104,8 +104,8 @@ Most importantly, we used 'backward design': we started with identifying learnin
 Next, exercises were designed to assess whether these objectives are met.
 Eventually, the content is written to teach the skills and concepts learners need to successfully complete the exercises and, it follows, meet the learning objectives.
 
-Furthermore, the lesson is built around live coding. 
-The lesson is built up of small blocks. In each block first the instructor demonstrates how to do something,
+Live coding is central to this approach: 
+the lesson is built up of small blocks. In each block first the instructor demonstrates how to do something,
 and students follow along on their own computer. Then, the students work independently on exercises individually
 or in groups to test their skills.
 
