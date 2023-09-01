@@ -157,7 +157,7 @@ with some responses from students to the question 'What was your favourite or mo
 
 > _The doing part, that really helps to get the theory into practice._
 
-Below are two tables summarizing results from our post-workshop survey. We use the student's feedback to continuously improve the lesson. 
+Below are two tables summarizing results from our post-workshop survey. We use the students' feedback to continuously improve the lesson. 
 
 |                                                                                            |          STRONGLY DISAGREE    |     DISAGREE    |     UNDECIDED    |     AGREE    |     STRONGLY AGREE    |     TOTAL    |     WEIGHTED AVERAGE    |
 |--------------------------------------------------------------------------------------------|-------------------------------|-----------------|------------------|--------------|-----------------------|--------------|-------------------------|
