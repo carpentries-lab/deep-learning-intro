@@ -69,11 +69,12 @@ While deep learning can be a useful tool for researchers from a wide range of do
 taking the first steps in the world of deep learning can be somewhat intimidating. 
 This introduction aims to cover the fundamentals of deep learning in a practical and hands-on manner. By the end of the course, students will be able to train their first neural network and understand the subsequent steps needed to improve the model.
 
-The lesson starts with explaining the basic concepts of neural networks, 
-and then go through the different steps of a deep learning workflow. 
-After following this lesson, Learners will be able to prepare data for deep learning, 
+The lesson starts by explaining the basic concepts of neural networks, 
+and then guides learners through the different steps of a deep learning workflow.  
+After following this lesson, 
+learners will be able to prepare data for deep learning, 
 implement a basic deep learning model in Python with Keras, 
-monitor and troubleshoot the training process and implement different layer types, 
+monitor and troubleshoot the training process, and implement different layer types, 
 such as convolutional layers.
 
 # Statement of Need
