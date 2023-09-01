@@ -79,11 +79,19 @@ such as convolutional layers.
 
 # Statement of Need
 There are many free online course materials on deep learning, 
-for example: fast.ai's Practical Deep Learning for Coders, MORE ONLINE COURSES
-
+for example: fast.ai's Practical Deep Learning for Coders, 
+Udemy's Basics of Deep Learning (https://www.udemy.com/course/basics-of-deep-learning/),
+Tensorflow 2.0 | Recurrent Neural Networks, LSTMs, GRUs (https://www.udemy.com/course/tensorflow-20-recurrent-neural-networks-lstms-grus/),
+https://www.udemy.com/course/complete-deep-learning-course-with-python/ 
+https://www.coursera.org/specializations/deep-learning
+https://www.freecodecamp.org/news/learn-pytorch-for-deep-learning-in-day/
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
 In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
+
+Many computing centers offer (local) deep learning courses, such as https://ssl.eventilla.com/event/8aPek. 
+But the lesson material, if it is available, is not easily adopted outside the course organisation.
+
 What works well for learners is to both make them familiar with the key concepts, and also let them 
 practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
