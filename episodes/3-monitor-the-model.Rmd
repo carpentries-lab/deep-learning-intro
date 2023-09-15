@@ -23,6 +23,19 @@ exercises: 80
 - "Implement basic strategies to prevent overfitting"
 :::
 
+::: instructor
+## Copy-pasting code
+In this episode we first introduce a simple approach to the problem,
+then we iterate on that a few times to, step-by-step,
+working towards a more complex solution.
+Unfortunately this involves using the same code repeatedly over and over again,
+only slightly adapting it.
+
+To avoid too much typing, it can help to copy-paste code from higher up in the notebook.
+Be sure to make it clear where you are copying from
+and what you are actually changing in the copied code.
+It can for example help to add a comment to the lines that you added.
+:::
 
 In this episode we will explore how to monitor the training progress, evaluate our the model predictions and finetune the model to avoid over-fitting. For that we will use a more complicated weather data-set.
 
