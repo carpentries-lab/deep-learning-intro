@@ -166,6 +166,7 @@ Below are two tables summarizing results from our post-workshop survey. We use t
 | I can immediately apply what I learned at this workshop.                                   | 0                             | 5               | 6                | 19           | 8                     | 38           | 3,8                     |
 | The setup and installation instructions for the lesson were complete and easy to follow.   | 0                             | 0               | 4                | 13           | 21                    | 38           | 4,4                     |
 | Examples and tasks in the lesson were relevant and authentic                               | 0                             | 0               | 5                | 19           | 14                    | 38           | 4,2                     |
+
 Table 1: Agreement on statements by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
