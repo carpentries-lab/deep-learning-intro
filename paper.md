@@ -176,6 +176,7 @@ The results from these 2 workshops are a good representation of the general feed
 |     Classification by a Neural Network using Keras (penguins dataset)     | 0 (0%)           | 1 (3%)      | 5 (13%)     | 16 (42%)         | 16 (42%)         | 0 (0%)     | 38           | 4,2                     |
 |     Monitoring and Troubleshooting the learning process (weather dataset) | 0 (0%)           | 0 (0%)      | 4 (11%)     | 18 (47%)         | 16 (42%)         | 0 (0%)     | 38           | 4,3                     |
 |     Advanced layer types (CIFAR-10 dataset)                               | 0 (0%)           | 2 (5%)      | 5 (13%)     | 7 (18%)          | 16 (42%)         | 8 (21%)    | 38           | 4,2                     |
+
 Table 2: Quality of the different episodes of the workshop as rated by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
