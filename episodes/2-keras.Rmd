@@ -188,7 +188,7 @@ penguins_filtered = penguins_filtered.dropna()
 Finally, we select only the features
 ```python
 # Extract columns corresponding to features
-penguins_features = penguins_filtered.drop(columns=['species'])
+features = penguins_filtered.drop(columns=['species'])
 ```
 
 ### Prepare target data for training
@@ -240,7 +240,7 @@ For this episode we will keep it at just a training and test set however.
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
 This function takes a number of parameters which are extensively explained [here](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
-- The first two parameters are the dataset (in our case penguins_features) and the corresponding targets (i.e. defined as target).
+- The first two parameters are the dataset (in our case features) and the corresponding targets (i.e. defined as target).
 - Next is the named parameter `test_size` this is the fraction of the dataset that is
 used for testing, in this case `0.2` means 20% of the data will be used for testing.
 - `random_state` controls the shuffling of the dataset, setting this value will reproduce
@@ -251,7 +251,7 @@ the same results (assuming you give the same integer) every time it is called.
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,test_size=0.2, random_state=0, shuffle=True, stratify=target)
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
 ## 4. Build an architecture from scratch or choose a pretrained model
