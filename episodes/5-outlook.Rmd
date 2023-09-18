@@ -66,7 +66,8 @@ EarlyStopping as well as the Adam optimizer is used.
 '4: Choose a pretrained model or start building architecture from scratch', '5: Choose a loss function and optimizer', '6: Train the model',
 '7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
 3. (optional)
-    a. Because the shape of the input is 10.000. More specifically, the spectrum is binned into a size 10.000 vector.
+    a. Because the shape of the input is 10.000. More specifically, the spectrum is binned into a size 10.000 vector,
+    apparently this is a good size to represent the mass spectrum.
     b. This would force the neural network to have a representation of the mass spectrum in only 5 numbers.
     This representation would probably be more generic, but might fail to capture all the characteristics found in the spectrum.
     This would likely result in underfitting.
