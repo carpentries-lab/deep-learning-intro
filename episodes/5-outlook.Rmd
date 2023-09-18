@@ -52,7 +52,9 @@ It works best to use a suitable deep learning project that you know well and are
 
 1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this course?
 2. Can you identify the different steps of the deep learning workflow in this notebook?
-3. (Optional): Try to fully understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4)
+3. (Optional): Try to understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4).
+    a. Why are there 10.000 neurons in the input layer?
+    b. What do you think would happen if you would decrease the size of spectral embedding layer drastically, to for example 5 neurons?
 
 :::: solution
 ## Solution
@@ -63,6 +65,11 @@ EarlyStopping as well as the Adam optimizer is used.
 2. The different steps are not as clearly defined as in this course, but you should be able to identify '3: Data preparation',
 '4: Choose a pretrained model or start building architecture from scratch', '5: Choose a loss function and optimizer', '6: Train the model',
 '7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
+3. (optional)
+    a. Because the shape of the input is 10.000. More specifically, the spectrum is binned into a size 10.000 vector.
+    b. This would force the neural network to have a representation of the mass spectrum in only 5 numbers.
+    This representation would probably be more generic, but might fail to capture all the characteristics found in the spectrum.
+    This would likely result in underfitting.
 ::::
 :::
 
