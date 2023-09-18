@@ -83,13 +83,13 @@ _Note: You can use whatever you like: brain only, pen&paper, Python, Excel..._
 
 :::: solution
 ## Solution
-Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25
+You can calculate the output as follows:
 
-Add the bias: 0.25 + 1 = 1.25
+- Weighted sum of input: `0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25`
+- Add the bias: `0.25 + 1 = 1.25`
+- Apply activation function: `max(1.25, 0) = 1.25`
 
-Apply activation function: max(1.25, 0) = 1.25
-
-So, neuron output = 1.25
+So, neuron output is 1.25
 
 ::::
 :::
