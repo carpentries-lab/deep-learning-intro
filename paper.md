@@ -192,7 +192,7 @@ We would like to thank all instructors and helpers that taught the course,
 and the community of people that left contributions to the project, no matter how big or small. 
 Also, we thank Chris Endemann (University of Wisconson-Madison, US, https://www.wisc.edu/),
 Nidhi Gowdra (University of Auckland, New Zealand, https://www.auckland.ac.nz/), 
-and Renato Alves (EMBL Heidelberg, Germany, https://www.embl.org/sites/heidelberg/),
+,Renato Alves and Lisanna Paladin (EMBL Heidelberg, Germany, https://www.embl.org/sites/heidelberg/),
 that piloted this workshop at their institutes.
 We thank the Carpentries for providing such a great framework for developing this lesson material.
 We thank all students enrolled in the workshops that were taught using this lesson material for providing us with feedback.
