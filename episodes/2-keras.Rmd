@@ -375,10 +375,18 @@ If these reasons are not clear right away, don't worry! In later episodes of thi
 With the code snippets above, we defined a Keras model with 1 hidden layer with
 10 neurons and an output layer with 3 neurons.
 
-* How many parameters does the resulting model have?
-* What happens to the number of parameters if we increase or decrease the number of neurons
+1. How many parameters does the resulting model have?
+2. What happens to the number of parameters if we increase or decrease the number of neurons
  in the hidden layer?
- 
+
+#### (optional) Keras Sequential vs Functional API
+So far we have used the [Functional API](https://keras.io/guides/functional_api/) of Keras.
+You can also implement neural networks using [the Sequential model](https://keras.io/guides/sequential_model/).
+As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
+where each layer has **exactly one input tensor and one output tensor**.
+
+3. (optional) Use the Sequential model to implement the same network
+
 :::: solution
 ## Solution
 ```python
@@ -410,6 +418,20 @@ If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
 decreases accordingly of neurons.
 The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.
+
+#### (optional) Keras Sequential vs Functional API
+3. This implements the same model using the Sequential API:
+```python
+model = keras.Sequential(
+    [
+        keras.Input(shape=X_train.shape[1]),
+        keras.layers.Dense(10, activation="relu"),
+        keras.layers.Dense(3, activation="softmax"),
+    ]
+)
+```
+
+We will use the Functional API for the remainder of this course, since it is more flexible and more explicit.
 ::::
 :::
 
