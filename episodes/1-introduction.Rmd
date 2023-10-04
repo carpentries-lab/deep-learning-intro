@@ -104,7 +104,7 @@ b. What logical problem does this network solve?
 :::: solution
 ## Solution
 #### 1: calculate the output for one neuron
-* Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25
+* Weighted sum of input: `0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25`
 * Add the bias: 0.25 + 1 = 1.25
 * Apply activation function: max(1.25, 0) = 1.25
 
