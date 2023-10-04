@@ -159,7 +159,7 @@ sns.pairplot(penguins, hue='sex')
 
 ![][sex_pairplot]
 
-You see that for each species the females have smaller bills and flippers, as well as a smaller body mass.
+You see that for each species females have smaller bills and flippers, as well as a smaller body mass.
 You would need a combination of the species and the numerical features to successfully distinguish males from females.
 The combination of `bill_depth_mm` and `body_mass_g` gives the best separation.
 
