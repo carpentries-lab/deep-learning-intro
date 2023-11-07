@@ -6,9 +6,9 @@ title: Bonus material
 
 To apply Deep Learning to a problem there are several steps we need to go through:
 
-![A visualisation of the Machine Learning Pipeline](../fig/graphviz/pipeline.png)
+![A visualisation of the Machine Learning Pipeline](../episodes/fig/graphviz/pipeline.png)
 
-Feel free to use this figure as [png](../fig/graphviz/pipeline.png). The figure is contained in `fig/graphviz/` of this repository. Use the `Makefile` there in order to reproduce it in different output formats.
+Feel free to use this figure as [png](../episodes/fig/graphviz/pipeline.png). The figure is contained in `fig/graphviz/` of this repository. Use the `Makefile` there in order to reproduce it in different output formats.
 
 ## Optional part - prediction uncertainty using Monte-Carlo Dropout
 Depending on the data and the question asked, model predictions can be highly accuracte. Or, as in the present case, show a high degree of error.
@@ -22,7 +22,7 @@ The name of the technique refers to a very common regularization technique: **Dr
  
 One of the most versatile regularization technique is **dropout**.
 Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time. 
-![Dropout sketch](../fig/neural_network_sketch_dropout.png)
+![Dropout sketch](../episodes/fig/neural_network_sketch_dropout.png)
 The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple "paths". In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes). 
 As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affet training speed. And it frequently works very well.
@@ -95,7 +95,7 @@ plt.xlabel("epochs")
 plt.ylabel("RMSE")
 ```              
 
-![Output of plotting sample](../fig/03_training_history_4_rmse_dropout.png)
+![Output of plotting sample](../episodes/fig/03_training_history_4_rmse_dropout.png)
 
 In this setting overfitting seems to be pervented succesfully. The overall results though have not improved (at least not by much).
 Above we have used dropout to randomly turn off network nodes during training.
@@ -173,7 +173,7 @@ plt.hist(y_test_predicted_ensemble[0,:], rwidth=0.9)
 plt.xlabel("predicted sunshine hours")
 ``` 
 
-![Output of plotting sample](../fig/03_monte_carlo_dropout_distribution_example.png)
+![Output of plotting sample](../episodes/fig/03_monte_carlo_dropout_distribution_example.png)
 
 Instead of full distributions for every datapoint we might also just want to extract the mean and standard deviation.
 ```
@@ -189,4 +189,4 @@ plt.scatter(y_test_predicted_mean, y_test, s=40*y_test_predicted_std,
 plt.xlabel("predicted")
 plt.ylabel("true values")
 ```
-![Output of plotting sample](../fig/03_scatter_plot_model_uncertainty.png)
+![Output of plotting sample](../episodes/fig/03_scatter_plot_model_uncertainty.png)

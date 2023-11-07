@@ -68,11 +68,11 @@ The goal is to predict a penguins' species using the attributes available in thi
 The `palmerpenguins` data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.
 The physical attributes measured are flipper length, beak length, beak width, body mass, and sex.
 
-![][palmer-penguins]
-*Artwork by @allison_horst*
+![*Artwork by @allison_horst*][palmer-penguins]
 
-![][penguin-beaks]
-*Artwork by @allison_horst*
+
+![*Artwork by @allison_horst*][penguin-beaks]
+
 
 These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palmer Station Long Term Ecological Research Program](https://pal.lternet.edu/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://pal.lternet.edu/data/policies).
 
@@ -724,22 +724,22 @@ Length: 69, dtype: object
 ```
 
 
-[palmer-penguins]: ../fig/palmer_penguins.png "Palmer Penguins"
+[palmer-penguins]: fig/palmer_penguins.png "Palmer Penguins"
 {alt='Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele'}
 
-[penguin-beaks]: ../fig/culmen_depth.png "Culmen Depth"
+[penguin-beaks]: fig/culmen_depth.png "Culmen Depth"
 {alt='Illustration of the beak dimensions called culmen length and culmen depth in the dataset'}
 
-[pairplot]: ../fig/pairplot.png "Pair Plot"
+[pairplot]: fig/pairplot.png "Pair Plot"
 {alt='Pair plot showing the separability of the three species of penguin for combinations of dataset attributes'}
 
-[sex_pairplot]: ../fig/02_sex_pairplot.png "Pair plot grouped by sex"
+[sex_pairplot]: fig/02_sex_pairplot.png "Pair plot grouped by sex"
 {alt='Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes'}
 
-[training_curve]: ../fig/training_curve.png "Training Curve"
+[training_curve]: fig/training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
 
-[confusion_matrix]: ../fig/confusion_matrix.png "Confusion Matrix"
+[confusion_matrix]: fig/confusion_matrix.png "Confusion Matrix"
 {alt='Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap'}
 
 
