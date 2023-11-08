@@ -40,10 +40,18 @@ As a reminder below are the steps of the deep learning workflow:
 6. Train the model
 7. Perform a Prediction/Classification
 8. Measure performance
-9. Tune hyperparameters
+9. Refine the model
 10. Save model
 
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
+
+::: instructor
+This episode really aims to go through the whole process once, as quickly as possible. 
+In episode 3 we will expand on all the concepts that are lightly inroduced in episode 2. Some concepts like monitoring the training progress, optimization and learning rate are explained in detail in episode 3.
+It is good to stress this a few times, because learners will usually have a lot of questions like:
+'Why don't we normalize our features' or 'Why do we choose Adam optimizer?'. 
+It can be a good idea to park some of these questions for discussion in episode 3 and 4.
+:::
 
 ::: callout
 ## GPU usage
@@ -142,12 +150,26 @@ Take a look at the pairplot we created. Consider the following questions:
 
 * Is there any class that is easily distinguishable from the others?
 * Which combination of attributes shows the best separation for all 3 class labels at once?
+* (optional) Create a similar pairplot, but with `hue="sex"`. Explain the patterns you see.
+Which combination of features distinguishes the two sexes best?
 
 :::: solution
 ## Solution
-The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
-The other two seem to be separable by a combination of bill length and bill
+* The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
+* The other two seem to be separable by a combination of bill length and bill
 depth (other combinations are also possible such as bill length and flipper length).
+
+Answer to optional question:
+
+```python
+sns.pairplot(penguins, hue='sex')
+```
+
+![][sex_pairplot]
+
+You see that for each species females have smaller bills and flippers, as well as a smaller body mass.
+You would need a combination of the species and the numerical features to successfully distinguish males from females.
+The combination of `bill_depth_mm` and `body_mass_g` gives the best separation.
 
 ::::
 :::
@@ -188,7 +210,7 @@ penguins_filtered = penguins_filtered.dropna()
 Finally, we select only the features
 ```python
 # Extract columns corresponding to features
-penguins_features = penguins_filtered.drop(columns=['species'])
+features = penguins_filtered.drop(columns=['species'])
 ```
 
 ### Prepare target data for training
@@ -240,7 +262,7 @@ For this episode we will keep it at just a training and test set however.
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
 This function takes a number of parameters which are extensively explained [here](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
-- The first two parameters are the dataset (in our case penguins_features) and the corresponding targets (i.e. defined as target).
+- The first two parameters are the dataset (in our case features) and the corresponding targets (i.e. defined as target).
 - Next is the named parameter `test_size` this is the fraction of the dataset that is
 used for testing, in this case `0.2` means 20% of the data will be used for testing.
 - `random_state` controls the shuffling of the dataset, setting this value will reproduce
@@ -251,7 +273,7 @@ the same results (assuming you give the same integer) every time it is called.
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,test_size=0.2, random_state=0, shuffle=True, stratify=target)
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
 ## 4. Build an architecture from scratch or choose a pretrained model
@@ -313,7 +335,7 @@ The instantiation here has 2 parameters and a seemingly strange combination of p
 let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
-on hyperparameter tuning.
+on refining the model.
 The second parameter is the activation function to use, here we choose relu which is 0
 for inputs that are 0 and below and the identity function (returning the same value)
 for inputs above 0.
@@ -361,10 +383,18 @@ If these reasons are not clear right away, don't worry! In later episodes of thi
 With the code snippets above, we defined a Keras model with 1 hidden layer with
 10 neurons and an output layer with 3 neurons.
 
-* How many parameters does the resulting model have?
-* What happens to the number of parameters if we increase or decrease the number of neurons
+1. How many parameters does the resulting model have?
+2. What happens to the number of parameters if we increase or decrease the number of neurons
  in the hidden layer?
- 
+
+#### (optional) Keras Sequential vs Functional API
+So far we have used the [Functional API](https://keras.io/guides/functional_api/) of Keras.
+You can also implement neural networks using [the Sequential model](https://keras.io/guides/sequential_model/).
+As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
+where each layer has **exactly one input tensor and one output tensor**.
+
+3. (optional) Use the Sequential model to implement the same network
+
 :::: solution
 ## Solution
 Have a look at the output of `model.summary()`:
@@ -397,6 +427,20 @@ Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3
 So in total 8 extra parameters.
 
 *The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.*
+
+#### (optional) Keras Sequential vs Functional API
+3. This implements the same model using the Sequential API:
+```python
+model = keras.Sequential(
+    [
+        keras.Input(shape=X_train.shape[1]),
+        keras.layers.Dense(10, activation="relu"),
+        keras.layers.Dense(3, activation="softmax"),
+    ]
+)
+```
+
+We will use the Functional API for the remainder of this course, since it is more flexible and more explicit.
 ::::
 :::
 
@@ -489,11 +533,30 @@ Looking at the training curve we have just made.
    * Does the graph look very jittery?
 2. Do you think the resulting trained network will work well on the test set?
 
+When the training process does not go well:
+
+3. (optional) Something went wrong here during training. What could be the problem, and how do you see that in the training curve?
+Also compare the range on the y-axis with the previous training curve.
+![](../fig/02_bad_training_history_1.png){alt='Very jittery training curve with the loss value jumping back and forth between 2 and 4. The range of the y-axis is from 2 to 4, whereas in the previous training curve it was from 0 to 2. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2.'}
+
 :::: solution
 ## Solution
-1. The loss curve should drop quite quickly in a smooth line with little jitter
+1. The training loss decreases quickly. It drops in a smooth line with little jitter.
+This is ideal for a training curve.
 2. The results of the training give very little information on its performance on a test set.
   You should be careful not to use it as an indication of a well trained network.
+3. (optional) The loss does not go down at all, or only very slightly. This means that the model is not learning anything.
+It could be that something went wrong in the data preparation (for example the labels are not attached to the right features).
+In addition, the graph is very jittery. This means that for every update step,
+the weights in the network are updated in such a way that the loss sometimes increases a lot and sometimes decreases a lot.
+This could indicate that the weights are updated too much at every learning step and you need a smaller learning rate
+(we will go into more details on this in the next episode).
+Or there is a high variation in the data, leading the optimizer to change the weights in different directions at every learning step.
+This could be addressed by presenting more data at every learning step (or in other words increasing the batch size).
+In this case the graph was created by training on nonsense data, so this a training curve for a problem where nothing can be learned really.
+
+We will take a closer look at training curves in the next episode. Some of the concepts touched upon here will also be further explained there.
+
 ::::
 :::
 
@@ -558,7 +621,7 @@ Length: 69, dtype: object
 ## 8. Measuring performance
 Now that we have a trained neural network it is important to assess how well it performs.
 We want to know how well it will perform in a realistic prediction scenario, measuring
-performance will also come back when tuning the hyperparameters.
+performance will also come back when refining the model.
 
 We have created a test set (i.e. y_test) during the data preparation stage which we will use
 now to create a confusion matrix.
@@ -632,18 +695,19 @@ We can try many things to improve the performance from here.
 One of the first things we can try is to balance the dataset better.
 Other options include: changing the network architecture or changing the
 training parameters
+
+Note that the outcome you have might be slightly different from what is shown in this tutorial.
 ::::
 :::
 
-## 9. Tune hyperparameters
+## 9. Refine the model
 As we discussed before the design and training of a neural network comes with
-many hyper parameter choices.
-We will go into more depth of these hyperparameters in later episodes.
+many hyperparameter and model architecture choices.
+We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
 pick hyperparameter values. 
 
-Note that the outcome you have might be slightly different from what is shown in this tutorial.
 
 ## 10. Share model
 It is very useful to be able to use the trained neural network at a later
@@ -697,7 +761,10 @@ Length: 69, dtype: object
 [pairplot]: ../fig/pairplot.png "Pair Plot"
 {alt='Pair plot showing the separability of the three species of penguin for combinations of dataset attributes'}
 
-[training_curve]: ../fig/training_curve.png "Training Curve"
+[sex_pairplot]: ../fig/02_sex_pairplot.png "Pair plot grouped by sex"
+{alt='Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes'}
+
+[training_curve]: ../fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
 
 [confusion_matrix]: ../fig/confusion_matrix.png "Confusion Matrix"

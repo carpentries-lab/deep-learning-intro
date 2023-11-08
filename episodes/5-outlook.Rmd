@@ -1,16 +1,18 @@
 ---
 title: "Outlook"
-teaching: 10
+teaching: 15
 exercises: 15
 ---
 
 ::: questions
 - "How does what I learned in this course translate to real-world problems?"
+- "How do I organise a deep learning project?"
 - "What are next steps to take after this course?"
 :::
 
 ::: objectives
 - "Understand that what we learned in this course can be applied to real-world problems"
+- "Use best practices for organising a deep learning project"
 - "Identify next steps to take after this course"
 :::
 
@@ -75,6 +77,44 @@ in this course. This is quite common for applied deep learning projects. It is s
 deep learning problem is spent on data preparation, and only 10% on modeling!
 :::
 
+## Organising deep learning projects
+As you might have noticed already in this course, deep learning projects can quickly become messy.
+Here follow some best practices for keeping your projects organized:
+
+### 1. Organise experiments in notebooks
+Jupyter notebooks are a useful tool for doing deep learning experiments.
+You can very easily modify your code bit by bit, and interactively look at the results.
+In addition you can explain why you are doing things in markdown cells.
+- As a rule of thumb do one approach or experiment in one notebook.
+- Give consistent and meaningful names to notebooks, such as: `01-all-cities-simple-cnn.ipynb`
+- Add a rationale on top and a conclusion on the bottom of each notebook
+
+[_Ten simple rules for writing and sharing computational analyses in Jupyter Notebooks_](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007007) provides further advice on how to maximise the usefulness and reproducibility of experiments captured in a notebook.
+
+### 2. Use Python modules
+Code that is repeatedly used should live in a Python module and not be copied to multiple notebooks.
+You can import functions and classes from the module(s) in the notebooks.
+This way you can remove a lot of code definition from your notebooks and have a focus on the actual experiment.
+
+### 3. Keep track of your results in a central place
+Always evaluate your experiments in the same way, on the exact same test set.
+Document the results of your experiments in a consistent and meaningful way.
+You can use a simple spreadsheet such as this:
+
+| MODEL NAME              | MODEL DESCRIPTION                          | RMSE | TESTSET NAME  | GITHUB COMMIT | COMMENTS |
+|-------------------------|--------------------------------------------|------|---------------|---------------|----------|
+| weather_prediction_v1.0 | Basel features only, 10 years. nn: 100-50  | 3.21 | 10_years_v1.0 |  ed28d85      |          |
+| weather_prediction_v1.1 | all features, 10 years. nn: 100-50         | 3.35 | 10_years_v1.0 |  4427b78      |          |
+
+You could also use a tool such as [Weights and Biases](https://wandb.ai/site) for this.
+
+::: callout
+## Cookiecutter data science
+If you want to get more pointers for organising deep learning, or data science projects in general,
+we recommend [Cookiecutter data science](https://drivendata.github.io/cookiecutter-data-science/).
+It is a template for initiating an organized data science project folder structure
+that you can adapt to your own needs.
+:::
 ## Next steps
 You now understand the basic principles of deep learning and are able to implement your own deep learning pipelines in Python.
 But there is still so much to learn and do!
