@@ -50,7 +50,7 @@ This episode really aims to go through the whole process once, as quickly as pos
 In episode 3 we will expand on all the concepts that are lightly inroduced in episode 2. Some concepts like monitoring the training progress, optimization and learning rate are explained in detail in episode 3.
 It is good to stress this a few times, because learners will usually have a lot of questions like:
 'Why don't we normalize our features' or 'Why do we choose Adam optimizer?'. 
-It can be a good idea to park some of these questions for in episode 3 and 4.
+It can be a good idea to park some of these questions for discussion in episode 3 and 4.
 :::
 
 ::: callout
