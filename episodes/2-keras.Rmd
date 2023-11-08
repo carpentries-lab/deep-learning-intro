@@ -493,7 +493,7 @@ When the training process does not go well:
 
 3. (optional) Something went wrong here during training. What could be the problem, and how do you see that in the training curve?
 Also compare the range on the y-axis with the previous training curve.
-![](../fig/02_bad_training_history_1.png){alt='Very jittery training curve. The loss does not really decrease'}
+![](../fig/02_bad_training_history_1.png){alt='Very jittery training curve with the loss value jumping back and forth between 2 and 4. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2.'}
 
 :::: solution
 ## Solution
