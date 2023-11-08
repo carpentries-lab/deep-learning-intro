@@ -298,8 +298,8 @@ developing a neural network from scratch!
 ::: instructor
 ## Demonstrate searching for existing architectures
 At this point it can be nice to apply above callout box and demonstrate searching for state-of-the-art implementations.
-If you google for 'CIFAR10 state-of-the-art Keras' one of the top search results links to [this repo](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model)
-where you will find [this notebook](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model/blob/master/CIFAR-10%20Best.ipynb).
+If you google for 'CIFAR10 state-of-the-art Keras' one of the top search results links to [a GitHub repository](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model)
+containing [a Jupyter notebook containing an implementation](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model/blob/master/CIFAR-10%20Best.ipynb).
 
 It can be a nice learning opportunity to go through the notebook and show that the learners should
 already be familiar with a lot of the syntax (for example Conv2D, Dense, BatchNorm layers, adam optimizer, the deep learning workflow).
