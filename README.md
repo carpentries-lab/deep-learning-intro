@@ -1,4 +1,6 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds)
+[![DOI](https://zenodo.org/badge/163412836.svg)](https://zenodo.org/badge/latestdoi/163412836)
+
 
 # Introduction to deep learning
 This lesson gives an introduction to deep learning.
@@ -10,23 +12,10 @@ The design of this lesson can be found in the [lesson design](_extras/design.md)
 The main audience of this carpentry lesson is PhD students that have little to no experience with
 deep learning. In addition, we expect them to know basics of statistics and machine learning.
 
-## Setup the Workshop Website locally
-
-To build this lesson locally, you should follow the [setup instructions for the
-workbench](https://carpentries.github.io/sandpaper-docs/#overview). In short,
-make sure you have R, Git, and Pandoc installed, open R and use the following
-commands to install/update the packages needed for the infrastructure:
-
-```r
-# register the repositories for The Carpentries and CRAN
-options(repos = c(
-  carpentries = "https://carpentries.r-universe.dev/",
-  CRAN = "https://cran.rstudio.com/"
-))
-
-# Install the template packages to your R library
-install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
-```
+## Lesson development sprints
+We regularly host lesson development sprints, in which we work together at the lesson.
+The next one is scheduled for the 30th of November. We kickoff with an online meeting at 9:30 CEST.
+If you want to join (you are very welcome to join even if you have never contributed so far) send an email to s.vanderburg@esciencecenter.nl .
 
 ## Contributing
 
@@ -65,6 +54,24 @@ After the workshop, lease create an issue (or comment on the issue you created b
 
 In addition, you are very welcome to add issues or pull requests that address more specific feedback.
 
+## Setup the Workshop Website locally
+
+To build this lesson locally, you should follow the [setup instructions for the
+workbench](https://carpentries.github.io/sandpaper-docs/#overview). In short,
+make sure you have R, Git, and Pandoc installed, open R and use the following
+commands to install/update the packages needed for the infrastructure:
+
+```r
+# register the repositories for The Carpentries and CRAN
+options(repos = c(
+  carpentries = "https://carpentries.r-universe.dev/",
+  CRAN = "https://cran.rstudio.com/"
+))
+
+# Install the template packages to your R library
+install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
+```
+
 ## Rendering the website locally
 See https://carpentries.github.io/workbench/ for instructions on how to render the website locally.
 
@@ -77,13 +84,10 @@ Current maintainers of this lesson are
 * Sven van der Burg
 * Pranav Chandramouli
 
-## Authors
+## Citation and authors
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
-
-## Citation
-
-To cite this lesson, please consult with [CITATION](CITATION)
+To cite this lesson, please consult with [CITATION.cff](CITATION.cff).
+This also holds a list of contributors to the lesson.
 
 [cdh]: https://cdh.carpentries.org
 [community-lessons]: https://carpentries.org/community-lessons

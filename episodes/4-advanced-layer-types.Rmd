@@ -1,6 +1,6 @@
 ---
 title: "Advanced layer types"
-teaching: 30
+teaching: 35
 exercises: 70
 ---
 
@@ -208,9 +208,10 @@ This kernel will give a high value to a pixel if it is on a horizontal border be
 Note that for RGB images, the kernel should also have a depth of 3.
 
 In the following image, we see the effect of such a kernel on the values of a single-channel image. The red cell in the output matrix is the result of multiplying and summing the values of the red square in the input, and the kernel. Applying this kernel to a real image shows that it indeed detects horizontal edges.
-![](../fig/04_conv_matrix.png){alt='Example of a convolution matrix calculation'}
 
-![](../fig/04_conv_image.png){alt='Convolution example on an image of a cat to extract features'}
+![](../fig/04_conv_matrix.png){alt='Example of a convolution matrix calculation' style='width:90%'}
+
+![](../fig/04_conv_image.png){alt='Convolution example on an image of a cat to extract features' style='width:100%'}
 
 In our **convolutional layer** our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an 'image' for each of the kernels, that gives the output of the kernel applied to each pixel.
 
@@ -371,6 +372,7 @@ We can plot the training process using the history:
 ```python
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def plot_history(history, metrics):
     """
@@ -396,7 +398,74 @@ plot_history(history, ['loss', 'val_loss'])
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
 
-## 9. Tune hyperparameters
+::: instructor
+## Comparison with a network with only dense layers
+The callout box below compares the CNN approach with a network with only dense layers.
+Depending on time, the following discussion can be extended in depth up to your liking. You have several options:
+
+1. It can be used as a good recap exercise. The exercise question is then:
+'How does this simple CNN compare to a neural network with only dense layers?
+Implement a dense neural network and compare its performance to that of the CNN'.
+This will take 30-45 minutes and might deviate the focus away from CNNs.
+2. You can demonstrate (no typing along), just to show how the network would look like and make the comparison.
+3. You can just mention that a simple network with only dense layers reaches 35% accuracy, considerably worse than our simple CNN.
+:::
+
+::: callout
+## Comparison with a network with only dense layers
+How does this simple CNN compare to a neural network with only dense layers?
+
+We can define a neural network with only dense layers:
+```python
+def create_dense_model():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Flatten()(inputs)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    return keras.models.Model(inputs=inputs, outputs=outputs,
+                              name='dense_model')
+
+dense_model = create_dense_model()
+dense_model.summary()
+```
+```output
+Model: "dense_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_9 (InputLayer)        [(None, 32, 32, 3)]       0
+
+ flatten_7 (Flatten)         (None, 3072)              0
+
+ dense_21 (Dense)            (None, 50)                153650
+
+ dense_22 (Dense)            (None, 50)                2550
+
+ dense_23 (Dense)            (None, 10)                510
+
+=================================================================
+Total params: 156710 (612.15 KB)
+Trainable params: 156710 (612.15 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+```
+As you can see this model has 1.5x more parameters than our simple CNN, let's train and evaluate it!
+
+```python
+compile_model(dense_model)
+history = dense_model.fit(train_images, train_labels, epochs=30,
+                    validation_data=(test_images, test_labels))
+plot_history(['accuracy', 'val_accuracy'])
+```
+![](../fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers"}
+
+As you can see the validation accuracy only reaches about 35%, whereas the CNN reached about 55% accuracy.
+
+This demonstrates that convolutional layers are a big improvement over dense layers for this kind of datasets.
+:::
+
+## 9. Refine the model
 
 ::: challenge
 ## Network depth
@@ -525,17 +594,18 @@ Note that the training loss continues to decrease, while the validation loss sta
 
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques**.
 One of the most versatile regularization technique is **dropout** ([Srivastava et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html)).
-Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
+Dropout means that during each training cycle (one forward pass of the data through the model) a random fraction of neurons in a dense layer are turned off.
+This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
 
 ![](../fig/neural_network_sketch_dropout.png){alt='A sketch of a neural network with and without dropout'}
 
 The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple "paths". In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes).
-As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
+As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quite drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.
 
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
-Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
+Let us add one dropout layer towards the end of the network, that randomly drops 80% of the nodes.
 
 ```python
 def create_nn_with_dropout():

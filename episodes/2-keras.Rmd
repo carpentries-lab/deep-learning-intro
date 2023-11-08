@@ -40,7 +40,7 @@ As a reminder below are the steps of the deep learning workflow:
 6. Train the model
 7. Perform a Prediction/Classification
 8. Measure performance
-9. Tune hyperparameters
+9. Refine the model
 10. Save model
 
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
@@ -142,12 +142,26 @@ Take a look at the pairplot we created. Consider the following questions:
 
 * Is there any class that is easily distinguishable from the others?
 * Which combination of attributes shows the best separation for all 3 class labels at once?
+* (optional) Create a similar pairplot, but with `hue="sex"`. Explain the patterns you see.
+Which combination of features distinguishes the two sexes best?
 
 :::: solution
 ## Solution
-The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
-The other two seem to be separable by a combination of bill length and bill
+* The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
+* The other two seem to be separable by a combination of bill length and bill
 depth (other combinations are also possible such as bill length and flipper length).
+
+Answer to optional question:
+
+```python
+sns.pairplot(penguins, hue='sex')
+```
+
+![][sex_pairplot]
+
+You see that for each species females have smaller bills and flippers, as well as a smaller body mass.
+You would need a combination of the species and the numerical features to successfully distinguish males from females.
+The combination of `bill_depth_mm` and `body_mass_g` gives the best separation.
 
 ::::
 :::
@@ -276,8 +290,7 @@ Therefore we will need to set two random seeds, one for numpy and one for tensor
 ```python
 from numpy.random import seed
 seed(1)
-from tensorflow.random import set_seed
-set_seed(2)
+keras.utils.set_random_seed(2)
 ```
 
 ### Build a neural network from scratch
@@ -314,7 +327,7 @@ The instantiation here has 2 parameters and a seemingly strange combination of p
 let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
-on hyperparameter tuning.
+on refining the model.
 The second parameter is the activation function to use, here we choose relu which is 0
 for inputs that are 0 and below and the identity function (returning the same value)
 for inputs above 0.
@@ -362,10 +375,18 @@ If these reasons are not clear right away, don't worry! In later episodes of thi
 With the code snippets above, we defined a Keras model with 1 hidden layer with
 10 neurons and an output layer with 3 neurons.
 
-* How many parameters does the resulting model have?
-* What happens to the number of parameters if we increase or decrease the number of neurons
+1. How many parameters does the resulting model have?
+2. What happens to the number of parameters if we increase or decrease the number of neurons
  in the hidden layer?
- 
+
+#### (optional) Keras Sequential vs Functional API
+So far we have used the [Functional API](https://keras.io/guides/functional_api/) of Keras.
+You can also implement neural networks using [the Sequential model](https://keras.io/guides/sequential_model/).
+As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
+where each layer has **exactly one input tensor and one output tensor**.
+
+3. (optional) Use the Sequential model to implement the same network
+
 :::: solution
 ## Solution
 ```python
@@ -397,6 +418,20 @@ If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
 decreases accordingly of neurons.
 The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.
+
+#### (optional) Keras Sequential vs Functional API
+3. This implements the same model using the Sequential API:
+```python
+model = keras.Sequential(
+    [
+        keras.Input(shape=X_train.shape[1]),
+        keras.layers.Dense(10, activation="relu"),
+        keras.layers.Dense(3, activation="softmax"),
+    ]
+)
+```
+
+We will use the Functional API for the remainder of this course, since it is more flexible and more explicit.
 ::::
 :::
 
@@ -577,7 +612,7 @@ Length: 69, dtype: object
 ## 8. Measuring performance
 Now that we have a trained neural network it is important to assess how well it performs.
 We want to know how well it will perform in a realistic prediction scenario, measuring
-performance will also come back when tuning the hyperparameters.
+performance will also come back when refining the model.
 
 We have created a test set (i.e. y_test) during the data preparation stage which we will use
 now to create a confusion matrix.
@@ -651,18 +686,19 @@ We can try many things to improve the performance from here.
 One of the first things we can try is to balance the dataset better.
 Other options include: changing the network architecture or changing the
 training parameters
+
+Note that the outcome you have might be slightly different from what is shown in this tutorial.
 ::::
 :::
 
-## 9. Tune hyperparameters
+## 9. Refine the model
 As we discussed before the design and training of a neural network comes with
-many hyper parameter choices.
-We will go into more depth of these hyperparameters in later episodes.
+many hyperparameter and model architecture choices.
+We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
 pick hyperparameter values. 
 
-Note that the outcome you have might be slightly different from what is shown in this tutorial.
 
 ## 10. Share model
 It is very useful to be able to use the trained neural network at a later
@@ -715,6 +751,9 @@ Length: 69, dtype: object
 
 [pairplot]: ../fig/pairplot.png "Pair Plot"
 {alt='Pair plot showing the separability of the three species of penguin for combinations of dataset attributes'}
+
+[sex_pairplot]: ../fig/02_sex_pairplot.png "Pair plot grouped by sex"
+{alt='Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes'}
 
 [training_curve]: ../fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}

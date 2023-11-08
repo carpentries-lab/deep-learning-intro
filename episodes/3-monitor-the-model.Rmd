@@ -505,7 +505,7 @@ randomly predicting a number, so the problem is not impossible to solve with mac
 ::::
 :::
 
-## 9. Tune hyperparameters
+## 9. Refine the model
 
 ### Watch your model training closely
 

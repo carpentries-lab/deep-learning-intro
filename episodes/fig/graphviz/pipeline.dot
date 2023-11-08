@@ -12,11 +12,11 @@ digraph {
     train [label=<<B>Train</B><BR/>the model>]
     predict [label=<<B>Perform</B><BR/>Prediction>]
     quality [label=<<B>Measure</B><BR/>Performance>]
-    tune [label=<<B>Tune</B><BR/>Hyperparameters>]
+    refine [label=<<B>Refine</B><BR/>the model>]
     share [label=<<B>Share</B><BR/>the model>]
 
     #the graph
     formulate -> i_o -> prepare 
     prepare -> create_model -> loss
-    loss -> train -> predict -> quality -> tune -> share
+    loss -> train -> predict -> quality -> refine -> share
 }

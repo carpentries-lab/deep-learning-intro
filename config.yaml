@@ -21,7 +21,7 @@ keywords: 'deep learning, keras, lesson, The Carpentries, neural networks'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'beta'
+life_cycle: 'stable'
 
 # License of the lesson materials (recommended CC-BY 4.0)
 license: 'CC-BY 4.0'
@@ -63,6 +63,7 @@ episodes:
 - 2-keras.Rmd
 - 3-monitor-the-model.Rmd
 - 4-advanced-layer-types.Rmd
+- 5-outlook.Rmd
 
 
 # Information for Learners

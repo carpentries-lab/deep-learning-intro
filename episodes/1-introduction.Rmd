@@ -61,7 +61,7 @@ A neural network consists of connected computational units called **neurons**. E
 
 ![](../fig/01_neuron.png){alt='A diagram of a single artificial neuron combining inputs and weights using an activation function.' width='600px'}
 
-##### Combinging multiple neurons into a network
+##### Combining multiple neurons into a network
 Multiple neurons can be joined together by connecting the output of one to the input of another. These connections are associated with weights that determine the 'strength' of the connection, the weights are adjusted during training. In this way, the combination of neurons and connections describe a computational graph, an example can be seen in the image below. In most neural networks neurons are aggregated into layers. Signals travel from the input layer to the output layer, possibly through one or more intermediate layers called hidden layers.
 The image below shows an example of a neural network with three layers, each circle is a neuron, each line is an edge and the arrows indicate the direction data moves in.
 
@@ -69,7 +69,10 @@ The image below shows an example of a neural network with three layers, each cir
 The image above is by Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, [original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
 
 ::: challenge
-## Calculate the output for one neuron
+## Neural network calculations
+.
+
+#### 1. Calculate the output for one neuron
 Suppose we have:
 
 - Input: X = (0, 0.5, 1)
@@ -81,18 +84,83 @@ What is the output of the neuron?
 
 _Note: You can use whatever you like: brain only, pen&paper, Python, Excel..._
 
+#### 2. (optional) Calculate outputs for a network
+
+Have a look at the following network:
+
+![](../fig/01_xor_exercise.png){alt='A diagram of a neural network with 2 inputs, 2 hidden layer neurons, and 1 output.' width='400px'}
+
+a. Calculate the output of the network for the following combinations of inputs:
+
+| x1 | x2 | y |
+|----|----|---|
+| 0  | 0  | ..|
+| 0  | 1  | ..|
+| 1  | 0  | ..|
+| 1  | 1  | ..|
+
+b. What logical problem does this network solve?
+
 :::: solution
 ## Solution
-Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25
+#### 1: calculate the output for one neuron
+* Weighted sum of input: `0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25`
+* Add the bias: `0.25 + 1 = 1.25`
+* Apply activation function: `max(1.25, 0) = 1.25`
 
-Add the bias: 0.25 + 1 = 1.25
+So, the neuron's output is `1.25`
 
-Apply activation function: max(1.25, 0) = 1.25
-
-So, neuron output = 1.25
+#### 2: Calculate outputs for a network
+a.
+| x1 | x2 | y     |
+|----|----|---    |
+| 0  | 0  | **0** |
+| 0  | 1  | **1** |
+| 1  | 1  | **0** |
+| 1  | 0  | **1** |
+b. This solves the XOR logical problem, the output is 1 if only one of the two inputs is 1.
 
 ::::
 :::
+
+::: challenge
+## Activation functions
+Look at the following activation functions:
+
+![](../fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
+A. Sigmoid activation function
+
+![](../fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
+B. ReLU activation function
+
+![](../fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
+C. Identity (or linear) activation function
+
+Combine the following statements to the correct activation function:
+
+1. This function enforces the activation of a neuron to be between 0 and 1
+2. This function is useful in regression tasks when applied to an output neuron
+3. This function is the most popular activation function in hidden layers, since it introduces non-linearity in a computationally efficient way.
+4. This function is useful in classification tasks when applied to an output neuron
+5. (optional) For positive values this function results in the same activations as the identity function.
+6. (optional) This function is not differentiable at 0
+7. (optional) This function is the default for Dense layers (search the Keras documentation!)
+
+*Activation function plots by Laughsinthestocks - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=44920411,
+https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikimedia.org/w/index.php?curid=44920533*
+
+:::: solution
+## Solution
+1. A
+2. C
+3. B
+4. A
+5. B
+6. B
+7. C
+::::
+:::
+
 
 ##### What makes deep learning deep learning?
 Neural networks aren't a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010 improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or Deep Learning.
@@ -116,7 +184,10 @@ There are lots of loss functions to pick from, and it is important that you pick
 We will look at an example of a loss function in the next exercise.
 
 ::: challenge
-## Exercise: Mean Squared Error
+## Exercise: Loss function
+.
+
+#### 1. Compute the Mean Squared Error
 One of the simplest loss functions is the Mean Squared Error. MSE = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$ .
 It is the mean of all squared errors, where the error is the difference between the predicted and expected value.
 In the following table, fill in the missing values in the 'squared error' column. What is the MSE loss
@@ -130,8 +201,20 @@ for the predictions on these 4 samples?
 | 3              | 2                  | ..                |
 |                | **MSE:**           | ..                |
 
+#### 2. (optional) Huber loss
+A more complicated and less used loss function for regression is the [Huber loss](https://keras.io/api/losses/regression_losses/#huber-class).
+
+Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
+as a function of `y_true - y_pred`.
+
+![](../fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
+as a function of y_true - y_pred' width='400px'}
+
+Which loss function is more sensitive to outliers?
+
 :::: solution
 ## Solution
+#### 1. 'Compute the Mean Squared Error'
 | **Prediction** | **Expected value** | **Squared error** |
 |----------------|--------------------|-------------------|
 | 1              | -1                 | 4                 |
@@ -140,6 +223,10 @@ for the predictions on these 4 samples?
 | 3              | 2                  | 1                 |
 |                | **MSE:**           | 3.5               |
 
+#### 2. 'Huber loss'
+The squared error loss is more sensitive to outliers. Errors between -1 and 1 result in the same loss value
+for both loss functions. But, larger errors (in other words: outliers) result in quadratically larger losses for
+the Mean Squared Error, while for the Huber loss they only increase linearly.
 ::::
 :::
 
@@ -238,7 +325,10 @@ For the outputs we will need to look at what we want to identify from the data. 
 
 Many datasets are not ready for immediate use in a neural network and will require some preparation. Neural networks can only really deal with numerical data, so any non-numerical data (for example words) will have to be somehow converted to numerical data.
 
-Next we will need to divide the data into multiple sets. One of these will be used by the training process and we will call it the training set. Another will be used to evaluate the accuracy of the training and we will call that one the test set. Sometimes we will also use a 3rd set known as a validation set to tune hyperparameters.
+Next we will need to divide the data into multiple sets.
+One of these will be used by the training process and we will call it the training set.
+Another will be used to evaluate the accuracy of the training and we will call that one the test set.
+Sometimes we will also use a 3rd set known as a validation set to refine the model.
 
 ### 4. Choose a pre-trained model or build a new architecture from scratch
 
@@ -271,9 +361,12 @@ of the network.
 
 Once we trained the network we want to measure its performance. To do this we use some additional data that was not part of the training, this is known as a test set. There are many different methods available for measuring performance and which one is best depends on the type of task we are attempting. These metrics are often published as an indication of how well our network performs.
 
-### 9. Tune Hyperparameters
+### 9. Refine the model
 
-Hyperparameters are all the parameters set by the person configuring the machine learning instead of those learned by the algorithm itself. The hyperparameters include the number of epochs or the parameters for the optimizer. It might be necessary to adjust these and re-run the training many times before we are happy with the result.
+We refine the model further. We can for example slightly change the architecture of the model, or change the number of nodes in a layer.
+Hyperparameters are all the parameters set by the person configuring the machine learning instead of those learned by the algorithm itself.
+The hyperparameters include the number of epochs or the parameters for the optimizer.
+It might be necessary to adjust these and re-run the training many times before we are happy with the result, this is often done automatically and that is referred to as hyperparameter tuning.
 
 ### 10. Share Model
 
@@ -365,7 +458,7 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 - "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
 - "Neural networks learn by minimizing a loss function."
 - "Deep Learning is well suited to classification and prediction problems such as image recognition."
-- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, tuning Hyperparameters, measuring performance before we can classify data."
+- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data."
 - "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
