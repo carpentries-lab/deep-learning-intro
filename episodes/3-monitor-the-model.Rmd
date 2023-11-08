@@ -23,6 +23,19 @@ exercises: 80
 - "Implement basic strategies to prevent overfitting"
 :::
 
+::: instructor
+## Copy-pasting code
+In this episode we first introduce a simple approach to the problem,
+then we iterate on that a few times to, step-by-step,
+working towards a more complex solution.
+Unfortunately this involves using the same code repeatedly over and over again,
+only slightly adapting it.
+
+To avoid too much typing, it can help to copy-paste code from higher up in the notebook.
+Be sure to make it clear where you are copying from
+and what you are actually changing in the copied code.
+It can for example help to add a comment to the lines that you added.
+:::
 
 In this episode we will explore how to monitor the training progress, evaluate our the model predictions and finetune the model to avoid over-fitting. For that we will use a more complicated weather data-set.
 
@@ -281,10 +294,10 @@ Answer the following questions:
    We want to move towards the global minimum, so in the opposite direction of the gradient.
 
 3. Correct answer: B & D
-   - A. The number of samples in an epoch also increases (incorrect, an epoch is always defined as passing through the training data for one cycle)
-   - B. The number of batches in an epoch goes down (correct, the number of batches is the samples in an epoch divided by the batch size)
-   - C. The training progress is more jumpy, because more samples are consulted in each update step (one batch). (incorrect, more samples are consulted in each update step, but this makes the progress less jumpy since you get a more accurate estimate of the loss in the entire dataset)
-   - D. The memory load (memory as in computer hardware) of the training process is increased (correct, the data is begin loaded one batch at a time, so more samples means more memory usage)
+   - A. The number of samples in an epoch also increases (**incorrect**, an epoch is always defined as passing through the training data for one cycle)
+   - B. The number of batches in an epoch goes down (**correct**, the number of batches is the samples in an epoch divided by the batch size)
+   - C. The training progress is more jumpy, because more samples are consulted in each update step (one batch). (**incorrect**, more samples are consulted in each update step, but this makes the progress less jumpy since you get a more accurate estimate of the loss in the entire dataset)
+   - D. The memory load (memory as in computer hardware) of the training process is increased (**correct**, the data is begin loaded one batch at a time, so more samples means more memory usage)
 
 ::::
 :::
@@ -428,7 +441,8 @@ plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ## Solution
 While the performance on the train set seems reasonable, the performance on the test set is much worse.
 This is a common problem called **overfitting**, which we will discuss in more detail later.
-Optional exercise:
+
+#### Optional exercise:
 The metric that we are using: RMSE would be a good one. You could also consider Mean Squared Error, that punishes large errors more (because large errors create even larger squared errors).
 It is important that if the model improves in performance on the basis of this metric then that should also lead you a step closer to reaching your goal: to predict tomorrow's sunshine hours. 
 If you feel that improving the metric does not lead you closer to your goal, then it would be better to choose a different metric
@@ -702,10 +716,6 @@ An alternative, more common approach, is to add **BatchNormalization** layers ([
 Similar to dropout, batch normalization is available as a network layer in Keras and can be added to the network in a similar way.
 It does not require any additional parameter setting.
 
-```python
-from tensorflow.keras.layers import BatchNormalization
-```
-
 The `BatchNormalization` can be inserted as yet another layer into the architecture.
 
 ```python
@@ -714,7 +724,7 @@ def create_nn():
     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
 
     # Dense layers
-    layers_dense = keras.layers.BatchNormalization()(inputs)
+    layers_dense = keras.layers.BatchNormalization()(inputs) # This is new!
     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
 

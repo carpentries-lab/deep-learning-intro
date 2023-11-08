@@ -31,7 +31,7 @@ Keras comes with a few prepared datasets. We have a look at the [CIFAR10 dataset
 which is a widely known dataset for image classification.
 ```python
 from tensorflow import keras
-(train_images, train_labels), (test_images, test_labels) = keras.datasets.cifar10.load_data()
+(train_images, train_labels), (val_images, val_labels) = keras.datasets.cifar10.load_data()
 ```
 
 ::: callout
@@ -137,7 +137,7 @@ The training set consists of 50000 images of `32x32` pixels and 3 channels (RGB 
 
 ```python
 train_images = train_images / 255.0
-test_images = test_images / 255.0
+val_images = val_images / 255.0
 ```
 
 ## 4. Choose a pretrained model or start building architecture from scratch
@@ -235,7 +235,8 @@ There are different ways of dealing with border pixels.
 You can ignore them, which means that your output image is slightly smaller then your input.
 It is also possible to 'pad' the borders, e.g. with the same value or with zeros, so that the convolution can also be applied to the border pixels.
 In that case, the output image will have the same size as the input image.
-[A callout in the Data Carpentry: Image Processing with Python curriculum](https://datacarpentry.org/image-processing/06-blurring.html#callout4)
+
+[This callout in the Data Carpentry: Image Processing with Python curriculum](https://datacarpentry.org/image-processing/06-blurring.html#callout4)
 provides more detail about convolution at the boundaries of an image,
 in the context of applying a _Gaussian blur_.
 ::::
@@ -282,6 +283,37 @@ That results in a large number of connections, so a large number of parameters. 
 ::::
 :::
 
+::: callout
+## Search for existing architectures or pretrained models
+So far in this course we have built neural networks from scratch, because we want you to fully understand the basics of Keras.
+In the real world however, you would first search for existing solutions to your problem.
+The CIFAR10 dataset lends itself extremely well for using existing models, since it is a standard
+machine learning problem that is often used in deep learning research.
+
+You could for example search for 'CIFAR10 state-of-the-art Keras', and see if you can find any Keras implementations
+of more advanced architectures that you could reuse.
+A lot of the best-performing architectures for the CIFAR10 problem are convolutional neural networks or at least have some elements in common.
+Therefore, we will introduce convolutional neural networks here, and the best way to teach you is by
+developing a neural network from scratch!
+:::
+
+::: instructor
+## Demonstrate searching for existing architectures
+At this point it can be nice to apply above callout box and demonstrate searching for state-of-the-art implementations.
+If you google for 'CIFAR10 state-of-the-art Keras' one of the top search results links to [a GitHub repository](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model)
+containing [a Jupyter notebook containing an implementation](https://github.com/Adeel-Intizar/CIFAR-10-State-of-the-art-Model/blob/master/CIFAR-10%20Best.ipynb).
+
+It can be a nice learning opportunity to go through the notebook and show that the learners should
+already be familiar with a lot of the syntax (for example Conv2D, Dense, BatchNorm layers, adam optimizer, the deep learning workflow).
+You can show that even though the model is much deeper, the input and output layer are still the same.
+The aim is to demonstrate that what we are learning is really the basis for more complex models,
+and you do not need to reinvent the wheel.
+
+Later in this episode when we evaluate the model it can be interesting to show how well
+this more complex model performs on this dataset (93.3% accuracy).
+:::
+
+## Pooling layers
 Often in convolutional neural networks, the convolutional layers are intertwined with **Pooling layers**. As opposed to the convolutional layer, the pooling layer actually alters the dimensions of the image and reduces it by a scaling factor. It is basically decreasing the resolution of your picture. The rationale behind this is that higher layers of the network should focus on higher-level features of the image. By introducing a pooling layer, the subsequent convolutional layer has a broader 'view' on the original image.
 
 Let's put it into practice. We compose a Convolutional network with two convolutional layers and two pooling layers.
@@ -341,7 +373,14 @@ We compile the model using the adam optimizer (other optimizers could also be us
 Similar to the penguin classification task, we will use the crossentropy function to calculate the model's loss.
 This loss function is appropriate to use when the data has two or more label classes.
 
-To calculate crossentropy loss for data that has its classes represented by integers (i.e., not one-hot encoded), we use the SparseCategoricalCrossentropy() function:
+Remember that our target class is represented by a single integer, whereas the output of our network has 10 nodes, one for each class.
+So, we should have actually one-hot encoded the targets and used a softmax activation for the neurons in our output layer!
+Luckily, there is a quick fix to calculate crossentropy loss for data that
+has its classes represented by integers, the `SparseCategoricalCrossentropy()` function. 
+Adding the argument `from_logits=True` accounts for the fact that the output has a linear activation instead of softmax.
+This is what is often done in practice, because it spares you from having to worry about one-hot encoding.
+
+
 ```python
 def compile_model(model):
     model.compile(optimizer='adam',
@@ -356,7 +395,7 @@ We then train the model for 10 epochs:
 
 ```python
 history = model.fit(train_images, train_labels, epochs=10,
-                    validation_data=(test_images, test_labels))
+                    validation_data=(val_images, val_labels))
 ```
 
 ## 7. Perform a Prediction/Classification
@@ -541,7 +580,7 @@ To train the network and plot the results:
 ```python
 compile_model(model)
 history = model.fit(train_images, train_labels, epochs=20,
-                   validation_data=(test_images, test_labels))
+                   validation_data=(val_images, val_labels))
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
@@ -666,14 +705,14 @@ We again compile and train the model.
 compile_model(model_dropout)
 
 history = model_dropout.fit(train_images, train_labels, epochs=20,
-                    validation_data=(test_images, test_labels))
+                    validation_data=(val_images, val_labels))
 ```
 
 And inspect the training results:
 ```python
 plot_history(history, ['accuracy', 'val_accuracy'])
 
-test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=2)
+val_loss, val_acc = model_dropout.evaluate(val_images,  val_labels, verbose=2)
 ```
 ```output
 313/313 - 2s - loss: 1.4683 - accuracy: 0.5307
@@ -703,10 +742,9 @@ Nevertheless, there is still some difference between the training loss and valid
 ### 1. Varying the dropout rate
 The code below instantiates and trains a model with varying dropout rates.
 You can see from the resulting plot that the ideal dropout rate in this case is around 0.45.
-This is where the test loss is lowest.
+This is where the val loss is lowest.
 
 - NB1: It takes a while to train these 5 networks.
-- NB2: In the real world you should do this with a validation set and not with the test set!
 
 ```python
 def create_nn_with_dropout(dropout_rate):
@@ -724,22 +762,23 @@ def create_nn_with_dropout(dropout_rate):
     return model
 
 dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
-test_losses = []
+val_losses = []
 for dropout_rate in dropout_rates:
     model_dropout = create_nn_with_dropout(dropout_rate)
     compile_model(model_dropout)
     model_dropout.fit(train_images, train_labels, epochs=20,
-                    validation_data=(test_images, test_labels))
+                    validation_data=(val_images, val_labels))
 
-    test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
-    test_losses.append(test_loss)
+    val_loss, val_acc = model_dropout.evaluate(val_images,  val_labels)
+    val_losses.append(val_loss)
 
-loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'test_loss': test_losses})
+loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'val_loss': val_losses})
 
-sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
+sns.lineplot(data=loss_df, x='dropout_rate', y='val_loss')
 ```
 
-![](fig/04_vary_dropout_rate.png){alt="Plot of test loss vs dropout rate used in the model. The test loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45."}
+![](/fig/04_vary_dropout_rate.png){alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45."}
+
 
 ### 2. Term associated to this procedure
 This is called hyperparameter tuning.
