@@ -1,16 +1,18 @@
 ---
 title: "Outlook"
-teaching: 10
+teaching: 15
 exercises: 15
 ---
 
 ::: questions
 - "How does what I learned in this course translate to real-world problems?"
+- "How do I organise a deep learning project?"
 - "What are next steps to take after this course?"
 :::
 
 ::: objectives
 - "Understand that what we learned in this course can be applied to real-world problems"
+- "Use best practices for organising a deep learning project"
 - "Identify next steps to take after this course"
 :::
 
@@ -52,7 +54,9 @@ It works best to use a suitable deep learning project that you know well and are
 
 1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this course?
 2. Can you identify the different steps of the deep learning workflow in this notebook?
-3. (Optional): Try to fully understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4)
+3. (Optional): Try to understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4).
+    a. Why are there 10.000 neurons in the input layer?
+    b. What do you think would happen if you would decrease the size of spectral embedding layer drastically, to for example 5 neurons?
 
 :::: solution
 ## Solution
@@ -63,6 +67,12 @@ EarlyStopping as well as the Adam optimizer is used.
 2. The different steps are not as clearly defined as in this course, but you should be able to identify '3: Data preparation',
 '4: Choose a pretrained model or start building architecture from scratch', '5: Choose a loss function and optimizer', '6: Train the model',
 '7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
+3. (optional)
+    a. Because the shape of the input is 10.000. More specifically, the spectrum is binned into a size 10.000 vector,
+    apparently this is a good size to represent the mass spectrum.
+    b. This would force the neural network to have a representation of the mass spectrum in only 5 numbers.
+    This representation would probably be more generic, but might fail to capture all the characteristics found in the spectrum.
+    This would likely result in underfitting.
 ::::
 :::
 
@@ -75,6 +85,44 @@ in this course. This is quite common for applied deep learning projects. It is s
 deep learning problem is spent on data preparation, and only 10% on modeling!
 :::
 
+## Organising deep learning projects
+As you might have noticed already in this course, deep learning projects can quickly become messy.
+Here follow some best practices for keeping your projects organized:
+
+### 1. Organise experiments in notebooks
+Jupyter notebooks are a useful tool for doing deep learning experiments.
+You can very easily modify your code bit by bit, and interactively look at the results.
+In addition you can explain why you are doing things in markdown cells.
+- As a rule of thumb do one approach or experiment in one notebook.
+- Give consistent and meaningful names to notebooks, such as: `01-all-cities-simple-cnn.ipynb`
+- Add a rationale on top and a conclusion on the bottom of each notebook
+
+[_Ten simple rules for writing and sharing computational analyses in Jupyter Notebooks_](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007007) provides further advice on how to maximise the usefulness and reproducibility of experiments captured in a notebook.
+
+### 2. Use Python modules
+Code that is repeatedly used should live in a Python module and not be copied to multiple notebooks.
+You can import functions and classes from the module(s) in the notebooks.
+This way you can remove a lot of code definition from your notebooks and have a focus on the actual experiment.
+
+### 3. Keep track of your results in a central place
+Always evaluate your experiments in the same way, on the exact same test set.
+Document the results of your experiments in a consistent and meaningful way.
+You can use a simple spreadsheet such as this:
+
+| MODEL NAME              | MODEL DESCRIPTION                          | RMSE | TESTSET NAME  | GITHUB COMMIT | COMMENTS |
+|-------------------------|--------------------------------------------|------|---------------|---------------|----------|
+| weather_prediction_v1.0 | Basel features only, 10 years. nn: 100-50  | 3.21 | 10_years_v1.0 |  ed28d85      |          |
+| weather_prediction_v1.1 | all features, 10 years. nn: 100-50         | 3.35 | 10_years_v1.0 |  4427b78      |          |
+
+You could also use a tool such as [Weights and Biases](https://wandb.ai/site) for this.
+
+::: callout
+## Cookiecutter data science
+If you want to get more pointers for organising deep learning, or data science projects in general,
+we recommend [Cookiecutter data science](https://drivendata.github.io/cookiecutter-data-science/).
+It is a template for initiating an organized data science project folder structure
+that you can adapt to your own needs.
+:::
 ## Next steps
 You now understand the basic principles of deep learning and are able to implement your own deep learning pipelines in Python.
 But there is still so much to learn and do!

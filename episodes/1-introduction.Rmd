@@ -38,9 +38,12 @@ Deep Learning (DL) is just one of many techniques collectively known as machine 
 The image below shows some differences between artificial intelligence, Machine Learning and Deep Learning.
 
 
-![](../fig/01_AI_ML_DL_differences.png){alt='An infographics showing the relation of AI, ML, NN and DL. NN are methods in DL which is a subset of ML algorithms that falls within the umbrella of AI'}
-
-The image above is by Tukijaaliwa, CC BY-SA 4.0, via Wikimedia Commons, [original source]( https://en.wikipedia.org/wiki/File:AI-ML-DL.svg)
+![
+Image credit: Tukijaaliwa, CC BY-SA 4.0, via Wikimedia Commons, 
+[original source]( https://en.wikipedia.org/wiki/File:AI-ML-DL.svg)
+](fig/01_AI_ML_DL_differences.png){
+alt='An infographic showing the relation of AI, ML, NN and DL. NN are methods in DL which is a subset of ML algorithms that falls within the umbrella of AI'
+}
 
 
 #### Neural Networks
@@ -59,14 +62,18 @@ A neural network consists of connected computational units called **neurons**. E
 - one example equation to calculate the output for a neuron is: $output = ReLU(\sum_{i} (x_i*w_i) + bias)$
 
 
-![](../fig/01_neuron.png){alt='A diagram of a single artificial neuron combining inputs and weights using an activation function.' width='600px'}
+![](fig/01_neuron.png){alt='A diagram of a single artificial neuron combining inputs and weights using an activation function.' width='600px'}
 
 ##### Combining multiple neurons into a network
 Multiple neurons can be joined together by connecting the output of one to the input of another. These connections are associated with weights that determine the 'strength' of the connection, the weights are adjusted during training. In this way, the combination of neurons and connections describe a computational graph, an example can be seen in the image below. In most neural networks neurons are aggregated into layers. Signals travel from the input layer to the output layer, possibly through one or more intermediate layers called hidden layers.
 The image below shows an example of a neural network with three layers, each circle is a neuron, each line is an edge and the arrows indicate the direction data moves in.
 
-![](../fig/01_neural_net.png){alt='A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.'}
-The image above is by Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, [original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
+![
+Image credit: Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, 
+[original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
+](fig/01_neural_net.png){
+alt='A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.'
+}
 
 ::: challenge
 ## Neural network calculations
@@ -88,7 +95,7 @@ _Note: You can use whatever you like: brain only, pen&paper, Python, Excel..._
 
 Have a look at the following network:
 
-![](../fig/01_xor_exercise.png){alt='A diagram of a neural network with 2 inputs, 2 hidden layer neurons, and 1 output.' width='400px'}
+![](fig/01_xor_exercise.png){alt='A diagram of a neural network with 2 inputs, 2 hidden layer neurons, and 1 output.' width='400px'}
 
 a. Calculate the output of the network for the following combinations of inputs:
 
@@ -103,7 +110,11 @@ b. What logical problem does this network solve?
 
 :::: solution
 ## Solution
+
 #### 1: calculate the output for one neuron
+
+You can calculate the output as follows:
+
 * Weighted sum of input: `0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25`
 * Add the bias: `0.25 + 1 = 1.25`
 * Apply activation function: `max(1.25, 0) = 1.25`
@@ -127,14 +138,13 @@ b. This solves the XOR logical problem, the output is 1 if only one of the two i
 ## Activation functions
 Look at the following activation functions:
 
-![](../fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
-A. Sigmoid activation function
+![A. Sigmoid activation function](fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
 
-![](../fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
-B. ReLU activation function
 
-![](../fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
-C. Identity (or linear) activation function
+![B. ReLU activation function](fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
+
+
+![C. Identity (or linear) activation function](fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
 
 Combine the following statements to the correct activation function:
 
@@ -172,7 +182,7 @@ The image below shows a diagram of all the layers (there are too many neurons to
 The input (left most) layer of the network is an image and the final (right most) layer of the network outputs a zero or one to determine if the input data belongs to the class of data we are interested in.
 This image is from the paper ["An Efficient Pedestrian Detection Method Based on YOLOv2" by Zhongmin Liu, Zhicai Chen, Zhanming Li, and Wenjin Hu published in Mathematical Problems in Engineering, Volume 2018](https://doi.org/10.1155/2018/3518959)
 
-![](../fig/01_deep_network.png){alt='An example of a deep neural network'}
+![](fig/01_deep_network.png){alt='An example of a deep neural network'}
 
 ### How do neural networks learn?
 What happens in a neural network during the training process?
@@ -207,7 +217,7 @@ A more complicated and less used loss function for regression is the [Huber loss
 Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
 as a function of `y_true - y_pred`.
 
-![](../fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
+![](fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
 as a function of y_true - y_pred' width='400px'}
 
 Which loss function is more sensitive to outliers?
@@ -348,7 +358,7 @@ The optimizer is responsible for taking the output of the loss function and then
 
 We can now go ahead and start training our neural network. We will probably keep doing this for a given number of iterations through our training dataset (referred to as _epochs_) or until the loss function gives a value under a certain threshold. The graph below show the loss against the number of _epochs_, generally the loss will go down with each _epoch_, but occasionally it will see a small rise.
 
-![](../fig/training-0_to_1500.svg){alt='A graph showing an exponentially decreasing loss over the first 1500 epochs of training an example network.'}
+![](fig/training-0_to_1500.svg){alt='A graph showing an exponentially decreasing loss over the first 1500 epochs of training an example network.'}
 
 ### 7. Perform a Prediction/Classification
 

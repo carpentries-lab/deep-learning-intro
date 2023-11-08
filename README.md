@@ -6,7 +6,7 @@
 This lesson gives an introduction to deep learning.
 
 ## Lesson Design
-The design of this lesson can be found in the [lesson design](_extras/design.md)
+The design of this lesson can be found in the [lesson design](https://carpentries-incubator.github.io/deep-learning-intro/design.html)
 
 ## Target Audience
 The main audience of this carpentry lesson is PhD students that have little to no experience with
@@ -30,7 +30,7 @@ Please see the current list of
 [issues](https://github.com/carpentries-incubator/deep-learning_intro/issues)
 for ideas for contributing to this repository.
 
-Please also familiarize yourself with the [lesson design](_extras/design.md)
+Please also familiarize yourself with the [lesson design](https://carpentries-incubator.github.io/deep-learning-intro/design.html)
 
 For making your contribution, we use the GitHub flow, which is nicely explained in the
 chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project)

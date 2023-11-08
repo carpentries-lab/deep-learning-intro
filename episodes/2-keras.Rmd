@@ -45,6 +45,14 @@ As a reminder below are the steps of the deep learning workflow:
 
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
 
+::: instructor
+This episode really aims to go through the whole process once, as quickly as possible. 
+In episode 3 we will expand on all the concepts that are lightly inroduced in episode 2. Some concepts like monitoring the training progress, optimization and learning rate are explained in detail in episode 3.
+It is good to stress this a few times, because learners will usually have a lot of questions like:
+'Why don't we normalize our features' or 'Why do we choose Adam optimizer?'. 
+It can be a good idea to park some of these questions for discussion in episode 3 and 4.
+:::
+
 ::: callout
 ## GPU usage
 For this lesson having a GPU (graphics card) available is not needed.
@@ -68,11 +76,11 @@ The goal is to predict a penguins' species using the attributes available in thi
 The `palmerpenguins` data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.
 The physical attributes measured are flipper length, beak length, beak width, body mass, and sex.
 
-![][palmer-penguins]
-*Artwork by @allison_horst*
+![*Artwork by @allison_horst*][palmer-penguins]
 
-![][penguin-beaks]
-*Artwork by @allison_horst*
+
+![*Artwork by @allison_horst*][penguin-beaks]
+
 
 These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palmer Station Long Term Ecological Research Program](https://pal.lternet.edu/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://pal.lternet.edu/data/policies).
 
@@ -202,7 +210,7 @@ penguins_filtered = penguins_filtered.dropna()
 Finally, we select only the features
 ```python
 # Extract columns corresponding to features
-penguins_features = penguins_filtered.drop(columns=['species'])
+features = penguins_filtered.drop(columns=['species'])
 ```
 
 ### Prepare target data for training
@@ -236,7 +244,7 @@ How many output neurons will our network have now that we one-hot encoded the ta
 
 :::: solution
 ## Solution
-3, one for each output variable class
+C: 3, one for each output variable class
 
 ::::
 :::
@@ -253,8 +261,9 @@ For this episode we will keep it at just a training and test set however.
 
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
-This function takes a number of parameters which are extensively explained [here](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
-- The first two parameters are the dataset (in our case penguins_features) and the corresponding targets (i.e. defined as target).
+
+This function takes a number of parameters which are extensively explained in [the scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
+- The first two parameters are the dataset (in our case `features`) and the corresponding targets (i.e. defined as target).
 - Next is the named parameter `test_size` this is the fraction of the dataset that is
 used for testing, in this case `0.2` means 20% of the data will be used for testing.
 - `random_state` controls the shuffling of the dataset, setting this value will reproduce
@@ -265,7 +274,7 @@ the same results (assuming you give the same integer) every time it is called.
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,test_size=0.2, random_state=0, shuffle=True, stratify=target)
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
 ## 4. Build an architecture from scratch or choose a pretrained model
@@ -389,11 +398,8 @@ where each layer has **exactly one input tensor and one output tensor**.
 
 :::: solution
 ## Solution
+Have a look at the output of `model.summary()`:
 ```python
-inputs = keras.Input(shape=X_train.shape[1])
-hidden_layer = keras.layers.Dense(10, activation="relu")(inputs)
-output_layer = keras.layers.Dense(3, activation="softmax")(hidden_layer)
-model = keras.Model(inputs=inputs, outputs=output_layer)
 model.summary()
 ```
 
@@ -414,10 +420,14 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 The model has 83 trainable parameters.
+
 If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
-decreases accordingly of neurons.
-The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.
+decreases in accordance with the number of neurons added.
+Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3 weights connected to the output layer.
+So in total 8 extra parameters.
+
+*The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.*
 
 #### (optional) Keras Sequential vs Functional API
 3. This implements the same model using the Sequential API:
@@ -524,11 +534,30 @@ Looking at the training curve we have just made.
    * Does the graph look very jittery?
 2. Do you think the resulting trained network will work well on the test set?
 
+When the training process does not go well:
+
+3. (optional) Something went wrong here during training. What could be the problem, and how do you see that in the training curve?
+Also compare the range on the y-axis with the previous training curve.
+![](../fig/02_bad_training_history_1.png){alt='Very jittery training curve with the loss value jumping back and forth between 2 and 4. The range of the y-axis is from 2 to 4, whereas in the previous training curve it was from 0 to 2. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2.'}
+
 :::: solution
 ## Solution
-1. The loss curve should drop quite quickly in a smooth line with little jitter
+1. The training loss decreases quickly. It drops in a smooth line with little jitter.
+This is ideal for a training curve.
 2. The results of the training give very little information on its performance on a test set.
   You should be careful not to use it as an indication of a well trained network.
+3. (optional) The loss does not go down at all, or only very slightly. This means that the model is not learning anything.
+It could be that something went wrong in the data preparation (for example the labels are not attached to the right features).
+In addition, the graph is very jittery. This means that for every update step,
+the weights in the network are updated in such a way that the loss sometimes increases a lot and sometimes decreases a lot.
+This could indicate that the weights are updated too much at every learning step and you need a smaller learning rate
+(we will go into more details on this in the next episode).
+Or there is a high variation in the data, leading the optimizer to change the weights in different directions at every learning step.
+This could be addressed by presenting more data at every learning step (or in other words increasing the batch size).
+In this case the graph was created by training on nonsense data, so this a training curve for a problem where nothing can be learned really.
+
+We will take a closer look at training curves in the next episode. Some of the concepts touched upon here will also be further explained there.
+
 ::::
 :::
 
@@ -724,22 +753,22 @@ Length: 69, dtype: object
 ```
 
 
-[palmer-penguins]: ../fig/palmer_penguins.png "Palmer Penguins"
+[palmer-penguins]: fig/palmer_penguins.png "Palmer Penguins"
 {alt='Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele'}
 
-[penguin-beaks]: ../fig/culmen_depth.png "Culmen Depth"
+[penguin-beaks]: fig/culmen_depth.png "Culmen Depth"
 {alt='Illustration of the beak dimensions called culmen length and culmen depth in the dataset'}
 
-[pairplot]: ../fig/pairplot.png "Pair Plot"
+[pairplot]: fig/pairplot.png "Pair Plot"
 {alt='Pair plot showing the separability of the three species of penguin for combinations of dataset attributes'}
 
-[sex_pairplot]: ../fig/02_sex_pairplot.png "Pair plot grouped by sex"
+[sex_pairplot]: fig/02_sex_pairplot.png "Pair plot grouped by sex"
 {alt='Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes'}
 
-[training_curve]: ../fig/training_curve.png "Training Curve"
+[training_curve]: fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
 
-[confusion_matrix]: ../fig/confusion_matrix.png "Confusion Matrix"
+[confusion_matrix]: fig/confusion_matrix.png "Confusion Matrix"
 {alt='Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap'}
 
 

@@ -4,19 +4,19 @@ title: Reference
 
 ## Glossary
 
-* artificial intelligence
+* [artificial intelligence](https://glosario.carpentries.org/en/#artificial_intelligence)
 * [machine learning](https://glosario.carpentries.org/en/#machine_learning)
 * [deep learning](https://glosario.carpentries.org/en/#deep_learning)
 * [neural network](https://glosario.carpentries.org/en/#neural_network)
-* convolutional neural network (CNN)
-* recurrent neural network (RNN)
+* [convolutional neural network (CNN)](https://glosario.carpentries.org/en/#cnn)
+* [recurrent neural network (RNN)](https://glosario.carpentries.org/en/#rnn)
 * [accuracy](https://glosario.carpentries.org/en/#accuracy)
-* epoch
-* learning rate
+* [epoch](https://glosario.carpentries.org/en/#epoch_dl)
+* [learning rate](https://glosario.carpentries.org/en/#learning_rate)
 * [confusion matrix](https://glosario.carpentries.org/en/#confusion_matrix)
-* class imbalance
+* [class imbalance](https://glosario.carpentries.org/en/#class_imbalance)
 * [overfitting](https://glosario.carpentries.org/en/#overfitting)
-* hidden layers
+* [hidden layer](https://glosario.carpentries.org/en/#hidden_layer)
 
 ## External references
 Here is a (non exhaustive) list of external resources for further study after this lesson:
