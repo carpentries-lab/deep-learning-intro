@@ -89,6 +89,8 @@ In addition you can explain why you are doing things in markdown cells.
 - Give consistent and meaningful names to notebooks, such as: `01-all-cities-simple-cnn.ipynb`
 - Add a rationale on top and a conclusion on the bottom of each notebook
 
+[_Ten simple rules for writing and sharing computational analyses in Jupyter Notebooks_](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007007) provides further advice on how to maximise the usefulness and reproducibility of experiments captured in a notebook.
+
 ### 2. Use Python modules
 Code that is repeatedly used should live in a Python module and not be copied to multiple notebooks.
 You can import functions and classes from the module(s) in the notebooks.
