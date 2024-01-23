@@ -217,8 +217,7 @@ A more complicated and less used loss function for regression is the [Huber loss
 Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
 as a function of `y_true - y_pred`.
 
-![](fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
-as a function of y_true - y_pred' width='400px'}
+![](fig/01_huber_loss.png){alt='Line plot comparing squared error loss function with the Huber loss function where delta = 1, showing the cost of prediction error of both functions equal where y_true - y_pred is between -1 and 1, then rising linearly with the Huber loss function as y_true diverges further from y_pred, as opposed to expontentially for the squared error function.',' width='400px'}
 
 Which loss function is more sensitive to outliers?
 
