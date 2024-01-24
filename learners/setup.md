@@ -176,9 +176,6 @@ print('seaborn version: ', seaborn.__version__)
 import pandas
 print('pandas version: ', pandas.__version__)
 
-from tensorflow import keras
-print('Keras version: ', keras.__version__)
-
 import tensorflow
 print('Tensorflow version: ', tensorflow.__version__)
 ```
