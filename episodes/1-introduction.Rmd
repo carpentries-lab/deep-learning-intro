@@ -424,16 +424,16 @@ Keras also benefits from a very good set of [online documentation](https://keras
 Follow the instructions in the [setup]({{ page.root }}//setup) document to install Keras, Seaborn and Sklearn.
 
 ## Testing Keras Installation
-Lets check you have a suitable version of Keras installed.
+Lets check you have a suitable version of tensorflow installed.
 Open up a new Jupyter notebook or interactive python console and run the following commands:
 ```python
-from tensorflow import keras
-print(keras.__version__)
+import tensorflow
+print(tensorflow.__version__)
 ```
 ```output
-2.12.0
+2.15.0
 ```
-You should get a version number reported. At the time of writing 2.12.0 is the latest version.
+You should get a version number reported. At the time of writing 2.15.0 is the latest version.
 
 ## Testing Seaborn Installation
 Lets check you have a suitable version of seaborn installed.
