@@ -172,7 +172,7 @@ n_parameters
 ```
 We can also check this by building the layer in Keras:
 ```python
-inputs = keras.Input(shape=dim)
+inputs = keras.Input(shape=n_input_items)
 outputs = keras.layers.Dense(100)(inputs)
 model = keras.models.Model(inputs=inputs, outputs=outputs)
 model.summary()
