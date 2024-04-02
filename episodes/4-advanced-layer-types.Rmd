@@ -77,7 +77,7 @@ and stands for the three color channels **R**ed, **G**reen, **B**lue.
 
 ::: challenge
 
-## Number of features dollar-street-10
+### Number of features dollar-street-10
 
 How many features does one image in the dollar-street-10 dataset have?
 
