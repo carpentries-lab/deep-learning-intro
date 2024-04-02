@@ -27,7 +27,7 @@ So far, we have seen one type of layer, namely the **fully connected**, or **den
 However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at **convolutional layers** and **dropout layers**, which are useful in the context of image data, but also in many other types of (structured) data.
 
 ## 1. Formulate / Outline the problem: Image classification
-The MLCommons Dollar Street Dataset is a collection of images of everyday household items from homes around the world that visually captures socioeconomic diversity of traditionally underrepresented populations. We use a subset of the original dataset that can be used for multiclass classification with 10 categories. Let's load the data:
+The [MLCommons Dollar Street Dataset](https://www.kaggle.com/datasets/mlcommons/the-dollar-street-dataset) is a collection of images of everyday household items from homes around the world that visually captures socioeconomic diversity of traditionally underrepresented populations. We use [a subset of the original dataset](https://zenodo.org/records/10837090) that can be used for multiclass classification with 10 categories. Let's load the data:
 
 ```python
 import pathlib
