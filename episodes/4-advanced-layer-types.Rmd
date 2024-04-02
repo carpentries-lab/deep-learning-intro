@@ -41,6 +41,7 @@ val_labels = np.load(DATA_FOLDER / 'test_labels.npy')
 ## Dollar Street 10 dataset
 
 The dollar street 10 dataset consists of images of 10 different classes, this is the mapping of the categories:
+
 | Category        | label |
 |-----------------|-------|
 | day bed         | 0     |
