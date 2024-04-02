@@ -484,7 +484,7 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers"}
 
-As you can see the validation accuracy only reaches about 12,5%, whereas the CNN reached about 25% accuracy.
+As you can see the validation accuracy only reaches about 12.5%, whereas the CNN reached about 25% accuracy.
 
 This demonstrates that convolutional layers are a big improvement over dense layers for this kind of datasets.
 :::
