@@ -57,6 +57,7 @@ The dollar street 10 dataset consists of images of 10 different classes, this is
 
 
 ![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
+
 ## 2. Identify inputs and outputs
 
 ## Explore the data
