@@ -67,7 +67,7 @@ The dollar street 10 dataset consists of images of 10 different classes, this is
 | washing machine | 9     |
 
 
-![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
+![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10.png){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
 
 ## 2. Identify inputs and outputs
 
@@ -82,7 +82,7 @@ train_images.shape
 ```
 
 The first value, `878`, is the number of training images in the dataset.
-The remainder of the shape, namely `128, 128, 3)`, denotes
+The remainder of the shape, namely `(128, 128, 3)`, denotes
 the dimension of one image. The last value 3 is typical for color images,
 and stands for the three color channels **R**ed, **G**reen, **B**lue.
 
