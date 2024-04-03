@@ -99,8 +99,9 @@ How many features does one image in the dollar-street-10 dataset have?
 
 
 :::: solution
-The correct solution is C: 3072. There are 1024 pixels in one image (32 * 32),
-each pixel has 3 channels (RGB). So 1024 * 3 = 3072.
+The correct solution is C: 49152 
+
+There are 16384 pixels in one image (128 * 128), each pixel has 3 channels (RGB). So 16384 * 3 = 49152.
 ::::
 :::
 
@@ -151,7 +152,7 @@ This results in many connections, and thus many weights to be learned, in the ne
 Note that our input dimension is now quite high (even with small pictures of `128x128` pixels): we have 49152 features.
 
 ::: challenge
-## Number of parameters
+## Number of parameters{#parameters-exercise-1}
 Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?
 
 - A. 4915200
@@ -175,7 +176,7 @@ n_parameters
 ```
 We can also check this by building the layer in Keras:
 ```python
-inputs = keras.Input(shape=n_input_items)
+inputs = keras.Input(shape=(n_input_items,))
 outputs = keras.layers.Dense(100)(inputs)
 model = keras.models.Model(inputs=inputs, outputs=outputs)
 model.summary()
@@ -200,14 +201,16 @@ _________________________________________________________________
 
 We can decrease the number of units in our hidden layer, but this also decreases the number of patterns our network can remember. Moreover, if we increase the image size, the number of weights will 'explode', even though the task of recognizing large images is not necessarily more difficult than the task of recognizing small images.
 
-The solution is that we make the network learn in a 'smart' way. The features that we learn should be similar both for small and large images, and similar features (e.g. edges, corners) can appear anywhere in the image (in mathematical terms: *translation invariant*). We do this by making use of a concepts from image processing that precede Deep Learning.
+The solution is that we make the network learn in a 'smart' way. The features that we learn should be similar both for small and large images, and similar features (e.g. edges, corners) can appear anywhere in the image (in mathematical terms: *translation invariant*). We do this by making use of a concept from image processing that precedes Deep Learning.
 
 A **convolution matrix**, or **kernel**, is a matrix transformation that we 'slide' over the image to calculate features at each position of the image. For each pixel, we calculate the matrix product between the kernel and the pixel with its surroundings. A kernel is typically small, between 3x3 and 7x7 pixels. We can for example think of the 3x3 kernel:
+
 ```output
 [[-1, -1, -1],
  [0, 0, 0]
  [1, 1, 1]]
 ```
+
 This kernel will give a high value to a pixel if it is on a horizontal border between dark and light areas.
 Note that for RGB images, the kernel should also have a depth of 3.
 
@@ -248,7 +251,7 @@ in the context of applying a _Gaussian blur_.
 
 ::: challenge
 ## Number of model parameters
-Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 32 * 32 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the previous exercise
+Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 32 * 32 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
 
 :::: solution
 ## Solution
@@ -265,9 +268,34 @@ x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
 x = keras.layers.Flatten()(x)
 outputs = keras.layers.Dense(10)(x)
 
-model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model_small")
+model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_model_small")
 
 model.summary()
+```
+
+```output
+Model: "dollar_street_model_small"
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_2 (InputLayer)      │ (None, 128, 128, 3)    │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (Conv2D)                 │ (None, 126, 126, 50)   │         1400 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (Conv2D)               │ (None, 124, 124, 50)   │        22550 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 768800)         │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (Dense)                 │ (None, 10)             │     7688010 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+
+ Total params: 7711960 (29.42 MB)
+
+ Trainable params: 7711960 (29.42 MB)
+
+ Non-trainable params: 0 (0.00 B)
+
 ```
 
 ::: challenge
@@ -431,7 +459,7 @@ plot_history(history, ['loss', 'val_loss'])
 
 ![](fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
 
-It seems that the model is overfitting a lot, because the training accuracy increases, while the validation accuracy stagnates. Meanwhile, the training keeps decreasing while the validation loss actually starts increasing after a few epochs.
+It seems that the model is overfitting a lot, because the training accuracy increases, while the validation accuracy stagnates. Meanwhile, the training loss keeps decreasing while the validation loss actually starts increasing after a few epochs.
 
 ::: instructor
 ## Comparison with a network with only dense layers
@@ -537,7 +565,7 @@ def create_nn_extra_layer():
     x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
     outputs = keras.layers.Dense(10)(x)
 
-    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_model_extra_convolutional_layer")
     return model
 
 model = create_nn_extra_layer()
@@ -548,7 +576,7 @@ With the model defined above, we can inspect the number of parameters:
 model.summary()
 ```
 ```output
-Model: "dollar_street_model"
+Model: "dollar_street_model_extra_convolutional_layer"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
@@ -661,14 +689,14 @@ def create_nn_with_dropout():
     x = keras.layers.Flatten()(x)
     x = keras.layers.Dense(50, activation='relu')(x)
     outputs = keras.layers.Dense(10)(x)
-    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_dropout_model")
     return model
 
 model_dropout = create_nn_with_dropout()
 model_dropout.summary()
 ```
 ```output
-Model: "dropout_model"
+Model: "dollar_street_dropout_model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
@@ -721,6 +749,12 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 
 ![](fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
+
+```python
+plot_history(history, ['loss', 'val_loss'])
+```
+
+![](fig/04_training_history_loss_3.png){alt="Plot of training loss and validation loss vs epochs for the trained model"}
 
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
 Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.
