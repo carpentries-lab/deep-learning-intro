@@ -71,7 +71,7 @@ The dollar street 10 dataset consists of images of 10 different classes, this is
 
 ## 2. Identify inputs and outputs
 
-## Explore the data
+### Explore the data
 
 Let's do a quick exploration of the dimensions of the data:
 ```python
