@@ -27,7 +27,7 @@ So far, we have seen one type of layer, namely the **fully connected**, or **den
 However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at **convolutional layers** and **dropout layers**, which are useful in the context of image data, but also in many other types of (structured) data.
 
 ## 1. Formulate / Outline the problem: Image classification
-The [MLCommons Dollar Street Dataset](https://www.kaggle.com/datasets/mlcommons/the-dollar-street-dataset) is a collection of images of everyday household items from homes around the world that visually captures socioeconomic diversity of traditionally underrepresented populations. We use [a subset of the original dataset](https://zenodo.org/records/10837090) that can be used for multiclass classification with 10 categories. Let's load the data:
+The [MLCommons Dollar Street Dataset](https://www.kaggle.com/datasets/mlcommons/the-dollar-street-dataset) is a collection of images of everyday household items from homes around the world that visually captures socioeconomic diversity of traditionally underrepresented populations. We use [a subset of the original dataset](https://zenodo.org/records/10970014) that can be used for multiclass classification with 10 categories. Let's load the data:
 
 ```python
 import pathlib
@@ -78,11 +78,11 @@ Let's do a quick exploration of the dimensions of the data:
 train_images.shape
 ```
 ```output
-(878, 128, 128, 3)
+(878, 64, 64, 3)
 ```
 
 The first value, `878`, is the number of training images in the dataset.
-The remainder of the shape, namely `(128, 128, 3)`, denotes
+The remainder of the shape, namely `(64, 64, 3)`, denotes
 the dimension of one image. The last value 3 is typical for color images,
 and stands for the three color channels **R**ed, **G**reen, **B**lue.
 
@@ -92,16 +92,16 @@ and stands for the three color channels **R**ed, **G**reen, **B**lue.
 
 How many features does one image in the dollar-street-10 dataset have?
 
-- A. 128
-- B. 16384
-- C. 49152
+- A. 64
+- B. 4096
+- C. 12288
 - D. 878
 
 
 :::: solution
-The correct solution is C: 49152 
+The correct solution is C: 12288 
 
-There are 16384 pixels in one image (128 * 128), each pixel has 3 channels (RGB). So 16384 * 3 = 49152.
+There are 4096 pixels in one image (64 * 64), each pixel has 3 channels (RGB). So 4096 * 3 = 12288.
 ::::
 :::
 
@@ -136,7 +136,7 @@ The values of the labels range between `0` and `9`, denoting 10 different classe
 
 ## 3. Prepare data
 
-The training set consists of 878 images of `128x128` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
+The training set consists of 878 images of `64x64` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
 
 
 ```python
@@ -149,22 +149,22 @@ val_images = val_images / 255.0
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer.
 This results in many connections, and thus many weights to be learned, in the network.
-Note that our input dimension is now quite high (even with small pictures of `128x128` pixels): we have 49152 features.
+Note that our input dimension is now quite high (even with small pictures of `64x64` pixels): we have 12288 features.
 
 ::: challenge
 ## Number of parameters{#parameters-exercise-1}
 Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?
 
-- A. 4915200
-- B. 4915300
+- A. 1228800
+- B. 1228900
 - C. 100
-- D. 49152
+- D. 12288
 
 :::: solution
 ## Solution
-The correct answer is B: Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `4915300` parameters to learn.
+The correct answer is B: Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `1228900` parameters to learn.
 ```python
-width, height = (128, 128)
+width, height = (64, 64)
 n_hidden_neurons = 100
 n_bias = 100
 n_input_items = width * height * 3
@@ -172,7 +172,7 @@ n_parameters = (n_input_items * n_hidden_neurons) + n_bias
 n_parameters
 ```
 ```output
-4915300
+1228900
 ```
 We can also check this by building the layer in Keras:
 ```python
@@ -182,19 +182,18 @@ model = keras.models.Model(inputs=inputs, outputs=outputs)
 model.summary()
 ```
 ```output
-Model: "model_3"
+Model: "model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_16 (InputLayer)       [(None, 49152)]           0         
+ input_1 (InputLayer)        [(None, 12288)]           0         
                                                                  
- dense_36 (Dense)            (None, 100)               4915300   
+ dense (Dense)               (None, 100)               1228900   
                                                                  
 =================================================================
-Total params: 4915300 (18.75 MB)
-Trainable params: 4915300 (18.75 MB)
+Total params: 1228900 (4.69 MB)
+Trainable params: 1228900 (4.69 MB)
 Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________
 ```
 ::::
 :::
@@ -275,26 +274,24 @@ model.summary()
 
 ```output
 Model: "dollar_street_model_small"
-
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
-┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
-│ input_layer_2 (InputLayer)      │ (None, 128, 128, 3)    │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ conv2d (Conv2D)                 │ (None, 126, 126, 50)   │         1400 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ conv2d_1 (Conv2D)               │ (None, 124, 124, 50)   │        22550 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ flatten (Flatten)               │ (None, 768800)         │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_2 (Dense)                 │ (None, 10)             │     7688010 │
-└─────────────────────────────────┴────────────────────────┴───────────────┘
-
- Total params: 7711960 (29.42 MB)
-
- Trainable params: 7711960 (29.42 MB)
-
- Non-trainable params: 0 (0.00 B)
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_8 (InputLayer)        [(None, 64, 64, 3)]       0         
+                                                                 
+ conv2d_10 (Conv2D)          (None, 62, 62, 50)        1400      
+                                                                 
+ conv2d_11 (Conv2D)          (None, 60, 60, 50)        22550     
+                                                                 
+ flatten_6 (Flatten)         (None, 180000)            0         
+                                                                 
+ dense_14 (Dense)            (None, 10)                1800010   
+                                                                 
+=================================================================
+Total params: 1823960 (6.96 MB)
+Trainable params: 1823960 (6.96 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
 
 ```
 
@@ -305,11 +302,12 @@ Inspect the network above:
 
 * What do you think is the function of the `Flatten` layer?
 * Which layer has the most parameters? Do you find this intuitive?
-* (optional) Pick a model from https://paperswithcode.com/sota/image-classification-on-cifar-10 . Try to understand how it works.
+* (optional) This dataset is similar to the often used CIFAR-10 dataset. 
+We can get inspiration for neural network architectures that could work on our dataset here: https://paperswithcode.com/sota/image-classification-on-cifar-10 . Pick a model and try to understand how it works.
 
 :::: solution
 ## Solution
-* The Flatten layer converts the 124x124x50 output of the convolutional layer into a single one-dimensional vector, that can be used as input for a dense layer.
+* The Flatten layer converts the 60x60x50 output of the convolutional layer into a single one-dimensional vector, that can be used as input for a dense layer.
 * The last dense layer has the most parameters. This layer connects every single output 'pixel' from the convolutional layer to the 10 output classes.
 That results in a large number of connections, so a large number of parameters. This undermines a bit the expressiveness of the convolutional layers, that have much fewer parameters.
 ::::
@@ -367,27 +365,27 @@ Model: "dollar_street_model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_7 (InputLayer)        [(None, 128, 128, 3)]     0         
+ input_3 (InputLayer)        [(None, 64, 64, 3)]       0         
                                                                  
- conv2d_8 (Conv2D)           (None, 126, 126, 50)      1400      
+ conv2d_2 (Conv2D)           (None, 62, 62, 50)        1400      
                                                                  
- max_pooling2d_6 (MaxPoolin  (None, 63, 63, 50)        0         
+ max_pooling2d (MaxPooling2  (None, 31, 31, 50)        0         
+ D)                                                              
+                                                                 
+ conv2d_3 (Conv2D)           (None, 29, 29, 50)        22550     
+                                                                 
+ max_pooling2d_1 (MaxPoolin  (None, 14, 14, 50)        0         
  g2D)                                                            
                                                                  
- conv2d_9 (Conv2D)           (None, 61, 61, 50)        22550     
+ flatten_1 (Flatten)         (None, 9800)              0         
                                                                  
- max_pooling2d_7 (MaxPoolin  (None, 30, 30, 50)        0         
- g2D)                                                            
+ dense_2 (Dense)             (None, 50)                490050    
                                                                  
- flatten_6 (Flatten)         (None, 45000)             0         
-                                                                 
- dense_15 (Dense)            (None, 50)                2250050   
-                                                                 
- dense_16 (Dense)            (None, 10)                510       
+ dense_3 (Dense)             (None, 10)                510       
                                                                  
 =================================================================
-Total params: 2274510 (8.68 MB)
-Trainable params: 2274510 (8.68 MB)
+Total params: 514510 (1.96 MB)
+Trainable params: 514510 (1.96 MB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 ```
@@ -471,7 +469,7 @@ Depending on time, the following discussion can be extended in depth up to your 
 Implement a dense neural network and compare its performance to that of the CNN'.
 This will take 30-45 minutes and might deviate the focus away from CNNs.
 2. You can demonstrate (no typing along), just to show how the network would look like and make the comparison.
-3. You can just mention that a simple network with only dense layers reaches 12,5% accuracy, considerably worse than our simple CNN.
+3. You can just mention that a simple network with only dense layers reaches 18% accuracy, considerably worse than our simple CNN.
 :::
 
 ::: callout
@@ -497,21 +495,20 @@ Model: "dense_model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_11 (InputLayer)       [(None, 128, 128, 3)]     0         
+ input_7 (InputLayer)        [(None, 64, 64, 3)]       0         
                                                                  
- flatten_10 (Flatten)        (None, 49152)             0         
+ flatten_5 (Flatten)         (None, 12288)             0         
                                                                  
- dense_25 (Dense)            (None, 50)                2457650   
+ dense_11 (Dense)            (None, 50)                614450    
                                                                  
- dense_26 (Dense)            (None, 50)                2550      
+ dense_12 (Dense)            (None, 50)                2550      
                                                                  
- dense_27 (Dense)            (None, 10)                510       
+ dense_13 (Dense)            (None, 10)                510       
                                                                  
 =================================================================
-Total params: 2460710 (9.39 MB)
-Trainable params: 2460710 (9.39 MB)
+Total params: 617510 (2.36 MB)
+Trainable params: 617510 (2.36 MB)
 Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________
 ```
 As you can see this model has more parameters than our simple CNN, let's train and evaluate it!
 
@@ -523,9 +520,9 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers"}
 
-As you can see the validation accuracy only reaches about 12.5%, whereas the CNN reached about 25% accuracy.
+As you can see the validation accuracy only reaches about 18%, whereas the CNN reached about 28% accuracy.
 
-This demonstrates that convolutional layers are a big improvement over dense layers for this kind of datasets.
+This demonstrates that convolutional layers are a big improvement over dense layers for these kind of datasets.
 :::
 
 ## 9. Refine the model
@@ -533,7 +530,7 @@ This demonstrates that convolutional layers are a big improvement over dense lay
 ::: challenge
 ## Network depth
 What, do you think, will be the effect of adding a convolutional layer to your model? Will this model have more or fewer parameters?
-Try it out. Create a `model` that has an additional `Conv2d` layer with 50 filters after the last MaxPooling2D layer. Train it for 10 epochs and plot the results.
+Try it out. Create a `model` that has an additional `Conv2d` layer with 50 filters and another MaxPooling2D layer after the last MaxPooling2D layer. Train it for 10 epochs and plot the results.
 
 **HINT**:
 The model definition that we used previously needs to be adjusted as follows:
@@ -543,7 +540,7 @@ x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
 x = keras.layers.MaxPooling2D((2, 2))(x)
 x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
 x = keras.layers.MaxPooling2D((2, 2))(x)
-# Add your extra layer here
+# Add your extra layers here
 x = keras.layers.Flatten()(x)
 x = keras.layers.Dense(50, activation='relu')(x)
 outputs = keras.layers.Dense(10)(x)
@@ -560,12 +557,13 @@ def create_nn_extra_layer():
     x = keras.layers.MaxPooling2D((2, 2))(x)
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x) #
-    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x) # estra layer
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x) # extra layer
+    x = keras.layers.MaxPooling2D((2, 2))(x) # extra layer
     x = keras.layers.Flatten()(x)
-    x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
+    x = keras.layers.Dense(50, activation='relu')(x)
     outputs = keras.layers.Dense(10)(x)
 
-    model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_model_extra_convolutional_layer")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_model")
     return model
 
 model = create_nn_extra_layer()
@@ -576,38 +574,42 @@ With the model defined above, we can inspect the number of parameters:
 model.summary()
 ```
 ```output
-Model: "dollar_street_model_extra_convolutional_layer"
+Model: "dollar_street_model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_22 (InputLayer)       [(None, 128, 128, 3)]     0         
+ input_4 (InputLayer)        [(None, 64, 64, 3)]       0         
                                                                  
- conv2d_38 (Conv2D)          (None, 126, 126, 50)      1400      
+ conv2d_4 (Conv2D)           (None, 62, 62, 50)        1400      
                                                                  
- max_pooling2d_26 (MaxPooli  (None, 63, 63, 50)        0         
- ng2D)                                                           
+ max_pooling2d_2 (MaxPoolin  (None, 31, 31, 50)        0         
+ g2D)                                                            
                                                                  
- conv2d_39 (Conv2D)          (None, 61, 61, 50)        22550     
+ conv2d_5 (Conv2D)           (None, 29, 29, 50)        22550     
                                                                  
- max_pooling2d_27 (MaxPooli  (None, 30, 30, 50)        0         
- ng2D)                                                           
+ max_pooling2d_3 (MaxPoolin  (None, 14, 14, 50)        0         
+ g2D)                                                            
                                                                  
- conv2d_40 (Conv2D)          (None, 28, 28, 50)        22550     
+ conv2d_6 (Conv2D)           (None, 12, 12, 50)        22550     
                                                                  
- flatten_20 (Flatten)        (None, 39200)             0         
+ max_pooling2d_4 (MaxPoolin  (None, 6, 6, 50)          0         
+ g2D)                                                            
                                                                  
- dense_46 (Dense)            (None, 50)                1960050   
+ flatten_2 (Flatten)         (None, 1800)              0         
                                                                  
- dense_47 (Dense)            (None, 10)                510       
+ dense_4 (Dense)             (None, 50)                90050     
+                                                                 
+ dense_5 (Dense)             (None, 10)                510       
                                                                  
 =================================================================
-Total params: 2007060 (7.66 MB)
-Trainable params: 2007060 (7.66 MB)
+Total params: 137060 (535.39 KB)
+Trainable params: 137060 (535.39 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
+
 ```
 The number of parameters has decreased by adding this layer.
-We can see that the conv layer decreases the resolution from 30x30 to 28x28,
+We can see that the extra layers decrease the resolution from 14x14 to 6x6,
 as a result, the input of the Dense layer is smaller than in the previous network.
 To train the network and plot the results:
 ```python
@@ -671,66 +673,66 @@ In practice, however, dropout is computationally a very elegant solution which d
 
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
-Let us add one dropout layer towards the end of the network, that randomly drops 80% of the nodes.
+Let us add a dropout layer after each pooling layertowards the end of the network, that randomly drops 80% of the nodes.
 
 ```python
 def create_nn_with_dropout():
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
-    x = keras.layers.Dropout(0.6)(x) # This is new!
 
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
-    x = keras.layers.Dropout(0.6)(x) # This is new!
     
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-    x = keras.layers.Dropout(0.6)(x) # This is new!
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(0.8)(x) # This is new!
+
     x = keras.layers.Flatten()(x)
     x = keras.layers.Dense(50, activation='relu')(x)
     outputs = keras.layers.Dense(10)(x)
-    model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_dropout_model")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="dropout_model")
     return model
 
 model_dropout = create_nn_with_dropout()
 model_dropout.summary()
 ```
 ```output
-Model: "dollar_street_dropout_model"
+Model: "dropout_model"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_23 (InputLayer)       [(None, 128, 128, 3)]     0         
+ input_5 (InputLayer)        [(None, 64, 64, 3)]       0         
                                                                  
- conv2d_41 (Conv2D)          (None, 126, 126, 50)      1400      
+ conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400      
                                                                  
- max_pooling2d_28 (MaxPooli  (None, 63, 63, 50)        0         
- ng2D)                                                           
+ max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0         
+ g2D)                                                            
                                                                  
- dropout_23 (Dropout)        (None, 63, 63, 50)        0         
+ conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550     
                                                                  
- conv2d_42 (Conv2D)          (None, 61, 61, 50)        22550     
+ max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0         
+ g2D)                                                            
                                                                  
- max_pooling2d_29 (MaxPooli  (None, 30, 30, 50)        0         
- ng2D)                                                           
+ conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550     
                                                                  
- dropout_24 (Dropout)        (None, 30, 30, 50)        0         
+ max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0         
+ g2D)                                                            
                                                                  
- conv2d_43 (Conv2D)          (None, 28, 28, 50)        22550     
+ dropout (Dropout)           (None, 6, 6, 50)          0         
                                                                  
- dropout_25 (Dropout)        (None, 28, 28, 50)        0         
+ flatten_3 (Flatten)         (None, 1800)              0         
                                                                  
- flatten_21 (Flatten)        (None, 39200)             0         
+ dense_6 (Dense)             (None, 50)                90050     
                                                                  
- dense_48 (Dense)            (None, 50)                1960050   
-                                                                 
- dense_49 (Dense)            (None, 10)                510       
+ dense_7 (Dense)             (None, 10)                510       
                                                                  
 =================================================================
-Total params: 2007060 (7.66 MB)
-Trainable params: 2007060 (7.66 MB)
+Total params: 137060 (535.39 KB)
+Trainable params: 137060 (535.39 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
+
 ```
 
 We can see that the dropout does not alter the dimensions of the image, and has zero parameters.
@@ -750,14 +752,7 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 
 ![](fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 
-```python
-plot_history(history, ['loss', 'val_loss'])
-```
-
-![](fig/04_training_history_loss_3.png){alt="Plot of training loss and validation loss vs epochs for the trained model"}
-
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
-Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.
 
 ::: challenge
 ## Vary dropout rate
@@ -770,43 +765,52 @@ Nevertheless, there is still some difference between the training loss and valid
 ## Solution
 ### 1. Varying the dropout rate
 The code below instantiates and trains a model with varying dropout rates.
-You can see from the resulting plot that the ideal dropout rate in this case is around 0.45.
+You can see from the resulting plot that the ideal dropout rate in this case is around 0.9.
 This is where the val loss is lowest.
 
-Note that it can take a while to train these 5 networks.
+Note that it can take a while to train these 6 networks.
 
 ```python
 def create_nn_with_dropout(dropout_rate):
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(dropout_rate)(x)
+
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(dropout_rate)(x)
+    
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.Dropout(dropout_rate)(x)
     x = keras.layers.Flatten()(x)
     x = keras.layers.Dense(50, activation='relu')(x)
     outputs = keras.layers.Dense(10)(x)
-    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="dropout_model")
     return model
 
-dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
+early_stopper = keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+                                         
+dropout_rates = [0.2, 0.4, 0.6, 0.8, 0.9, 0.95]
 val_losses = []
 for dropout_rate in dropout_rates:
     model_dropout = create_nn_with_dropout(dropout_rate)
     compile_model(model_dropout)
-    model_dropout.fit(train_images, train_labels, epochs=20,
-                    validation_data=(val_images, val_labels))
+    model_dropout.fit(train_images, train_labels, epochs=30,
+                      validation_data=(val_images, val_labels),
+                      callbacks=[early_stopper]
+                      )
 
     val_loss, val_acc = model_dropout.evaluate(val_images,  val_labels)
     val_losses.append(val_loss)
 
 loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'val_loss': val_losses})
 
+
 sns.lineplot(data=loss_df, x='dropout_rate', y='val_loss')
 ```
 
-![](fig/04_vary_dropout_rate.png){alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 6 and 2 and is lowest with a dropout_rate of 0.65."}
+![](fig/04_vary_dropout_rate.png){alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 2.3 and 2.0 and is lowest with a dropout_rate of 0.9"}
 
 
 ### 2. Term associated to this procedure
