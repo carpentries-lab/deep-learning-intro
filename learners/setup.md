@@ -192,10 +192,11 @@ Alternatively you can use [Google colab](https://colab.research.google.com/). If
 
 ## Downloading the required datasets
 
-Download the [weather dataset prediction csv][weatherdata] and [BBQ labels][weatherbbqdata].
+Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]
 
 [anaconda]: https://www.anaconda.com/products/individual
 [anaconda-distribution]: https://www.anaconda.com/products/distribution
+[dollar-street]: https://zenodo.org/api/records/10970014/files-archive
 [jupyter]: http://jupyter.org/
 [jupyter-install]: http://jupyter.readthedocs.io/en/latest/install.html#optional-for-experienced-python-developers-installing-jupyter-with-pip
 [python]: https://python.org
