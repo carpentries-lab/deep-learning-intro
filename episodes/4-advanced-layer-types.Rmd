@@ -66,6 +66,15 @@ The dollar street 10 dataset consists of images of 10 different classes, this is
 | toilet seat     | 8     |
 | washing machine | 9     |
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+### Framing the classification task
+The sample images from the dataset, shown below, provide a good opportunity to lead a discussion with learners about the nature of the images and the classification task we will be training a model to perform.
+For example, although the images can all be assumed to include the object they are labelled with, not all images are _of_ those objects i.e. the object is one of several present in the image.
+This makes the task of the classifier more difficult, as does the more culturally diverse set of objects present in the image, but both of these properties make the trained model more robust.
+After training, we can consider ourselves to be asking the model "which of these ten objects is present in this image?", as opposed to e.g. "which of these ten objects is this an image of?"
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10.png){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
 
@@ -824,6 +833,7 @@ Let's save our model
 ```python
 model.save('cnn_model')
 ```
+
 
 ::: keypoints
 - Convolutional layers make efficient reuse of model parameters.
