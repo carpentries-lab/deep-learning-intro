@@ -63,7 +63,8 @@ episodes:
 - 2-keras.Rmd
 - 3-monitor-the-model.Rmd
 - 4-advanced-layer-types.Rmd
-- 5-outlook.Rmd
+- 5-transfer-learning.Rmd
+- 6-outlook.Rmd
 
 
 # Information for Learners
