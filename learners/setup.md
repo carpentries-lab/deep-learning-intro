@@ -20,7 +20,7 @@ you are ready to go as soon as the workshop begins.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::: solution
+:::::::::::::::: spoiler
 
 ### Windows
 
@@ -35,7 +35,7 @@ with your web browser.
 
 :::::::::::::::::::::::::
 
-:::::::::::::::: solution
+:::::::::::::::: spoiler
 
 ### MacOS
 
@@ -44,12 +44,15 @@ Checkout the [video tutorial][video-mac] or:
 1. Open [https://www.anaconda.com/products/distribution][anaconda-distribution]
    with your web browser.
 2. Download the Python 3 installer for OS X.
+   Make sure to use the correct version for your hardware, 
+   i.e. choose the options with "(M1)" if yours is one of the more recent models
+   containing Apple's chip.
 3. Install Python 3 using all of the defaults for installation.
 
 :::::::::::::::::::::::::
 
 
-:::::::::::::::: solution
+:::::::::::::::: spoiler
 
 ### Linux
 
@@ -76,7 +79,7 @@ If you run into any difficulties, please request help before the workshop begins
 
 :::::::::::::::::::::::::
 
-## Installing the required packages
+## Installing the required packages{#packages}
 
 [Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux.
 Conda should already be available in your system once you installed Anaconda successfully. Conda thus works regardless of the operating system.
@@ -112,7 +115,7 @@ It is integrated into your local Python installation and runs regardless of your
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::: solution
+:::::::::::::::: spoiler
 
 ### Troubleshooting for Windows
 It is possible that Windows users will run into version conflicts. If you are on Windows and get
@@ -126,17 +129,18 @@ pip install tensorflow>=2.5 seaborn scikit-learn pandas
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::: solution
+::::::::::::::::::: spoiler
 
 ### Troubleshooting for Macs with Apple silicon chip
 Newer Macs (from 2020 onwards) often have a different kind of chip, manufactured by Apple instead of Intel.
-This can lead to problems installing Tensorflow .
+This can lead to problems installing Tensorflow.
 If you get errors running the installation command or conda hangs endlessly,
-you can try installing Tensorflow for Mac with pip:
+you probably [need to change the version of Anaconda you have installed](https://www.youtube.com/watch?v=BEUU-icPg78).
 
-```bash
-pip install tensorflow-macos
-```
+1. Uninstall Anaconda
+2. [Download the version of Anaconda for Apple chips][anaconda-distribution] (i.e. the version with "(M1)" in the name)
+   and install it with the default settings
+3. Follow [the instructions above](#packages) to install the required packages
 
 ::::::::::::::::::::::::::::
 
