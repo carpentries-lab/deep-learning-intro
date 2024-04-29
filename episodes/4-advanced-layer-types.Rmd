@@ -834,6 +834,13 @@ Let's save our model
 model.save('cnn_model')
 ```
 
+## Conclusion and Next Steps
+How successful were we with creating a model here?
+With ten image classes, and assuming that we would not ask the model to classify an image that contains none of the given classes of object, a model working on complete guesswork would be correct 10% of the time.
+Against this baseline accuracy of 10%, and considering the diversity and relatively low resolution of the example images, perhaps our last model's validation accuracy of ~30% is not too bad.
+What could be done to improve on this performance?
+We might try adjusting the number of layers and their parameters, such as the number of units in a layer, or providing more training data (we were using only a subset of the original Dollar Street dataset here). 
+Or we could explore some other deep learning techniques, such as transfer learning, to create more sophisticated models.
 
 ::: keypoints
 - Convolutional layers make efficient reuse of model parameters.
