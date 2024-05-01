@@ -245,6 +245,12 @@ We will dive further into how optimization works in episode 3.
 For now, it is enough to understand that during training the weights in the network are adjusted so that the loss decreases through the process of optimization.
 This ultimately results in a low loss, and this, generally, implies predictions that are closer to the expected values.
 
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
 ### What sort of problems can Deep Learning solve?
 
 * Pattern/object recognition

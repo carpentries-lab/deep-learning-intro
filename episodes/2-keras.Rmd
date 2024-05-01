@@ -277,6 +277,11 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
 ## 4. Build an architecture from scratch or choose a pretrained model
 
 ### Keras for neural networks
@@ -618,6 +623,12 @@ predicted_species
 68    Adelie
 Length: 69, dtype: object
 ```
+
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
 
 ## 8. Measuring performance
 Now that we have a trained neural network it is important to assess how well it performs.

@@ -150,6 +150,11 @@ X_val, X_test, y_val, y_test = train_test_split(X_holdout, y_holdout, test_size=
 
 Setting the `random_state` to `0` is a short-hand at this point. Note however, that changing this seed of the pseudo-random number generator will also change the composition of your data sets. For the sake of reproducibility, this is one example of a parameters that should not change at all.
 
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
 ## 4. Choose a pretrained model or start building architecture from scratch
 
 ### Regression and classification
@@ -400,6 +405,11 @@ Now that we have our model trained, we can make a prediction with the model befo
 y_train_predicted = model.predict(X_train)
 y_test_predicted = model.predict(X_test)
 ```
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
 
 ## 8. Measure performance
 

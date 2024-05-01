@@ -68,6 +68,15 @@ The dollar street 10 dataset consists of images of 10 different classes, this is
 | toilet seat     | 8     |
 | washing machine | 9     |
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+### Framing the classification task
+The sample images from the dataset, shown below, provide a good opportunity to lead a discussion with learners about the nature of the images and the classification task we will be training a model to perform.
+For example, although the images can all be assumed to include the object they are labelled with, not all images are _of_ those objects i.e. the object is one of several present in the image.
+This makes the task of the classifier more difficult, as does the more culturally diverse set of objects present in the image, but both of these properties make the trained model more robust.
+After training, we can consider ourselves to be asking the model "which of these ten objects is present in this image?", as opposed to e.g. "which of these ten objects is this an image of?"
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10.png){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
 
@@ -412,6 +421,11 @@ def compile_model(model):
                   metrics=['accuracy'])
 compile_model(model)
 ```
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
 
 ## 6. Train the model
 
@@ -826,6 +840,14 @@ Let's save our model
 ```python
 model.save('cnn_model')
 ```
+
+## Conclusion and Next Steps
+How successful were we with creating a model here?
+With ten image classes, and assuming that we would not ask the model to classify an image that contains none of the given classes of object, a model working on complete guesswork would be correct 10% of the time.
+Against this baseline accuracy of 10%, and considering the diversity and relatively low resolution of the example images, perhaps our last model's validation accuracy of ~30% is not too bad.
+What could be done to improve on this performance?
+We might try adjusting the number of layers and their parameters, such as the number of units in a layer, or providing more training data (we were using only a subset of the original Dollar Street dataset here). 
+Or we could explore some other deep learning techniques, such as transfer learning, to create more sophisticated models.
 
 ::: keypoints
 - Convolutional layers make efficient reuse of model parameters.
