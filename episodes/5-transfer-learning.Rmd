@@ -231,5 +231,5 @@ In many domains, large networks are available that have been trained on vast amo
 
 ::: keypoints
 - Large pre-trained models capture generic knowledge about a domain
-- Use the `keras.applications` module to easily use pre-trained models on your own datasets
+- Use the `keras.applications` module to easily use pre-trained models for your own datasets
 :::
