@@ -185,7 +185,7 @@ model.compile(optimizer='adam',
 ### 2. Train the model
 Define the early stopper:
 ```python
-keras.callbacks.EarlyStopping(monitor='val_accuracy',
+early_stopper = keras.callbacks.EarlyStopping(monitor='val_accuracy',
                               patience=5)
 ```
 
