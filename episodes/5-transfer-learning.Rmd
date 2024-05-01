@@ -185,7 +185,7 @@ model.compile(optimizer='adam',
 ### 2. Train the model
 Define the early stopper:
 ```python
-keras.callbacks.EarlyStopping(monitor='val_accuracy',
+early_stopper = keras.callbacks.EarlyStopping(monitor='val_accuracy',
                               patience=5)
 ```
 
@@ -223,9 +223,9 @@ The final validation accuracy reaches 64%, this is a huge improvement over 30% a
 :::
 
 ## Concluding: The power of transfer learning
-In many domains large networks pre-trained on vast amounts of data are available, such as in computer vision and natural language processing. Using transfer learning you can benefit from the knowledge stored in a pre-trained network that was captured from another machine learning task. In many fields transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
+In many domains, large networks are available that have been trained on vast amounts of data, such as in computer vision and natural language processing. Using transfer learning, you can benefit from the knowledge that was captured from another machine learning task. In many fields, transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
 
 ::: keypoints
-- Large pre-trained capture generic knowledge about a domain
-- Use the `keras.applications` module to easily use pre-trained models on your own datasets
+- Large pre-trained models capture generic knowledge about a domain
+- Use the `keras.applications` module to easily use pre-trained models for your own datasets
 :::
