@@ -17,7 +17,7 @@ Instead of training a model from scratch, with transfer learning you make use of
 
 An example: Let's say that you want to train a model to classify images of different dog breeds. You could make use of a pre-trained network that learned how to classify images of dogs and cats. The pre-trained network will not know anything about different dog breeds, but it will have captured some general knowledge of, on a high-level, what dogs look like, and on a low-level all the different features (eyes, ears, paws, fur) that make up an image of a dog. Further training this model on your dog breed dataset is a much easier task than training from scratch, because the model can use the general knowledge captured in the pre-trained network.
 
-In this episode we will learn how use Keras to adapt a state-of-the-art pre-trained model to the dollarstreet-10 dataset.
+In this episode we will learn how use Keras to adapt a state-of-the-art pre-trained model to the [Dollar Street Dataset](https://zenodo.org/records/10970014).
 
 
 ## 1. Formulate / Outline the problem and 2. Identify inputs and outputs
@@ -72,7 +72,7 @@ to work well on image classification tasks.
 Let's configure the DenseNet121:
 ```python
 base_model = keras.applications.DenseNet121(include_top=False,
-                                            pooling='max'
+                                            pooling='max',
                                             weights='imagenet',
                                             input_tensor=upscale,
                                             input_shape=(160,160,3),
@@ -106,10 +106,7 @@ Let's define our 'head' network:
 out = base_model.output
 out = keras.layers.Flatten()(out)
 out = keras.layers.BatchNormalization()(out)
-out = keras.layers.Dense(128, activation='relu')(out)
-out = keras.layers.Dropout(0.5)(out)
-out = keras.layers.BatchNormalization()(out)
-out = keras.layers.Dense(64, activation='relu')(out)
+out = keras.layers.Dense(50, activation='relu')(out)
 out = keras.layers.Dropout(0.5)(out)
 out = keras.layers.Dense(10)(out)
 ```
@@ -137,12 +134,12 @@ Which layer is added because we provided `pooling='max'` as argument for `DenseN
 :::: solution
 ## Solutions
 ### 1. Trainable parameters
-Total number of parameters: 7182218, out of which only 142410 are trainable.
+Total number of parameters: 7093360, out of which only 53808 are trainable.
 
-The 142410 trainable parameters are the weights of the head network. All other parameters are 'frozen' because we set `base_model.trainable=False`. Because only a small proportion of the parameters have to be updated at each training step, this will greatly speed up training time.
+The 53808 trainable parameters are the weights of the head network. All other parameters are 'frozen' because we set `base_model.trainable=False`. Because only a small proportion of the parameters have to be updated at each training step, this will greatly speed up training time.
 
 ### 2. Head and base
-The head network starts at the `flatten` layer, 8 layers before the final layer.
+The head network starts at the `flatten` layer, 5 layers before the final layer.
 
 ### 3. Max pooling
 The `max_pool` layer right before the `flatten` layer is added because we provided `pooling='max'`.
@@ -170,6 +167,9 @@ Train the model on the training dataset:
 
 ### 3. Inspect the results
 Plot the training history and evaluate the trained model. What do you think of the results?
+
+### 4. (Optional) Try out other pre-trained neural networks
+Train and evaluate another pre-trained model from https://keras.io/api/applications/. How does it compare to DenseNet121?
 
 
 :::: solution
@@ -216,12 +216,8 @@ def plot_history(history, metrics):
 
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
-![](fig/05_training_history_transfer_learning.png){alt='Training history for training the pre-trained-model. The training accuracy slowly raises from 0.1 to 0.8 in 20 epochs. The validation accuracy starts higher at 0.25, but reaches a plateau around 0.6'}
-The final validation accuracy reaches 63%, this is a huge improvement over 30% accuracy we reached with the simple convolutional neural network that we build from scratch in the previous episode.
-
-### 4. (Optional) Try out other pre-trained neural networks
-Train and evaluate another pre-trained model from https://keras.io/api/applications/. How does it compare to DenseNet121?
-
+![](fig/05_training_history_transfer_learning.png){alt='Training history for training the pre-trained-model. The training accuracy slowly raises from 0.2 to 0.9 in 20 epochs. The validation accuracy starts higher at 0.25, but reaches a plateau around 0.64'}
+The final validation accuracy reaches 64%, this is a huge improvement over 30% accuracy we reached with the simple convolutional neural network that we build from scratch in the previous episode.
 
 ::::
 :::
