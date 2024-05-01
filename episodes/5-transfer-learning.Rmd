@@ -17,7 +17,7 @@ Instead of training a model from scratch, with transfer learning you make use of
 
 An example: Let's say that you want to train a model to classify images of different dog breeds. You could make use of a pre-trained network that learned how to classify images of dogs and cats. The pre-trained network will not know anything about different dog breeds, but it will have captured some general knowledge of, on a high-level, what dogs look like, and on a low-level all the different features (eyes, ears, paws, fur) that make up an image of a dog. Further training this model on your dog breed dataset is a much easier task than training from scratch, because the model can use the general knowledge captured in the pre-trained network.
 
-In this episode we will learn how use Keras to apply a state-of-the-art pre-trained model to the dollarstreet-10 dataset.
+In this episode we will learn how use Keras to adapt a state-of-the-art pre-trained model to the dollarstreet-10 dataset.
 
 
 ## 1. Formulate / Outline the problem and 2. Identify inputs and outputs
