@@ -9,7 +9,7 @@ exercises: 30
 :::
 
 ::: objectives
-- Apply a state-of-the-art pre-trained network on your own dataset
+- Adapt a state-of-the-art pre-trained network to your own dataset
 :::
 
 ## What is transfer learning?
