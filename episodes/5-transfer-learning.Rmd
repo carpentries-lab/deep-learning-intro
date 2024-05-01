@@ -227,7 +227,7 @@ Train and evaluate another pre-trained model from https://keras.io/api/applicati
 :::
 
 ## Concluding: The power of transfer learning
-In many domains large networks pre-trained on vast amounts of data are available, such as in computer vision and natural language processing. Using transfer learning you can benefit from the knowledge stored in a pre-trained network that was captured from another machine learning task. In many fields transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
+In many domains, large networks are available that have been trained on vast amounts of data, such as in computer vision and natural language processing. Using transfer learning, you can benefit from the knowledge that was captured from another machine learning task. In many fields, transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
 
 ::: keypoints
 - Large pre-trained capture generic knowledge about a domain
