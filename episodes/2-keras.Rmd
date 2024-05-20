@@ -1,31 +1,31 @@
 ---
 title: "Classification by a neural network using Keras"
-teaching: 45
+teaching: 60
 exercises: 50
 ---
 
 ::: questions
-- "What is a neural network?"
-- "How do I compose a Neural Network using Keras?"
-- "How do I train this network on a dataset?"
-- "How do I get insight into learning process?"
-- "How do I measure the performance of the network?"
+- What is a neural network?
+- How do I compose a neural network using Keras?
+- How do I train this network on a dataset?
+- How do I get insight into learning process?
+- How do I measure the performance of the network?
 :::
 
 ::: objectives
-- "Use the deep learning workflow to structure the notebook"
-- "Explore the dataset using pandas and seaborn"
-- "Use one-hot encoding to prepare data for classification in Keras"
-- "Describe a fully connected layer"
-- "Implement a fully connected layer with Keras"
-- "Use Keras to train a small fully connected network on prepared data"
-- "Interpret the loss curve of the training process"
-- "Use a confusion matrix to measure the trained networks' performance on a test set"
+- Use the deep learning workflow to structure the notebook
+- Explore the dataset using pandas and seaborn
+- Use one-hot encoding to prepare data for classification in Keras
+- Describe a fully connected layer
+- Implement a fully connected layer with Keras
+- Use Keras to train a small fully connected network on prepared data
+- Interpret the loss curve of the training process
+- Use a confusion matrix to measure the trained networks' performance on a test set
 :::
 
 
 ## Introduction
-In this episode we will learn how to create and train a Neural Network using Keras to solve a simple classification task.
+In this episode we will learn how to create and train a neural network using Keras to solve a simple classification task.
 
 The goal of this episode is to quickly get your hands dirty in actually defining and training a neural network, without going into depth of how neural networks work on a technical or mathematical level.
 We want you to go through the most commonly used deep learning workflow that was covered
@@ -59,7 +59,7 @@ For this lesson having a GPU (graphics card) available is not needed.
 We specifically use very small toy problems so that you do not need one.
 However, Keras will use your GPU automatically when it is available.
 Using a GPU becomes necessary when tackling larger datasets or complex problems which
-require a more complex Neural Network.
+require a more complex neural network.
 :::
 
 ## 1. Formulate/outline the problem: penguin classification
@@ -277,6 +277,11 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
 ## 4. Build an architecture from scratch or choose a pretrained model
 
 ### Keras for neural networks
@@ -322,7 +327,7 @@ and outputs a layer needs and therefore how many edges need to be created.
 This means we need to inform Keras how big our input is going to be. We do this by instantiating a `keras.Input` class and tell it how big our input is, thus the number of columns it contains.
 
 ```python
-inputs = keras.Input(shape=X_train.shape[1])
+inputs = keras.Input(shape=(X_train.shape[1],))
 ```
 
 We store a reference to this input class in a variable so we can pass it to the creation of
@@ -618,6 +623,12 @@ predicted_species
 68    Adelie
 Length: 69, dtype: object
 ```
+
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
 
 ## 8. Measuring performance
 Now that we have a trained neural network it is important to assess how well it performs.

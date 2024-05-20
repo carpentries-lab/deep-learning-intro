@@ -1,30 +1,30 @@
 ---
 title: 'Introduction'
-teaching: 40
-exercises: 15
+teaching: 50
+exercises: 30
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-- "What is Deep Learning?"
-- "When does it make sense to use and not use Deep Learning?"
-- "When is it successful?"
-- "What are the tools involved?"
-- "What is the workflow for Deep Learning?"
-- "Why did we choose to use Keras in this lesson?"
-- "How do neural networks learn?"
+- What is deep learning?
+- When does it make sense to use and not use deep learning?
+- When is it successful?
+- What are the tools involved?
+- What is the workflow for deep learning?
+- Why did we choose to use Keras in this lesson?
+- How do neural networks learn?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::: objectives
 
-- "Recall the sort of problems for which Deep Learning is a useful tool"
-- "List some of the available tools for Deep Learning"
-- "Recall the steps of a Deep Learning workflow"
-- "Identify the inputs and outputs of a deep neural network."
-- "Explain the operations performed in a single neuron"
-- "Test that you have correctly installed the Keras, Seaborn and Sklearn libraries"
-- "Describe what a loss function is"
+- Recall the sort of problems for which deep learning is a useful tool
+- List some of the available tools for deep learning
+- Recall the steps of a deep learning workflow
+- Identify the inputs and outputs of a deep neural network.
+- Explain the operations performed in a single neuron
+- Test that you have correctly installed the Keras, Seaborn and Sklearn libraries
+- Describe what a loss function is
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -34,8 +34,8 @@ exercises: 15
 
 ### Deep Learning, Machine Learning and Artificial Intelligence
 
-Deep Learning (DL) is just one of many techniques collectively known as machine learning. Machine learning (ML) refers to techniques where a computer can "learn" patterns in data, usually by being shown numerous examples to train it. People often talk about machine learning being a form of artificial intelligence (AI). Definitions of artificial intelligence vary, but usually involve having computers mimic the behaviour of intelligent biological systems. Since the 1950s many works of science fiction have dealt with the idea of an artificial intelligence which matches (or exceeds) human intelligence in all areas. Although there have been great advances in AI and ML research recently we can only come close to human like intelligence in a few specialist areas and are still a long way from a general purpose AI.
-The image below shows some differences between artificial intelligence, Machine Learning and Deep Learning.
+Deep learning (DL) is just one of many techniques collectively known as machine learning. Machine learning (ML) refers to techniques where a computer can "learn" patterns in data, usually by being shown numerous examples to train it. People often talk about machine learning being a form of artificial intelligence (AI). Definitions of artificial intelligence vary, but usually involve having computers mimic the behaviour of intelligent biological systems. Since the 1950s many works of science fiction have dealt with the idea of an artificial intelligence which matches (or exceeds) human intelligence in all areas. Although there have been great advances in AI and ML research recently we can only come close to human like intelligence in a few specialist areas and are still a long way from a general purpose AI.
+The image below shows some differences between artificial intelligence, machine learning and deep learning.
 
 
 ![
@@ -138,13 +138,14 @@ b. This solves the XOR logical problem, the output is 1 if only one of the two i
 ## Activation functions
 Look at the following activation functions:
 
-![A. Sigmoid activation function](fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
+**A. Sigmoid activation function**
+![](fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
 
+**B. ReLU activation function**
+![](fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
 
-![B. ReLU activation function](fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
-
-
-![C. Identity (or linear) activation function](fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
+**C. Identity (or linear) activation function (output=input)**
+![](fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
 
 Combine the following statements to the correct activation function:
 
@@ -173,12 +174,12 @@ https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikime
 
 
 ##### What makes deep learning deep learning?
-Neural networks aren't a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010 improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or Deep Learning.
+Neural networks aren't a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010 improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or deep learning.
 
-Deep Learning requires extensive training using example data which shows the network what output it should produce for a given input. One common application of Deep Learning is classifying images. Here the network will be trained by being "shown" a series of images and told what they contain. Once the network is trained it should be able to take another image and correctly classify its contents. But we are not restricted to just using images, any kind of data can be learned by a Deep Learning neural network. This makes them able to appear to learn a set of complex rules only by being shown what the inputs and outputs of those rules are instead of being taught the actual rules. Using these approaches Deep Learning networks have been taught to play video games and even drive cars. The data on which networks are trained usually has to be quite extensive, typically including thousands of examples. For this reason they are not suited to all applications and should be considered just one of many machine learning techniques which are available.
+Deep Learning requires extensive training using example data which shows the network what output it should produce for a given input. One common application of deep learning is classifying images. Here the network will be trained by being "shown" a series of images and told what they contain. Once the network is trained it should be able to take another image and correctly classify its contents. But we are not restricted to just using images, any kind of data can be learned by a deep learning neural network. This makes them able to appear to learn a set of complex rules only by being shown what the inputs and outputs of those rules are instead of being taught the actual rules. Using these approaches deep learning networks have been taught to play video games and even drive cars. The data on which networks are trained usually has to be quite extensive, typically including thousands of examples. For this reason they are not suited to all applications and should be considered just one of many machine learning techniques which are available.
 
 While traditional "shallow" networks might have had between three and five layers, deep networks often have tens or even hundreds of layers. This leads to them having millions of individual weights.
-The image below shows a diagram of all the layers (there are too many neurons to draw them all) on a Deep Learning network designed to detect pedestrians in images.
+The image below shows a diagram of all the layers (there are too many neurons to draw them all) on a deep learning network designed to detect pedestrians in images.
 The input (left most) layer of the network is an image and the final (right most) layer of the network outputs a zero or one to determine if the input data belongs to the class of data we are interested in.
 This image is from the paper ["An Efficient Pedestrian Detection Method Based on YOLOv2" by Zhongmin Liu, Zhicai Chen, Zhanming Li, and Wenjin Hu published in Mathematical Problems in Engineering, Volume 2018](https://doi.org/10.1155/2018/3518959)
 
@@ -217,8 +218,7 @@ A more complicated and less used loss function for regression is the [Huber loss
 Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
 as a function of `y_true - y_pred`.
 
-![](fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
-as a function of y_true - y_pred' width='400px'}
+![](fig/01_huber_loss.png){alt='Line plot comparing squared error loss function with the Huber loss function where delta = 1, showing the cost of prediction error of both functions equal where y_true - y_pred is between -1 and 1, then rising linearly with the Huber loss function as y_true diverges further from y_pred, as opposed to expontentially for the squared error function.' width='400px'}
 
 Which loss function is more sensitive to outliers?
 
@@ -246,7 +246,13 @@ We will dive further into how optimization works in episode 3.
 For now, it is enough to understand that during training the weights in the network are adjusted so that the loss decreases through the process of optimization.
 This ultimately results in a low loss, and this, generally, implies predictions that are closer to the expected values.
 
-### What sort of problems can Deep Learning solve?
+
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
+### What sort of problems can deep learning solve?
 
 * Pattern/object recognition
 * Segmenting images (or any data)
@@ -256,7 +262,7 @@ This ultimately results in a low loss, and this, generally, implies predictions 
 
 #### Examples of Deep Learning in Research
 
-Here are just a few examples of how Deep Learning has been applied to some research problems. Note: some of these articles might be behind paywalls.
+Here are just a few examples of how deep learning has been applied to some research problems. Note: some of these articles might be behind paywalls.
 
 * [Detecting COVID-19 in chest X-ray images](https://arxiv.org/abs/2003.09871)
 * [Forecasting building energy load](https://ieeexplore.ieee.org/document/7793413)
@@ -265,26 +271,26 @@ Here are just a few examples of how Deep Learning has been applied to some resea
 * [Help to restore ancient murals](https://heritagesciencejournal.springeropen.com/articles/10.1186/s40494-020-0355-x)
 
 
-### What sort of problems can Deep Learning not solve?
+### What sort of problems can deep learning not solve?
 
 * Any case where only a small amount of training data is available.
 * Tasks requiring an explanation of how the answer was arrived at.
 * Classifying things which are nothing like their training data.
 
-### What sort of problems can Deep Learning solve, but should not be used for?
+### What sort of problems can deep learning solve, but should not be used for?
 
-Deep Learning needs a lot of computational power, for this reason it often relies on specialised hardware like graphical processing units (GPUs). Many computational problems can be solved using less intensive techniques, but could still technically be solved with Deep Learning.
+Deep learning needs a lot of computational power, for this reason it often relies on specialised hardware like graphical processing units (GPUs). Many computational problems can be solved using less intensive techniques, but could still technically be solved with deep learning.
 
-The following could technically be achieved using Deep Learning, but it would probably be a very wasteful way to do it:
+The following could technically be achieved using deep learning, but it would probably be a very wasteful way to do it:
 
-* Logic operations, such as computing totals, averages, ranges etc. (see [this example](https://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow) applying Deep Learning to solve the "FizzBuzz" problem often used for programming interviews)
+* Logic operations, such as computing totals, averages, ranges etc. (see [this example](https://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow) applying deep learning to solve the "FizzBuzz" problem often used for programming interviews)
 * Modelling well defined systems, where the equations governing them are known and understood.
 * Basic computer vision tasks such as edge detection, decreasing colour depth or blurring an image.
 
 ::: challenge
 ## Deep Learning Problems Exercise
 
-Which of the following would you apply Deep Learning to?
+Which of the following would you apply deep learning to?
 
 1. Recognising whether or not a picture contains a bird.
 2. Calculating the median and interquartile range of a dataset.
@@ -294,16 +300,16 @@ Which of the following would you apply Deep Learning to?
 
 :::: solution
 ## Solution
-1.  and 5 are the sort of tasks often solved with Deep Learning.
-2. is technically possible but solving this with Deep Learning would be extremely wasteful, you could do the same with much less computing power using traditional techniques.
+1.  and 5 are the sort of tasks often solved with deep learning.
+2. is technically possible but solving this with deep learning would be extremely wasteful, you could do the same with much less computing power using traditional techniques.
 3. will probably fail because there is not enough training data.
-4. will fail because the Deep Learning system only knows what cats and dogs look like, it might accidentally classify the people as cats or dogs.
+4. will fail because the deep learning system only knows what cats and dogs look like, it might accidentally classify the people as cats or dogs.
 ::::
 :::
 
-## How much data do you need for Deep Learning?
-The rise of Deep Learning is partially due to the increased availability of very large datasets.
-But how much data do you actually need to train a Deep Learning model?
+## How much data do you need for deep learning?
+The rise of deep learning is partially due to the increased availability of very large datasets.
+But how much data do you actually need to train a deep learning model?
 Unfortunately, this question is not easy to answer. It depends, among other things, on the
 complexity of the task (which you often do not know beforehand), the quality of the available dataset and the complexity of the network. For complex tasks with large neural networks, we often see that adding more data continues to improve performance. However, this is also not a generic truth: if the data you add is too similar to the data you already have, it will not give much new information to the neural network.
 
@@ -314,13 +320,13 @@ complexity of the task (which you often do not know beforehand), the quality of 
 In case you have too little data available to train a complex network from scratch, it is sometimes possible to use a pretrained network that was trained on a similar problem. Another trick is data augmentation, where you expand the dataset with artificial data points that could be real. An example of this is mirroring images when trying to classify cats and dogs. An horizontally mirrored animal retains the label, but exposes a different view.
 :::
 
-## Deep Learning workflow
+## Deep learning workflow
 
-To apply Deep Learning to a problem there are several steps we need to go through:
+To apply deep learning to a problem there are several steps we need to go through:
 
 ### 1. Formulate/ Outline the problem
 
-Firstly we must decide what it is we want our Deep Learning system to do. Is it going to classify some data into one of a few categories? For example if we have an image of some hand written characters, the neural network could classify which character it is being shown. Or is it going to perform a prediction? For example trying to predict what the price of something will be tomorrow given some historical data on pricing and current trends.
+Firstly we must decide what it is we want our deep learning system to do. Is it going to classify some data into one of a few categories? For example if we have an image of some hand written characters, the neural network could classify which character it is being shown. Or is it going to perform a prediction? For example trying to predict what the price of something will be tomorrow given some historical data on pricing and current trends.
 
 [//]: # "What about pattern association tasks like language translation?"
 
@@ -384,11 +390,11 @@ Now that we have a trained network that performs at a level we are happy with we
 
 
 ::: challenge
-## Deep Learning workflow exercise
+## Deep learning workflow exercise
 
-Think about a problem you would like to use Deep Learning to solve.
+Think about a problem you would like to use deep learning to solve.
 
-1. What do you want a Deep Learning system to be able to tell you?
+1. What do you want a deep learning system to be able to tell you?
 2. What data inputs and outputs will you have?
 3. Do you think you will need to train the network or will a pre-trained network be suitable?
 4. What data do you have to train with? What preparation will your data need? Consider both the data you are going to predict/classify from and the data you will use to train the network.
@@ -401,15 +407,15 @@ Discuss your answers with the group or the person next to you.
 
 ## Deep Learning Libraries
 
-There are many software libraries available for Deep Learning including:
+There are many software libraries available for deep learning including:
 
 ### TensorFlow
 
-[TensorFlow](https://www.tensorflow.org/) was developed by Google and is one of the older Deep Learning libraries, ported across many languages since it was first released to the public in 2015. It is very versatile and capable of much more than Deep Learning but as a result it often takes a lot more lines of code to write Deep Learning operations in TensorFlow than in other libraries. It offers (almost) seamless integration with GPU accelerators and Google's own TPU (Tensor Processing Unit) chips that are built specially for machine learning.
+[TensorFlow](https://www.tensorflow.org/) was developed by Google and is one of the older deep learning libraries, ported across many languages since it was first released to the public in 2015. It is very versatile and capable of much more than deep learning but as a result it often takes a lot more lines of code to write deep learning operations in TensorFlow than in other libraries. It offers (almost) seamless integration with GPU accelerators and Google's own TPU (Tensor Processing Unit) chips that are built specially for machine learning.
 
 ### PyTorch
 
-[PyTorch](https://pytorch.org/) was developed by Facebook in 2016 and is a popular choice for Deep Learning applications. It was developed for Python from the start and feels a lot more "pythonic" than TensorFlow. Like TensorFlow it was designed to do more than just Deep Learning and offers some very low level interfaces. [PyTorch Lightning](https://www.pytorchlightning.ai/) offers a higher level interface to PyTorch to set up experiments. Like TensorFlow it is also very easy to integrate PyTorch with a GPU. In many benchmarks it outperforms the other libraries.
+[PyTorch](https://pytorch.org/) was developed by Facebook in 2016 and is a popular choice for deep learning applications. It was developed for Python from the start and feels a lot more "pythonic" than TensorFlow. Like TensorFlow it was designed to do more than just deep learning and offers some very low level interfaces. [PyTorch Lightning](https://www.pytorchlightning.ai/) offers a higher level interface to PyTorch to set up experiments. Like TensorFlow it is also very easy to integrate PyTorch with a GPU. In many benchmarks it outperforms the other libraries.
 
 ### Keras
 
@@ -424,16 +430,16 @@ Keras also benefits from a very good set of [online documentation](https://keras
 Follow the instructions in the [setup]({{ page.root }}//setup) document to install Keras, Seaborn and Sklearn.
 
 ## Testing Keras Installation
-Lets check you have a suitable version of Keras installed.
+Lets check you have a suitable version of tensorflow installed.
 Open up a new Jupyter notebook or interactive python console and run the following commands:
 ```python
-from tensorflow import keras
-print(keras.__version__)
+import tensorflow
+print(tensorflow.__version__)
 ```
 ```output
-2.12.0
+2.15.0
 ```
-You should get a version number reported. At the time of writing 2.12.0 is the latest version.
+You should get a version number reported. At the time of writing 2.15.0 is the latest version.
 
 ## Testing Seaborn Installation
 Lets check you have a suitable version of seaborn installed.
@@ -462,13 +468,13 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 
 :::::::::::::::::::::::::::::::::::::: keypoints
 
-- "Machine learning is the process where computers learn to recognise patterns of data."
-- "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
-- "Artificial neural networks can be trained on example data."
-- "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
-- "Neural networks learn by minimizing a loss function."
-- "Deep Learning is well suited to classification and prediction problems such as image recognition."
-- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data."
-- "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
+- Machine learning is the process where computers learn to recognise patterns of data.
+- Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain.
+- Artificial neural networks can be trained on example data.
+- Deep learning is a machine learning technique based on using many artificial neurons arranged in layers.
+- Neural networks learn by minimizing a loss function.
+- Deep learning is well suited to classification and prediction problems such as image recognition.
+- To use deep learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data.
+- Keras is a deep learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

@@ -53,3 +53,6 @@ po/*~
 renv/sandbox # OPTIONAL
 
 .idea
+**/.DS_Store
+.ipynb_checkpoints
+

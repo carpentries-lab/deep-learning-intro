@@ -1,19 +1,19 @@
 ---
 title: "Outlook"
-teaching: 15
-exercises: 15
+teaching: 20
+exercises: 20
 ---
 
 ::: questions
-- "How does what I learned in this course translate to real-world problems?"
-- "How do I organise a deep learning project?"
-- "What are next steps to take after this course?"
+- How does what I learned in this course translate to real-world problems?
+- How do I organise a deep learning project?
+- What are next steps to take after this course?
 :::
 
 ::: objectives
-- "Understand that what we learned in this course can be applied to real-world problems"
-- "Use best practices for organising a deep learning project"
-- "Identify next steps to take after this course"
+- Understand that what we learned in this course can be applied to real-world problems
+- Use best practices for organising a deep learning project
+- Identify next steps to take after this course
 :::
 
 You have come to the end of this course.
@@ -155,7 +155,7 @@ Tensorflow/Keras will automatically detect and use a GPU if it is available on y
 A simple and quick way to get access to a GPU is to use [Google Colab](https://colab.google/)
 
 ::: keypoints
-- "Although the data preparation and model architectures are somewhat more complex,
-what we have learned in this course can directly be applied to real-world problems"
-- "Use what you have learned in this course as a basis for your own learning trajectory in the world of deep learning"
+- Although the data preparation and model architectures are somewhat more complex,
+what we have learned in this course can directly be applied to real-world problems
+- Use what you have learned in this course as a basis for your own learning trajectory in the world of deep learning
 :::
