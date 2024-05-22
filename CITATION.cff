@@ -49,6 +49,10 @@ authors:
     family-names: Chandramouli
     orcid: 'https://orcid.org/0000-0002-7896-2969'
     email: p.chandramouli@esciencecenter.nl
+  - given-names: Carsten
+    family-names: Schnober
+    orcid: https://orcid.org/0000-0001-9139-1577
+    email: c.schnober@esciencecenter.nl
   - given-names: Toby
     family-names: Hodges
 repository-code: >-

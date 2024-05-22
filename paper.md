@@ -40,6 +40,9 @@ authors:
   - name: Pranav Chandramouli
     orcid: 0000-0002-7896-2969
     affiliation: 1
+  - name: Carsten Schnober
+    orcid: 0000-0001-9139-1577
+    affiliation: 1
   - name: Toby Hodges
     orcid: 0000-0003-1766-456X
     affiliation: 8
