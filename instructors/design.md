@@ -37,7 +37,7 @@ The main audience of this carpentry lesson is PhD students that have little to n
 >
 
 
-The following offers more details to each learning objective based on Bloom's Taxonomy. For hints on how to use this approach, see [lesson 15 of the instructor training](https://carpentries.github.io/instructor-training/15-lesson-study/index.html)
+The following offers more details to each learning objective based on Bloom's Taxonomy. For hints on how to use this approach, see [lesson 18 of the instructor training](https://carpentries.github.io/instructor-training/18-preparation.html)
 
 ### Prepare input data for use for deep learning
 

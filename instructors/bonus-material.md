@@ -12,9 +12,9 @@ To apply Deep Learning to a problem there are several steps we need to go throug
 Feel free to use this figure as [png](../episodes/fig/graphviz/pipeline.png). The figure is contained in `fig/graphviz/` of this repository. Use the `Makefile` there in order to reproduce it in different output formats.
 
 ## Optional part - prediction uncertainty using Monte-Carlo Dropout
-Depending on the data and the question asked, model predictions can be highly accuracte. Or, as in the present case, show a high degree of error.
-In both cases, however, it often is highly relevant to not get model predictions but also an estimate of how reliable those predictions are.
-The last years, this has been a very dynamic, rapidly growing area and there are many different ways to do uncertainty evaluation in deep learning.
+Depending on the data and the question asked model predictions can be highly accurate or, as in the present case, show a high degree of error.
+In both cases it often is highly relevant to get both model predictions an an estimate of how reliable those predictions are.
+Over the last years this has been a very dynamic, rapidly growing area and there are many different ways to do uncertainty evaluation in deep learning.
 Here we want to present a very versatile and easy-to-implement method: **Monte-Carlo Dropout** (original reference: https://arxiv.org/abs/1506.02142).
 
 The name of the technique refers to a very common regularization technique: **Dropout**. So let's first introduce this:
@@ -101,17 +101,17 @@ plt.ylabel("RMSE")
 ![Output of plotting sample](../episodes/fig/03_training_history_4_rmse_dropout.png){alt='Output of plotting sample'}
 
 
-In this setting overfitting seems to be pervented succesfully. The overall results though have not improved (at least not by much).
+In this setting overfitting seems to be prevented, however the overall results have not improved significantly.
 Above we have used dropout to randomly turn off network nodes during training.
 When doing predictions, dropout is automatically deactivated and all nodes stay active.
-Each time you run the same input data through the same trained model, the prediciton will be exactly the same.
+Each time you run the same input data through the same trained model the prediction will be exactly the same.
 
 Monte-Carlo Dropout relies on a simply change: dropout will remain active during prediction!
-This means that each time a prediction step is done, the model will look differently because a fraction of all nodes will be turned off randomly.
+This means that each time a prediction step is done, the model will look different because a fraction of all nodes will be turned off randomly.
 One can interpret all of those random variations as individual models. 
 Monte-Carlo Dropout now makes use of this fact and collects many different predictions instead of only one.
 At the end this collection of predictions can be combined to a mean (or a median) prediction. 
-And the variation of all predictions can tell something about the model's uncertainty.
+The variation of all the predictions can tell us something about the model's uncertainty.
 
 A simple (and a bit hacky) way to enforce dropout layers to remain active is to add `training=True` to the model:
 ```python
@@ -147,7 +147,7 @@ history = model.fit(X_train, y_train,
 ```
 
 But when now doing predictions, things will look different.
-Let us do two predictions an compare the results.
+Let us do two predictions and compare the results.
 
 ```python
 y_test_predicted1 = model.predict(X_test)
