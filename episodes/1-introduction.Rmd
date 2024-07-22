@@ -7,24 +7,26 @@ exercises: 30
 :::::::::::::::::::::::::::::::::::::: questions
 
 - What is deep learning?
+- What is a neural network?
+- Which operations are performed by a single neuron?
+- How do neural networks learn?
 - When does it make sense to use and not use deep learning?
-- When is it successful?
-- What are the tools involved?
+- What are tools involved in deep learning?
 - What is the workflow for deep learning?
 - Why did we choose to use Keras in this lesson?
-- How do neural networks learn?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::: objectives
 
+- Define deep learning
+- Describe how a neural network is build up
+- Explain the operations performed by a single neuron
+- Describe what a loss function is
 - Recall the sort of problems for which deep learning is a useful tool
 - List some of the available tools for deep learning
 - Recall the steps of a deep learning workflow
-- Identify the inputs and outputs of a deep neural network.
-- Explain the operations performed in a single neuron
-- Test that you have correctly installed the Keras, Seaborn and Sklearn libraries
-- Describe what a loss function is
+- Test that you have correctly installed the Keras, Seaborn and scikit-learn libraries
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -434,7 +436,7 @@ Keras also benefits from a very good set of [online documentation](https://keras
 
 ### Installing Keras and other dependencies
 
-Follow the instructions in the [setup]({{ page.root }}//setup) document to install Keras, Seaborn and Sklearn.
+Follow the instructions in the [setup]({{ page.root }}//setup) document to install Keras, Seaborn and scikit-learn.
 
 ## Testing Keras Installation
 Lets check you have a suitable version of tensorflow installed.
@@ -460,8 +462,8 @@ print(seaborn.__version__)
 ```
 You should get a version number reported. At the time of writing 0.12.2 is the latest version.
 
-## Testing Sklearn Installation
-Lets check you have a suitable version of sklearn installed.
+## Testing scikit-learn Installation
+Lets check you have a suitable version of scikit-learn installed.
 In your Jupyter notebook or interactive python console run the following commands:
 ```python
 import sklearn

@@ -5,7 +5,6 @@ exercises: 50
 ---
 
 ::: questions
-- What is a neural network?
 - How do I compose a neural network using Keras?
 - How do I train this network on a dataset?
 - How do I get insight into learning process?
@@ -15,6 +14,7 @@ exercises: 50
 ::: objectives
 - Use the deep learning workflow to structure the notebook
 - Explore the dataset using pandas and seaborn
+- Identify the inputs and outputs of a deep neural network.
 - Use one-hot encoding to prepare data for classification in Keras
 - Describe a fully connected layer
 - Implement a fully connected layer with Keras
