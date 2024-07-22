@@ -55,6 +55,14 @@ years 2000 to 2010. For all locations the data contains the variables ‘mean te
 ### Import Dataset
 We will now import and explore the weather data-set:
 
+::: callout
+## Load the data
+If you have not downloaded the data yet, you can also load it directly from Zenodo:
+```python
+data = pd.read_csv("https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1")
+```
+:::
+
 ```python
 import pandas as pd
 
@@ -70,15 +78,6 @@ data.head()
 |2| 	20000103 	|1 	|5 	|0.81 	|1.0314|... |
 |3| 	20000104 	|1 	|7 	|0.79 	|1.0262|... |
 |4| 	20000105 	|1 	|5 	|0.90 	|1.0246|... |
-
-
-::: callout
-## Load the data
-If you have not downloaded the data yet, you can also load it directly from Zenodo:
-```python
-data = pd.read_csv("https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1")
-```
-:::
 
 
 ### Brief exploration of the data
