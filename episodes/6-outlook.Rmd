@@ -33,6 +33,7 @@ It is part of the codebase for [this paper](https://doi.org/10.1186/s13321-021-0
 In short, the deep learning problem is that of finding out how similar two molecules are in terms of their molecular properties,
 based on their mass spectrum.
 You can compare this to comparing two pictures of animals, and predicting how similar they are.
+
 A siamese neural network is used to solve the problem.
 In a siamese neural network you have two input vectors, let's say two images of animals or two mass spectra.
 They pass through a base network. Instead of outputting a class or number with one or a few output neurons, the output layer
@@ -94,7 +95,7 @@ In recent years the quality of LLMs language understanding and generation has in
 It is becoming more and more feasible to unleash this power in scientific research. For example, the authors of [Zheng et al. (2023)](https://doi.org/10.1021/jacs.3c05819) guided ChatGPT in the automation of extracting chemical information from a large amount of research articles. The authors did not implement a deep learning model themselves, but instead they designed the right input for ChatGPT (called a 'prompt') that would produce optimal outputs. This is called prompt engineering. A highly simplified example of such a prompt would be: "Given compounds X and Y and context Z, what are the chemical details of the reaction?"
 
 Developments in LLM research are moving fast, at the end of 2023 the newest ChatGPT version [could take images and sound as input](https://openai.com/blog/chatgpt-can-now-see-hear-and-speak). 
-In theory, this means that you can solve the Cifar-10 image classification problem from the previous episode by prompt engineering, with prompts similar to "Which out of these categories: [LIST OF CATEGORIES] is depicted in the image".
+In theory, this means that you can solve the Dollar Street image classification problem from the previous episode by prompt engineering, with prompts similar to "Which out of these categories: [LIST OF CATEGORIES] is depicted in the image".
 
 **Discuss the following statement with your neighbors:**
 
