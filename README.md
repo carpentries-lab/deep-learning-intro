@@ -84,6 +84,7 @@ Current maintainers of this lesson are
 * Djura Smits
 * Sven van der Burg
 * Pranav Chandramouli
+* Carsten Schnober
 
 ## Citation and authors
 
