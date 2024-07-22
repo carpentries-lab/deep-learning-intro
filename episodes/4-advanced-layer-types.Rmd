@@ -47,15 +47,15 @@ val_labels = np.load(DATA_FOLDER / 'test_labels.npy')
 ### A Note About Data Provenance
 In an earlier version, this part of the lesson used a different example dataset.
 During [peer review](https://github.com/carpentries-lab/reviews/issues/25#issuecomment-1953271802), the decision was made to replace that dataset due to the way it had been compiled using images "scraped" from the internet without permission from or credit to the original creators of those images. Unfortunately, uncredited use of images is a common problem among datasets used to benchmark models for image classification.
-The Dollar Street Dataset was chosen for use in the lesson as it contains only images [created by the Gapminder project](https://www.gapminder.org/dollar-street/about?) expressly for the purposes of use in the dataset.
-The original Dollar Street Dataset is very large -- more than 100 GB -- with the potential to grow even bigger, so we created a subset for use in this lesson.
+The Dollar Street dataset was chosen for use in the lesson as it contains only images [created by the Gapminder project](https://www.gapminder.org/dollar-street/about?) expressly for the purposes of use in the dataset.
+The original Dollar Street dataset is very large -- more than 100 GB -- with the potential to grow even bigger, so we created a subset for use in this lesson.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Dollar Street 10 dataset
 
-The dollar street 10 dataset consists of images of 10 different classes, this is the mapping of the categories:
+The Dollar Street 10 dataset consists of images of 10 different classes, this is the mapping of the categories:
 
 | Category        | label |
 |-----------------|-------|
@@ -80,7 +80,7 @@ After training, we can consider ourselves to be asking the model "which of these
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-![Sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10.png){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
+![Sample images from the Dollar Street 10 dataset. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'](fig/04_dollar_street_10.png){alt="A 5 by 5 grid of 25 sample images from the dollar street 10 data-set. Each image is labelled with a category, for example: 'street sign' or 'soap dispenser'."}
 
 ## 2. Identify inputs and outputs
 
@@ -101,9 +101,9 @@ and stands for the three color channels **R**ed, **G**reen, **B**lue.
 
 ::: challenge
 
-### Number of features dollar-street-10
+### Number of features in Dollar Street 10
 
-How many features does one image in the dollar-street-10 dataset have?
+How many features does one image in the Dollar Street 10 dataset have?
 
 - A. 64
 - B. 4096

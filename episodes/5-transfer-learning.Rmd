@@ -23,7 +23,7 @@ In this episode we will learn how use Keras to adapt a state-of-the-art pre-trai
 ## 1. Formulate / Outline the problem and 2. Identify inputs and outputs
 
 
-Just like in the previous episode, we use the dollar street 10 dataset. 
+Just like in the previous episode, we use the Dollar Street 10 dataset. 
 The goal is to predict one out of 10 classes for a given image.
 
 We load the data in the same way as the previous episode:
@@ -80,7 +80,7 @@ base_model = keras.applications.DenseNet121(include_top=False,
 ```
 By setting `include_top` to `False` we exclude the fully connected layer at the
 top of the network. This layer was used to predict the Imagenet classes,
-but will be of no use for our dollarstreet dataset.
+but will be of no use for our Dollar Street dataset.
 
 We add `pooling='max'` so that max pooling is applied to the output of the DenseNet121 network.
 
@@ -94,7 +94,7 @@ Instead of fine-tuning all the weights of the DenseNet121 network using our data
 we choose to freeze all these weights and only train a so-called 'head network' 
 that sits on top of the pre-trained network. You can see the DenseNet121 network
 as extracting a meaningful feature representation from our image. The head network
-will then be trained to decide on which of the 10 dollarstreet classes the image belongs.
+will then be trained to decide on which of the 10 Dollar Street dataset classes the image belongs.
 
 We will turn of the `trainable` property of the base model:
 ```python
