@@ -40,11 +40,9 @@ Deep learning (DL) is just one of many techniques collectively known as machine 
 The image below shows some differences between artificial intelligence, machine learning and deep learning.
 
 
-![
-Image credit: Tukijaaliwa, CC BY-SA 4.0, via Wikimedia Commons, 
-[original source]( https://en.wikipedia.org/wiki/File:AI-ML-DL.svg)
-](fig/01_AI_ML_DL_differences.png){
-alt='An infographic showing the relation of AI, ML, NN and DL. NN are methods in DL which is a subset of ML algorithms that falls within the umbrella of AI'
+![](fig/01_AI_ML_DL_differences.jpg){
+alt='An infographic showing the relation of artificial intelligence, machine learning, and deep learning. Deep learning is a specific subset of machine learning algorithms. Machine learning is one of the approaches to artificial intelligence.'
+width='60%'
 }
 
 
