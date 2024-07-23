@@ -20,6 +20,18 @@ Learners are expected to have the following knowledge:
 
 ::: instructor
 
+## We can help you out with teaching this lesson
+
+Do you want to teach this lesson?
+Find more help in the [README](https://github.com/carpentries-incubator/deep-learning-intro?tab=readme-ov-file#teaching-this-lesson)
+Feel free to reach out to us with any questions that you have.
+Just open a new issue.
+We also value any feedback on the lesson!
+
+:::
+
+::: instructor
+
 ## Breaks and Schedule
 
 Episode 2, 3, and 4 in this workshop are relatively long.
