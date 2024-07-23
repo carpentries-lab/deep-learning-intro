@@ -43,7 +43,7 @@ We would be very grateful if you can provide us with feedback on this lesson. Yo
 
 You can notify us that you plan to teach this lesson by creating an issue in this repository or posting a message in the carpentries Slack Machine Learning channel. Please note the questions below to get an indication of the sort of feedback we expect.
 
-After the workshop, lease create an issue (or comment on the issue you created before teaching) with general feedback on teaching the lesson. As a template, you can use the following questions:
+After the workshop, please create an issue (or comment on the issue you created before teaching) with general feedback on teaching the lesson. As a template, you can use the following questions:
 * How much time did you need for the material? (preferably per episode)
 * How much time did you need for the exercises?
 * Where there any technical issues that arose during setup?
