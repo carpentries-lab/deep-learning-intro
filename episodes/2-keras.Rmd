@@ -297,7 +297,7 @@ We do this as follows:
 from tensorflow import keras
 ```
 
-For this class it is useful if everyone gets the same results from their training.
+For this episode it is useful if everyone gets the same results from their training.
 Keras uses a random number generator at certain points during its execution.
 Therefore we will need to set two random seeds, one for numpy and one for tensorflow:
 ```python
@@ -308,8 +308,7 @@ keras.utils.set_random_seed(2)
 
 ### Build a neural network from scratch
 
-Now we will build a neural network from scratch, and although this sounds like
-a daunting task, with Keras it is actually surprisingly straightforward.
+Now we will build a neural network from scratch, which is surprisingly straightforward using Keras.
 
 With Keras you compose a neural network by creating layers and linking them
 together. For now we will only use one type of layer called a fully connected
@@ -426,7 +425,11 @@ Trainable params: 83
 Non-trainable params: 0
 _________________________________________________________________
 ```
-The model has 83 trainable parameters.
+The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of 
+the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also 
+connected to each of the 3 outputs in the `dense_1` output layer, resulting in a further 30 weights that can be trained. 
+By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
+hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
 If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
@@ -477,7 +480,7 @@ function that we will use during training.
 This loss function tells the training algorithm how wrong, or how 'far away' from the true
 value the predicted value is.
 
-For the one-hot encoding that we selected before a fitting loss function is the Categorical Crossentropy loss.
+For the one-hot encoding that we selected earlier a suitable loss function is the Categorical Crossentropy loss.
 In Keras this is implemented in the `keras.losses.CategoricalCrossentropy` class.
 This loss function works well in combination with the `softmax` activation function
 we chose earlier.
@@ -663,7 +666,7 @@ print(matrix)
  [ 6  0 19]]
 ```
 
-Unfortunately, this matrix is kinda hard to read. Its not clear which column and which row
+Unfortunately, this matrix is not immediately understandable. Its not clear which column and which row
 corresponds to which species.
 So let's convert it to a pandas dataframe with its index and columns set to the species
 as follows:
