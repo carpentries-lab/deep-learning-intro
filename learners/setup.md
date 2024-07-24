@@ -143,21 +143,22 @@ you probably [need to change the version of Anaconda you have installed](https:/
 
 ## Starting Jupyter Lab
 
-We will teach using Python in [Jupyter lab][jupyter], a
-programming environment that runs in a web browser. Jupyter requires a reasonably
-up-to-date browser, preferably a current version of Chrome, Safari, or Firefox
-(note that Internet Explorer version 9 and below are *not* supported). If you
-installed Python using Anaconda, Jupyter should already be on your system. If
+We will teach using Python in [Jupyter Lab][jupyter], a programming environment that runs in a web browser.
+Jupyter Lab is compatible with Firefox, Chrome, Safari and Chromium-based browsers.
+Note that Internet Explorer and Edge are *not* supported.
+See the [Jupyter Lab documentation](https://jupyterlab.readthedocs.io/en/latest/getting_started/accessibility.html#compatibility-with-browsers-and-assistive-technology) for an up-to-date list of supported browsers.
+
+If you installed Python using Anaconda, Jupyter should already be on your system. If
 you did not use Anaconda, use the Python package manager pip
 (see the [Jupyter website][jupyter-install] for details.)
 
-To start jupyter lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
+To start Jupyter Lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
 
 ```bash
 jupyter lab
 ```
 
-To start the Python interpreter without jupyter lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows)
+To start the Python interpreter without Jupyter Lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows)
 or git bash and type the command:
 
 ```bash
@@ -189,7 +190,7 @@ Most versions will work fine with this lesson, but:
 ## Fallback option: cloud environment
 If a local installation does not work for you, it is also possible to run this lesson in [Binder Hub](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds). This should give you an environment with all the required software and data to run this lesson, nothing which is saved will be stored, please copy any files you want to keep. Note that if you are the first person to launch this in the last few days it can take several minutes to startup. The second person who loads it should find it loads in under a minute. Instructors who intend to use this option should start it themselves shortly before the workshop begins.
 
-Alternatively you can use [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of jupyter lab.
+Alternatively you can use [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of Jupyter Lab.
 
 ## Downloading the required datasets
 
