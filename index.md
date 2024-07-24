@@ -20,16 +20,13 @@ Learners are expected to have the following knowledge:
 
 ::: instructor
 
-## Looking for Beta Testers!
-**We are currently looking for volunteers to test this lesson!**
-If you would like to teach this lesson in a pilot workshop,
-please let the lesson developers know by
-[opening a new issue on the lesson repository](https://github.com/carpentries-incubator/deep-learning-intro/issues/new)
-or posting to the [`#machine_learning` Slack channel](https://swcarpentry.slack.com/archives/CKLUYLY2F)
-on [The Carpentries Slack](https://swc-slack-invite.herokuapp.com/).
-We would love to help you prepare to teach the lesson and
-receive feedback on how it could be further improved,
-based on your experience in the workshop.
+## We can help you out with teaching this lesson
+
+Do you want to teach this lesson?
+Find more help in the [README](https://github.com/carpentries-incubator/deep-learning-intro?tab=readme-ov-file#teaching-this-lesson)
+Feel free to reach out to us with any questions that you have.
+Just open a new issue.
+We also value any feedback on the lesson!
 
 :::
 
@@ -37,10 +34,10 @@ based on your experience in the workshop.
 
 ## Breaks and Schedule
 
-Episode 2, 3, and 4 in this workshop are relatively long.
+Episode 2, 3, and 4 in this lesson are relatively long.
 We suggest to have a break at least every 90 minutes and to switch the instructor regularly, also within episodes.
 We have added reminders to the longer episodes with suggestions for when to have a switch and/or a break.
 
-There is an [example schedule](schedule.html) with breaks that can be adapted to your workshop.
+There is an [example schedule](schedule.html) with breaks that can be adapted to how you want to teach the lesson.
 
 :::

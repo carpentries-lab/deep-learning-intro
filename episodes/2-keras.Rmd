@@ -5,7 +5,6 @@ exercises: 50
 ---
 
 ::: questions
-- What is a neural network?
 - How do I compose a neural network using Keras?
 - How do I train this network on a dataset?
 - How do I get insight into learning process?
@@ -15,6 +14,7 @@ exercises: 50
 ::: objectives
 - Use the deep learning workflow to structure the notebook
 - Explore the dataset using pandas and seaborn
+- Identify the inputs and outputs of a deep neural network.
 - Use one-hot encoding to prepare data for classification in Keras
 - Describe a fully connected layer
 - Implement a fully connected layer with Keras
@@ -55,7 +55,7 @@ It can be a good idea to park some of these questions for discussion in episode 
 
 ::: callout
 ## GPU usage
-For this lesson having a GPU (graphics card) available is not needed.
+For this lesson having a [GPU (graphics processing unit)](https://glosario.carpentries.org/en/#gpu) available is not needed.
 We specifically use very small toy problems so that you do not need one.
 However, Keras will use your GPU automatically when it is available.
 Using a GPU becomes necessary when tackling larger datasets or complex problems which
@@ -63,7 +63,7 @@ require a more complex neural network.
 :::
 
 ## 1. Formulate/outline the problem: penguin classification
-In this episode we will be using the [penguin dataset](https://zenodo.org/record/3960218), this is a dataset that was published in 2020 by Allison Horst and contains data on three different species of the penguins.
+In this episode we will be using the [penguin dataset](https://zenodo.org/record/3960218). This is a dataset that was published in 2020 by Allison Horst and contains data on three different species of the penguins.
 
 We will use the penguin dataset to train a neural network which can classify which species a
 penguin belongs to, based on their physical characteristics.
@@ -117,7 +117,7 @@ penguins.head()
  | 3 | Adelie | Torgersen | NaN  | NaN  | NaN   | NaN    | NaN    |
  | 4 | Adelie | Torgersen | 36.7 | 19.3 | 193.0 | 3450.0 | Female |
 
- All columns but the 'species' columns are features that we can use.
+ We can use all columns as features to predict the species of the penguin, except for the `species` column itself.
 
 Let's look at the shape of the dataset:
 
@@ -125,7 +125,7 @@ Let's look at the shape of the dataset:
  penguins.shape
  ```
 
-There are 344 samples and 7 columns, so 6 features
+There are 344 samples and 7 columns (plus the index column), so 6 features.
 
 ### Visualization
 Looking at numbers like this usually does not give a very good intuition about the data we are
@@ -218,15 +218,15 @@ Second, the target data is also in a format that cannot be used in training.
 A neural network can only take numerical inputs and outputs, and learns by
 calculating how "far away" the species predicted by the neural network is
 from the true species.
-When the target is a string category column as we have here it is very difficult to determine this "distance" or error.
-Therefore we will transform this column into a more suitable format.
-Again there are many ways to do this, however we will be using the one-hot encoding.
+
+When the target is a string category column as we have here, we need to transform this column into a numerical format first.
+Again, there are many ways to do this. We will be using the one-hot encoding.
 This encoding creates multiple columns, as many as there are unique values, and
 puts a 1 in the column with the corresponding correct class, and 0's in
 the other columns.
-For instance, for a penguin of the Adelie species the one-hot encoding would be 1 0 0
+For instance, for a penguin of the Adelie species the one-hot encoding would be 1 0 0.
 
-Fortunately pandas is able to generate this encoding for us.
+Fortunately, Pandas is able to generate this encoding for us.
 ```python
 import pandas as pd
 
@@ -285,7 +285,6 @@ This is a good time for switching instructor and/or a break.
 ## 4. Build an architecture from scratch or choose a pretrained model
 
 ### Keras for neural networks
-We will now build our first neural network from scratch. Although this sounds like a daunting task, you will experience that with [Keras](https://keras.io/) it is actually surprisingly straightforward.
 
 Keras is a machine learning framework with ease of use as one of its main features.
 It is part of the tensorflow python package and can be imported using `from tensorflow import keras`.
@@ -342,14 +341,17 @@ let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
 on refining the model.
-The second parameter is the activation function to use, here we choose relu which is 0
+
+The second parameter is the activation function to use. We choose `relu` which returns 0
 for inputs that are 0 and below and the identity function (returning the same value)
 for inputs above 0.
 This is a commonly used activation function in deep neural networks that is proven to work well.
-Next we see an extra set of parenthenses with inputs in them, this means that after creating an
+
+Next we see an extra set of parenthenses with inputs in them. This means that after creating an
 instance of the Dense layer we call it as if it was a function.
 This tells the Dense layer to connect the layer passed as a parameter, in this case the inputs.
-Finally we store a reference so we can pass it to the output layer in a minute.
+
+Finally we store a reference in the `hidden_layer` variable so we can pass it to the output layer in a minute.
 
 Now we create another layer that will be our output layer.
 Again we use a Dense layer and so the call is very similar to the previous one.
@@ -357,9 +359,9 @@ Again we use a Dense layer and so the call is very similar to the previous one.
 output_layer = keras.layers.Dense(3, activation="softmax")(hidden_layer)
 ```
 
-Because we chose the one-hot encoding, we use `3` neurons for the output layer.
+Because we chose the one-hot encoding, we use three neurons for the output layer.
 
-The softmax activation ensures that the three output neurons produce values in the range
+The `softmax` activation ensures that the three output neurons produce values in the range
 (0, 1) and they sum to 1.
 We can interpret this as a kind of 'probability' that the sample belongs to a certain
 species.

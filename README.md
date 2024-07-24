@@ -41,9 +41,9 @@ This indicates that the maintainers will welcome a pull request fixing this issu
 ### Teaching this lesson?
 We would be very grateful if you can provide us with feedback on this lesson. You can read more about hosting a lesson pilot for an incubator lesson [here](https://docs.carpentries.org/topic_folders/lesson_development/lesson_pilots.html).
 
-You can notify us that you plan to teach this lesson by creating an issue in this repository (and labeling it with beta) or posting a message in the carpentries Slack Machine Learning channel. Please note the questions below to get an indication of the sort of feedback we expect.
+You can notify us that you plan to teach this lesson by creating an issue in this repository or posting a message in the carpentries Slack Machine Learning channel. Please note the questions below to get an indication of the sort of feedback we expect.
 
-After the workshop, lease create an issue (or comment on the issue you created before teaching) with general feedback on teaching the lesson, and label it with beta. As a template, you can use the following questions:
+After teaching the lesson, please create an issue (or comment on the issue you created before teaching) with general feedback on teaching the lesson. As a template, you can use the following questions:
 * How much time did you need for the material? (preferably per episode)
 * How much time did you need for the exercises?
 * Where there any technical issues that arose during setup?
@@ -73,7 +73,8 @@ install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
 ```
 
 ## Rendering the website locally
-See https://carpentries.github.io/workbench/ for instructions on how to render the website locally.
+
+See the [Carpentries Workbench usage instructions](https://carpentries.github.io/workbench/#usage) on how to render the website locally.
 
 ## Maintainer(s)
 
@@ -83,6 +84,7 @@ Current maintainers of this lesson are
 * Djura Smits
 * Sven van der Burg
 * Pranav Chandramouli
+* Carsten Schnober
 
 ## Citation and authors
 
