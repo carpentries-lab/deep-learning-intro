@@ -5,6 +5,13 @@
 # Introduction to deep learning
 This lesson gives an introduction to deep learning.
 
+## Teaching this lesson?
+Do you want to teach deep learning? This material is open-source and freely available. 
+Are you planning on using our material in your teaching? 
+We would love to help you prepare to teach the lesson and receive feedback on how it could be further improved, based on your experience in the workshop.
+
+You can notify us that you plan to teach this lesson by creating an issue in this repository or by sending an email to deep-learning-lesson-dev@esciencecenter.nl. Also, it would great if you can update [this overview of all workshops taught with this lesson material](workshops). This helps us show the impact of developing open-source lessons to our funders.
+
 ## Lesson Design
 The design of this lesson can be found in the [lesson design](https://carpentries-incubator.github.io/deep-learning-intro/design.html)
 
@@ -37,22 +44,6 @@ chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contrib
 in Pro Git by Scott Chacon.
 Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg).
 This indicates that the maintainers will welcome a pull request fixing this issue.
-
-### Teaching this lesson?
-We would be very grateful if you can provide us with feedback on this lesson. You can read more about hosting a lesson pilot for an incubator lesson [here](https://docs.carpentries.org/topic_folders/lesson_development/lesson_pilots.html).
-
-You can notify us that you plan to teach this lesson by creating an issue in this repository or posting a message in the carpentries Slack Machine Learning channel. Please note the questions below to get an indication of the sort of feedback we expect.
-
-After teaching the lesson, please create an issue (or comment on the issue you created before teaching) with general feedback on teaching the lesson. As a template, you can use the following questions:
-* How much time did you need for the material? (preferably per episode)
-* How much time did you need for the exercises?
-* Where there any technical issues that arose during setup?
-* Where there any bugs or parts of the lesson code that did not work as expected?
-* Where there any incorrect or missing exercise solutions?
-* Which parts of the lesson were confusing for learners?
-* Which questions did learners ask?
-
-In addition, you are very welcome to add issues or pull requests that address more specific feedback.
 
 ## Setup the Workshop Website locally
 
