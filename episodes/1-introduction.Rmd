@@ -204,7 +204,7 @@ b. This solves the XOR logical problem, the output is 1 if only one of the two i
 :::
 
 ##### What makes deep learning deep learning?
-Neural networks aren't a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010, improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or deep learning.
+Neural networks are not a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010, improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or deep learning.
 
 Deep learning requires extensive training using example data which shows the network what output it should produce for a given input. One common application of deep learning is [classifying](https://glosario.carpentries.org/en/#classification) images. Here the network will be trained by being "shown" a series of images and told what they contain. Once the network is trained it should be able to take another image and correctly classify its contents.
 
