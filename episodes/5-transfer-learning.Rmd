@@ -49,6 +49,7 @@ val_images = val_images / 255.0
 Let's define our model input layer using the shape of our training images:
 ```python
 # input tensor
+from tensorflow import keras
 inputs = keras.Input(train_images.shape[1:])
 ```
 
@@ -57,6 +58,7 @@ trained on images of 160 x 160 pixels. To deal with this, we add an upscale laye
 that resizes the images to 160 x 160 pixels during training and prediction.
 ```python
 # upscale layer
+import tensorflow as tf
 method = tf.image.ResizeMethod.BILINEAR
 upscale = keras.layers.Lambda(
   lambda x: tf.image.resize_with_pad(x, 160, 160, method=method))(inputs)
@@ -78,6 +80,23 @@ base_model = keras.applications.DenseNet121(include_top=False,
                                             input_shape=(160,160,3),
                                             )
 ```
+
+::: callout
+## SSL: certificate verify failed error
+If you get the following error message: `certificate verify failed: unable to get local issuer certificate`,
+you can download [the weights of the model manually](https://storage.googleapis.com/tensorflow/keras-applications/densenet/densenet121_weights_tf_dim_ordering_tf_kernels_notop.h5)
+and then load in the weights from the downloaded file:
+
+```python
+base_model = keras.applications.DenseNet121(
+    include_top=False,
+    pooling='max',
+    weights='densenet121_weights_tf_dim_ordering_tf_kernels_notop.h5', # this should refer to the weights file you downloaded
+    input_tensor=upscale,
+    input_shape=(160,160,3),
+)
+```
+:::
 By setting `include_top` to `False` we exclude the fully connected layer at the
 top of the network. This layer was used to predict the Imagenet classes,
 but will be of no use for our Dollar Street dataset.
