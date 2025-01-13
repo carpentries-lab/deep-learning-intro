@@ -61,6 +61,12 @@ If you have not downloaded the data yet, you can also load it directly from Zeno
 ```python
 data = pd.read_csv("https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1")
 ```
+
+#### SSL certificate error
+<!-- Using H4 here because H3 renders to big compared to the title of the callout -->
+If you get the following error message: `certificate verify failed: unable to get local issuer certificate`,
+you can download [the data from here manually](https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1)
+into a local folder and load the data using the code below.
 :::
 
 ```python
