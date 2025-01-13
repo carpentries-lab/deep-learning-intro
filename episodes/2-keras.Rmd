@@ -315,7 +315,7 @@ keras.utils.set_random_seed(2)
 
 ### Build a neural network from scratch
 
-Now we will build a neural network from scratch, which is surprisingly straightforward using Keras.
+We will now build a simple neural network from scratch using Keras.
 
 With Keras you compose a neural network by creating layers and linking them
 together. For now we will only use one type of layer called a fully connected
