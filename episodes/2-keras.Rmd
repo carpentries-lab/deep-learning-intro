@@ -284,8 +284,8 @@ X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=
 ```
 
 ::: callout
-## Importance of using the same train test split
-By setting `random_state==0` we ensure that everyone has the same train-test split.
+## Importance of using the same train-test split
+By setting `random_state=0` we ensure that everyone has the same train-test split.
 When doing machine learning and deep learning it is crucial that you use the same train and test dataset for different experiments.
 Comparing evaluation metrics between experiments run on different data splits is meaningless,
 because the accuracy of a model depends on the data used to train and test it.
