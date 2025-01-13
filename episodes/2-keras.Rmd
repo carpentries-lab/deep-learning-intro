@@ -284,6 +284,14 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
+::: callout
+## Importance of using the same train-test split
+By setting `random_state=0` we ensure that everyone has the same train-test split.
+When doing machine learning and deep learning it is crucial that you use the same train and test dataset for different experiments.
+Comparing evaluation metrics between experiments run on different data splits is meaningless,
+because the accuracy of a model depends on the data used to train and test it.
+:::
+
 ::: instructor
 ## BREAK
 This is a good time for switching instructor and/or a break.
@@ -312,6 +320,16 @@ from numpy.random import seed
 seed(1)
 keras.utils.set_random_seed(2)
 ```
+
+::: callout
+## When to use random seeds?
+We use a random seed here to ensure that we get the same results every time we run this code.
+This makes our results reproducible and allows us to better compare results between different experiments.
+
+Please note that even though you have selected a random seed, this seed is used to generate a
+**different** random number every time you execute a Jupyter cell.
+So, to get truly replicable deep learning pipelines you need to run the notebook from start to end in one go.
+:::
 
 ### Build a neural network from scratch
 
