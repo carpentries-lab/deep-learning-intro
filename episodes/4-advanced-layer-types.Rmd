@@ -134,7 +134,7 @@ train_labels.shape
 ```
 
 ```output
-(878, 1)
+(878,)
 ```
 So we have, for each image, a single value denoting the label.
 To find out what the possible values of these labels are:
