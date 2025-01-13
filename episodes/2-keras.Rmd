@@ -767,12 +767,12 @@ This can be done by using the `save` method of the model.
 It takes a string as a parameter which is the path of a directory where the model is stored.
 
 ```python
-model.save('my_first_model')
+model.save('my_first_model.keras')
 ```
 
 This saved model can be loaded again by using the `load_model` method as follows:
 ```python
-pretrained_model = keras.models.load_model('my_first_model')
+pretrained_model = keras.models.load_model('my_first_model.keras')
 ```
 
 This loaded model can be used as before to predict.

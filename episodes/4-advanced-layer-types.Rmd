@@ -1062,7 +1062,7 @@ Next to grid search and random search there are many different hyperparameter tu
 Let's save our model
 
 ```python
-model.save('cnn_model')
+model.save('cnn_model.keras')
 ```
 
 ## Conclusion and next steps

@@ -957,7 +957,7 @@ Which will show an interface that looks something like this:
 Now that we have a somewhat acceptable model, let us not forget to save it for future users to benefit from our explorative efforts!
 
 ```python
-model.save('my_tuned_weather_model')
+model.save('my_tuned_weather_model.keras')
 ```
 
 ## Outlook
