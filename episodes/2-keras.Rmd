@@ -560,7 +560,8 @@ sns.lineplot(x=history.epoch, y=history.history['loss'])
 ## I get a different plot
 It could be that you get a different plot than the one shown here.
 This could be because of a different random initialization of the model or a different split of the data.
-This difference can be avoided by setting `random_state` and random seed in the same way like we discussed earlier.
+This difference can be avoided by setting `random_state` and random seed in the same way like we discussed
+in [When to use random seeds?](#when-to-use-random-seeds).
 :::
 
 This plot can be used to identify whether the training is well configured or whether there
