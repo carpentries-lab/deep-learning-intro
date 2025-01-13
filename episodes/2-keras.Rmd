@@ -538,6 +538,13 @@ sns.lineplot(x=history.epoch, y=history.history['loss'])
 ```
 ![][training_curve]
 
+::: callout
+## I get a different plot
+It could be that you get a different plot than the one shown here.
+This could be because of a different random initialization of the model or a different split of the data.
+This difference can be avoided by setting `random_state` and random seed in the same way like we discussed earlier.
+:::
+
 This plot can be used to identify whether the training is well configured or whether there
 are problems that need to be addressed.
 
