@@ -39,8 +39,8 @@ In short, the deep learning problem is that of finding out how similar two molec
 based on their mass spectrum.
 You can compare this to comparing two pictures of animals, and predicting how similar they are.
 
-A siamese neural network is used to solve the problem.
-In a siamese neural network you have two input vectors, let's say two images of animals or two mass spectra.
+A Siamese neural network is used to solve the problem.
+In a Siamese neural network you have two input vectors, let's say two images of animals or two mass spectra.
 They pass through a base network. Instead of outputting a class or number with one or a few output neurons, the output layer
 of the base network is a whole vector of for example 100 neurons. After passing through the base network, you end up with two of these
 vectors representing the two inputs. The goal of the base network is to output a meaningful representation of the input (this is called an embedding).
@@ -85,6 +85,33 @@ Hopefully you can appreciate that what you learned in this course, can be applie
 You might have noticed that the data preparation for this example is much more extensive than what we have done so far
 in this course. This is quite common for applied deep learning projects. It is said that 90% of the time in a
 deep learning problem is spent on data preparation, and only 10% on modeling!
+:::
+
+::: discussion
+## Bias and Evaluation
+
+Bias has been discussed in the context of machine learning, deep learning and artificial intelligence frequently and on various levels.
+That is because there are many aspects to bias.
+One the one hand, bias is very technical: a model can be biased towards certain classes or certain features.
+On the other hand, this can have very practical and severe impact on the users of a such a model;
+for instance when it comes to misclassification in relation to color of the skin or geographical location.
+
+If such biases are reflected in a dataset that is used for model validation and testing, you might not be able to see them.
+In order to get an evaluation that is representative for the diversity found in the real world, it is therefore important to use a test set that reflects this diversity as much as possible.
+
+The need for such a dataset as opposed to existing datasets that mostly presumed Western standards has been one of the motivations for creating the Dollar Street Dataset -- and why we have used it in this lesson.
+The creators [have shown](https://papers.nips.cc/paper_files/paper/2022/hash/5474d9d43c0519aa176276ff2c1ca528-Abstract-Datasets_and_Benchmarks.html) that more diversity in a training dataset can contribute to significant model improvements.
+A model trained on a more diverse dataset is more robust against unexpected occurrences.
+
+Therefore, it is important to fully understand the quantitative evaluation of a new model:
+it reflects the model's performance on the test set, but it does not say anything about how well that dataset represents the real world.
+Also be aware that such matters can be related to racism and other forms of discrimination.
+Depending on the use case, diversity can also refer to imbalance on other, more subtle and less sensitive dimensions.
+
+**Discuss the following statement with your neighbors:**
+
+- What forms of bias and data imbalance can you think of?
+- How would they affect the performance of a deep learning model?
 :::
 
 ::: discussion
