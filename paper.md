@@ -95,6 +95,10 @@ Nonetheless, these resources are often not available open-source and can thus no
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
 In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
 
+There is another Carpentries lesson on deep learning: Introduction to artificial neural networks in Python (@Pollard_Introduction_to_artificial_2022).
+That lesson takes a different angle to deep learning, focusing on computer vision with the application on medical images. 
+Whereas this lesson is a general introduction to applied deep learning showing various applications and is more mature.
+
 Many computing centers offer (local) deep learning courses, such as @noauthor_csc-_nodate. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
 
@@ -195,7 +199,7 @@ We would like to thank all instructors and helpers that taught the course,
 and the community of people that left contributions to the project, no matter how big or small. 
 Also, we thank Chris Endemann (University of Wisconson-Madison, US, https://www.wisc.edu/),
 Nidhi Gowdra (University of Auckland, New Zealand, https://www.auckland.ac.nz/), 
-,Renato Alves and Lisanna Paladin (EMBL Heidelberg, Germany, https://www.embl.org/sites/heidelberg/),
+Renato Alves and Lisanna Paladin (EMBL Heidelberg, Germany, https://www.embl.org/sites/heidelberg/),
 that piloted this workshop at their institutes.
 We thank the Carpentries for providing such a great framework for developing this lesson material.
 We thank all students enrolled in the workshops that were taught using this lesson material for providing us with feedback.
