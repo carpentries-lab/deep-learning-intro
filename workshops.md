@@ -2,6 +2,7 @@
 |-------------------|-----------------------------|----------------------------|----------|
 | 2021-11-22        | Netherlands eScience Center | Online                     |          |
 | 2022-01-25        | Netherlands eScience Center | Online                     |          |
+| 2022-02-22        | EuroCC National Competence Center Sweden | Online        |          |
 | 2022-02-28        | EMBL Heidelberg             | Online                     |          |
 | 2022-09-26        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
 | 2022-11-16        | EMBL Heidelberg             | Heidelberg, Germany        |          |
