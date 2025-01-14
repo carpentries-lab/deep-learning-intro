@@ -410,6 +410,18 @@ Keras distinguishes between two types of weights, namely:
 If these reasons are not clear right away, don't worry! In later episodes of this course, we will touch upon a couple of these concepts.
 ::: 
 
+
+::: instructor
+Optional challenge number 3 (see below; for visualizing the model) requires the command-line tool `dot` from Graphviz.
+If `dot` is missing, you can either:
+
+- show the solution, or
+- try to install it.
+
+The [installation instructions for Graphviz can be found here](https://graphviz.org/download/).
+:::
+
+
 ::: challenge
 ## Create the neural network
 With the code snippets above, we defined a Keras model with 1 hidden layer with
@@ -425,21 +437,13 @@ This step requires the command-line tool `dot` from Graphviz installed.
 You may check that by executing `dot -V` in the command line. You should get something
 as follows.
 
-```console
+```sh
 $ dot -V
 dot - graphviz version 2.43.0 (0)
 ```
 
-:::: instructor
-If `dot` is missing, you can either:
-
-- show the solution, or
-- try to install it.
-
-The [installation instructions for Graphviz can be found here](https://graphviz.org/download/).
-::::
-
-3. Execute the `plot_model` function as show below.
+3. (optional) Provided you have `dot` installed, execute the `plot_model` function
+   as shown below.
 
 ```python
 keras.utils.plot_model(
