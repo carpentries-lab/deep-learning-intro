@@ -466,7 +466,7 @@ decreases in accordance with the number of neurons added.
 Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3 weights connected to the output layer.
 So in total 8 extra parameters.
 
-*The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.*
+*The name in quotes within the string `Model: "functional"` may be different in your view; this detail is not important.*
 
 #### (optional) Keras Sequential vs Functional API
 3. This implements the same model using the Sequential API:
