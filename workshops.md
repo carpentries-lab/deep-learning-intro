@@ -12,4 +12,4 @@
 | 2023-05-30        | UW-Madison                  | Madison, USA               |          |
 | 2023-08-21        | Netherlands eScience Center | Online                     |          |
 | 2024-02-05        | Netherlands eScience Center | Online                     |          |
-| 2024-09-03        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2025-01-28        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
