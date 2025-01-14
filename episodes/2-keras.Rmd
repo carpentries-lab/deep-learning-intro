@@ -432,7 +432,7 @@ With the code snippets above, we defined a Keras model with 1 hidden layer with
  in the hidden layer?
 
 #### (optional) Visualizing the model
-Optionally, you can also visualize the same information as `model.summary()` a graph.
+Optionally, you can also visualize the same information as `model.summary()` in graph form.
 This step requires the command-line tool `dot` from Graphviz installed.
 You may check that by executing `dot -V` in the command line. You should get something
 as follows.
