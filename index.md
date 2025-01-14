@@ -17,7 +17,7 @@ how to monitor and troubleshoot the training process and how to implement differ
 ### Other related lessons
 #### Introduction to artificial neural networks in Python
 The [Introduction to artificial neural networks in Python lesson](https://carpentries-incubator.github.io/machine-learning-neural-python/)
-introduces takes a different angle to introducing deep learning, 
+takes a different angle to introducing deep learning, 
 focusing on computer vision with the application on medical images.
 This might be a better lesson if you are interested in the application of deep learning on medical images.
 
