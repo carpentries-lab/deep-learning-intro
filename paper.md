@@ -95,9 +95,9 @@ Nonetheless, these resources are often not available open-source and can thus no
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
 In addition, although a diverse range of online courses already exists, few are targeted towards academic researchers.
 
-There is another Carpentries lesson on deep learning: Introduction to artificial neural networks in Python (@carpentries-ann-python).
+There is another Carpentries lesson on deep learning: Introduction to artificial neural networks in Python (@Pollard_Introduction_to_artificial_2022).
 That lesson takes a different angle to deep learning, focusing on computer vision with the application on medical images. 
-Whereas this lesson is mere a general introduction to applied deep learning showing various applications and is more mature.
+Whereas this lesson is a general introduction to applied deep learning showing various applications and is more mature.
 
 Many computing centers offer (local) deep learning courses, such as @noauthor_csc-_nodate. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
