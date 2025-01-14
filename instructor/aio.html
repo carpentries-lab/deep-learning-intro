@@ -528,7 +528,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>A</li>
@@ -653,7 +653,7 @@ of inputs:</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a>
@@ -848,7 +848,7 @@ loss (blue) as a function of <code>y_true - y_pred</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a>
@@ -914,7 +914,7 @@ closer to the expected values.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -1019,7 +1019,7 @@ dogs.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with deep learning.</li>
@@ -1213,7 +1213,7 @@ the data you will use to train the network.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -3093,20 +3093,24 @@ function so that we can use it later again to initiate new models.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "weather_prediction_model"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input (InputLayer)           [(None, 89)]              0
-_________________________________________________________________
-dense (Dense)                (None, 100)               9000
-_________________________________________________________________
-dense_1 (Dense)              (None, 50)                5050
-_________________________________________________________________
-dense_2 (Dense)              (None, 1)                 51
-=================================================================
-Total params: 14,101
-Trainable params: 14,101
-Non-trainable params: 0</code></pre>
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                ┃ Output Shape        ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input (InputLayer)          │ (None, 89)          │             0 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense (Dense)               │ (None, 100)         │         9,000 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_1 (Dense)             │ (None, 50)          │         5,050 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_2 (Dense)             │ (None, 1)           │            51 │
+└─────────────────────────────┴─────────────────────┴───────────────┘
+
+ Total params: 14,101 (55.08 KB)
+
+ Trainable params: 14,101 (55.08 KB)
+
+ Non-trainable params: 0 (0.00 B)</code></pre>
 </div>
 <p>When compiling the model we can define a few very important aspects.
 We will discuss them now in more detail.</p>
@@ -3754,20 +3758,26 @@ nodes in the first layer, and 5 nodes in the second layer:</p>
 <span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <pre><code>Model: "model_small"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input (InputLayer)           [(None, 89)]              0
-_________________________________________________________________
-dense_9 (Dense)              (None, 10)                900
-_________________________________________________________________
-dense_10 (Dense)             (None, 5)                 55
-_________________________________________________________________
-dense_11 (Dense)             (None, 1)                 6
-=================================================================
-Total params: 961
-Trainable params: 961
-Non-trainable params: 0</code></pre>
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                ┃ Output Shape        ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input (InputLayer)          │ (None, 89)          │             0 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_9 (Dense)             │ (None, 10)          │           900 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_10 (Dense)            │ (None, 5)           │            55 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_11 (Dense)            │ (None, 1)           │             6 │
+└─────────────────────────────┴─────────────────────┴───────────────┘
+
+ Total params: 961 (3.75 KB)
+
+ Trainable params: 961 (3.75 KB)
+
+ Non-trainable params: 0 (0.00 B)
+
+</code></pre>
 <p>Let’s compile and train this network:</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3911,22 +3921,27 @@ layer into the architecture.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "model_batchnorm"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 89)]              0
-_________________________________________________________________
-batch_normalization (BatchNo (None, 89)                356
-_________________________________________________________________
-dense (Dense)             (None, 100)               9000
-_________________________________________________________________
-dense_1 (Dense)             (None, 50)                5050
-_________________________________________________________________
-dense_2 (Dense)             (None, 1)                 51
-=================================================================
-Total params: 14,457
-Trainable params: 14,279
-Non-trainable params: 178</code></pre>
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                ┃ Output Shape        ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input (InputLayer)          │ (None, 89)          │             0 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ batch_normalization_1       │ (None, 89)          │           356 │
+│ (BatchNormalization)        │                     │               │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_6 (Dense)             │ (None, 100)         │         9,000 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_7 (Dense)             │ (None, 50)          │         5,050 │
+├─────────────────────────────┼─────────────────────┼───────────────┤
+│ dense_8 (Dense)             │ (None, 1)           │            51 │
+└─────────────────────────────┴─────────────────────┴───────────────┘
+
+ Total params: 14,457 (56.47 KB)
+
+ Trainable params: 14,279 (55.78 KB)
+
+ Non-trainable params: 178 (712.00 B)</code></pre>
 </div>
 <p>We can train the model again as follows:</p>
 <div class="codewrapper sourceCode" id="cb39">
