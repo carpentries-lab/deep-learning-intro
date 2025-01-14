@@ -375,7 +375,7 @@ notebook</a>. It is part of the codebase for <a href="https://doi.org/10.1186/s1
 similar two molecules are in terms of their molecular properties, based
 on their mass spectrum. You can compare this to comparing two pictures
 of animals, and predicting how similar they are.</p>
-<p>A siamese neural network is used to solve the problem. In a siamese
+<p>A Siamese neural network is used to solve the problem. In a Siamese
 neural network you have two input vectors, let’s say two images of
 animals or two mass spectra. They pass through a base network. Instead
 of outputting a class or number with one or a few output neurons, the
@@ -418,7 +418,7 @@ spectral embedding layer drastically, to for example 5 neurons?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The model summary for the Siamese model is more complex than what we
 have seen so far, but it is basically a repetition of Dense, BatchNorm,
@@ -459,6 +459,47 @@ is quite common for applied deep learning projects. It is said that 90%
 of the time in a deep learning problem is spent on data preparation, and
 only 10% on modeling!</p>
 </div>
+</div>
+</div>
+<div id="bias-and-evaluation" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="bias-and-evaluation" class="callout-inner">
+<h3 class="callout-title">Bias and Evaluation</h3>
+<div class="callout-content">
+<p>Bias has been discussed in the context of machine learning, deep
+learning and artificial intelligence frequently and on various levels.
+That is because there are many aspects to bias. One the one hand, bias
+is very technical: a model can be biased towards certain classes or
+certain features. On the other hand, this can have very practical and
+severe impact on the users of a such a model; for instance when it comes
+to misclassification in relation to color of the skin or geographical
+location.</p>
+<p>If such biases are reflected in a dataset that is used for model
+validation and testing, you might not be able to see them. In order to
+get an evaluation that is representative for the diversity found in the
+real world, it is therefore important to use a test set that reflects
+this diversity as much as possible.</p>
+<p>The need for such a dataset as opposed to existing datasets that
+mostly presumed Western standards has been one of the motivations for
+creating the Dollar Street Dataset – and why we have used it in this
+lesson. The creators <a href="https://papers.nips.cc/paper_files/paper/2022/hash/5474d9d43c0519aa176276ff2c1ca528-Abstract-Datasets_and_Benchmarks.html" class="external-link">have
+shown</a> that more diversity in a training dataset can contribute to
+significant model improvements. A model trained on a more diverse
+dataset is more robust against unexpected occurrences.</p>
+<p>Therefore, it is important to fully understand the quantitative
+evaluation of a new model: it reflects the model’s performance on the
+test set, but it does not say anything about how well that dataset
+represents the real world. Also be aware that such matters can be
+related to racism and other forms of discrimination. Depending on the
+use case, diversity can also refer to imbalance on other, more subtle
+and less sensitive dimensions.</p>
+<p><strong>Discuss the following statement with your
+neighbors:</strong></p>
+<ul><li>What forms of bias and data imbalance can you think of?</li>
+<li>How would they affect the performance of a deep learning model?</li>
+</ul></div>
 </div>
 </div>
 <div id="discussion-large-language-models-and-prompt-engineering" class="callout discussion">
