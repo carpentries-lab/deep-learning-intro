@@ -17,14 +17,24 @@ Instead of training a model from scratch, with transfer learning you make use of
 
 An example: Let's say that you want to train a model to classify images of different dog breeds. You could make use of a pre-trained network that learned how to classify images of dogs and cats. The pre-trained network will not know anything about different dog breeds, but it will have captured some general knowledge of, on a high-level, what dogs look like, and on a low-level all the different features (eyes, ears, paws, fur) that make up an image of a dog. Further training this model on your dog breed dataset is a much easier task than training from scratch, because the model can use the general knowledge captured in the pre-trained network.
 
+![](episodes/fig/05-transfer_learning.png)
+<!-- 
+Edit this plot using the Mermaid live editor:
+1. Open this link that includes the source code of the chart to open the live editor web interface:
+https://mermaid.live/edit#pako:eNpVkE1vgzAMhv9K5MPUSrQKAWUlh0kr9NZetp02drAgUCRIqhC0dZT_vizso_PJb_zYr-MRCl1KEFC1-q04orFk_5Ar4uL-ZZHpuic3JEXbkwwtLl_JanVHLk8GG0UOrrO9kO3CJ-QKXs4T0tGBqq-kIXuJRjWqnubK1s9JZ5F5I7I1Upb_fL7rqRe7a8g7LiGATpoOm9J9YPyCc7BH2ckchEtLWeHQ2hxyNTkUB6sfz6oAYc0gAzB6qI8gKmx7p4ZTiVZmDdYGu9_XE6pnrf-0LBurzWE-mb-cZ0CM8A5iRdfUBeObmEZJzKOEJRHnUQBnECwK15zRMGJxzNkmoXwK4MMPD30bpSHjt5SHSfyzzs7bzQtPn9Xpf_E
+2. Make changes to the chart as desired in the live editor
+3. Download the newly created diagram from the live editor (Actions / PNG) and replace the existing image in the episode folder (episodes/fig/05-transfer_learning.png)
+4. (optional) crop the image to remove the white space around the plot in a separate image editor
+5. Update the URL in step 1 of this comment to the new URL of the live editor
+-->
+
 In this episode we will learn how use Keras to adapt a state-of-the-art pre-trained model to the [Dollar Street Dataset](https://zenodo.org/records/10970014).
 
 
-## 1. Formulate / Outline the problem and 2. Identify inputs and outputs
+## 1. Formulate / Outline the problem
 
 
 Just like in the previous episode, we use the Dollar Street 10 dataset. 
-The goal is to predict one out of 10 classes for a given image.
 
 We load the data in the same way as the previous episode:
 ```python
@@ -37,6 +47,11 @@ val_images = np.load(DATA_FOLDER / 'test_images.npy')
 train_labels = np.load(DATA_FOLDER / 'train_labels.npy')
 val_labels = np.load(DATA_FOLDER / 'test_labels.npy')
 ```
+## 2. Identify inputs and outputs
+
+As discussed in the previous episode, the input are images of dimension 64 x 64 pixels with 3 colour channels each.
+The goal is to predict one out of 10 classes to which the image belongs.
+
 
 ## 3. Prepare the data
 We prepare the data as before, scaling the values between 0 and 1.
@@ -54,8 +69,9 @@ inputs = keras.Input(train_images.shape[1:])
 ```
 
 Our images are 64 x 64 pixels, whereas the pre-trained model that we will use was 
-trained on images of 160 x 160 pixels. To deal with this, we add an upscale layer
-that resizes the images to 160 x 160 pixels during training and prediction.
+trained on images of 160 x 160 pixels.
+To adapt our data accordingly, we add an upscale layer that resizes the images to 160 x 160 pixels during training and prediction.
+
 ```python
 # upscale layer
 import tensorflow as tf
@@ -98,8 +114,9 @@ base_model = keras.applications.DenseNet121(
 ```
 :::
 By setting `include_top` to `False` we exclude the fully connected layer at the
-top of the network. This layer was used to predict the Imagenet classes,
+top of the network, hence the final output layer. This layer was used to predict the Imagenet classes,
 but will be of no use for our Dollar Street dataset.
+Note that the 'top layer' appears at the bottom in the output of `model.summary()`.
 
 We add `pooling='max'` so that max pooling is applied to the output of the DenseNet121 network.
 

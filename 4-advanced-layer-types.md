@@ -15,7 +15,7 @@ exercises: 70
 ::: objectives
 - Understand why convolutional and pooling layers are useful for image data
 - Implement a convolutional neural network on an image dataset
-- Use a drop-out layer to prevent overfitting
+- Use a dropout layer to prevent overfitting
 - Be able to tune the hyperparameters of a Keras model
 :::
 
@@ -690,18 +690,20 @@ The intuition behind dropout is that it enforces redundancies in the network by 
 As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quite drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.
 
-**Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
+**Important to note:** Dropout layers will only randomly silence nodes during training! During a prediction step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
-Let us add a dropout layer after each pooling layertowards the end of the network, that randomly drops 80% of the nodes.
+Let us add a dropout layer after each pooling layer towards the end of the network that randomly drops 80% of the nodes.
 
 ```python
 def create_nn_with_dropout():
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(0.8)(x) # This is new!
 
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(0.8)(x) # This is new!
 
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
@@ -718,35 +720,35 @@ model_dropout.summary()
 ```
 ```output
 Model: "dropout_model"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #
-=================================================================
- input_5 (InputLayer)        [(None, 64, 64, 3)]       0
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_4 (InputLayer)      │ (None, 64, 64, 3)      │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_6 (Conv2D)               │ (None, 62, 62, 50)     │         1,400 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_4 (MaxPooling2D)  │ (None, 31, 31, 50)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 31, 31, 50)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_7 (Conv2D)               │ (None, 29, 29, 50)     │        22,550 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_5 (MaxPooling2D)  │ (None, 14, 14, 50)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (Dropout)             │ (None, 14, 14, 50)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_8 (Conv2D)               │ (None, 12, 12, 50)     │        22,550 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_6 (MaxPooling2D)  │ (None, 6, 6, 50)       │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (Dropout)             │ (None, 6, 6, 50)       │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten_4 (Flatten)             │ (None, 1800)           │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_8 (Dense)                 │ (None, 50)             │        90,050 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_9 (Dense)                 │ (None, 10)             │           510
+└─────────────────────────────────┴────────────────────────┴───────────────┘
 
- conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400
-
- max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0
- g2D)
-
- conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550
-
- max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0
- g2D)
-
- conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550
-
- max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0
- g2D)
-
- dropout (Dropout)           (None, 6, 6, 50)          0
-
- flatten_3 (Flatten)         (None, 1800)              0
-
- dense_6 (Dense)             (None, 50)                90050
-
- dense_7 (Dense)             (None, 10)                510
-
-=================================================================
 Total params: 137060 (535.39 KB)
 Trainable params: 137060 (535.39 KB)
 Non-trainable params: 0 (0.00 Byte)
