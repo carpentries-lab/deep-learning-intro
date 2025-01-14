@@ -496,7 +496,7 @@ connected to each of the 3 outputs in the `dense_1` output layer, resulting in a
 By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
 hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
-The value `(332.00 B)` next to it describes the memory footprint for model weights and this depends on their data-type.
+The value `(332.00 B)` next to it describes the memory footprint for model weights and this depends on their data type.
 Take a look at what `model.dtype` is.
 
 ```python
@@ -506,8 +506,9 @@ print(model.dtype)
 ```output
 float32
 ```
-The model weights are represented using `float32` datatype, which consumes 4 byte each when loaded into the computer's memory.
-We have 83 parameters and therefore in total, the model requires `83*4=332` bytes of memory to load.
+The model weights are represented using `float32` data type, which consumes 32 bits or 4 bytes for each weight.
+We have 83 parameters, and therefore in total, the model requires `83*4=332` bytes of memory to load
+into the computer's memory.
 
 If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
