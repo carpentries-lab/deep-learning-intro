@@ -435,20 +435,24 @@ model.summary()
 ```
 
 ```output
-Model: "model_1"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 4)]               0
-_________________________________________________________________
-dense (Dense)                (None, 10)                50
-_________________________________________________________________
-dense_1 (Dense)              (None, 3)                 33
-=================================================================
-Total params: 83
-Trainable params: 83
-Non-trainable params: 0
-_________________________________________________________________
+Model: "functional"
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)        │ (None, 4)              │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 10)             │            50 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 3)              │            33 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+
+ Total params: 83 (332.00 B)
+
+ Trainable params: 83 (332.00 B)
+
+ Non-trainable params: 0 (0.00 B)
+
 ```
 The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of 
 the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also 
