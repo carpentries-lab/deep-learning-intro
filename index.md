@@ -4,9 +4,26 @@ site: sandpaper::sandpaper_site
 ## Welcome
 This is a hands-on introduction to the first steps in deep learning, intended for researchers who are familiar with (non-deep) machine learning.
 
-The use of deep learning has seen a sharp increase of popularity and applicability over the last decade. While deep learning can be a useful tool for researchers from a wide range of domains, taking the first steps in the world of deep learning can be somewhat intimidating. This introduction aims to cover the basics of deep learning in a practical and hands-on manner, so that upon completion, you will be able to train your first neural network and understand what next steps to take to improve the model.
+The use of deep learning has seen a sharp increase of popularity and applicability over the last decade. 
+While deep learning can be a useful tool for researchers from a wide range of domains, 
+taking the first steps in the world of deep learning can be somewhat intimidating. 
+This introduction covers the basics of deep learning in a practical and hands-on manner, 
+so that upon completion, you will be able to train your first neural network and understand what next steps to take to improve the model.
 
-We start with explaining the basic concepts of neural networks, and then go through the different steps of a deep learning workflow. Learners will learn how to prepare data for deep learning, how to implement a basic deep learning model in Python with Keras, how to monitor and troubleshoot the training process and how to implement different layer types such as convolutional layers.
+We start with explaining the basic concepts of neural networks, and then go through the different steps of a deep learning workflow. 
+Learners will learn how to prepare data for deep learning, how to implement a basic deep learning model in Python with Keras, 
+how to monitor and troubleshoot the training process and how to implement different layer types such as convolutional layers.
+
+### Other related lessons
+#### Introduction to artificial neural networks in Python
+The [Introduction to artificial neural networks in Python lesson](https://carpentries-incubator.github.io/machine-learning-neural-python/)
+takes a different angle to introducing deep learning, 
+focusing on computer vision with the application on medical images.
+
+#### Introduction to machine learning in Python with scikit-learn
+The [Introduction to machine learning in Python with scikit-learn lesson](https://esciencecenter-digital-skills.github.io/scikit-learn-mooc/)
+introduces practical machine learning using Python. It is a good lesson to follow in preparation for this lesson,
+since basic knowledge of machine learning and Python programming skills are required for this lesson.
 
 :::::::::::::::::: checklist
 
