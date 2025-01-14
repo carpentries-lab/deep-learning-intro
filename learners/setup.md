@@ -77,7 +77,7 @@ Remember that you need to activate your environment every time you restart your 
 ### On Linux/macOs
 
 ```shell
-python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow
+python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
 ::: spoiler
@@ -102,7 +102,7 @@ python -m pip install tensorflow-metal
 ### On Windows
 
 ```shell
-py -m pip install jupyter seaborn scikit-learn pandas tensorflow
+py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
 :::
