@@ -610,7 +610,7 @@ history = model.fit(X_train, y_train, epochs=100)
 The fit method returns a history object that has a history attribute with the training loss and
 potentially other metrics per training epoch.
 It can be very insightful to plot the training loss to see how the training progresses.
-Using seaborn we can do this as follow:
+Using seaborn we can do this as follows:
 ```python
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ```
