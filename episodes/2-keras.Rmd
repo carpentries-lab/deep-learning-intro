@@ -412,13 +412,8 @@ If these reasons are not clear right away, don't worry! In later episodes of thi
 
 
 ::: instructor
-Optional challenge number 3 (see below; for visualizing the model) requires the command-line tool `dot` from Graphviz.
-If `dot` is missing, you can either:
-
-- show the solution, or
-- try to install it.
-
-The [installation instructions for Graphviz can be found here](https://graphviz.org/download/).
+For optional question 3 in the challenge below named 'Visualizing the model', the goal is to visualize the network. It supplements the textual explanation of output from `model.summary()`.
+You could choose to show and discuss the resulting visualization to the learners, so that learners who did not finish the optional exercise can also learn from the visualization of the model.
 :::
 
 
