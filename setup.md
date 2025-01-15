@@ -77,7 +77,7 @@ Remember that you need to activate your environment every time you restart your 
 ### On Linux/macOs
 
 ```shell
-python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow
+python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
 ::: spoiler
@@ -102,12 +102,16 @@ python -m pip install tensorflow-metal
 ### On Windows
 
 ```shell
-py -m pip install jupyter seaborn scikit-learn pandas tensorflow
+py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
 :::
 
 Note: Tensorflow makes Keras available as a module too.
+
+An [optional challenge in episode 2](episodes/2-keras.Rmd) requires installation of Graphviz
+and instructions for doing that can be found
+[by following this link](https://graphviz.org/download/).
 
 ## Starting Jupyter Lab
 

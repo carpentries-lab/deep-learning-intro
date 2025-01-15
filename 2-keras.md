@@ -410,6 +410,13 @@ Keras distinguishes between two types of weights, namely:
 If these reasons are not clear right away, don't worry! In later episodes of this course, we will touch upon a couple of these concepts.
 ::: 
 
+
+::: instructor
+For optional question 3 in the challenge below named 'Visualizing the model', the goal is to visualize the network. It supplements the textual explanation of output from `model.summary()`.
+You could choose to show and discuss the resulting visualization to the learners, so that learners who did not finish the optional exercise can also learn from the visualization of the model.
+:::
+
+
 ::: challenge
 ## Create the neural network
 With the code snippets above, we defined a Keras model with 1 hidden layer with
@@ -419,13 +426,37 @@ With the code snippets above, we defined a Keras model with 1 hidden layer with
 2. What happens to the number of parameters if we increase or decrease the number of neurons
  in the hidden layer?
 
+#### (optional) Visualizing the model
+Optionally, you can also visualize the same information as `model.summary()` in graph form.
+This step requires the command-line tool `dot` from Graphviz installed, you installed it by following the setup instructions.
+You can check that the installation was successful by executing `dot -V` in the command line. You should get something
+as follows:
+
+```sh
+$ dot -V
+dot - graphviz version 2.43.0 (0)
+```
+
+3. (optional) Provided you have `dot` installed, execute the `plot_model` function
+   as shown below.
+
+```python
+keras.utils.plot_model(
+    model,
+    show_shapes=True,
+    show_layer_names=True,
+    show_layer_activations=True,
+    show_trainable=True
+)
+```
+
 #### (optional) Keras Sequential vs Functional API
 So far we have used the [Functional API](https://keras.io/guides/functional_api/) of Keras.
 You can also implement neural networks using [the Sequential model](https://keras.io/guides/sequential_model/).
 As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
 where each layer has **exactly one input tensor and one output tensor**.
 
-3. (optional) Use the Sequential model to implement the same network
+4. (optional) Use the Sequential model to implement the same network
 
 :::: solution
 ## Solution
@@ -435,20 +466,24 @@ model.summary()
 ```
 
 ```output
-Model: "model_1"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 4)]               0
-_________________________________________________________________
-dense (Dense)                (None, 10)                50
-_________________________________________________________________
-dense_1 (Dense)              (None, 3)                 33
-=================================================================
-Total params: 83
-Trainable params: 83
-Non-trainable params: 0
-_________________________________________________________________
+Model: "functional"
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer (type)               ┃ Output Shape   ┃    Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ input_layer (InputLayer)   │ (None, 4)      │          0 │
+├────────────────────────────┼────────────────┼────────────┤
+│ dense (Dense)              │ (None, 10)     │         50 │
+├────────────────────────────┼────────────────┼────────────┤
+│ dense_1 (Dense)            │ (None, 3)      │         33 │
+└────────────────────────────┴────────────────┴────────────┘
+
+ Total params: 83 (332.00 B)
+
+ Trainable params: 83 (332.00 B)
+
+ Non-trainable params: 0 (0.00 B)
+
 ```
 The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of 
 the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also 
@@ -456,16 +491,36 @@ connected to each of the 3 outputs in the `dense_1` output layer, resulting in a
 By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
 hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
+The value `(332.00 B)` next to it describes the memory footprint for model weights and this depends on their data type.
+Take a look at what `model.dtype` is.
+
+```python
+print(model.dtype)
+```
+
+```output
+float32
+```
+The model weights are represented using `float32` data type, which consumes 32 bits or 4 bytes for each weight.
+We have 83 parameters, and therefore in total, the model requires `83*4=332` bytes of memory to load
+into the computer's memory.
+
 If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
 decreases in accordance with the number of neurons added.
 Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3 weights connected to the output layer.
 So in total 8 extra parameters.
 
-*The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.*
+*The name in quotes within the string `Model: "functional"` may be different in your view; this detail is not important.*
+
+#### (optional) Visualizing the model
+3. Upon executing the `plot_model` function, you should see the following image.
+
+![Output of *keras.utils.plot_model()* function][plot-model]
+
 
 #### (optional) Keras Sequential vs Functional API
-3. This implements the same model using the Sequential API:
+4. This implements the same model using the Sequential API:
 ```python
 model = keras.Sequential(
     [
@@ -550,7 +605,7 @@ history = model.fit(X_train, y_train, epochs=100)
 The fit method returns a history object that has a history attribute with the training loss and
 potentially other metrics per training epoch.
 It can be very insightful to plot the training loss to see how the training progresses.
-Using seaborn we can do this as follow:
+Using seaborn we can do this as follows:
 ```python
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ```
@@ -814,6 +869,9 @@ Length: 69, dtype: object
 
 [sex_pairplot]: fig/02_sex_pairplot.png "Pair plot grouped by sex"
 {alt='Grid of scatter plots and histograms comparing observed values of the four physicial attributes (features) measured in the penguins sampled, with data points coloured according to the sex of the individual sampled. The pair plot shows similarly-shaped distribution of values observed for each feature in male and female penguins, with the distribution of measurements for females skewed towards smaller values.'}
+
+[plot-model]: fig/02_plot_model.png "Output of keras.utils.plot_model() function"
+{alt='A directed graph showing the three layers of the neural network connected by arrows. First layer is of type InputLayer. Second layer is of type Dense with a relu activation. The third layer is also of type Dense, with a softmax activation. The input and output shapes of every layer are also mentioned. Only the second and third layers contain trainable parameters.'}
 
 [training_curve]: fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
