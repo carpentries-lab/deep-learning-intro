@@ -109,6 +109,10 @@ py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 
 Note: Tensorflow makes Keras available as a module too.
 
+An [optional challenge in episode 2](episodes/2-keras.Rmd) requires installation of Graphviz
+and instructions for doing that can be found
+[by following this link](https://graphviz.org/download/).
+
 ## Starting Jupyter Lab
 
 We will teach using Python in [Jupyter Lab][jupyter], a programming environment that runs in a web browser.
