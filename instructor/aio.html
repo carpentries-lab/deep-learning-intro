@@ -369,7 +369,7 @@
         
 <section id="aio-1-introduction"><p>Content from <a href="1-introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/1-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
@@ -1371,7 +1371,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-2-keras"><p>Content from <a href="2-keras.html">Classification by a neural network using Keras</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/2-keras.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 110 minutes</p>
@@ -2052,6 +2052,23 @@ concepts.</p>
 </div>
 </div>
 </div>
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div class="accordion-body">
+<p>For optional question 3 in the challenge below named ‘Visualizing the
+model’, the goal is to visualize the network. It supplements the textual
+explanation of output from <code>model.summary()</code>. You could
+choose to show and discuss the resulting visualization to the learners,
+so that learners who did not finish the optional exercise can also learn
+from the visualization of the model.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="create-the-neural-network" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2067,6 +2084,37 @@ layer with 10 neurons and an output layer with 3 neurons.</p>
 the number of neurons in the hidden layer?</li>
 </ol>
 <div class="section level4">
+<h4 id="optional-visualizing-the-model">(optional) Visualizing the model<a class="anchor" aria-label="anchor" href="#optional-visualizing-the-model"></a>
+</h4>
+<p>Optionally, you can also visualize the same information as
+<code>model.summary()</code> in graph form. This step requires the
+command-line tool <code>dot</code> from Graphviz installed, you
+installed it by following the setup instructions. You can check that the
+installation was successful by executing <code>dot -V</code> in the
+command line. You should get something as follows:</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> dot <span class="at">-V</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">dot</span> <span class="at">-</span> graphviz version 2.43.0 <span class="er">(</span><span class="ex">0</span><span class="kw">)</span></span></code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>(optional) Provided you have <code>dot</code> installed, execute the
+<code>plot_model</code> function as shown below.</li>
+</ol>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>keras.utils.plot_model(</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>    model,</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>    show_shapes<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>    show_layer_names<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>    show_layer_activations<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>    show_trainable<span class="op">=</span><span class="va">True</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>)</span></code></pre>
+</div>
+</div>
+<div class="section level4">
 <h4 id="optional-keras-sequential-vs-functional-api">(optional) Keras Sequential vs Functional API<a class="anchor" aria-label="anchor" href="#optional-keras-sequential-vs-functional-api"></a>
 </h4>
 <p>So far we have used the <a href="https://keras.io/guides/functional_api/" class="external-link">Functional API</a> of
@@ -2075,7 +2123,7 @@ model</a>. As you can read in the documentation, the Sequential model is
 appropriate for <strong>a plain stack of layers</strong> where each
 layer has <strong>exactly one input tensor and one output
 tensor</strong>.</p>
-<ol start="3" style="list-style-type: decimal">
+<ol start="4" style="list-style-type: decimal">
 <li>(optional) Use the Sequential model to implement the same
 network</li>
 </ol>
@@ -2091,28 +2139,32 @@ network</li>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Have a look at the output of <code>model.summary()</code>:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Model: "model_1"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 4)]               0
-_________________________________________________________________
-dense (Dense)                (None, 10)                50
-_________________________________________________________________
-dense_1 (Dense)              (None, 3)                 33
-=================================================================
-Total params: 83
-Trainable params: 83
-Non-trainable params: 0
-_________________________________________________________________</code></pre>
+<pre class="output" tabindex="0"><code>Model: "functional"
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer (type)               ┃ Output Shape   ┃    Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ input_layer (InputLayer)   │ (None, 4)      │          0 │
+├────────────────────────────┼────────────────┼────────────┤
+│ dense (Dense)              │ (None, 10)     │         50 │
+├────────────────────────────┼────────────────┼────────────┤
+│ dense_1 (Dense)            │ (None, 3)      │         33 │
+└────────────────────────────┴────────────────┴────────────┘
+
+ Total params: 83 (332.00 B)
+
+ Trainable params: 83 (332.00 B)
+
+ Non-trainable params: 0 (0.00 B)
+</code></pre>
 </div>
 <p>The model has 83 trainable parameters. Each of the 10 neurons in the
 in the <code>dense</code> hidden layer is connected to each of the 4
@@ -2123,6 +2175,24 @@ outputs in the <code>dense_1</code> output layer, resulting in a further
 Keras also contain 1 bias term for each neuron, resulting in a further
 10 bias values for the hidden layer and 3 bias terms for the output
 layer. <code>40+30+10+3=83</code> trainable parameters.</p>
+<p>The value <code>(332.00 B)</code> next to it describes the memory
+footprint for model weights and this depends on their data type. Take a
+look at what <code>model.dtype</code> is.</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">print</span>(model.dtype)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="va">float32</span></span></code></pre>
+</div>
+<p>The model weights are represented using <code>float32</code> data
+type, which consumes 32 bits or 4 bytes for each weight. We have 83
+parameters, and therefore in total, the model requires
+<code>83*4=332</code> bytes of memory to load into the computer’s
+memory.</p>
 <p>If you increase the number of neurons in the hidden layer the number
 of trainable parameters in both the hidden and output layer increases or
 decreases in accordance with the number of neurons added. Each extra
@@ -2130,24 +2200,35 @@ neuron has 4 weights connected to the input layer, 1 bias term, and 3
 weights connected to the output layer. So in total 8 extra
 parameters.</p>
 <p><em>The name in quotes within the string
-<code>Model: "model_1"</code> may be different in your view; this detail
-is not important.</em></p>
+<code>Model: "functional"</code> may be different in your view; this
+detail is not important.</em></p>
+<div class="section level4">
+<h4 id="optional-visualizing-the-model-1">(optional) Visualizing the model<a class="anchor" aria-label="anchor" href="#optional-visualizing-the-model-1"></a>
+</h4>
+<ol start="3" style="list-style-type: decimal">
+<li>Upon executing the <code>plot_model</code> function, you should see
+the following image.</li>
+</ol>
+<figure><img src="../fig/02_plot_model.png" title="Output of keras.utils.plot_model() function" alt="A directed graph showing the three layers of the neural network connected by arrows. First layer is of type InputLayer. Second layer is of type Dense with a relu activation. The third layer is also of type Dense, with a softmax activation. The input and output shapes of every layer are also mentioned. Only the second and third layers contain trainable parameters." class="figure mx-auto d-block"><div class="figcaption">Output of <em>keras.utils.plot_model()</em>
+function</div>
+</figure>
+</div>
 <div class="section level4">
 <h4 id="optional-keras-sequential-vs-functional-api-1">(optional) Keras Sequential vs Functional API<a class="anchor" aria-label="anchor" href="#optional-keras-sequential-vs-functional-api-1"></a>
 </h4>
-<ol start="3" style="list-style-type: decimal">
+<ol start="4" style="list-style-type: decimal">
 <li>This implements the same model using the Sequential API:</li>
 </ol>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential(</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    [</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>        keras.Input(shape<span class="op">=</span>(X_train.shape[<span class="dv">1</span>],)),</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>),</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>),</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    ]</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential(</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    [</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>        keras.Input(shape<span class="op">=</span>(X_train.shape[<span class="dv">1</span>],)),</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    ]</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>)</span></code></pre>
 </div>
 <p>We will use the Functional API for the remainder of this course,
 since it is more flexible and more explicit.</p>
@@ -2219,10 +2300,10 @@ parameters.</p>
 <p>Combining this with the loss function we decided on earlier we can
 now compile the model using <code>model.compile</code>. Compiling the
 model prepares it to start the training.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="train-model">6. Train model<a class="anchor" aria-label="anchor" href="#train-model"></a>
 </h2>
@@ -2234,19 +2315,19 @@ parameters for certain options of the training. Here we only set a
 different number of <code>epochs</code>. One training epoch means that
 every sample in the training data has been shown to the neural network
 and used to update its parameters.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
 </div>
 <p>The fit method returns a history object that has a history attribute
 with the training loss and potentially other metrics per training epoch.
 It can be very insightful to plot the training loss to see how the
-training progresses. Using seaborn we can do this as follow:</p>
-<div class="codewrapper sourceCode" id="cb23">
+training progresses. Using seaborn we can do this as follows:</p>
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
 </div>
 <figure><img src="../fig/02_training_curve.png" title="Training Curve" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" class="figure mx-auto d-block"></figure><div id="i-get-a-different-plot" class="callout">
 <div class="callout-square">
@@ -2341,12 +2422,12 @@ using the <code>predict</code> function. We will be using this
 prediction in the next step to measure the performance of our trained
 network. This will return a <code>numpy</code> matrix, which we convert
 to a pandas dataframe to easily see the labels.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>prediction</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>prediction</span></code></pre>
 </div>
 <table class="table"><tbody>
 <tr class="odd">
@@ -2423,11 +2504,11 @@ dataframe shows this nicely.</p>
 sample. We can do this by looking for the index of highest valued output
 and converting that to the corresponding species. Pandas dataframes have
 the <code>idxmax</code> function, which will do exactly that.</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>predicted_species</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>predicted_species</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2445,12 +2526,12 @@ the <code>idxmax</code> function, which will do exactly that.</p>
 68    Adelie
 Length: 69, dtype: object</code></pre>
 </div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
+  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor4" class="accordion-collapse collapse" aria-labelledby="headingInstructor4" data-bs-parent="#accordionInstructor4">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -2476,15 +2557,15 @@ another convenient function from sklearn called
 the true labels of the test set. We can get these by using the
 <code>idxmax</code> method on the y_test dataframe. The second parameter
 is the predicted labels which we did above.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2497,25 +2578,25 @@ is the predicted labels which we did above.</p>
 clear which column and which row corresponds to which species. So let’s
 convert it to a pandas dataframe with its index and columns set to the
 species as follows:</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span>
-<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>confusion_df.head()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>confusion_df.head()</span></code></pre>
 </div>
 <p>We can then use the <code>heatmap</code> function from seaborn to
 create a nice visualization of the confusion matrix. The
 <code>annot=True</code> parameter here will put the numbers from the
 confusion matrix in the heatmap.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/confusion_matrix.png" title="Confusion Matrix" alt="Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap" class="figure mx-auto d-block"></figure><div id="confusion-matrix-1" class="callout challenge">
 <div class="callout-square">
@@ -2572,29 +2653,29 @@ hyperparameter values.</p>
 later stage without having to retrain it. This can be done by using the
 <code>save</code> method of the model. It takes a string as a parameter
 which is the path of a directory where the model is stored.</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>model.save(<span class="st">'my_first_model.keras'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>model.save(<span class="st">'my_first_model.keras'</span>)</span></code></pre>
 </div>
 <p>This saved model can be loaded again by using the
 <code>load_model</code> method as follows:</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model.keras'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model.keras'</span>)</span></code></pre>
 </div>
 <p>This loaded model can be used as before to predict.</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
-<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2652,7 +2733,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-3-monitor-the-model"><p>Content from <a href="3-monitor-the-model.html">Monitor the training process</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/3-monitor-the-model.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 200 minutes</p>
@@ -2701,7 +2782,7 @@ on the validation set instead of the test set</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Copy-pasting code </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>In this episode we first introduce a simple approach to the problem,
 then we iterate on that a few times to, step-by-step, working towards a
@@ -2968,7 +3049,7 @@ parameters that should not change at all.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -3023,7 +3104,7 @@ sunshine hours?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -3202,7 +3283,7 @@ process is increased</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Correct answer: B. To find the weights that minimize the loss
@@ -3388,7 +3469,7 @@ model before measuring the performance of our neural network.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
   <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -3455,7 +3536,7 @@ why?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -3580,7 +3661,7 @@ problem to solve?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3681,7 +3762,7 @@ think about what you actually would like to see)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3731,7 +3812,7 @@ notable effect on the performance on the validation set?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn()</code> function so that we
 can tweak the number of nodes in the 2 layers by passing arguments to
@@ -4036,7 +4117,7 @@ all features from all cities. How does it perform?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a>
@@ -4237,7 +4318,7 @@ improve the prediction quality?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -4293,7 +4374,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-4-advanced-layer-types"><p>Content from <a href="4-advanced-layer-types.html">Advanced layer types</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 140 minutes</p>
@@ -4454,7 +4535,7 @@ classes, this is the mapping of the categories:</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Framing the classification task </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>The sample images from the dataset, shown below, provide a good
 opportunity to lead a discussion with learners about the nature of the
@@ -4523,7 +4604,7 @@ have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The correct solution is C: 12288</p>
 <p>There are 4096 pixels in one image (64 * 64), each pixel has 3
@@ -4621,7 +4702,7 @@ this layer have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The correct answer is B: Each entry of the input dimensions, i.e. the
 <code>shape</code> of one single data point, is connected with 100
@@ -4750,7 +4831,7 @@ convolution?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>There are different ways of dealing with border pixels. You can
 ignore them, which means that your output image is slightly smaller then
@@ -4787,7 +4868,7 @@ Parameters”</a>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27
 * 100 = 2700 weights. This is a magnitude of 2000 less than the fully
@@ -4864,7 +4945,7 @@ could work on our dataset here: <a href="https://paperswithcode.com/sota/image-c
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ul>
 <li>The Flatten layer converts the 60x60x50 output of the convolutional
@@ -4906,7 +4987,7 @@ teach you is by developing a neural network from scratch!</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Demonstrate searching for existing architectures </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>At this point it can be nice to apply above callout box and
 demonstrate searching for state-of-the-art implementations. If you
@@ -5023,7 +5104,7 @@ one-hot encoding.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
   <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -5088,7 +5169,7 @@ starts increasing after a few epochs.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
   <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Comparison with a network with only dense layers </h3>
 </button>
-<div id="collapseInstructor4" class="accordion-collapse collapse" aria-labelledby="headingInstructor4" data-bs-parent="#accordionInstructor4">
+<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
 <div class="accordion-body">
 <p>The callout box below compares the CNN approach with a network with
 only dense layers. Depending on time, the following discussion can be
@@ -5211,7 +5292,7 @@ needs to be adjusted as follows:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>We add an extra Conv2D layer after the second pooling layer:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -5334,7 +5415,7 @@ would benefit from a CNN architecture?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>No that would not make sense. Convolutions only work when the
@@ -5499,7 +5580,7 @@ model performance, what is the term associated to this procedure?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a>
@@ -5569,7 +5650,7 @@ in this case is around 0.9. This is where the val loss is lowest.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor5" aria-expanded="false" aria-controls="collapseInstructor5">
   <h3 class="accordion-header" id="headingInstructor5">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Do a live demo instead of live coding </h3>
 </button>
-<div id="collapseInstructor5" class="accordion-collapse collapse" aria-labelledby="headingInstructor5" data-bs-parent="#accordionInstructor5">
+<div id="collapseInstructor5" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor5" aria-labelledby="headingInstructor5">
 <div class="accordion-body">
 <p>You might want to demonstrate this section on hyperparameter tuning
 instead of doing live coding. The goal is to show that hyperparameter
@@ -5740,7 +5821,7 @@ hyperparameters from a predefined set of possible values.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9"> Show me the solution </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <p>1:</p>
 <ul>
@@ -5898,7 +5979,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-5-transfer-learning"><p>Content from <a href="5-transfer-learning.html">Transfer learning</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/5-transfer-learning.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
@@ -6149,7 +6230,7 @@ as argument for <code>DenseNet121()</code>?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solutions </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="trainable-parameters-1">1. Trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-parameters-1"></a>
@@ -6218,7 +6299,7 @@ to DenseNet121?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="compile-the-model-1">1. Compile the model<a class="anchor" aria-label="anchor" href="#compile-the-model-1"></a>
@@ -6315,7 +6396,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-6-outlook"><p>Content from <a href="6-outlook.html">Outlook</a></p>
 <hr>
-<p>Last updated on 2025-01-14 |
+<p>Last updated on 2025-01-15 |
 
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/6-outlook.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -6371,7 +6452,7 @@ from the field of <a href="https://en.wikipedia.org/wiki/Cheminformatics" class=
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You don’t have to use this project as an example. It works best to
 use a suitable deep learning project that you know well and are
@@ -6433,7 +6514,7 @@ spectral embedding layer drastically, to for example 5 neurons?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we
@@ -6743,8 +6824,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/aio.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-01-14",
-  "datePublished": "2025-01-14"
+  "dateModified": "2025-01-15",
+  "datePublished": "2025-01-15"
 }
 
   </script><script>
