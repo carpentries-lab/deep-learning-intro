@@ -237,9 +237,20 @@ The total error between prediction and expected value is quantified in a loss fu
 There are lots of loss functions to pick from, and it is important that you pick one that matches your problem definition well.
 We will look at an example of a loss function in the next exercise.
 
+::: instructor
+There is an issue when rendering the MSE formula in the following box involving the Chrome browser on MacOS.
+To solve it:
+
+1.  Right-click on some of the misrendered MathJax.
+2.  Click on "Math Settings".
+3.  Click on "Math Renderer".
+4.  Click on "Common HTML".
+
+from: https://physics.meta.stackexchange.com/questions/14408/bug-in-mathjax-rendering-using-chrome
+:::
+
 ::: challenge
 ## Exercise: Loss function
-.
 
 #### 1. Compute the Mean Squared Error
 One of the simplest loss functions is the Mean Squared Error. MSE = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$ .
