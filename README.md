@@ -1,6 +1,6 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds)
 [![DOI](https://zenodo.org/badge/163412836.svg)](https://zenodo.org/badge/latestdoi/163412836)
-
+[![The Carpentries Lab Review Status](http://badges.carpentries-lab.org/25_status.svg)](https://github.com/carpentries-lab/reviews/issues/25)
 
 # Introduction to deep learning
 This lesson gives an introduction to deep learning.
