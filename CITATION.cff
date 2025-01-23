@@ -55,6 +55,15 @@ authors:
     email: c.schnober@esciencecenter.nl
   - given-names: Toby
     family-names: Hodges
+  - given-names: Ashwin Vishnu
+    family-names: Mohanan
+    orcid: https://orcid.org/0000-0002-2979-6327
+    email: ashwin.mohanan@ri.se 
+  - given-names: Yonglei
+    family-names: Wang
+    orcid: https://orcid.org/0000-0003-3393-7257
+    email: yonglei@nsc.liu.se
+
 repository-code: >-
   https://github.com/carpentries-incubator/deep-learning-intro
 url: >-
