@@ -780,6 +780,7 @@ sns.heatmap(confusion_df, annot=True)
 ![][confusion_matrix]
 
 Here are more explanations of this confusion matrix and the classification model.
+
 - The first row: There are 30 Adelie penguins in the test data, with 22 identified as Adelie (valid), 8 being identified as Gentoo (invalid), and no Adelie is identified as Chinstrap.
 - The second row: There are 14 Chinstrap pengunis in the test data, with 5 identified as Adelie (invalid), none are correctly recognized as Chinstrap, and 9 Chinstraps are identified as Gentoo (invalid).
 - The third row: There are 25 Gentoo penguins in the test data, with 6 identified as Adelie (invalid), none being recognized as Chinstrap (invalid), and 19 Gentoos are identified as Gentoo (valid).
