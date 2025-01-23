@@ -297,7 +297,7 @@ because the accuracy of a model depends on the data used to train and test it.
 This is a good time for switching instructor and/or a break.
 :::
 
-## 4. Build an architecture from scratch or choose a pretrained model
+## 4. Build an architecture from scratch
 
 ### Keras for neural networks
 
@@ -551,6 +551,7 @@ If your data and problem is very similar to what others have done, you can often
 Even if your problem is different, but the data type is common (for example images), you can use a pretrained network and finetune it for your problem.
 A large number of openly available pretrained networks can be found on [Hugging Face](https://huggingface.co/models) (especially LLMs), [MONAI](https://monai.io/) (medical imaging), the [Model Zoo](https://modelzoo.co/), [pytorch hub](https://pytorch.org/hub/) or [tensorflow hub](https://www.tensorflow.org/hub/).
 
+We will cover the concept of Transfer Learning in [episode 5](./5-transfer-learning.html)
 
 ## 5. Choose a loss function and optimizer
 We have now designed a neural network that in theory we should be able to
