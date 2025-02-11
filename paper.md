@@ -160,7 +160,7 @@ Apart from the core group of contributors, the workshop was also taught at 3 ind
 University of Wisconson-Madison (US, https://www.wisc.edu/), University of Auckland (New Zealand, https://www.auckland.ac.nz/), 
 and EMBL Heidelberg (Germany, https://www.embl.org/sites/heidelberg/).
 
-An up-to-date list of workshops using this lesson can be found here in the GitHub repository (https://github.com/carpentries-incubator/deep-learning-intro/blob/main/workshops.md).
+An up-to-date list of workshops using this lesson can be found in a `workshops.md` file in the GitHub repository (https://github.com/carpentries-incubator/deep-learning-intro/blob/main/workshops.md).
 
 In general, adoption of the lesson material by the instructors not involved in the project went well.
 The feedback gathered from our own and others' teachings was used to polish the lesson further.
