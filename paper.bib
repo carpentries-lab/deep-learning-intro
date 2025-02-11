@@ -190,3 +190,117 @@
   pages      = {12979--12990},
   file       = {Full Text PDF:/Users/carstenschnober/Zotero/storage/PJZDNZTV/Gaviria Rojas et al. - 2022 - The Dollar Street Dataset Images Representing the.pdf:application/pdf}
 }
+
+
+@article{huber_ms2deepscore_2021,
+	title = {{MS2DeepScore}: a novel deep learning similarity measure to compare tandem mass spectra},
+	volume = {13},
+	issn = {1758-2946},
+	shorttitle = {{MS2DeepScore}},
+	url = {https://doi.org/10.1186/s13321-021-00558-4},
+	doi = {10.1186/s13321-021-00558-4},
+	abstract = {Mass spectrometry data is one of the key sources of information in many workflows in medicine and across the life sciences. Mass fragmentation spectra are generally considered to be characteristic signatures of the chemical compound they originate from, yet the chemical structure itself usually cannot be easily deduced from the spectrum. Often, spectral similarity measures are used as a proxy for structural similarity but this approach is strongly limited by a generally poor correlation between both metrics. Here, we propose MS2DeepScore: a novel Siamese neural network to predict the structural similarity between two chemical structures solely based on their MS/MS fragmentation spectra. Using a cleaned dataset of {\textgreater} 100,000 mass spectra of about 15,000 unique known compounds, we trained MS2DeepScore to predict structural similarity scores for spectrum pairs with high accuracy. In addition, sampling different model varieties through Monte-Carlo Dropout is used to further improve the predictions and assess the model’s prediction uncertainty. On 3600 spectra of 500 unseen compounds, MS2DeepScore is able to identify highly-reliable structural matches and to predict Tanimoto scores for pairs of molecules based on their fragment spectra with a root mean squared error of about 0.15. Furthermore, the prediction uncertainty estimate can be used to select a subset of predictions with a root mean squared error of about 0.1. Furthermore, we demonstrate that MS2DeepScore outperforms classical spectral similarity measures in retrieving chemically related compound pairs from large mass spectral datasets, thereby illustrating its potential for spectral library matching. Finally, MS2DeepScore can also be used to create chemically meaningful mass spectral embeddings that could be used to cluster large numbers of spectra. Added to the recently introduced unsupervised Spec2Vec metric, we believe that machine learning-supported mass spectral similarity measures have great potential for a range of metabolomics data processing pipelines.},
+	number = {1},
+	urldate = {2025-02-11},
+	journal = {Journal of Cheminformatics},
+	author = {Huber, Florian and van der Burg, Sven and van der Hooft, Justin J. J. and Ridder, Lars},
+	month = oct,
+	year = {2021},
+	keywords = {Deep learning, Mass spectrometry, Metabolomics, Spectral similarity measure, Supervised machine learning},
+	pages = {84},
+	file = {Full Text PDF:/Users/svenvanderburg/Zotero/storage/Y3KAXM5F/Huber et al. - 2021 - MS2DeepScore a novel deep learning similarity mea.pdf:application/pdf;Snapshot:/Users/svenvanderburg/Zotero/storage/BIH5UWCE/s13321-021-00558-4.html:text/html},
+}
+
+@misc{van_der_burg_dollar_2024,
+	title = {Dollar street 10 - 64x64x3},
+	url = {https://zenodo.org/records/10970014},
+	doi = {10.5281/zenodo.10970014},
+	abstract = {The MLCommons Dollar Street Dataset is a collection of images of everyday household items from homes around the world that visually captures socioeconomic diversity of traditionally underrepresented populations. It consists of public domain data, licensed for academic, commercial and non-commercial usage, under CC-BY and CC-BY-SA 4.0. The dataset was developed because similar datasets lack socioeconomic metadata and are not representative of global diversity.
+
+This is a subset of the original dataset that can be used for multiclass classification with 10 categories. It is designed to be used in teaching, similar to the widely used, but unlicensed CIFAR-10 dataset.
+
+These are the preprocessing steps that were performed:
+
+
+
+Only take examples with one imagenet\_synonym label
+
+Use only examples with the 10 most frequently occuring labels
+
+Downscale images to 64 x 64 pixels
+
+Split data in train and test
+
+Store as numpy array
+
+
+This is the label mapping:
+
+
+
+
+Category
+label
+
+
+day bed
+0
+
+
+dishrag
+1
+
+
+plate
+2
+
+
+running shoe
+3
+
+
+soap dispenser
+4
+
+
+street sign
+5
+
+
+table lamp
+6
+
+
+tile roof
+7
+
+
+toilet seat
+8
+
+
+washing machine
+9
+
+
+
+
+Checkout this notebook to see how the subset was created.
+
+The original dataset was downloaded from https://www.kaggle.com/datasets/mlcommons/the-dollar-street-dataset. See https://mlcommons.org/datasets/dollar-street/ for more information.},
+	urldate = {2025-02-11},
+	publisher = {Zenodo},
+	author = {van der burg, Sven},
+	month = apr,
+	year = {2024},
+	keywords = {CC-BY, CIFAR-10, Deep learning, Image classification, Machine learning},
+	file = {Snapshot:/Users/svenvanderburg/Zotero/storage/QPJDIYXH/10970014.html:text/html},
+}
+
+@misc{noauthor_cifar-10_nodate,
+	title = {{CIFAR}-10 and {CIFAR}-100 datasets},
+	url = {https://www.cs.toronto.edu/~kriz/cifar.html},
+	urldate = {2025-02-11},
+	file = {CIFAR-10 and CIFAR-100 datasets:/Users/svenvanderburg/Zotero/storage/CTXZX76B/cifar.html:text/html},
+}
+
