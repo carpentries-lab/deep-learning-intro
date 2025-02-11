@@ -35,7 +35,7 @@ In fact, this is also what we would recommend you to do when working on real-wor
 First quickly build a working pipeline, while taking shortcuts.
 Then, slowly make the pipeline more advanced while you keep on evaluating the approach.
 
-In [episode 3](episodes/3-monitor-the-model.Rmd) we will expand on the concepts that are lightly introduced in this episode.
+In [episode 3](episodes/3-monitor-the-model.md) we will expand on the concepts that are lightly introduced in this episode.
 Some of these concepts include: how to monitor the training progress and how optimization works.
 
 ::: instructor
