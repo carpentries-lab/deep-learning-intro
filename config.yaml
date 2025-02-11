@@ -34,7 +34,7 @@ source: 'https://github.com/carpentries-lab/deep-learning-intro'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'deep-learning-lesson-dev@esciencecenter.nl'
 
 # Navigation ------------------------------------------------
 #
