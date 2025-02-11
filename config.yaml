@@ -9,6 +9,7 @@
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
 carpentry: 'lab'
+doi: 'https://doi.org/10.5281/zenodo.8308391'
 
 # Overall title for pages.
 title: 'Introduction to deep learning'
