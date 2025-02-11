@@ -80,21 +80,9 @@ Remember that you need to activate your environment every time you restart your 
 python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
-::: spoiler
+Note for MacOS users: there is a package `tensorflow-metal` which accelerates the training of machine learning models with TensorFlow on a recent Mac with a Silicon chip (M1/M2/M3).
+However, the installation is currently broken in the most recent version (as of January 2025), see the [developer forum](https://developer.apple.com/forums/thread/772147).
 
-### Advanced: TensorFlow with support for Mac M1/M2/M3
-
-Recent Macs have special chips (M1/M2/M3) that can accelerate deep learning processes.
-Apple has developed the [tensorflow-metal](https://developer.apple.com/metal/tensorflow-plugin/) package to support these chips in TensorFlow.
-This is not supported by the standard TensorFlow installation, and not required for this lesson.
-
-Nevertheless, you can install the on top of the standard `tensorflow`:
-
-```shell
-python -m pip install tensorflow-metal
-```
-
-:::
 :::
 
 ::: spoiler
