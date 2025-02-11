@@ -8,7 +8,7 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
-carpentry: 'incubator'
+carpentry: 'lab'
 
 # Overall title for pages.
 title: 'Introduction to deep learning'
@@ -27,7 +27,7 @@ life_cycle: 'stable'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/carpentries-incubator/deep-learning-intro'
+source: 'https://github.com/carpentries-lab/deep-learning-intro'
 
 # Default branch of your lesson
 branch: 'main'
