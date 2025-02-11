@@ -155,7 +155,7 @@ We end with an outlook episode. Firstly, the outlook eposide discusses a real-wo
 
 # Feedback
 This course was taught 13 times over the course of 4 years, both online and in-person, by the Netherlands eScience Center
-(Netherlands, https://www.esciencecenter.nl/) and Helmholz-Zentrum Dresden-Rossendorf (Germany, https://www.hzdr.de/).
+(Netherlands, https://www.esciencecenter.nl/) and Helmholtz-Zentrum Dresden-Rossendorf (Germany, https://www.hzdr.de/).
 Apart from the core group of contributors, the workshop was also taught at 3 independent institutes, namely:
 University of Wisconson-Madison (US, https://www.wisc.edu/), University of Auckland (New Zealand, https://www.auckland.ac.nz/), 
 and EMBL Heidelberg (Germany, https://www.embl.org/sites/heidelberg/).
