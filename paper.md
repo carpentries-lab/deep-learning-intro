@@ -149,7 +149,7 @@ In addition, the Carpentries Workbench prioritises accessibility of the content,
 and promoting alt-texts for pictures.
 
 The lesson is split into a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
-Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
+Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
 By going through the deep learning cycle three times with different problems, learners become increasingly confident in applying this deep learning workflow to their own projects.
 
 # Feedback
