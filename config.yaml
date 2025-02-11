@@ -60,12 +60,12 @@ contact: 'deep-learning-lesson-dev@esciencecenter.nl'
 
 # Order of episodes in your lesson
 episodes:
-- 1-introduction.Rmd
-- 2-keras.Rmd
-- 3-monitor-the-model.Rmd
-- 4-advanced-layer-types.Rmd
-- 5-transfer-learning.Rmd
-- 6-outlook.Rmd
+- 1-introduction.md
+- 2-keras.md
+- 3-monitor-the-model.md
+- 4-advanced-layer-types.md
+- 5-transfer-learning.md
+- 6-outlook.md
 
 
 # Information for Learners
