@@ -83,9 +83,9 @@ The lesson starts by explaining the basic concepts of neural networks,
 and then guides learners through the different steps of a deep learning workflow.  
 After following this lesson, 
 learners will be able to prepare data for deep learning, 
-implement a basic deep learning model in Python with Keras, 
-monitor and troubleshoot the training process, and implement different layer types, 
-such as convolutional layers.
+implement a basic deep learning model in Python with Keras,
+and monitor and troubleshoot the training process.
+In addition, they will be able to implement and understand different layer types, such as convolutional layers and dropout layers, and apply transfer learning.
 
 We use data with permissive licenses and designed for real world use cases:
 
@@ -148,16 +148,22 @@ and these can even be included at the level of the lesson content.
 In addition, the Carpentries Workbench prioritises accessibility of the content, for example by having clearly visible figure captions
 and promoting alt-texts for pictures.
 
-The lesson is split into a general introduction, and 3 episodes that cover 3 distinct increasingly more complex deep learning problems.
+
+The lesson is split into a general introduction, and 4 episodes that cover 3 distinct increasingly more complex deep learning problems.
 Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
+
 By going through the deep learning cycle three times with different problems, learners become increasingly confident in applying this deep learning workflow to their own projects.
+We end with an outlook episode. Firstly, the outlook eposide discusses a real-world application of deep learning in chemistry [@huber_ms2deepscore_2021]. In addition, it discusses bias in datasets, large language models, and good practices for organising deep learning projects. Finally, we end with ideas for next steps after finishing the lesson.
 
 # Feedback
-This course was taught 12 times over the course of 3 years, both online and in-person, by the Netherlands eScience Center
-(Netherlands, https://www.esciencecenter.nl/) and Helmholz-Zentrum Dresden-Rossendorf (Germany, https://www.hzdr.de/).
-Apart from the core group of contributors, the workshop was also taught at 3 independent institutes, namely:
+This course was taught 13 times over the course of 4 years, both online and in-person, by the Netherlands eScience Center
+(Netherlands, https://www.esciencecenter.nl/) and Helmholtz-Zentrum Dresden-Rossendorf (Germany, https://www.hzdr.de/).
+Apart from the core group of contributors, the workshop was also taught at at least 3 independent institutes, namely:
 University of Wisconson-Madison (US, https://www.wisc.edu/), University of Auckland (New Zealand, https://www.auckland.ac.nz/), 
 and EMBL Heidelberg (Germany, https://www.embl.org/sites/heidelberg/).
+
+An up-to-date list of workshops that the authors are aware of having using this lesson can be found in a `workshops.md` file in the GitHub repository (https://github.com/carpentries-incubator/deep-learning-intro/blob/main/workshops.md).
+
 In general, adoption of the lesson material by the instructors not involved in the project went well.
 The feedback gathered from our own and others' teachings was used to polish the lesson further.
 
@@ -193,6 +199,13 @@ The results from these 2 workshops are a good representation of the general feed
 Table 2: Quality of the different episodes of the workshop as rated by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
+## Carpentries Lab review process
+Prior to submitting this paper the lesson went through the substantial review in the process of becoming an official Carpentries Lab (https://carpentries-lab.org/) lesson. This led to a number of improvements to the lesson. In general the accessibility and user-friendliness improved, for example by updating alt-texts and using more beginner-friendly and clearer wording. Additionally, the instructor notes were improved and many missing explanations of important deep learning concepts were added to the lesson. 
+
+Most importantly, the reviewers pointed out that the CIFAR-10 [@noauthor_cifar-10_nodate] dataset that we initially used does not have a license. We were surprised to find out that this dataset, that is one of the most widely used datasets in the field of machine learning and deep learning, is actually unethically scraped from the internet without permission from image owners. As an alternative we now use 'Dollar street 10' [@van_der_burg_dollar_2024], a dataset that was adapted for this lesson from The Dollar Street Dataset (@gaviria_rojas_dollar_2022). The Dollar Street Dataset is representative and contains accurate demographic information to ensure their robustness and fairness, especially for smaller subpopulations. In addition, it is a great entry point to teach learners about ethical AI and bias in datasets.
+
+You can find all details of the review process on GitHub: https://github.com/carpentries-lab/reviews/issues/25.
+
 # Conclusion
 This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and Python.
 It can also be taught in a broader curriculum after an introduction to Python programming (for example: @azalee_bostroem_software_2016) 
@@ -208,6 +221,7 @@ Nidhi Gowdra (University of Auckland, New Zealand, https://www.auckland.ac.nz/),
 Renato Alves and Lisanna Paladin (EMBL Heidelberg, Germany, https://www.embl.org/sites/heidelberg/),
 that piloted this workshop at their institutes.
 We thank the Carpentries for providing such a great framework for developing this lesson material.
+We thank Sarah Brown, Johanna Bayer, and Mike Laverick for giving us excellent feedback on the lesson during the Carpentries Lab review process.
 We thank all students enrolled in the workshops that were taught using this lesson material for providing us with feedback.
 
 # References
