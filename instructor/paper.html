@@ -312,7 +312,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to deep learning: Carpentries-style hands-on lesson material for introducing researchers to deep learning</h1>
-        <p>Last updated on 2025-02-11 |
+        <p>Last updated on 2025-02-25 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/paper.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -344,8 +344,10 @@ networks, and then guides learners through the different steps of a deep
 learning workflow.<br>
 After following this lesson, learners will be able to prepare data for
 deep learning, implement a basic deep learning model in Python with
-Keras, monitor and troubleshoot the training process, and implement
-different layer types, such as convolutional layers.</p>
+Keras, and monitor and troubleshoot the training process. In addition,
+they will be able to implement and understand different layer types,
+such as convolutional layers and dropout layers, and apply transfer
+learning.</p>
 <p>We use data with permissive licenses and designed for real world use
 cases:</p>
 <ul><li>The Penguin dataset (<span class="citation">@horst_allisonhorstpalmerpenguins_2020</span>)</li>
@@ -427,27 +429,35 @@ included at the level of the lesson content. In addition, the
 Carpentries Workbench prioritises accessibility of the content, for
 example by having clearly visible figure captions and promoting
 alt-texts for pictures.</p>
-<p>The lesson is split into a general introduction, and 3 episodes that
+<p>The lesson is split into a general introduction, and 4 episodes that
 cover 3 distinct increasingly more complex deep learning problems. Each
 of the deep learning problems is approached using the same 10-step deep
-learning workflow (<a href="https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow" class="external-link uri">https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow</a>).
-By going through the deep learning cycle three times with different
+learning workflow (<a href="https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow" class="external-link uri">https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow</a>).</p>
+<p>By going through the deep learning cycle three times with different
 problems, learners become increasingly confident in applying this deep
-learning workflow to their own projects.</p>
+learning workflow to their own projects. We end with an outlook episode.
+Firstly, the outlook eposide discusses a real-world application of deep
+learning in chemistry <span class="citation">[@huber_ms2deepscore_2021]</span>. In addition, it
+discusses bias in datasets, large language models, and good practices
+for organising deep learning projects. Finally, we end with ideas for
+next steps after finishing the lesson.</p>
 </div>
 <div class="section level1">
 <h1 id="feedback">Feedback<a class="anchor" aria-label="anchor" href="#feedback"></a></h1>
-<p>This course was taught 12 times over the course of 3 years, both
+<p>This course was taught 13 times over the course of 4 years, both
 online and in-person, by the Netherlands eScience Center (Netherlands,
-<a href="https://www.esciencecenter.nl/" class="external-link uri">https://www.esciencecenter.nl/</a>) and Helmholz-Zentrum
+<a href="https://www.esciencecenter.nl/" class="external-link uri">https://www.esciencecenter.nl/</a>) and Helmholtz-Zentrum
 Dresden-Rossendorf (Germany, <a href="https://www.hzdr.de/" class="external-link uri">https://www.hzdr.de/</a>). Apart from the core group of
-contributors, the workshop was also taught at 3 independent institutes,
-namely: University of Wisconson-Madison (US, <a href="https://www.wisc.edu/" class="external-link uri">https://www.wisc.edu/</a>),
+contributors, the workshop was also taught at at least 3 independent
+institutes, namely: University of Wisconson-Madison (US, <a href="https://www.wisc.edu/" class="external-link uri">https://www.wisc.edu/</a>),
 University of Auckland (New Zealand, <a href="https://www.auckland.ac.nz/" class="external-link uri">https://www.auckland.ac.nz/</a>), and EMBL Heidelberg
-(Germany, <a href="https://www.embl.org/sites/heidelberg/" class="external-link uri">https://www.embl.org/sites/heidelberg/</a>). In general,
-adoption of the lesson material by the instructors not involved in the
-project went well. The feedback gathered from our own and others’
-teachings was used to polish the lesson further.</p>
+(Germany, <a href="https://www.embl.org/sites/heidelberg/" class="external-link uri">https://www.embl.org/sites/heidelberg/</a>).</p>
+<p>An up-to-date list of workshops that the authors are aware of having
+using this lesson can be found in a <code>workshops.md</code> file in
+the GitHub repository (<a href="https://github.com/carpentries-incubator/deep-learning-intro/blob/main/workshops.md" class="external-link uri">https://github.com/carpentries-incubator/deep-learning-intro/blob/main/workshops.md</a>).</p>
+<p>In general, adoption of the lesson material by the instructors not
+involved in the project went well. The feedback gathered from our own
+and others’ teachings was used to polish the lesson further.</p>
 <div class="section level2">
 <h2 id="student-responses">Student responses<a class="anchor" aria-label="anchor" href="#student-responses"></a></h2>
 <p>The feedback we gathered from students is in general very positive,
@@ -559,6 +569,29 @@ by students from 2 workshops taught at the Netherlands eScience Center.
 The results from these 2 workshops are a good representation of the
 general feedback we get when teaching this workshop.</p>
 </div>
+<div class="section level2">
+<h2 id="carpentries-lab-review-process">Carpentries Lab review process<a class="anchor" aria-label="anchor" href="#carpentries-lab-review-process"></a></h2>
+<p>Prior to submitting this paper the lesson went through the
+substantial review in the process of becoming an official Carpentries
+Lab (<a href="https://carpentries-lab.org/" class="external-link uri">https://carpentries-lab.org/</a>) lesson. This led to a
+number of improvements to the lesson. In general the accessibility and
+user-friendliness improved, for example by updating alt-texts and using
+more beginner-friendly and clearer wording. Additionally, the instructor
+notes were improved and many missing explanations of important deep
+learning concepts were added to the lesson.</p>
+<p>Most importantly, the reviewers pointed out that the CIFAR-10 <span class="citation">[@noauthor_cifar-10_nodate]</span> dataset that we
+initially used does not have a license. We were surprised to find out
+that this dataset, that is one of the most widely used datasets in the
+field of machine learning and deep learning, is actually unethically
+scraped from the internet without permission from image owners. As an
+alternative we now use ‘Dollar street 10’ <span class="citation">[@van_der_burg_dollar_2024]</span>, a dataset that was
+adapted for this lesson from The Dollar Street Dataset (<span class="citation">@gaviria_rojas_dollar_2022</span>). The Dollar Street
+Dataset is representative and contains accurate demographic information
+to ensure their robustness and fairness, especially for smaller
+subpopulations. In addition, it is a great entry point to teach learners
+about ethical AI and bias in datasets.</p>
+<p>You can find all details of the review process on GitHub: <a href="https://github.com/carpentries-lab/reviews/issues/25" class="external-link uri">https://github.com/carpentries-lab/reviews/issues/25</a>.</p>
+</div>
 </div>
 <div class="section level1">
 <h1 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a></h1>
@@ -582,8 +615,10 @@ Auckland, New Zealand, <a href="https://www.auckland.ac.nz/" class="external-lin
 Paladin (EMBL Heidelberg, Germany, <a href="https://www.embl.org/sites/heidelberg/" class="external-link uri">https://www.embl.org/sites/heidelberg/</a>), that piloted
 this workshop at their institutes. We thank the Carpentries for
 providing such a great framework for developing this lesson material. We
-thank all students enrolled in the workshops that were taught using this
-lesson material for providing us with feedback.</p>
+thank Sarah Brown, Johanna Bayer, and Mike Laverick for giving us
+excellent feedback on the lesson during the Carpentries Lab review
+process. We thank all students enrolled in the workshops that were
+taught using this lesson material for providing us with feedback.</p>
 </div>
 <div class="section level1">
 <h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h1>
@@ -631,7 +666,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -653,8 +688,8 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/paper.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/paper.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-02-11",
-  "datePublished": "2025-02-18"
+  "dateModified": "2025-02-25",
+  "datePublished": "2025-02-25"
 }
 
   </script><script>
