@@ -8,7 +8,8 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
-carpentry: 'incubator'
+carpentry: 'lab'
+doi: 'https://doi.org/10.5281/zenodo.8308391'
 
 # Overall title for pages.
 title: 'Introduction to deep learning'
@@ -27,13 +28,13 @@ life_cycle: 'stable'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/carpentries-incubator/deep-learning-intro'
+source: 'https://github.com/carpentries-lab/deep-learning-intro'
 
 # Default branch of your lesson
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'deep-learning-lesson-dev@esciencecenter.nl'
 
 # Navigation ------------------------------------------------
 #
@@ -59,12 +60,12 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- 1-introduction.Rmd
-- 2-keras.Rmd
-- 3-monitor-the-model.Rmd
-- 4-advanced-layer-types.Rmd
-- 5-transfer-learning.Rmd
-- 6-outlook.Rmd
+- 1-introduction.md
+- 2-keras.md
+- 3-monitor-the-model.md
+- 4-advanced-layer-types.md
+- 5-transfer-learning.md
+- 6-outlook.md
 
 
 # Information for Learners

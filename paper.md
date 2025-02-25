@@ -148,8 +148,10 @@ and these can even be included at the level of the lesson content.
 In addition, the Carpentries Workbench prioritises accessibility of the content, for example by having clearly visible figure captions
 and promoting alt-texts for pictures.
 
+
 The lesson is split into a general introduction, and 4 episodes that cover 3 distinct increasingly more complex deep learning problems.
-Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
+Each of the deep learning problems is approached using the same 10-step deep learning workflow (https://carpentries-lab.github.io/deep-learning-intro/1-introduction.html#deep-learning-workflow).
+
 By going through the deep learning cycle three times with different problems, learners become increasingly confident in applying this deep learning workflow to their own projects.
 We end with an outlook episode. Firstly, the outlook eposide discusses a real-world application of deep learning in chemistry [@huber_ms2deepscore_2021]. In addition, it discusses bias in datasets, large language models, and good practices for organising deep learning projects. Finally, we end with ideas for next steps after finishing the lesson.
 
