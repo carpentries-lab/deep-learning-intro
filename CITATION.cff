@@ -65,9 +65,9 @@ authors:
     email: yonglei@nsc.liu.se
 
 repository-code: >-
-  https://github.com/carpentries-incubator/deep-learning-intro
+  https://github.com/carpentries-lab/deep-learning-intro
 url: >-
-  https://carpentries-incubator.github.io/deep-learning-intro/
+  https://carpentries-lab.github.io/deep-learning-intro/
 abstract: >-
   This course describes a hands-on introduction to the first
   steps in deep learning, 
