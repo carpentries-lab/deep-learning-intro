@@ -20,4 +20,4 @@
 "learners/setup.md" "f640f3d679d73aad199d11e53590cb3a" "site/built/setup.md" "2025-02-11"
 "paper/paper.md" "5257d2bb9c07be835c20d66855c38202" "site/built/paper.md" "2025-03-03"
 "profiles/learner-profiles.md" "ef0f26dd0874387d80ed3fd468b99e23" "site/built/learner-profiles.md" "2025-02-11"
-"renv/profiles/lesson-requirements/renv.lock" NA "site/built/renv.lock" "2025-03-10"
+"renv/profiles/lesson-requirements/renv.lock" NA "site/built/renv.lock" "2025-03-11"
