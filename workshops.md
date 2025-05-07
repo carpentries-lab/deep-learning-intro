@@ -13,3 +13,5 @@
 | 2023-08-21        | Netherlands eScience Center | Online                     |          |
 | 2024-02-05        | Netherlands eScience Center | Online                     |          |
 | 2025-01-28        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2025-03-03        | CASTIEL2                    | Online                     | Part of a course `Multi-GPU AI Train-the-Trainer` |
+| 2025-05-06        | EuroCC National Competence Center Sweden | Online        |          |
