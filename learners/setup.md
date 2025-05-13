@@ -39,7 +39,7 @@ Please set up your Python environment at least a day in advance of the workshop.
 
 Different systems and Python installations (e.g., Anaconda, Git Bash, system Python, Windows Store, etc.) may register different command names. This quick check helps identify which one points to Python 3.11.9 on your machine.
 
-Run the following in your terminal (Git Bash, Anaconda Prompt, or macOS/Linux shell):
+Run the following in your terminal ([Git Bash](https://git-scm.com/downloads), Anaconda Prompt, or macOS/Linux shell):
 
 ```shell
 python --version
