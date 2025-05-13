@@ -2,9 +2,8 @@
 title: Setup
 ---
 ## Setup
-Please complete the setup at least a day in advance of the workshop. If you run into issues, contact the workshop organizers by email so you're ready to begin on time. 
+Please complete the setup at least a day in advance of the workshop. If you run into issues, contact the workshop organizers by email so you're ready to begin on time. The setup steps include: 
 
-The workshop setup steps below include: 
 1. Setup workshop folder
 2. Install Python 3.11.9
 3. Setup virtual environment with required packages
@@ -79,7 +78,8 @@ Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following co
 1. Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments) called `venv` using the "venv" command:
 
 ```shell
-python -m venv venv  # Use python3 or py instead if one of them points to 3.11.9.
+# Use python3 or py instead if one of them points to 3.11.9.
+python -m venv venv # 1st "venv" is commmand, 2nd venv is name of the virtual environment / folder
 ```
 
 If you run the `ls` command from `~/Desktop/dl_workshop`, you should see a new `venv` folder inside it
@@ -121,20 +121,24 @@ source venv/Scripts/activate
 
 **Note**: Remember that you need to activate your environment every time you restart your terminal, and before you launch Jupyter Lab!
 
-3. Upgrade pip before installing other packages. This is a good practice to follow when you first initialize your virtual environment. [Pip](https://pip.pypa.io/en/stable/) is the package management system built into Python.Pip should be available in your system once you installed Python successfully.
+3. After activating the enviornment, upgrade pip. This is a good practice to follow when you first initialize your virtual environment (beforing installing additional packages). [Pip](https://pip.pypa.io/en/stable/) is the package management system built into Python.Pip should be available in your system once you installed Python successfully.
 
 ```shell
-python -m pip install --upgrade pip # remember: use python3 or py instead if it points to 3.11.9
+ # remember: use python3 or py instead if it points to 3.11.9
+python -m pip install --upgrade pip
 ```
 
 4. Install the required packages:
+
+Follow the OS-specific instructions below. NOte that It may take 10-20 minutes to install everything.
 
 ::: spoiler
 
 ### On Linux/macOs
 
 ```shell
-python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use python or py instead if one of them points to 3.11.9.
+ # Use python or py instead if one of them points to 3.11.9.
+python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
 ```
 
 Note for MacOS users: there is a package `tensorflow-metal` which accelerates the training of machine learning models with TensorFlow on a recent Mac with a Silicon chip (M1/M2/M3).
@@ -147,7 +151,8 @@ However, the installation is currently broken in the most recent version (as of 
 ### On Windows
 
 ```shell
-python -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use py or python3 instead if one of them points to 3.11.9.
+# Use py or python3 instead if one of them points to 3.11.9.
+python -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot 
 ```
 
 :::
