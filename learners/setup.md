@@ -78,25 +78,9 @@ Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following co
 
 1. Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments) called `venv` using the "venv" command:
 
-::: spoiler
-
-### On Linux/macOs
-
 ```shell
-python3 -m venv venv # Use python or py instead if one of them points to 3.11.9.
+python -m venv venv  # Use python3 or py instead if one of them points to 3.11.9.
 ```
-
-:::
-
-::: spoiler
-
-### On Windows
-
-```shell
-py -m venv venv  # Use python3 or python instead if one of them points to 3.11.9.
-```
-
-:::
 
 If you run the `ls` command from `~/Desktop/dl_workshop`, you should see a new `venv` folder inside it
 
@@ -149,10 +133,6 @@ python -m pip install --upgrade pip # remember: use python3 or py instead if it 
 
 ### On Linux/macOs
 
-
-
-
-
 ```shell
 python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use python or py instead if one of them points to 3.11.9.
 ```
@@ -166,9 +146,8 @@ However, the installation is currently broken in the most recent version (as of 
 
 ### On Windows
 
-
 ```shell
-py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use python or python3 instead if one of them points to 3.11.9.
+python -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use py or python3 instead if one of them points to 3.11.9.
 ```
 
 :::
@@ -196,7 +175,7 @@ jupyter lab
 
 ## Check your setup
 To check whether all packages installed correctly, start a jupyter notebook in jupyter lab as
-explained above. Run the following lines of code:
+explained above (**with virtual environment activated**). Run the following lines of code:
 ```python
 import sklearn
 print('sklearn version: ', sklearn.__version__)
