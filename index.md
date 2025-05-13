@@ -25,6 +25,9 @@ The [Introduction to machine learning in Python with scikit-learn lesson](https:
 introduces practical machine learning using Python. It is a good lesson to follow in preparation for this lesson,
 since basic knowledge of machine learning and Python programming skills are required for this lesson.
 
+#### [Introduction to text analysis and natural language processing in Python](https://carpentries-incubator.github.io/python-text-analysis/index.html)  
+This lesson provides a practical introduction to working with unstructured text data, such as survey responses, clinical notes, academic papers, or historical documents. It covers key natural language processing (NLP) techniques including preprocessing, tokenization, feature extraction (e.g., bag-of-words and TF-IDF), and basic topic modeling. Learners will also be introduced to Word2Vec and simple neural networks in the context of language modeling. The skills taught in this lesson offer a strong foundation for more advanced topics such as knowledge extraction, working with large text corpora, and building applications that involve large language models (LLMs).
+
 :::::::::::::::::: checklist
 
 ## Prerequisites
