@@ -180,7 +180,17 @@ jupyter lab
 
 ## Check your setup
 To check whether all packages installed correctly, start a jupyter notebook in jupyter lab as
-explained above (**with virtual environment activated**). Run the following lines of code:
+explained above (**with virtual environment activated**). Run the following check to verify you have the right version of Python configured.
+```python
+!python --version
+```
+
+If you don't see 3.11.9, make sure your virtual environment was activated prior to launching Jupyter Lab.
+```output
+Python 3.11.9 
+```
+
+Then, run the following lines of code:
 ```python
 import sklearn
 print('sklearn version: ', sklearn.__version__)
@@ -197,6 +207,7 @@ print('Tensorflow version: ', tensorflow.__version__)
 
 This should output the versions of all required packages without giving errors.
 Most versions will work fine with this lesson, but:
+
 - For Keras and Tensorflow, the minimum version is 2.12.0
 - For sklearn, the minimum version is 1.2.2
 
