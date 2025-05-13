@@ -1,37 +1,86 @@
 ---
 title: Setup
 ---
-## Software Setup
+## Setup
+The setup steps below will help you prepare a folder for the workshop, install Python and the needed libraries in a virtual environment, and download the data we'll be exploring.
+
+## 1. Setup workshop folder
+
+Create a folder on your desktop called `dl_workshop` for storing the workshop data and required packages.
+
+```shell
+cd ~/Desktop
+mkdir dl_workshop
+cd dl_workshop
+pwd 
+```
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
-### Installing Python
+## 2. Installing Python
 
-[Python][python] is a popular language for scientific computing, and a frequent choice
-for machine learning as well.
-To install Python, follow the [Beginner's Guide](https://wiki.python.org/moin/BeginnersGuide/Download) or head straight to the [download page](https://www.python.org/downloads/).
+[Python][python] is a popular language for scientific computing and a frequent choice for machine learning.
 
-Please set up your python environment at least a day in advance of the workshop.
-If you encounter problems with the installation procedure, ask your workshop organizers via e-mail for assistance so
-you are ready to go as soon as the workshop begins.
+Python version requirement: This workshop requires Python 3.11.9. Newer versions like 3.12 or 3.13 are not yet fully compatible with TensorFlow and may cause issues. Even Python 3.11.9 may have some edge cases, but it works well enough to be the default in Google Colab and is stable for the purposes of this workshop.
+
+To install Python 3.11.9, go to the [official 3.11.9 downloads page](https://www.python.org/downloads/release/python-3119//). Choose the installer that matches your operating system (Windows, macOS, or Linux).
+
+Please set up your Python environment at least a day in advance of the workshop. If you run into issues with installation, contact the workshop organizers by email so you're ready to begin on time.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Installing the required packages{#packages}
+
+## 3. Determine which `python` command to use for downstream setup steps
+
+Different systems and Python installations (e.g., Anaconda, Git Bash, system Python, Windows Store, etc.) may register different command names. This quick check helps identify which one points to Python 3.11.9 on your machine.
+
+Run the following in your terminal (Git Bash, Anaconda Prompt, or macOS/Linux shell):
+
+```shell
+python --version
+py --version
+python3 --version
+```
+
+Use whichever one returns Python 3.11.9 for the rest of the setup steps.
+
+Example output:
+
+```output
+$ python --version
+Python 3.11.9
+
+$ py --version
+Python 3.13.2
+
+$ python3 --version
+Python was not found...
+```
+In this case, use python throughout the remainder of the instructions.
+
+If none of the commands return Python 3.11.9:
+
+- Download and install Python 3.11.9
+- On Windows, be sure to check "Add Python to PATH" during installation
+- Then re-run the checks above in a new terminal window
+
+If you're still stuck, ask the workshop organizers for help before proceeding.
+
+## 4. Installing the required packages{#packages}
 
 [Pip](https://pip.pypa.io/en/stable/) is the package management system built into Python.
 Pip should be available in your system once you installed Python successfully.
 
 Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following commands.
 
-1. Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments) called `dl_workshop`:
+1. Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments) called `venv` using the "venv" command:
 
 ::: spoiler
 
 ### On Linux/macOs
 
 ```shell
-python3 -m venv dl_workshop
+python3 -m venv venv # Use python or py instead if one of them points to 3.11.9.
 ```
 
 :::
@@ -41,10 +90,20 @@ python3 -m venv dl_workshop
 ### On Windows
 
 ```shell
-py -m venv dl_workshop
+py -m venv venv  # Use python3 or python instead if one of them points to 3.11.9.
 ```
 
 :::
+
+If you run the `ls` command from `~/Desktop/dl_workshop`, you should see a new `venv` folder inside it
+
+```shell
+ls
+```
+
+```output
+venv/
+```
 
 2. Activate the newly created virtual environment:
 
@@ -53,7 +112,7 @@ py -m venv dl_workshop
 ### On Linux/macOs
 
 ```shell
-source dl_workshop/bin/activate
+source venv/bin/activate
 ```
 
 :::
@@ -63,21 +122,36 @@ source dl_workshop/bin/activate
 ### On Windows
 
 ```shell
-dl_workshop\Scripts\activate
+venv\Scripts\activate
 ```
 
+If you're using Git Bash on Windows, you need to add the source command first.
+
+```shell
+source venv/Scripts/activate
+```
 :::
 
-Remember that you need to activate your environment every time you restart your terminal!
+**Note**: Remember that you need to activate your environment every time you restart your terminal, and before you launch Jupyter Lab!
 
-3. Install the required packages:
+3. Upgrade pip before installing other packages. This is a good practice to follow when you first initialize your virtual environment. 
+
+```shell
+python -m pip install --upgrade pip # remember: use python3 or py instead if it points to 3.11.9
+```
+
+4. Install the required packages:
 
 ::: spoiler
 
 ### On Linux/macOs
 
+
+
+
+
 ```shell
-python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
+python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use python or py instead if one of them points to 3.11.9.
 ```
 
 Note for MacOS users: there is a package `tensorflow-metal` which accelerates the training of machine learning models with TensorFlow on a recent Mac with a Silicon chip (M1/M2/M3).
@@ -89,8 +163,9 @@ However, the installation is currently broken in the most recent version (as of 
 
 ### On Windows
 
+
 ```shell
-py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
+py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot # Use python or python3 instead if one of them points to 3.11.9.
 ```
 
 :::
