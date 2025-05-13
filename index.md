@@ -31,6 +31,9 @@ This lesson provides a practical introduction to working with unstructured text 
 #### [Trustworthy AI: Validity, fairness, explainability, and uncertainty assessments](https://carpentries-incubator.github.io/fair-explainable-ml/index.html)  
 This lesson introduces tools and practices for building and evaluating machine learning models that are fair, transparent, and reliable across multiple data types, including tabular data, text, and images. Learners explore model evaluation, fairness audits, explainability methods (such as linear probes and GradCAM), and strategies for handling uncertainty and detecting out-of-distribution (OOD) data. It is especially relevant for researchers working with NLP, computer vision, or structured data who are interested in integrating ethical and reproducible ML practices into their workflows—including those working with large language models (LLMs) or planning to release models for public or collaborative use.
 
+#### [Intro to AWS SageMaker for predictive ML/AI](https://carpentries-incubator.github.io/ML_with_AWS_SageMaker/index.html)  
+This lesson focuses on training and tuning neural networks (and other ML models) using Amazon SageMaker, and is a natural next step for learners who've outgrown local setups. If your deep learning models are becoming too large or slow to run on a laptop, SageMaker provides scalable infrastructure with access to GPUs and support for parallelized hyperparameter tuning. Participants learn to use SageMaker notebooks to manage data via S3, launch training jobs, monitor compute usage, and keep experiments cost-effective. While the examples center on small to mid-sized models, the workflow is directly applicable to scaling up deep learning and LLM-related experiments in research.
+
 :::::::::::::::::: checklist
 
 ## Prerequisites
