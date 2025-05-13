@@ -2,7 +2,13 @@
 title: Setup
 ---
 ## Setup
-The setup steps below will help you prepare a folder for the workshop, install Python and the needed libraries in a virtual environment, and download the data we'll be exploring.
+Please complete the setup at least a day in advance of the workshop. If you run into issues, contact the workshop organizers by email so you're ready to begin on time. 
+
+The workshop setup steps below include: 
+1. Setup workshop folder
+2. Install Python 3.11.9
+3. Setup virtual environment with required packages
+4. Download the data
 
 ## 1. Setup workshop folder
 
@@ -15,7 +21,9 @@ cd dl_workshop
 pwd 
 ```
 
-::::::::::::::::::::::::::::::::::::::: discussion
+```output
+~/Desktop/dl_workshop
+```
 
 ## 2. Installing Python
 
@@ -27,10 +35,8 @@ To install Python 3.11.9, go to the [official 3.11.9 downloads page](https://www
 
 Please set up your Python environment at least a day in advance of the workshop. If you run into issues with installation, contact the workshop organizers by email so you're ready to begin on time.
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-## 3. Determine which `python` command to use for downstream setup steps
+### Determine which `python` command to use for downstream setup steps
 
 Different systems and Python installations (e.g., Anaconda, Git Bash, system Python, Windows Store, etc.) may register different command names. This quick check helps identify which one points to Python 3.11.9 on your machine.
 
@@ -66,10 +72,7 @@ If none of the commands return Python 3.11.9:
 
 If you're still stuck, ask the workshop organizers for help before proceeding.
 
-## 4. Installing the required packages{#packages}
-
-[Pip](https://pip.pypa.io/en/stable/) is the package management system built into Python.
-Pip should be available in your system once you installed Python successfully.
+## 3. Configure virtual environment
 
 Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following commands.
 
@@ -134,7 +137,7 @@ source venv/Scripts/activate
 
 **Note**: Remember that you need to activate your environment every time you restart your terminal, and before you launch Jupyter Lab!
 
-3. Upgrade pip before installing other packages. This is a good practice to follow when you first initialize your virtual environment. 
+3. Upgrade pip before installing other packages. This is a good practice to follow when you first initialize your virtual environment. [Pip](https://pip.pypa.io/en/stable/) is the package management system built into Python.Pip should be available in your system once you installed Python successfully.
 
 ```shell
 python -m pip install --upgrade pip # remember: use python3 or py instead if it points to 3.11.9
@@ -218,7 +221,7 @@ If a local installation does not work for you, it is also possible to run this l
 
 Alternatively you can use [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of Jupyter Lab.
 
-## Downloading the required datasets
+## 4. Downloading the required datasets
 
 Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]
 
