@@ -39,7 +39,7 @@ Please set up your Python environment at least a day in advance of the workshop.
 
 Different systems and Python installations (e.g., Anaconda, Git Bash, system Python, Windows Store, etc.) may register different command names. This quick check helps identify which one points to Python 3.11.9 on your machine.
 
-Run the following in your terminal ([Git Bash](https://git-scm.com/downloads), Anaconda Prompt, or macOS/Linux shell):
+Run the following in your terminal ([Git Bash recommended for Windows users](https://git-scm.com/downloads), Anaconda Prompt, or macOS/Linux shell):
 
 ```shell
 python --version
@@ -65,8 +65,8 @@ In this case, use python throughout the remainder of the instructions.
 
 If none of the commands return Python 3.11.9:
 
-- Download and install Python 3.11.9
-- On Windows, be sure to check "Add Python to PATH" during installation
+- Download and install Python 3.11.9. On Windows, be sure to check "Add Python to PATH" during installation
+- If you're on Windows using Anaconda Prompt, try using [Git Bash](https://git-scm.com/downloads) instead.  
 - Then re-run the checks above in a new terminal window
 
 If you're still stuck, ask the workshop organizers for help before proceeding.
