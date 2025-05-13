@@ -218,7 +218,7 @@ Alternatively you can use [Google colab](https://colab.research.google.com/). If
 
 ## 4. Downloading the required datasets
 
-Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]
+Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]. Move these files to your workshop folder, `~/Desktop/dl_workshop/`.
 
 [dollar-street]: https://zenodo.org/api/records/10970014/files-archive
 [jupyter]: http://jupyter.org/
