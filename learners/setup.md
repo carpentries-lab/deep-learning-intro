@@ -218,7 +218,28 @@ Alternatively you can use [Google colab](https://colab.research.google.com/). If
 
 ## 4. Downloading the required datasets
 
-Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]. Move these files to your workshop folder, `~/Desktop/dl_workshop/`.
+Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]. Create a subfolder in your workshop folder called data, `~/Desktop/dl_workshop/data`, and move all 5 files to the data subfolder:
+
+- `dl_workshop/data/weather_prediction_dataset_light.csv`
+- `dl_workshop/data/`train_labels.npy`
+- `dl_workshop/data/`test_labels.npy`
+- `dl_workshop/data/`train_images.npy`
+- `dl_workshop/data/`test_images.npy`
+
+**Note**: If you end up using Google Colab for the workshop, you'll want to upload your `dl_workshop` folder to your Google drive. You can access files from Google drive using Colab and the following code:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+A prompt will appear asking you to authorize access to your Google Drive. After authorization, your Drive will be accessible under `/content/drive/My Drive/`. You can use standard Python I/O or libraries like pandas, os, glob, etc. to interact with files. Example below:
+
+```python
+import pandas as pd
+# Load a CSV file from Drive
+df = pd.read_csv('/content/drive/My Drive/dl_workshop/data/weather_prediction_dataset_light.csv')
+```
 
 [dollar-street]: https://zenodo.org/api/records/10970014/files-archive
 [jupyter]: http://jupyter.org/
