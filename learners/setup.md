@@ -221,10 +221,10 @@ Alternatively you can use [Google colab](https://colab.research.google.com/). If
 Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]. Create a subfolder in your workshop folder called data, `~/Desktop/dl_workshop/data`, and move all 5 files to the data subfolder:
 
 - `dl_workshop/data/weather_prediction_dataset_light.csv`
-- `dl_workshop/data/`train_labels.npy`
-- `dl_workshop/data/`test_labels.npy`
-- `dl_workshop/data/`train_images.npy`
-- `dl_workshop/data/`test_images.npy`
+- `dl_workshop/data/train_labels.npy`
+- `dl_workshop/data/test_labels.npy`
+- `dl_workshop/data/train_images.npy`
+- `dl_workshop/data/test_images.npy`
 
 **Note**: If you end up using Google Colab for the workshop, you'll want to upload your `dl_workshop` folder to your Google drive. You can access files from Google drive using Colab and the following code:
 
