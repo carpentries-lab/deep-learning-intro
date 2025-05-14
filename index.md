@@ -24,6 +24,8 @@ Learners are expected to have the following knowledge:
 
 ::::::::::::::::::::::::::::
 
+::: spoiler
+
 ### Other related lessons
 #### Introduction to artificial neural networks in Python
 The [Introduction to artificial neural networks in Python lesson](https://carpentries-incubator.github.io/machine-learning-neural-python/)
@@ -43,6 +45,8 @@ The [Trustworthy AI](https://carpentries-incubator.github.io/fair-explainable-ml
 
 #### Intro to AWS SageMaker for predictive ML/AI
 The [Intro to AWS SageMaker for predictive ML/AI](https://carpentries-incubator.github.io/ML_with_AWS_SageMaker/index.html) lesson focuses on training and tuning neural networks (and other ML models) using Amazon SageMaker, and is a natural next step for learners who've outgrown local setups. If your deep learning models are becoming too large or slow to run on a laptop, SageMaker provides scalable infrastructure with access to GPUs and support for parallelized hyperparameter tuning. Participants learn to use SageMaker notebooks to manage data via S3, launch training jobs, monitor compute usage, and keep experiments cost-effective. While the examples center on small to mid-sized models, the workflow is directly applicable to scaling up deep learning and LLM-related experiments in research.
+
+::: 
 
 ::: instructor
 
