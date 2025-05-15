@@ -59,6 +59,7 @@ We will now import and explore the weather data-set:
 ## Load the data
 If you have not downloaded the data yet, you can also load it directly from Zenodo:
 ```python
+import pandas as pd
 data = pd.read_csv("https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1")
 ```
 
