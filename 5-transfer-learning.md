@@ -189,12 +189,14 @@ The `max_pool` layer right before the `flatten` layer is added because we provid
 
 ### 1. Compile the model
 Compile the model:
+
 - Use the `adam` optimizer 
 - Use the `SparseCategoricalCrossentropy` loss with `from_logits=True`. 
 - Use 'accuracy' as a metric.
 
 ### 2. Train the model
 Train the model on the training dataset:
+
 - Use a batch size of 32
 - Train for 30 epochs, but use an earlystopper with a patience of 5
 - Pass the validation dataset as validation data so we can monitor performance on the validation data during training
