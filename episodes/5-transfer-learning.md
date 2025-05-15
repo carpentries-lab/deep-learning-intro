@@ -258,6 +258,120 @@ The final validation accuracy reaches 64%, this is a huge improvement over 30% a
 ::::
 :::
 
+::: challenge
+## Fine-Tune the Top Layer of the Pretrained Model
+
+So far, we've trained only the custom head while keeping the DenseNet121 base frozen. Let's now **unfreeze just the top layer group** of the base model and observe how performance changes.
+
+### 1. Unfreeze top layers
+Unfreeze just the final convolutional block of the base model using:
+
+```python
+# 1. Unfreeze top block of base model
+set_trainable = False
+for layer in base_model.layers:
+    if 'conv5' in layer.name:
+        set_trainable = True
+    layer.trainable = set_trainable
+```
+
+### 2. Recompile the model
+Any time you change layer trainability, you **must recompile** the model.
+
+Use the same optimizer and loss function as before:
+- `optimizer='adam'`
+- `loss=SparseCategoricalCrossentropy(from_logits=True)`
+- `metrics=['accuracy']`
+
+### 3. Retrain the model
+Retrain the model using the same setup as before:
+
+- `batch_size=32`
+- `epochs=30`
+- Early stopping with `patience=5`
+- Pass in the validation set using `validation_data`
+- Store the result in a new variable called `history_finetune`
+
+> You can reuse your `early_stopper` callback or redefine it.
+
+### 4. Compare with baseline (head only)
+Plot the **validation accuracy** for both the baseline and fine-tuned models.
+
+**Questions to reflect on:**
+- Did unfreezing part of the base model improve validation accuracy?
+- Did training time increase significantly?
+- Is there any evidence of overfitting?
+
+:::: solution
+## Solution
+```python
+# 1. Unfreeze top block of base model
+set_trainable = False
+for layer in base_model.layers:
+    if 'conv5' in layer.name:
+        set_trainable = True
+    else:
+        set_trainable = False
+    layer.trainable = set_trainable
+
+# 2. Recompile the model
+model.compile(optimizer='adam',
+              loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+# 3. Retrain the model
+early_stopper = keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=5)
+history_finetune = model.fit(train_images, train_labels,
+                             batch_size=32,
+                             epochs=30,
+                             validation_data=(val_images, val_labels),
+                             callbacks=[early_stopper])
+
+# 4. Plot comparison
+def plot_two_histories(h1, h2, label1='Frozen', label2='Finetuned'):
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    df1 = pd.DataFrame(h1.history)
+    df2 = pd.DataFrame(h2.history)
+    plt.plot(df1['val_accuracy'], label=label1)
+    plt.plot(df2['val_accuracy'], label=label2)
+    plt.xlabel("Epochs")
+    plt.ylabel("Validation Accuracy")
+    plt.legend()
+    plt.title("Validation Accuracy: Frozen vs. Finetuned")
+    plt.show()
+
+plot_two_histories(history, history_finetune)
+
+```
+
+![](episodes/fig/05-frozen_vs_finetuned.png)
+
+**Discussion of results**: Validation accuracy improved across all epochs compared to the frozen baseline. Training time also increased slightly, but the model was able to adapt better to the new dataset by fine-tuning the top convolutional block.
+
+This makes sense: by unfreezing the last part of the base model, you're allowing it to adjust high-level features to the new domain, while still keeping the earlier, general-purpose filters/feature-detectors of the model intact.
+
+
+**What happens if you unfreeze too many layers?**
+If you unfreeze most or all of the base model:
+
+- Training time increases significantly because more weights are being updated.
+- The model may forget some of the general-purpose features it learned during pretraining. This is called "catastrophic forgetting."
+- Overfitting becomes more likely, especially if your dataset is small or noisy.
+
+
+### When does this approach work best?
+
+Fine-tuning a few top layers is a good middle ground. You're adapting the model without retraining everything from scratch. If your dataset is small or very different from the original ImageNet data, you should be careful not to unfreeze too many layers.
+
+For most use cases:
+- Freeze most layers
+- Unfreeze the top block or two
+- Avoid full fine-tuning unless you have lots of data and compute
+
+::::
+:::
+
 ## Concluding: The power of transfer learning
 In many domains, large networks are available that have been trained on vast amounts of data, such as in computer vision and natural language processing. Using transfer learning, you can benefit from the knowledge that was captured from another machine learning task. In many fields, transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
 
