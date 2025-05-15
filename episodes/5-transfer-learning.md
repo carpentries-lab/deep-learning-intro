@@ -30,6 +30,65 @@ https://mermaid.live/edit#pako:eNpVkE1vgzAMhv9K5MPUSrQKAWUlh0kr9NZetp02drAgUCRIq
 
 In this episode we will learn how use Keras to adapt a state-of-the-art pre-trained model to the [Dollar Street Dataset](https://zenodo.org/records/10970014).
 
+::: spoiler
+### Google Colab + GPUs recommended
+This episode uses a respectably sized neural network — *DenseNet121*, which has 121 layers and over 7 million parameters. Training or "finetuning" this large of a model on a CPU is slow. Graphical Processing Units (GPUs) dramatically accelerate deep learning by speeding up the underlying matrix operations, often achieving **10-100x faster performance** than CPUs.
+
+To speed things up, we recommend using [Google Colab](https://colab.research.google.com/), which provides free access to a GPU. 
+
+#### How to run this episode in Colab:
+
+**A. Upload the `dl_workshop` folder to your Google Drive (excluding the `venv` folder).**  
+
+- This folder should contain the `data/` directory with the `.npy` files used in this episode. If the instructor has provided pre-filled notebooks for the workshop, please upload these as well. DO NOT UPLOAD your virtual environment folder as it is very large, and we'll be using Google Colab's pre-built environment instead.
+
+**B. Start a blank notebook in Colab or open pre-filled notebook provided by instructor**
+   
+- Go to [https://colab.research.google.com/](https://colab.research.google.com/), click "New Notebook", and copy/paste code from this episode into cells.
+
+**C. Enable GPU**
+
+- Go to `Runtime > Change runtime type`
+- Set "Hardware accelerator" to `GPU`
+- Click "Save"
+
+**D. Mount your Google Drive in the notebook:**
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+**E. Set the data path to point to your uploaded folder, and load data:**
+
+```python
+import pathlib
+import numpy as np
+DATA_FOLDER = pathlib.Path('/content/drive/MyDrive/dl_workshop/data')
+train_images = np.load(DATA_FOLDER / 'train_images.npy')
+val_images = np.load(DATA_FOLDER / 'test_images.npy')
+train_labels = np.load(DATA_FOLDER / 'train_labels.npy')
+val_labels = np.load(DATA_FOLDER / 'test_labels.npy')
+```
+
+**F. Check if GPU is active:**
+
+```python
+import tensorflow as tf
+
+if tf.config.list_physical_devices('GPU'):
+    print("GPU is available and will be used.")
+else:
+    print("GPU not found. Training will use CPU and may be slow.")
+```
+
+```output
+GPU is available and will be used.
+```
+
+Assuming you have installed the GPU-enabled version of TensorFlow (which is pre-installed in Colab), you don't need to do anything else to enable GPU usage during training, tuning, or inference. TensorFlow/Keras will automatically use the GPU whenever it's available and supported. Note — we didn't include the GPU version of Tensorflow in this workshop's virtual environment because it can be finnicky to configure across operating systems, and many learners don't have the appropriate GPU hardware available.
+
+:::
+
 
 ## 1. Formulate / Outline the problem
 
@@ -41,7 +100,8 @@ We load the data in the same way as the previous episode:
 import pathlib
 import numpy as np
 
-DATA_FOLDER = pathlib.Path('data/dataset_dollarstreet/') # change to location where you stored the data
+# DATA_FOLDER = pathlib.Path('data/') # local path
+DATA_FOLDER = pathlib.Path('/content/drive/MyDrive/dl_workshop/data') # Colab path
 train_images = np.load(DATA_FOLDER / 'train_images.npy')
 val_images = np.load(DATA_FOLDER / 'test_images.npy')
 train_labels = np.load(DATA_FOLDER / 'train_labels.npy')
