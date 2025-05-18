@@ -192,17 +192,17 @@ Python 3.11.9
 
 Then, run the following lines of code:
 ```python
+import tensorflow
+print('Tensorflow version: ', tensorflow.__version__) # >= 2.12.0
+
 import sklearn
-print('sklearn version: ', sklearn.__version__)
+print('sklearn version: ', sklearn.__version__) # >= 1.2.2
 
 import seaborn
-print('seaborn version: ', seaborn.__version__)
-
+print('seaborn version: ', seaborn.__version__) # any version
+ 
 import pandas
-print('pandas version: ', pandas.__version__)
-
-import tensorflow
-print('Tensorflow version: ', tensorflow.__version__)
+print('pandas version: ', pandas.__version__) # any version 
 ```
 
 This should output the versions of all required packages without giving errors.
