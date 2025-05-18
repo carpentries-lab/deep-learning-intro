@@ -41,7 +41,7 @@ We load the data in the same way as the previous episode:
 import pathlib
 import numpy as np
 
-DATA_FOLDER = pathlib.Path('data/dataset_dollarstreet/') # change to location where you stored the data
+DATA_FOLDER = pathlib.Path('data/') # change to location where you stored the data
 train_images = np.load(DATA_FOLDER / 'train_images.npy')
 val_images = np.load(DATA_FOLDER / 'test_images.npy')
 train_labels = np.load(DATA_FOLDER / 'train_labels.npy')

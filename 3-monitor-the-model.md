@@ -72,7 +72,7 @@ into a local folder and load the data using the code below.
 ```python
 import pandas as pd
 
-filename_data = "weather_prediction_dataset_light.csv"
+filename_data = "data/weather_prediction_dataset_light.csv"
 data = pd.read_csv(filename_data)
 data.head()
 ```
