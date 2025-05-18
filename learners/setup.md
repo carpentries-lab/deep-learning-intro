@@ -226,7 +226,9 @@ Download the [weather dataset prediction csv][weatherdata] and [Dollar street da
 - `dl_workshop/data/train_images.npy`
 - `dl_workshop/data/test_images.npy`
 
-**Note**: If you end up using Google Colab for the workshop, you'll want to upload your `dl_workshop` folder to your Google drive. You can access files from Google drive using Colab and the following code:
+**Note**: If you end up using Google Colab for the workshop, you'll want to create a folder called `dl_workshop` within your Google drive, and then create the same `data` subfolder as above with all 5 files uploaded. **Avoid uploading the `venv` folder to your google drive**; you'll be using Colab's pre-built environment instead, and the `venv` folder contains MANY files from the libraries you installed. 
+
+You can access files from Google drive using Colab and the following code:
 
 ```python
 from google.colab import drive
@@ -240,6 +242,8 @@ import pandas as pd
 # Load a CSV file from Drive
 df = pd.read_csv('/content/drive/My Drive/dl_workshop/data/weather_prediction_dataset_light.csv')
 ```
+
+You can use the file navigator (folder icon) within Colab to help navigate your Google drive files.
 
 [dollar-street]: https://zenodo.org/api/records/10970014/files-archive
 [jupyter]: http://jupyter.org/
