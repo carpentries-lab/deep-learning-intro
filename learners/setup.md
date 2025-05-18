@@ -73,7 +73,7 @@ If you're still stuck, ask the workshop organizers for help before proceeding.
 
 ## 3. Configure virtual environment
 
-Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following commands.
+Open a terminal and run the following commands.
 
 1. Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments) called `venv` using the "venv" command:
 
