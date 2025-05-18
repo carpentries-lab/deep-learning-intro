@@ -171,7 +171,7 @@ Note that Internet Explorer and Edge are *not* supported.
 See the [Jupyter Lab documentation](https://jupyterlab.readthedocs.io/en/latest/getting_started/accessibility.html#compatibility-with-browsers-and-assistive-technology) for an up-to-date list of supported browsers.
 
 To start Jupyter Lab, open a terminal (Mac/Linux) or Command Prompt (Windows), 
-make sure that you activated the virtual environment you created for this course,
+**make sure that you activated the virtual environment you created for this course**,
 and type the command:
 
 ```shell
