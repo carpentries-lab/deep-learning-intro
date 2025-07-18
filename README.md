@@ -13,7 +13,7 @@ We would love to help you prepare to teach the lesson and receive feedback on ho
 You can notify us that you plan to teach this lesson by creating an issue in this repository or by sending an email to deep-learning-lesson-dev@esciencecenter.nl. Also, it would great if you can update [this overview of all workshops taught with this lesson material](workshops.md). This helps us show the impact of developing open-source lessons to our funders.
 
 ## Lesson Design
-The design of this lesson can be found in the [lesson design](http://github.com/carpentries-lab/deep-learning-intro/blob/main/instructors/design.md)
+The design of this lesson can be found in the [lesson design](https://carpentries-lab.github.io/deep-learning-intro/design.html)
 
 ## Target Audience
 The main audience of this carpentry lesson is PhD students that have little to no experience with
@@ -37,7 +37,7 @@ Please see the current list of
 [issues](https://github.com/carpentries-incubator/deep-learning_intro/issues)
 for ideas for contributing to this repository.
 
-Please also familiarize yourself with the [lesson design](http://github.com/carpentries-lab/deep-learning-intro/blob/main/instructors/design.md)
+Please also familiarize yourself with the [lesson design](https://carpentries-lab.github.io/deep-learning-intro/design.html)
 
 For making your contribution, we use the GitHub flow, which is nicely explained in the
 chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project)
