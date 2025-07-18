@@ -27,5 +27,5 @@ All other exercises are small and can be done individually.
 There are no official presentation slides for this lesson, but this material does include some example
 slides from when this course was taught by different institutions. These slides can be found in 
 the 
-[slides](https://github.com/carpentries-incubator/deep-learning-intro/tree/main/instructors/slides)
+[slides](https://github.com/carpentries-lab/deep-learning-intro/tree/main/instructors/slides)
 folder.
