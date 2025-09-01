@@ -678,7 +678,7 @@ history = model.fit(X_train, y_train,
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets. RSME for the validation set diverges from RSME for the training set after around 10 epochs but the difference in RSME values for the two sets is much smaller than in the previous example.'}
+![](fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets. RMSE for the validation set diverges from RMSE for the training set after around 10 epochs but the difference in RMSE values for the two sets is much smaller than in the previous example.'}
 
 1. With this smaller model we have reduced overfitting a bit, since the training and validation loss are now closer to each other, and the validation loss does now reach a plateau and does not further increase.
 We have not completely avoided overfitting though. 
@@ -727,7 +727,7 @@ As before, we can plot the losses during training:
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets. RSME for the validation set diverges slowly from RSME for the training set after approximately 8 epochs, with RSME for the validation set dropping more slowly.'}
+![](fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set diverges slowly from RMSE for the training set after approximately 8 epochs, with RMSE for the validation set dropping more slowly.'}
 
 This still seems to reveal the onset of overfitting, but the training stops before the discrepancy between training and validation loss can grow further.
 In addition to avoiding severe cases of overfitting, early stopping has the advantage that the number of training epochs will be regulated automatically.
@@ -808,7 +808,7 @@ history = model.fit(X_train, y_train,
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_5_rmse_batchnorm.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets. RSME for the validation set dops more quickly than for the training set at first, tracks RSME for the training set until approximately 50 epochs, then begins to gradually increase while error for the training set continues to gradually decrease.'}
+![](fig/03_training_history_5_rmse_batchnorm.png){alt='Plot of error vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set drops more than mean squared error for the training set at first, tracks the training error until approximately 50 epochs, then begins to gradually increase while error for the training set continues to gradually decrease.'}
 
 ::: callout
 ## Batchnorm parameters
