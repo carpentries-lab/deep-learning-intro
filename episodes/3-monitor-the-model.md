@@ -197,6 +197,7 @@ We compose a network of two hidden layers to start off with something. We go by 
 
 ```python
 from tensorflow import keras
+keras.utils.set_random_seed(2)
 
 def create_nn(input_shape):
     # Input layer

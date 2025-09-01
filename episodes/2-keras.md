@@ -316,8 +316,6 @@ For this episode it is useful if everyone gets the same results from their train
 Keras uses a random number generator at certain points during its execution.
 Therefore we will need to set two random seeds, one for numpy and one for tensorflow:
 ```python
-from numpy.random import seed
-seed(1)
 keras.utils.set_random_seed(2)
 ```
 
