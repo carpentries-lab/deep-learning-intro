@@ -399,18 +399,18 @@ def plot_history(history, metrics):
         history (keras History object that is returned by model.fit())
         metrics (str, list): Metric or a list of metrics to plot
     """
+    plt.style.use('ggplot')  # optional, that's only to define a visual style
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-    plt.ylabel("metric")
 
 plot_history(history, 'root_mean_squared_error')
 ```
 
 ![](fig/03_training_history_1_rmse.png){alt='Plot of the RMSE over epochs for the trained model that shows a decreasing error metric'}
 
-This looks very promising! Our metric ("RMSE") is dropping nicely and while it maybe keeps fluctuating a bit it does end up at fairly low *RMSE* values.
-But the *RMSE* is just the root *mean* squared error, so we might want to look a bit more in detail how well our just trained model does in predicting the sunshine hours.
+This looks very promising! Our metric "root_mean_squared_error" (RMSE) is dropping nicely and while it maybe keeps fluctuating a bit it does end up at fairly low values.
+But this metric is just the root *mean* squared error, so we might want to look a bit more in detail how well our just trained model does in predicting the sunshine hours.
 
 ## 7. Perform a Prediction/Classification
 Now that we have our model trained, we can make a prediction with the model before measuring the performance of our neural network.
