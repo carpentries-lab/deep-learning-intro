@@ -51,7 +51,7 @@ This cosine similarity is compared to the actual similarity between the two inpu
 Don't worry if you do not fully understand the deep learning problem and the approach that is taken here.
 We just want you to appreciate that you already learned enough to be able to do this yourself in your own domain.
 
-::: challenge
+:::: challenge
 ## Exercise: A real-world deep learning application
 
 1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this course?
@@ -60,7 +60,7 @@ We just want you to appreciate that you already learned enough to be able to do 
     a. Why are there 10.000 neurons in the input layer?
     b. What do you think would happen if you would decrease the size of spectral embedding layer drastically, to for example 5 neurons?
 
-:::: solution
+::: solution
 ## Solution
 1. The model summary for the Siamese model is more complex than what we have seen so far,
 but it is basically a repetition of Dense, BatchNorm, and Dropout layers.
@@ -75,8 +75,8 @@ EarlyStopping as well as the Adam optimizer is used.
     b. This would force the neural network to have a representation of the mass spectrum in only 5 numbers.
     This representation would probably be more generic, but might fail to capture all the characteristics found in the spectrum.
     This would likely result in underfitting.
-::::
 :::
+::::
 
 Hopefully you can appreciate that what you learned in this course, can be applied to real-world problems as well.
 
