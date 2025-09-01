@@ -148,7 +148,7 @@ sns.pairplot(penguins, hue="species")
 
 ![][pairplot]
 
-::: challenge
+:::: challenge
 
 ## Pairplot
 
@@ -159,7 +159,7 @@ Take a look at the pairplot we created. Consider the following questions:
 * (optional) Create a similar pairplot, but with `hue="sex"`. Explain the patterns you see.
 Which combination of features distinguishes the two sexes best?
 
-:::: solution
+::: solution
 ## Solution
 * The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
 * The other two seem to be separable by a combination of bill length and bill
@@ -177,8 +177,8 @@ You see that for each species females have smaller bills and flippers, as well a
 You would need a combination of the species and the numerical features to successfully distinguish males from females.
 The combination of `bill_depth_mm` and `body_mass_g` gives the best separation.
 
-::::
 :::
+::::
 
 ### Input and Output Selection
 Now that we have familiarized ourselves with the dataset we can select the data attributes to use
@@ -240,7 +240,7 @@ target = pd.get_dummies(penguins_filtered['species'])
 target.head() # print out the top 5 to see what it looks like.
 ```
 
-::: challenge
+:::: challenge
 ## One-hot encoding
 How many output neurons will our network have now that we one-hot encoded the target class?
 
@@ -248,12 +248,12 @@ How many output neurons will our network have now that we one-hot encoded the ta
 * B: 2
 * C: 3
 
-:::: solution
+::: solution
 ## Solution
 C: 3, one for each output variable class
 
-::::
 :::
+::::
 
 ### Split data into training and test set
 Finally, we will split the dataset into a training set and a test set.
@@ -415,7 +415,7 @@ You could choose to show and discuss the resulting visualization to the learners
 :::
 
 
-::: challenge
+:::: challenge
 ## Create the neural network
 With the code snippets above, we defined a Keras model with 1 hidden layer with
 10 neurons and an output layer with 3 neurons.
@@ -456,7 +456,7 @@ where each layer has **exactly one input tensor and one output tensor**.
 
 4. (optional) Use the Sequential model to implement the same network
 
-:::: solution
+::: solution
 ## Solution
 Have a look at the output of `model.summary()`:
 ```python
@@ -530,8 +530,8 @@ model = keras.Sequential(
 ```
 
 We will use the Functional API for the remainder of this course, since it is more flexible and more explicit.
-::::
 :::
+::::
 
 
 ::: callout
@@ -621,7 +621,7 @@ in [When to use random seeds?](#when-to-use-random-seeds).
 This plot can be used to identify whether the training is well configured or whether there
 are problems that need to be addressed.
 
-::: challenge
+:::: challenge
 ## The Training Curve
 Looking at the training curve we have just made.
 
@@ -637,7 +637,7 @@ When the training process does not go well:
 Also compare the range on the y-axis with the previous training curve.
 ![][bad-training-curve]
 
-:::: solution
+::: solution
 ## Solution
 1. The training loss decreases quickly. It drops in a smooth line with little jitter.
 This is ideal for a training curve.
@@ -655,8 +655,8 @@ In this case the graph was created by training on nonsense data, so this a train
 
 We will take a closer look at training curves in the next episode. Some of the concepts touched upon here will also be further explained there.
 
-::::
 :::
+::::
 
 ## 7. Perform a prediction/classification
 Now that we have a trained neural network, we can use it to predict new samples
@@ -784,7 +784,7 @@ Here are more explanations of this confusion matrix and the classification model
 - The second row: There are 14 Chinstrap pengunis in the test data, with 5 identified as Adelie (invalid), none are correctly recognized as Chinstrap, and 9 Chinstraps are identified as Gentoo (invalid).
 - The third row: There are 25 Gentoo penguins in the test data, with 6 identified as Adelie (invalid), none being recognized as Chinstrap (invalid), and 19 Gentoos are identified as Gentoo (valid).
 
-::: challenge
+:::: challenge
 ## Confusion Matrix
 Measure the performance of the neural network you trained and
 visualize a confusion matrix.
@@ -793,7 +793,7 @@ visualize a confusion matrix.
 - Did you expect this from the training loss you saw?
 - What could we do to improve the performance?
 
-:::: solution
+::: solution
 ## Solution
 The confusion matrix shows that the predictions for Adelie and Gentoo are decent, but could be improved. However, Chinstrap is not predicted ever.
 
@@ -809,8 +809,8 @@ A practical workaround is to increase the number of dense layers and also the nu
 In addition, adjusting the learning rate can also help achieving a high score for the prediction. You will get more info in the [**Advanced layer types**](./4-advanced-layer-types.html) episode.
 
 Note that the outcome you have might be slightly different from what is shown in this tutorial.
-::::
 :::
+::::
 
 ## 9. Refine the model
 As we discussed before the design and training of a neural network comes with
