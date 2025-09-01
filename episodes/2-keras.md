@@ -776,7 +776,7 @@ The `annot=True` parameter here will put the numbers from the confusion matrix i
 the heatmap.
 
 ```python
-sns.heatmap(confusion_df, annot=True)
+sns.heatmap(confusion_df, annot=True, cmap='Blues')
 ```
 ![][confusion_matrix]
 
