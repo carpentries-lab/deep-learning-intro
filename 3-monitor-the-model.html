@@ -335,7 +335,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Monitor the training process</h1>
-        <p>Last updated on 2025-02-11 |
+        <p>Last updated on 2025-09-01 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/episodes/3-monitor-the-model.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -639,7 +639,7 @@ sunshine hours?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The shape of the input layer has to correspond to the number of
 features in our data: 89</li>
@@ -671,21 +671,22 @@ a function called <code>create_nn()</code>.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="kw">def</span> create_nn(input_shape):</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>    <span class="co"># Input layer</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'input'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>    <span class="co"># Dense layers</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">100</span>, <span class="st">'relu'</span>)(inputs)</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, <span class="st">'relu'</span>)(layers_dense)</span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>    <span class="co"># Output layer</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>)(layers_dense)</span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"weather_prediction_model"</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>model <span class="op">=</span> create_nn(input_shape<span class="op">=</span>(X_data.shape[<span class="dv">1</span>],))</span></code></pre>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>keras.utils.set_random_seed(<span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="kw">def</span> create_nn(input_shape):</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>    <span class="co"># Input layer</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'input'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    <span class="co"># Dense layers</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">100</span>, <span class="st">'relu'</span>)(inputs)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, <span class="st">'relu'</span>)(layers_dense)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    <span class="co"># Output layer</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>)(layers_dense)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"weather_prediction_model"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>model <span class="op">=</span> create_nn(input_shape<span class="op">=</span>(X_data.shape[<span class="dv">1</span>],))</span></code></pre>
 </div>
 <p>The shape of the input layer has to correspond to the number of
 features in our data: <code>89</code>. We use
@@ -803,7 +804,7 @@ process is increased</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>Correct answer: B. To find the weights that minimize the loss
 function. The loss function quantifies the total error of the network,
@@ -1027,7 +1028,7 @@ why?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -1149,7 +1150,7 @@ problem to solve?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>This really depends on your definition of hard! The baseline gives a
 more accurate prediction than just randomly predicting a number, so the
@@ -1245,7 +1246,7 @@ think about what you actually would like to see)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -1294,7 +1295,7 @@ notable effect on the performance on the validation set?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn()</code> function so that we
 can tweak the number of nodes in the 2 layers by passing arguments to
@@ -1592,7 +1593,7 @@ all features from all cities. How does it perform?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a></h3>
@@ -1786,7 +1787,7 @@ improve the prediction quality?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -1892,7 +1893,7 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/3-monitor-the-model.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/3-monitor-the-model.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-02-11",
+  "dateModified": "2025-09-01",
   "datePublished": "2025-09-01"
 }
 

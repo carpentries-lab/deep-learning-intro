@@ -329,7 +329,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Transfer learning</h1>
-        <p>Last updated on 2025-02-11 |
+        <p>Last updated on 2025-09-01 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/episodes/5-transfer-learning.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -429,7 +429,9 @@ images:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># input tensor</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(train_images.shape[<span class="dv">1</span>:])</span></code></pre>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>keras.utils.set_random_seed(<span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(train_images.shape[<span class="dv">1</span>:])</span></code></pre>
 </div>
 <p>Our images are 64 x 64 pixels, whereas the pre-trained model that we
 will use was trained on images of 160 x 160 pixels. To adapt our data
@@ -781,7 +783,7 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/5-transfer-learning.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/5-transfer-learning.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-02-11",
+  "dateModified": "2025-09-01",
   "datePublished": "2025-09-01"
 }
 
