@@ -279,6 +279,7 @@ So let us look at a network with a few convolutional layers. We need to finish w
 
 ```python
 from tensorflow import keras
+keras.utils.set_random_seed(2)
 
 inputs = keras.Input(shape=train_images.shape[1:])
 x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)

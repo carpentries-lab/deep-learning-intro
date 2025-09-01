@@ -65,6 +65,8 @@ Let's define our model input layer using the shape of our training images:
 ```python
 # input tensor
 from tensorflow import keras
+keras.utils.set_random_seed(2)
+
 inputs = keras.Input(train_images.shape[1:])
 ```
 
