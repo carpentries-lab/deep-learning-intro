@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-lab/deep-learning-intro/scaffolds)
 [![DOI](https://zenodo.org/badge/163412836.svg)](https://zenodo.org/badge/latestdoi/163412836)
 [![The Carpentries Lab Review Status](http://badges.carpentries-lab.org/25_status.svg)](https://github.com/carpentries-lab/reviews/issues/25)
 
@@ -34,7 +34,7 @@ have a look at the [more detailed guidelines][lesson-example] on proper formatti
 render the lesson locally, and even how to write new episodes.
 
 Please see the current list of
-[issues](https://github.com/carpentries-incubator/deep-learning_intro/issues)
+[issues](https://github.com/carpentries-lab/deep-learning-intro/issues)
 for ideas for contributing to this repository.
 
 Please also familiarize yourself with the [lesson design](https://carpentries-lab.github.io/deep-learning-intro/design.html)
@@ -69,9 +69,9 @@ See the [Carpentries Workbench usage instructions](https://carpentries.github.io
 
 ## Maintainer(s)
 
-Current maintainers of this lesson are
-* Sven van der Burg (s.vanderburg@esciencecenter.nl)
-* Carsten Schnober (c.schnober@esciencecenter.nl)
+Current maintainer of this lesson is
+
+* Carsten Schnober (<c.schnober@esciencecenter.nl>)
 
 ## Citation and authors
 
