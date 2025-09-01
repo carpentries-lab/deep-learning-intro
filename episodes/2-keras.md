@@ -608,7 +608,7 @@ Using seaborn we can do this as follows:
 ```python
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ```
-![][training_curve]
+![][training_curve]{alt="Plot of the Cross Entropy loss, showing a sharp decrease in the first around 10 epochs, and converging at a low value afterwards."}
 
 ::: callout
 ## I get a different plot
