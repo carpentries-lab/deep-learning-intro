@@ -69,9 +69,9 @@ See the [Carpentries Workbench usage instructions](https://carpentries.github.io
 
 ## Maintainer(s)
 
-Current maintainers of this lesson are
-* Sven van der Burg (s.vanderburg@esciencecenter.nl)
-* Carsten Schnober (c.schnober@esciencecenter.nl)
+Current maintainer of this lesson is
+
+* Carsten Schnober (<c.schnober@esciencecenter.nl>)
 
 ## Citation and authors
 
