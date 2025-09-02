@@ -98,7 +98,7 @@ plt.xlabel("epochs")
 plt.ylabel("RMSE")
 ```              
 
-![Output of plotting sample](../episodes/fig/03_training_history_4_rmse_dropout.png){alt='Output of plotting sample'}
+![Output of plotting sample](../episodes/fig/03_training_history_4_rmse_dropout.png){alt='Plot of training and validation RSME as training progresses, showing the two values converging towards approximately 3.1 after 200 epochs.'}
 
 
 In this setting overfitting seems to be prevented, however the overall results have not improved significantly.
