@@ -329,7 +329,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Transfer learning</h1>
-        <p>Last updated on 2025-09-01 |
+        <p>Last updated on 2025-09-02 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/episodes/5-transfer-learning.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -573,7 +573,7 @@ as argument for <code>DenseNet121()</code>?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solutions </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="trainable-parameters-1">1. Trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-parameters-1"></a></h3>
@@ -607,18 +607,25 @@ layer is added because we provided <code>pooling='max'</code>.</p>
 <div id="compile-the-model" class="callout-inner">
 <h3 class="callout-title">1. Compile the model</h3>
 <div class="callout-content">
-<p>Compile the model: - Use the <code>adam</code> optimizer - Use the
-<code>SparseCategoricalCrossentropy</code> loss with
-<code>from_logits=True</code>. - Use ‘accuracy’ as a metric.</p>
-<div class="section level3">
+<p>Compile the model:</p>
+<ul><li>Use the <code>adam</code> optimizer</li>
+<li>Use the <code>SparseCategoricalCrossentropy</code> loss with
+<code>from_logits=True</code>.</li>
+<li>Use ‘accuracy’ as a metric.</li>
+</ul><div class="section level3">
 <h3 id="train-the-model">2. Train the model<a class="anchor" aria-label="anchor" href="#train-the-model"></a></h3>
-<p>Train the model on the training dataset: - Use a batch size of 32 -
-Train for 30 epochs, but use an earlystopper with a patience of 5 - Pass
-the validation dataset as validation data so we can monitor performance
-on the validation data during training - Store the result of training in
-a variable called <code>history</code> - Training can take a while, it
-is a much larger model than what we have seen so far.</p>
-</div>
+<p>Train the model on the training dataset:</p>
+<ul><li>Use a batch size of 32</li>
+<li>Train for 30 epochs, but use an earlystopper with a patience of
+5</li>
+<li>Pass the validation dataset as validation data so we can monitor
+performance on the validation data during training</li>
+<li>Store the result of training in a variable called
+<code>history</code>
+</li>
+<li>Training can take a while, it is a much larger model than what we
+have seen so far.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="inspect-the-results">3. Inspect the results<a class="anchor" aria-label="anchor" href="#inspect-the-results"></a></h3>
 <p>Plot the training history and evaluate the trained model. What do you
@@ -637,7 +644,7 @@ to DenseNet121?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="compile-the-model-1">1. Compile the model<a class="anchor" aria-label="anchor" href="#compile-the-model-1"></a></h3>
@@ -783,7 +790,7 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/5-transfer-learning.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/5-transfer-learning.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-09-01",
+  "dateModified": "2025-09-02",
   "datePublished": "2025-09-02"
 }
 
