@@ -489,6 +489,8 @@ connected to each of the 3 outputs in the `dense_1` output layer, resulting in a
 By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
 hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
+Note that the output shape always contains `None` as the first entry of the tuple. This is a *flexible* dimension which is used by the model when processing several samples at the same time, what is usually called a `batch`. You will learn more about batching in lesson 3.
+
 The value `(332.00 B)` next to it describes the memory footprint for model weights and this depends on their data type.
 Take a look at what `model.dtype` is.
 
