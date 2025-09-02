@@ -46,4 +46,4 @@ Here is a (non exhaustive) list of external resources for further study after th
     - [Book on Machine Learning](https://databricks.com/p/ebook/big-book-of-machine-learning-use-cases?utm_medium=paid+search&utm_source=google&utm_campaign=15631674924&utm_adgroup=130078635494&utm_content=ebook&utm_offer=big-book-of-machine-learning-use-cases&utm_ad=587637991591&utm_term=machine%20learning&gclid=CjwKCAjw9qiTBhBbEiwAp-GE0WaK3IrtfBeDWjb7L2ZDQg5_YgevbwoD288bq0sGgYNhcTlnjZfLaBoCC_EQAvD_BwE)
 - [Book: Ian Goodfellow and Yoshua Bengio and Aaron Courville -  Deep Learning](https://www.deeplearningbook.org/). A really thorough, detailed (though math-heavy) book on everything (for example Generative Adverserial Networks or Autoencoders) you want to know about deep learning
 - [Book: Simon J.D. Prince - Understanding Deep Learning](https://udlbook.github.io/udlbook/). A less dense and slightly more modern overview of deep learning with coding examples for each chapter.
-
+- [Book: Aston Zhang, Zachary C. Lipton, Mu Li and Alexander J. Smola - Dive into Deep Learning](https://d2l.ai/). Popular, free resource containing interactive exercises.
