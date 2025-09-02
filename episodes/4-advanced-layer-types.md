@@ -477,13 +477,13 @@ def plot_history(history, metrics):
     plt.ylabel("metric")
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
-![](fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model'}
+![](fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model, showing training accuracy incrasing consistently by approximately 0.1 for each epoch while validation accuracy remains steady, with only slight fluctuations around 0.25.'}
 
 ```python
 plot_history(history, ['loss', 'val_loss'])
 ```
 
-![](fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
+![](fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model, showing training loss steadily decreasing while validation loss remains steady before increasing after the sixth epoch.'}
 
 It seems that the model is overfitting a lot, because the training accuracy increases, while the validation accuracy stagnates. Meanwhile, the training loss keeps decreasing while the validation loss actually starts increasing after a few epochs.
 
@@ -549,7 +549,7 @@ history = dense_model.fit(train_images, train_labels, epochs=20,
                     validation_data=(val_images, val_labels))
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
-![](fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers"}
+![](fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers, showing training accuracy increasing to approximately 0.22 and validation accuracy plateauing around 0.18. Both values show relatively large fluctations as training progresses."}
 
 As you can see the validation accuracy only reaches about 18%, whereas the CNN reached about 28% accuracy.
 
@@ -650,7 +650,9 @@ history = model.fit(train_images, train_labels, epochs=10,
                    validation_data=(val_images, val_labels))
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
-![](fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
+
+![](fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model, showing training accuracy increasing steadily by approximately 0.04 per epoch up to around 0.55 while validation accuracy increases before plateauing around 0.25."}
+
 :::
 ::::
 
@@ -789,7 +791,7 @@ And inspect the training results:
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 
-![](fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
+![](fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model, showing both values increasing before they diverge after around 10 epochs, with training accuracy reaching approximately 0.4 while validation accuracy plateaus around 0.3"}
 
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
 
