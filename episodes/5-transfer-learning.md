@@ -153,7 +153,7 @@ Finally we define our model:
 ```python
 model = keras.models.Model(inputs=inputs, outputs=out)
 ```
-::: challenge
+:::: challenge
 ## Inspect the DenseNet121 network
 Have a look at the network architecture with `model.summary()`.
 It is indeed a deep network, so expect a long summary!
@@ -169,7 +169,7 @@ Can you see in the model summary which part is the base network and which part i
 ### 3. Max pooling
 Which layer is added because we provided `pooling='max'` as argument for `DenseNet121()`?
 
-:::: solution
+::: solution
 ## Solutions
 ### 1. Trainable parameters
 Total number of parameters: 7093360, out of which only 53808 are trainable.
@@ -181,22 +181,24 @@ The head network starts at the `flatten` layer, 5 layers before the final layer.
 
 ### 3. Max pooling
 The `max_pool` layer right before the `flatten` layer is added because we provided `pooling='max'`.
-::::
 :::
+::::
 
 
 
-::: challenge
+:::: challenge
 ## Training and evaluating the pre-trained model
 
 ### 1. Compile the model
 Compile the model:
+
 - Use the `adam` optimizer 
 - Use the `SparseCategoricalCrossentropy` loss with `from_logits=True`. 
 - Use 'accuracy' as a metric.
 
 ### 2. Train the model
 Train the model on the training dataset:
+
 - Use a batch size of 32
 - Train for 30 epochs, but use an earlystopper with a patience of 5
 - Pass the validation dataset as validation data so we can monitor performance on the validation data during training
@@ -210,7 +212,7 @@ Plot the training history and evaluate the trained model. What do you think of t
 Train and evaluate another pre-trained model from https://keras.io/api/applications/. How does it compare to DenseNet121?
 
 
-:::: solution
+::: solution
 ## Solution
 
 ### 1. Compile the model
@@ -257,8 +259,8 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 ![](fig/05_training_history_transfer_learning.png){alt='Training history for training the pre-trained-model. The training accuracy slowly raises from 0.2 to 0.9 in 20 epochs. The validation accuracy starts higher at 0.25, but reaches a plateau around 0.64'}
 The final validation accuracy reaches 64%, this is a huge improvement over 30% accuracy we reached with the simple convolutional neural network that we build from scratch in the previous episode.
 
-::::
 :::
+::::
 
 ## Concluding: The power of transfer learning
 In many domains, large networks are available that have been trained on vast amounts of data, such as in computer vision and natural language processing. Using transfer learning, you can benefit from the knowledge that was captured from another machine learning task. In many fields, transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.

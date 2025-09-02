@@ -71,7 +71,7 @@ The goal of the activation function is to convert the weighted sum of the inputs
 This output is then passed on to the next layer of the network.
 There are many different activation functions, 3 of them are introduced in the exercise below.
 
-::: challenge
+:::: challenge
 ## Activation functions
 Look at the following activation functions:
 
@@ -113,7 +113,7 @@ Combine the following statements to the correct activation function:
 *Activation function plots by Laughsinthestocks - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=44920411,
 https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikimedia.org/w/index.php?curid=44920533*
 
-:::: solution
+::: solution
 ## Solution
 1. A
 2. C
@@ -122,8 +122,8 @@ https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikime
 5. B
 6. B
 7. C
-::::
 :::
+::::
 
 
 ##### Combining multiple neurons into a network
@@ -139,7 +139,7 @@ Image credit: Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-
 alt='A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.'
 }
 
-::: challenge
+:::: challenge
 ## Neural network calculations
 .
 
@@ -177,7 +177,7 @@ a. Calculate the output of the network for the following combinations of inputs:
 
 b. What logical problem does this network solve?
 
-:::: solution
+::: solution
 ## Solution
 
 #### 1: calculate the output for one neuron
@@ -200,8 +200,8 @@ a.
 | 1  | 0  | **1** |
 b. This solves the XOR logical problem, the output is 1 if only one of the two inputs is 1.
 
-::::
 :::
+::::
 
 ##### What makes deep learning deep learning?
 Neural networks are not a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010, improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or deep learning.
@@ -249,7 +249,7 @@ To solve it:
 from: https://physics.meta.stackexchange.com/questions/14408/bug-in-mathjax-rendering-using-chrome
 :::
 
-::: challenge
+:::: challenge
 ## Exercise: Loss function
 
 #### 1. Compute the Mean Squared Error
@@ -276,7 +276,7 @@ as a function of `y_true - y_pred`.
 
 Which loss function is more sensitive to outliers?
 
-:::: solution
+::: solution
 ## Solution
 #### 1. 'Compute the Mean Squared Error'
 | **Prediction** | **Expected value** | **Squared error** |
@@ -291,8 +291,8 @@ Which loss function is more sensitive to outliers?
 The squared error loss is more sensitive to outliers. Errors between -1 and 1 result in the same loss value
 for both loss functions. But, larger errors (in other words: outliers) result in quadratically larger losses for
 the Mean Squared Error, while for the Huber loss they only increase linearly.
-::::
 :::
+::::
 
 So, a loss function quantifies the total error of the model.
 The process of adjusting the weights in such a way as to minimize the loss function is called 'optimization'.
@@ -341,7 +341,7 @@ The following could technically be achieved using deep learning, but it would pr
 * Modelling well defined systems, where the equations governing them are known and understood.
 * Basic computer vision tasks such as [edge detection](https://en.wikipedia.org/wiki/Edge_detection), decreasing colour depth or blurring an image.
 
-::: challenge
+:::: challenge
 ## Deep Learning Problems Exercise
 
 Which of the following would you apply deep learning to?
@@ -352,14 +352,14 @@ Which of the following would you apply deep learning to?
 4. Identifying people in pictures after being trained only on cats and dogs.
 5. Translating English into French.
 
-:::: solution
+::: solution
 ## Solution
 1.  and 5 are the sort of tasks often solved with deep learning.
 2. is technically possible but solving this with deep learning would be extremely wasteful, you could do the same with much less computing power using traditional techniques.
 3. will probably fail because there is not enough training data.
 4. will fail because the deep learning system only knows what cats and dogs look like, it might accidentally classify the people as cats or dogs.
-::::
 :::
+::::
 
 ## How much data do you need for deep learning?
 The rise of deep learning is partially due to the increased availability of very large datasets.
@@ -443,7 +443,7 @@ It might be necessary to adjust these and re-run the training many times before 
 Now that we have a trained network that performs at a level we are happy with we can go and use it on real data to perform a prediction. At this point we might want to consider publishing a file with both the architecture of our network and the weights which it has learned (assuming we did not use a pre-trained network). This will allow others to use it as as pre-trained network for their own purposes and for them to (mostly) reproduce our result.
 
 
-::: challenge
+:::: challenge
 ## Deep learning workflow exercise
 
 Think about a problem you would like to use deep learning to solve.
@@ -453,10 +453,10 @@ Think about a problem you would like to use deep learning to solve.
 3. Do you think you will need to train the network or will a pre-trained network be suitable?
 4. What data do you have to train with? What preparation will your data need? Consider both the data you are going to predict/classify from and the data you will use to train the network.
 
-:::: solution
+::: solution
 Discuss your answers with the group or the person next to you.
-::::
 :::
+::::
 
 
 ## Deep Learning Libraries
