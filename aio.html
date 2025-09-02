@@ -2346,8 +2346,10 @@ the range on the y-axis with the previous training curve. <img src="fig/02_bad_t
 <li>The training loss decreases quickly. It drops in a smooth line with
 little jitter. This is ideal for a training curve.</li>
 <li>The results of the training give very little information on its
-performance on a test set. You should be careful not to use it as an
-indication of a well trained network.</li>
+performance on a test set. You should be careful not to use the training
+loss as an indication of a well trained network. The test set, since it
+contains unseen samples, is more representative of the model performance
+in a real-world scenario.</li>
 <li>(optional) The loss does not go down at all, or only very slightly.
 This means that the model is not learning anything. It could be that
 something went wrong in the data preparation (for example the labels are
@@ -6409,7 +6411,7 @@ spectral embedding layer drastically, to for example 5 neurons?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we
