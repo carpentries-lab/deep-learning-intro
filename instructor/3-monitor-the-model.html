@@ -335,7 +335,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Monitor the training process</h1>
-        <p>Last updated on 2025-09-01 |
+        <p>Last updated on 2025-09-02 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/episodes/3-monitor-the-model.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -387,7 +387,7 @@ on the validation set instead of the test set</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Copy-pasting code </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>In this episode we first introduce a simple approach to the problem,
 then we iterate on that a few times to, step-by-step, working towards a
@@ -619,7 +619,7 @@ parameters that should not change at all.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -670,7 +670,7 @@ sunshine hours?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The shape of the input layer has to correspond to the number of
 features in our data: 89</li>
@@ -835,7 +835,7 @@ process is increased</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>Correct answer: B. To find the weights that minimize the loss
 function. The loss function quantifies the total error of the network,
@@ -1008,7 +1008,7 @@ model before measuring the performance of our neural network.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
   <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -1032,11 +1032,12 @@ reference to their ground truth values.</p>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="kw">def</span> plot_predictions(y_pred, y_true, title):</span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>    plt.style.use(<span class="st">'ggplot'</span>)  <span class="co"># optional, that's only to define a visual style</span></span>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>    plt.scatter(y_pred, y_true, s<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>    plt.xlabel(<span class="st">"predicted sunshine hours"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    plt.ylabel(<span class="st">"true sunshine hours"</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>    plt.title(title)</span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>plot_predictions(y_train_predicted, y_train, title<span class="op">=</span><span class="st">'Predictions on the training set'</span>)</span></code></pre>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>    plt.axline((<span class="dv">0</span>,<span class="dv">0</span>),slope <span class="op">=</span> <span class="dv">1</span>, color <span class="op">=</span> <span class="st">"black"</span>) <span class="co"># plot diagonal reference line</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    plt.xlabel(<span class="st">"predicted sunshine hours"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>    plt.ylabel(<span class="st">"true sunshine hours"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>    plt.title(title)</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>plot_predictions(y_train_predicted, y_train, title<span class="op">=</span><span class="st">'Predictions on the training set'</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/03_regression_predictions_trainset.png" alt="Scatter plot between predictions and true sunshine hours in Basel on the train set showing a concise spread" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1070,7 +1071,7 @@ why?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -1192,7 +1193,7 @@ problem to solve?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>This really depends on your definition of hard! The baseline gives a
 more accurate prediction than just randomly predicting a number, so the
@@ -1288,7 +1289,7 @@ think about what you actually would like to see)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -1337,7 +1338,7 @@ notable effect on the performance on the validation set?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn()</code> function so that we
 can tweak the number of nodes in the 2 layers by passing arguments to
@@ -1635,7 +1636,7 @@ all features from all cities. How does it perform?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a></h3>
@@ -1829,7 +1830,7 @@ improve the prediction quality?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -1935,7 +1936,7 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/3-monitor-the-model.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/3-monitor-the-model.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-09-01",
+  "dateModified": "2025-09-02",
   "datePublished": "2025-09-02"
 }
 
