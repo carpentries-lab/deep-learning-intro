@@ -365,8 +365,8 @@ Let's put it into practice. We compose a Convolutional network with two convolut
 
 
 ```python
-def create_nn():
-    inputs = keras.Input(shape=train_images.shape[1:])
+def create_nn(input_shape):
+    inputs = keras.Input(shape=input_shape)
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x) # a new maxpooling layer
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
@@ -378,7 +378,7 @@ def create_nn():
     model = keras.Model(inputs=inputs, outputs=outputs, name="dollar_street_model")
     return model
 
-model = create_nn()
+model = create_nn(input_shape=train_images.shape[1:])
 model.summary()
 ```
 ```output
