@@ -267,7 +267,7 @@ in the context of applying a _Gaussian blur_.
 
 :::: challenge
 ## Number of model parameters
-Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 32 * 32 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
+Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 64 * 64 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
 
 ::: solution
 ## Solution
