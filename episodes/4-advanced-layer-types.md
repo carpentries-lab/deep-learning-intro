@@ -438,17 +438,14 @@ compile_model(model)
 
 ## Choosing a Metric
 
-As there are various loss functions, there are many metrics beyond the ones mentioned so far (root squared mean error and accuracy).
-The documentation provides a comprehensive list of [metrics available in Keras](https://keras.io/api/metrics/), suitable for different tasks and datasets.
-
-The purpose of an evaluation metric is to give a good reflection of how well a model performs on "real" data, hence new samples it has never encountered before.
-Therefore, achieving a suspiciously high score can indicate that the chosen metric can be "cheated" by the model and is hence not suitable to measure the model performance.
-
 For instance, you could use a dataset of 100 cat images and dog images for evaluating a model.
-If the dataset is highly imbalanced so that 90 of these images are dogs, the model will achieve 90% accuracy by classifying each image as a dog.
+If the data is highly imbalanced so that 90 of these images are dogs, the model will achieve 90% accuracy by classifying each image as a dog.
 But the number is misleading because the model might not have learned any characteristics of the images and never identify a cat image.
 In such an imbalanced dataset, other metrics such as [precision](https://keras.io/api/metrics/classification_metrics/#precision-class) and [recall](https://keras.io/api/metrics/classification_metrics/#recall-class) are more suitable.
 
+The purpose of an evaluation metric is to give a good reflection of how well a model performs on "real" data, hence new samples it has never encountered before.
+Therefore, achieving a suspiciously high score can indicate that the chosen metric can be "cheated" by the model and is hence not suitable to measure the model performance.
+The documentation provides a comprehensive list of [metrics available in Keras](https://keras.io/api/metrics/), suitable for different tasks and datasets.
 :::
 
 ::: instructor
