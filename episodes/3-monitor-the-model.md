@@ -46,7 +46,7 @@ Here we want to work with the *weather prediction dataset* (the light version) w
 It contains daily weather observations from 11 different European cities or places through the
 years 2000 to 2010. For all locations the data contains the variables ‘mean temperature’, ‘max temperature’, and ‘min temperature’. In addition, for multiple locations, the following variables are provided: 'cloud_cover', 'wind_speed', 'wind_gust', 'humidity', 'pressure', 'global_radiation', 'precipitation', 'sunshine', but not all of them are provided for every location. A more extensive description of the dataset including the different physical units is given in accompanying metadata file. The full dataset comprises of 10 years (3654 days) of collected weather data across Europe.
 
-![European locations in the weather prediction dataset](fig/03_weather_prediction_dataset_map.png){alt='18 European locations in the weather prediction dataset'}
+![European locations in the weather prediction dataset](fig/03_weather_prediction_dataset_map.png){alt='18 European locations in the weather prediction dataset distributed across Austria, France, Germany, Hungary, Italy, the Netherlands, Norway, Slovenia, Sweden, Switzerland, and the United Kingdom.'}
 
  A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.
 
@@ -262,14 +262,15 @@ This is called optimization, but how does optimization actually work?
 Gradient descent is a widely used optimization algorithm, most other optimization algorithms are based on it.
 It works as follows: Imagine a neural network with only one neuron.
 Take a look at the figure below. The plot shows the loss as a function of the weight of the neuron.
+
+![](fig/03_gradient_descent.png){alt='Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found'}
+
 As you can see there is a global loss minimum, we would like to find the weight at this point in the parabola.
 To do this, we initialize the model weight with some random value. Then we compute the gradient of the loss function with respect
 to the weight. This tells us how much the loss function will change if we change the weight by a small amount.
 Then, we update the weight by taking a small step in the direction of the negative gradient, so down the slope.
 This will slightly decrease the loss. This process is repeated until the loss function reaches a minimum.
 The size of the step that is taken in each iteration is called the 'learning rate'.
-
-![](fig/03_gradient_descent.png){alt='Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found'}
 
 ### Batch gradient descent
 You could use the entire training dataset to perform one learning step in gradient descent,
@@ -408,7 +409,7 @@ def plot_history(history, metrics):
 plot_history(history, 'root_mean_squared_error')
 ```
 
-![](fig/03_training_history_1_rmse.png){alt='Plot of the RMSE over epochs for the trained model that shows a decreasing error metric'}
+![](fig/03_training_history_1_rmse.png){alt='Plot of the RMSE over epochs for the trained model that shows a decreasing error metric.'}
 
 This looks very promising! Our metric "root_mean_squared_error" (RMSE) is dropping nicely and while it maybe keeps fluctuating a bit it does end up at fairly low values.
 But this metric is just the root *mean* squared error, so we might want to look a bit more in detail how well our just trained model does in predicting the sunshine hours.
@@ -447,7 +448,7 @@ def plot_predictions(y_pred, y_true, title):
 plot_predictions(y_train_predicted, y_train, title='Predictions on the training set')
 ```
 
-![](fig/03_regression_predictions_trainset.png){alt='Scatter plot between predictions and true sunshine hours in Basel on the train set showing a concise spread'}
+![](fig/03_regression_predictions_trainset.png){alt='Scatter plot between predictions and true sunshine hours in Basel on the training set showing a concise spread'}
 
 ```python
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
@@ -679,7 +680,7 @@ history = model.fit(X_train, y_train,
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets.'}
+![](fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets. RMSE for the validation set diverges from RMSE for the training set after around 10 epochs but the difference in RMSE values for the two sets is much smaller than in the previous example.'}
 
 1. With this smaller model we have reduced overfitting a bit, since the training and validation loss are now closer to each other, and the validation loss does now reach a plateau and does not further increase.
 We have not completely avoided overfitting though. 
@@ -728,7 +729,7 @@ As before, we can plot the losses during training:
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets.'}
+![](fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set diverges slowly from RMSE for the training set after approximately 8 epochs, with RMSE for the validation set dropping more slowly.'}
 
 This still seems to reveal the onset of overfitting, but the training stops before the discrepancy between training and validation loss can grow further.
 In addition to avoiding severe cases of overfitting, early stopping has the advantage that the number of training epochs will be regulated automatically.
@@ -809,7 +810,7 @@ history = model.fit(X_train, y_train,
 plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
-![](fig/03_training_history_5_rmse_batchnorm.png){alt='Output of plotting sample'}
+![](fig/03_training_history_5_rmse_batchnorm.png){alt='Plot of error vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set drops more than for the training set at first, tracks the training error until approximately 50 epochs, then begins to gradually increase while error for the training set continues to gradually decrease.'}
 
 ::: callout
 ## Batchnorm parameters
@@ -831,7 +832,7 @@ y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ```
 
-![](fig/03_regression_test_5_dropout_batchnorm.png){alt='Scatter plot between predictions and true sunshine hours for Basel on the test set'}
+![](fig/03_regression_test_5_dropout_batchnorm.png){alt='Scatter plot between predictions and true sunshine hours for Basel on the test set, showing a loose positive correlation.'}
 
 Well, the above is certainly not perfect. But how good or bad is this? Maybe not good enough to plan your picnic for tomorrow.
 But let's better compare it to the naive baseline we created in the beginning. What would you say, did we improve on that?
@@ -913,7 +914,7 @@ Create a scatter plot to compare with true observations:
 y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ```
-![](fig/03_scatter_plot_basel_model.png){alt='Scatterplot of predictions and true number of sunshine hours'}
+![](fig/03_scatter_plot_basel_model.png){alt='Scatterplot of predictions and true number of sunshine hours for all cities, showing many data points distributed in a very loose positive correlation.'}
 
 
 Compute the RMSE on the test set:
@@ -976,7 +977,7 @@ You can launch the tensorboard interface from a Jupyter notebook, showing all tr
 %tensorboard --logdir logs/fit
 ```
 Which will show an interface that looks something like this:
-![](fig/03_tensorboard.png){alt='Screenshot of tensorboard'}
+![](fig/03_tensorboard.png){alt='Tensorboard graphical user interface.'}
 :::
 
 ## 10. Save model
