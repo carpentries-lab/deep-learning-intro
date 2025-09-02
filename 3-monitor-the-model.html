@@ -399,7 +399,7 @@ location. A more extensive description of the dataset including the
 different physical units is given in accompanying metadata file. The
 full dataset comprises of 10 years (3654 days) of collected weather data
 across Europe.</p>
-<figure><img src="fig/03_weather_prediction_dataset_map.png" alt="18 European locations in the weather prediction dataset" class="figure mx-auto d-block"><div class="figcaption">European locations in the weather prediction
+<figure><img src="fig/03_weather_prediction_dataset_map.png" alt="18 European locations in the weather prediction dataset distributed across Austria, France, Germany, Hungary, Italy, the Netherlands, Norway, Slovenia, Sweden, Switzerland, and the United Kingdom." class="figure mx-auto d-block"><div class="figcaption">European locations in the weather prediction
 dataset</div>
 </figure><p>A very common task with weather data is to make a prediction about
 the weather sometime in the future, say the next day. In this episode,
@@ -742,9 +742,9 @@ work?</p>
 <p>Gradient descent is a widely used optimization algorithm, most other
 optimization algorithms are based on it. It works as follows: Imagine a
 neural network with only one neuron. Take a look at the figure below.
-The plot shows the loss as a function of the weight of the neuron. As
-you can see there is a global loss minimum, we would like to find the
-weight at this point in the parabola. To do this, we initialize the
+The plot shows the loss as a function of the weight of the neuron.</p>
+<figure><img src="fig/03_gradient_descent.png" alt="Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found" class="figure mx-auto d-block"></figure><p>As you can see there is a global loss minimum, we would like to find
+the weight at this point in the parabola. To do this, we initialize the
 model weight with some random value. Then we compute the gradient of the
 loss function with respect to the weight. This tells us how much the
 loss function will change if we change the weight by a small amount.
@@ -753,7 +753,7 @@ the negative gradient, so down the slope. This will slightly decrease
 the loss. This process is repeated until the loss function reaches a
 minimum. The size of the step that is taken in each iteration is called
 the ‘learning rate’.</p>
-<figure><img src="fig/03_gradient_descent.png" alt="Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found" class="figure mx-auto d-block"></figure></div>
+</div>
 <div class="section level3">
 <h3 id="batch-gradient-descent">Batch gradient descent<a class="anchor" aria-label="anchor" href="#batch-gradient-descent"></a></h3>
 <p>You could use the entire training dataset to perform one learning
@@ -958,7 +958,7 @@ it, because we will make use of this more often in this lesson!</p>
 <span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a></span>
 <span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>plot_history(history, <span class="st">'root_mean_squared_error'</span>)</span></code></pre>
 </div>
-<figure><img src="fig/03_training_history_1_rmse.png" alt="Plot of the RMSE over epochs for the trained model that shows a decreasing error metric" class="figure mx-auto d-block"></figure><p>This looks very promising! Our metric “root_mean_squared_error”
+<figure><img src="fig/03_training_history_1_rmse.png" alt="Plot of the RMSE over epochs for the trained model that shows a decreasing error metric." class="figure mx-auto d-block"></figure><p>This looks very promising! Our metric “root_mean_squared_error”
 (RMSE) is dropping nicely and while it maybe keeps fluctuating a bit it
 does end up at fairly low values. But this metric is just the root
 <em>mean</em> squared error, so we might want to look a bit more in
@@ -998,7 +998,7 @@ reference to their ground truth values.</p>
 <span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a></span>
 <span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>plot_predictions(y_train_predicted, y_train, title<span class="op">=</span><span class="st">'Predictions on the training set'</span>)</span></code></pre>
 </div>
-<figure><img src="fig/03_regression_predictions_trainset.png" alt="Scatter plot between predictions and true sunshine hours in Basel on the train set showing a concise spread" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
+<figure><img src="fig/03_regression_predictions_trainset.png" alt="Scatter plot between predictions and true sunshine hours in Basel on the training set showing a concise spread" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
@@ -1355,7 +1355,7 @@ nodes in the first layer, and 5 nodes in the second layer:</p>
 <span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val))</span>
 <span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
-<figure><img src="fig/03_training_history_3_rmse_smaller_model.png" alt="Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets." class="figure mx-auto d-block"></figure><ol style="list-style-type: decimal"><li>With this smaller model we have reduced overfitting a bit, since the
+<figure><img src="fig/03_training_history_3_rmse_smaller_model.png" alt="Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets. RMSE for the validation set diverges from RMSE for the training set after around 10 epochs but the difference in RMSE values for the two sets is much smaller than in the previous example." class="figure mx-auto d-block"></figure><ol style="list-style-type: decimal"><li>With this smaller model we have reduced overfitting a bit, since the
 training and validation loss are now closer to each other, and the
 validation loss does now reach a plateau and does not further increase.
 We have not completely avoided overfitting though.</li>
@@ -1427,7 +1427,7 @@ gone down for 10 epochs.</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
-<figure><img src="fig/03_training_history_3_rmse_early_stopping.png" alt="Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets." class="figure mx-auto d-block"></figure><p>This still seems to reveal the onset of overfitting, but the training
+<figure><img src="fig/03_training_history_3_rmse_early_stopping.png" alt="Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set diverges slowly from RMSE for the training set after approximately 8 epochs, with RMSE for the validation set dropping more slowly." class="figure mx-auto d-block"></figure><p>This still seems to reveal the onset of overfitting, but the training
 stops before the discrepancy between training and validation loss can
 grow further. In addition to avoiding severe cases of overfitting, early
 stopping has the advantage that the number of training epochs will be
@@ -1517,7 +1517,7 @@ layer into the architecture.</p>
 <span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a></span>
 <span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
-<figure><img src="fig/03_training_history_5_rmse_batchnorm.png" alt="Output of plotting sample" class="figure mx-auto d-block"></figure><div id="batchnorm-parameters" class="callout">
+<figure><img src="fig/03_training_history_5_rmse_batchnorm.png" alt="Plot of error vs epochs for the training set and the validation set displaying similar performance across the two sets. RMSE for the validation set drops more than for the training set at first, tracks the training error until approximately 50 epochs, then begins to gradually increase while error for the training set continues to gradually decrease." class="figure mx-auto d-block"></figure><div id="batchnorm-parameters" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
@@ -1550,7 +1550,7 @@ again plot the results on the test set:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
 <span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
 </div>
-<figure><img src="fig/03_regression_test_5_dropout_batchnorm.png" alt="Scatter plot between predictions and true sunshine hours for Basel on the test set" class="figure mx-auto d-block"></figure><p>Well, the above is certainly not perfect. But how good or bad is
+<figure><img src="fig/03_regression_test_5_dropout_batchnorm.png" alt="Scatter plot between predictions and true sunshine hours for Basel on the test set, showing a loose positive correlation." class="figure mx-auto d-block"></figure><p>Well, the above is certainly not perfect. But how good or bad is
 this? Maybe not good enough to plan your picnic for tomorrow. But let’s
 better compare it to the naive baseline we created in the beginning.
 What would you say, did we improve on that?</p>
@@ -1661,7 +1661,7 @@ set:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
 <span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
 </div>
-<figure><img src="fig/03_scatter_plot_basel_model.png" alt="Scatterplot of predictions and true number of sunshine hours" class="figure mx-auto d-block"></figure><p>Compute the RMSE on the test set:</p>
+<figure><img src="fig/03_scatter_plot_basel_model.png" alt="Scatterplot of predictions and true number of sunshine hours for all cities, showing many data points distributed in a very loose positive correlation." class="figure mx-auto d-block"></figure><p>Compute the RMSE on the test set:</p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1739,7 +1739,7 @@ that saves the progress of training performance in a logs rectory:</p>
 showing all trained models: <!--cce:skip--></p>
 <pre><code>%load_ext tensorboard
 %tensorboard --logdir logs/fit</code></pre>
-<p>Which will show an interface that looks something like this: <img src="fig/03_tensorboard.png" alt="Screenshot of tensorboard" class="figure"></p>
+<p>Which will show an interface that looks something like this: <img src="fig/03_tensorboard.png" alt="Tensorboard graphical user interface." class="figure"></p>
 </div>
 </div>
 </div>
