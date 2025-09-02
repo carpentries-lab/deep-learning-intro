@@ -1027,6 +1027,34 @@ one-hot encoding.</p>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>                  metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span>
 <span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>compile_model(model)</span></code></pre>
 </div>
+<div id="choosing-a-metric" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="choosing-a-metric" class="callout-inner">
+<h3 class="callout-title">Choosing a Metric</h3>
+<div class="callout-content">
+<p>The purpose of an evaluation metric is to reflect how well a model
+performs on “real” data, hence on new samples it has never encountered
+before. Achieving a suspiciously high score can indicate that the model
+has learned to “cheat” the chosen metric instead of solving the actual
+task. When that is the case, it means that the chosen metric is not
+suitable to measure the model performance.</p>
+<p>For instance, you could use a dataset of 100 cat images and dog
+images to evaluate a model. If the data is highly imbalanced and 90 of
+these images are dogs, the model will achieve 90% accuracy by
+classifying each image as a dog. This high number looks like the model
+performs great, but it is misleading; the model might not have learned
+to identify a cat image at all. In such an imbalanced dataset, other
+metrics such as <a href="https://keras.io/api/metrics/classification_metrics/#precision-class" class="external-link">precision</a>
+and <a href="https://keras.io/api/metrics/classification_metrics/#recall-class" class="external-link">recall</a>
+are more suitable.</p>
+<p>The documentation provides a comprehensive list of <a href="https://keras.io/api/metrics/" class="external-link">metrics available in Keras</a>,
+suitable for different tasks and datasets.</p>
+</div>
+</div>
+</div>
 <div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
