@@ -24,7 +24,6 @@ Here is a (non exhaustive) list of external resources for further study after th
 ### Miscellaneous resources
 - [the difference between validation data and test data](https://machinelearningmastery.com/difference-test-validation-datasets/)
 - [underfitting and overfitting](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/)
-- [Unbalanced data](https://towardsdatascience.com/handling-imbalanced-datasets-in-deep-learning-f48407a0e758)
 - [Unbalanced data in Keras](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data)
 - [Tensorflow Playground, for visualizing neural networks](http://playground.tensorflow.org/)
 - [ChatGPT prompt engineering course](https://learn.deeplearning.ai/chatgpt-prompt-eng/lesson/1/lesson_1)
