@@ -642,7 +642,9 @@ Also compare the range on the y-axis with the previous training curve.
 1. The training loss decreases quickly. It drops in a smooth line with little jitter.
 This is ideal for a training curve.
 2. The results of the training give very little information on its performance on a test set.
-  You should be careful not to use it as an indication of a well trained network.
+  You should be careful not to use the training loss as an indication of a well trained network.
+  The test set, since it contains unseen samples, is more representative of the model performance
+  in a real-world scenario.
 3. (optional) The loss does not go down at all, or only very slightly. This means that the model is not learning anything.
 It could be that something went wrong in the data preparation (for example the labels are not attached to the right features).
 In addition, the graph is very jittery. This means that for every update step,
