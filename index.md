@@ -14,6 +14,18 @@ We start with explaining the basic concepts of neural networks, and then go thro
 Learners will learn how to prepare data for deep learning, how to implement a basic deep learning model in Python with Keras, 
 how to monitor and troubleshoot the training process and how to implement different layer types such as convolutional layers.
 
+:::::::::::::::::: checklist
+
+## Prerequisites
+Learners are expected to have the following knowledge:
+
+- Basic Python programming skills and familiarity with the Pandas package.
+- Basic knowledge on machine learning, including the following concepts: Data cleaning, train & test split, type of problems (regression, classification), overfitting & underfitting, metrics (accuracy, recall, etc.).
+
+::::::::::::::::::::::::::::
+
+::: spoiler
+
 ### Other related lessons
 #### Introduction to artificial neural networks in Python
 The [Introduction to artificial neural networks in Python lesson](https://carpentries-incubator.github.io/machine-learning-neural-python/)
@@ -25,15 +37,16 @@ The [Introduction to machine learning in Python with scikit-learn lesson](https:
 introduces practical machine learning using Python. It is a good lesson to follow in preparation for this lesson,
 since basic knowledge of machine learning and Python programming skills are required for this lesson.
 
-:::::::::::::::::: checklist
+#### Introduction to text analysis and natural language processing (NLP) in Python
+The [Introduction to text analysis and natural language processing in Python](https://carpentries-incubator.github.io/python-text-analysis/index.html) lesson provides a practical introduction to working with unstructured text data, such as survey responses, clinical notes, academic papers, or historical documents. It covers key natural language processing (NLP) techniques including preprocessing, tokenization, feature extraction (e.g., TF-IDF, word2vec, and BERT), and basic topic modeling. The skills taught in this lesson offer a strong foundation for more advanced topics such as knowledge extraction, working with large text corpora, and building applications that involve large language models (LLMs).
 
-## Prerequisites
-Learners are expected to have the following knowledge:
+#### Trustworthy AI: Validity, fairness, explainability, and uncertainty assessments
+The [Trustworthy AI](https://carpentries-incubator.github.io/fair-explainable-ml/index.html) lesson introduces tools and practices for building and evaluating machine learning models that are fair, transparent, and reliable across multiple data types, including tabular data, text, and images. Learners explore model evaluation, fairness audits, explainability methods (such as linear probes and GradCAM), and strategies for handling uncertainty and detecting out-of-distribution (OOD) data. It is especially relevant for researchers working with NLP, computer vision, or structured data who are interested in integrating ethical and reproducible ML practices into their workflows—including those working with large language models (LLMs) or planning to release models for public or collaborative use.
 
-- Basic Python programming skills and familiarity with the Pandas package.
-- Basic knowledge on machine learning, including the following concepts: Data cleaning, train & test split, type of problems (regression, classification), overfitting & underfitting, metrics (accuracy, recall, etc.).
+#### Intro to AWS SageMaker for predictive ML/AI
+The [Intro to AWS SageMaker for predictive ML/AI](https://carpentries-incubator.github.io/ML_with_AWS_SageMaker/index.html) lesson focuses on training and tuning neural networks (and other ML models) using Amazon SageMaker, and is a natural next step for learners who've outgrown local setups. If your deep learning models are becoming too large or slow to run on a laptop, SageMaker provides scalable infrastructure with access to GPUs and support for parallelized hyperparameter tuning. Participants learn to use SageMaker notebooks to manage data via S3, launch training jobs, monitor compute usage, and keep experiments cost-effective. While the examples center on small to mid-sized models, the workflow is directly applicable to scaling up deep learning and LLM-related experiments in research.
 
-::::::::::::::::::::::::::::
+::: 
 
 ::: instructor
 
