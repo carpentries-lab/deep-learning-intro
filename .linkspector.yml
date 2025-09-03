@@ -1,0 +1,19 @@
+dirs:
+  - episodes
+  - instructors
+  - learners
+  - paper
+  - profiles
+
+ignorePatterns:
+  - pattern: "learners/.*\\.md#.*$" # internal anchors
+  - pattern: "episodes/.*$"
+  - pattern: "^./.*\\.html" # local HTML (generated later)
+  - pattern: "schedule.html"
+  - pattern: "https://github.com/issues?q=.*$" # Github queries
+
+aliveStatusCodes:
+  - 200
+  - 201
+  - 204
+  - 403 # ignore pages blocking automated checks
