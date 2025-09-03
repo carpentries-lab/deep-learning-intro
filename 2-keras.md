@@ -886,7 +886,7 @@ Length: 69, dtype: object
 [training_curve]: fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
 
-[bad-training-curve]: ../fig/02_bad_training_history_1.png "Training Curve Gone Wrong"
+[bad-training-curve]: fig/02_bad_training_history_1.png "Training Curve Gone Wrong"
 {alt='Very jittery training curve with the loss value jumping back and forth between 2 and 4. The range of the y-axis is from 2 to 4, whereas in the previous training curve it was from 0 to 2. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2.'}
 
 [confusion_matrix]: fig/confusion_matrix.png "Confusion Matrix"
