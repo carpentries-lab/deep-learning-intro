@@ -266,7 +266,7 @@ in the context of applying a _Gaussian blur_.
 ::::
 
 :::: challenge
-## Number of model parameters
+## Number of model parameters{#parameters-exercise-3}
 Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 64 * 64 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
 
 ::: solution
@@ -333,6 +333,28 @@ We can get inspiration for neural network architectures that could work on our d
 That results in a large number of connections, so a large number of parameters. This undermines a bit the expressiveness of the convolutional layers, that have much fewer parameters.
 :::
 ::::
+
+::: instructor
+## Demystifying the number of parameters in Conv2D layers
+
+The same explanation as illustrated in the exercise ["Number of model parameters"](#parameters-exercise-3)  holds in the current model. The general expression for the number of parameters in a Conv2D layer is as follows:
+
+$\text{Number of parameters in a Conv2D layer} = (h_{\text{kernel}} \cdot w_{\text{kernel}} \cdot n_{\text{channels}} + 1) \cdot n_{\text{filters}}$
+
+where,
+
+- $h_{\text{kernel}}$ is the height of the kernel
+- $w_{\text{kernel}}$ is the width of the kernel
+- $n_{\text{channels}}$ is the number of channels or the free dimension in the previous layer
+- the constant 1 represents the bias parameter for a single filter
+- $n_{\text{filters}}$ is the total number of filters in a Conv2D layer
+
+And thus for our present model,
+
+1. in the first Conv2D layer, the above expression computes to `(3 * 3 * 3 + 1) * 50 = 1400`, and
+2. in the second Conv2D layer, instead of number of channels, we have 50 filters in the previous Conv2D layer; and therefore the expression computes to `(3 * 3 * 50 + 1) * 50 = 22550`
+
+:::
 
 ::: callout
 ## Search for existing architectures or pretrained models
