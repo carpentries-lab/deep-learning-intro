@@ -335,7 +335,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced layer types</h1>
-        <p>Last updated on 2025-09-02 |
+        <p>Last updated on 2025-09-03 |
 
         <a href="https://github.com/carpentries-lab/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -773,12 +773,12 @@ of an image, in the context of applying a <em>Gaussian blur</em>.</p>
 </div>
 </div>
 </div>
-<div id="number-of-model-parameters" class="callout challenge">
+<div id="parameters-exercise-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="number-of-model-parameters" class="callout-inner">
+<div id="parameters-exercise-3" class="callout-inner">
 <h3 class="callout-title">Number of model parameters</h3>
 <div class="callout-content">
 <p>Suppose we apply a convolutional layer with 100 kernels of size 3 * 3
@@ -889,6 +889,45 @@ the convolutional layers, that have much fewer parameters.</li>
 </div>
 </div>
 </div>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Demystifying the number of parameters in Conv2D layers </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div class="accordion-body">
+<p>The same explanation as illustrated in the exercise <a href="#parameters-exercise-3">“Number of model parameters”</a> holds in
+the current model. The general expression for the number of parameters
+in a Conv2D layer is as follows:</p>
+<p><span class="math inline">\(\text{Number of parameters in a Conv2D
+layer} = (h_{\text{kernel}} \cdot w_{\text{kernel}} \cdot
+n_{\text{channels}} + 1) \cdot n_{\text{filters}}\)</span></p>
+<p>where,</p>
+<ul><li>
+<span class="math inline">\(h_{\text{kernel}}\)</span> is the height
+of the kernel</li>
+<li>
+<span class="math inline">\(w_{\text{kernel}}\)</span> is the width
+of the kernel</li>
+<li>
+<span class="math inline">\(n_{\text{channels}}\)</span> is the
+number of channels or the free dimension in the previous layer</li>
+<li>the constant 1 represents the bias parameter for a single
+filter</li>
+<li>
+<span class="math inline">\(n_{\text{filters}}\)</span> is the total
+number of filters in a Conv2D layer</li>
+</ul><p>And thus for our present model,</p>
+<ol style="list-style-type: decimal"><li>in the first Conv2D layer, the above expression computes to
+<code>(3 * 3 * 3 + 1) * 50 = 1400</code>, and</li>
+<li>in the second Conv2D layer, instead of number of channels, we have
+50 filters in the previous Conv2D layer; and therefore the expression
+computes to <code>(3 * 3 * 50 + 1) * 50 = 22550</code>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
 <div id="search-for-existing-architectures-or-pretrained-models" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -912,12 +951,12 @@ teach you is by developing a neural network from scratch!</p>
 </div>
 </div>
 </div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Demonstrate searching for existing architectures </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Demonstrate searching for existing architectures </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>At this point it can be nice to apply above callout box and
 demonstrate searching for state-of-the-art implementations. If you
@@ -1055,12 +1094,12 @@ suitable for different tasks and datasets.</p>
 </div>
 </div>
 </div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
+  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> BREAK </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -1114,12 +1153,12 @@ compare them to the ground truth.</p>
 accuracy increases, while the validation accuracy stagnates. Meanwhile,
 the training loss keeps decreasing while the validation loss actually
 starts increasing after a few epochs.</p>
-<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor5" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
-  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Comparison with a network with only dense layers </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor5" aria-expanded="false" aria-controls="collapseInstructor5">
+  <h3 class="accordion-header" id="headingInstructor5">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Comparison with a network with only dense layers </h3>
 </button>
-<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
+<div id="collapseInstructor5" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor5" aria-labelledby="headingInstructor5">
 <div class="accordion-body">
 <p>The callout box below compares the CNN approach with a network with
 only dense layers. Depending on time, the following discussion can be
@@ -1593,12 +1632,12 @@ in this case is around 0.9. This is where the val loss is lowest.</p>
 </div>
 <div class="section level3">
 <h3 id="hyperparameter-tuning">Hyperparameter tuning<a class="anchor" aria-label="anchor" href="#hyperparameter-tuning"></a></h3>
-<div id="accordionInstructor5" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor6" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor5" aria-expanded="false" aria-controls="collapseInstructor5">
-  <h3 class="accordion-header" id="headingInstructor5">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Do a live demo instead of live coding </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor6" aria-expanded="false" aria-controls="collapseInstructor6">
+  <h3 class="accordion-header" id="headingInstructor6">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Do a live demo instead of live coding </h3>
 </button>
-<div id="collapseInstructor5" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor5" aria-labelledby="headingInstructor5">
+<div id="collapseInstructor6" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor6" aria-labelledby="headingInstructor6">
 <div class="accordion-body">
 <p>You might want to demonstrate this section on hyperparameter tuning
 instead of doing live coding. The goal is to show that hyperparameter
@@ -1974,8 +2013,8 @@ any links that you are not going to use.
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-09-02",
-  "datePublished": "2025-09-02"
+  "dateModified": "2025-09-03",
+  "datePublished": "2025-09-03"
 }
 
   </script><script>

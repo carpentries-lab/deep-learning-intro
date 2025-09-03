@@ -520,7 +520,43 @@ objects is present in this image?”, as opposed to e.g. “which of these
 ten objects is this an image of?”</p>
 <hr>
 <br><h3 id="4-advanced-layer-types-headingInstructor2">
-<a href="4-advanced-layer-types.html#headingInstructor2">Demonstrate searching for existing architectures</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor2"></a>
+<a href="4-advanced-layer-types.html#headingInstructor2">Demystifying the number of parameters in Conv2D layers</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor2"></a>
+</h3>
+<p>The same explanation as illustrated in the exercise <a href="#parameters-exercise-3">“Number of model parameters”</a> holds in
+the current model. The general expression for the number of parameters
+in a Conv2D layer is as follows:</p>
+<p><span class="math inline">\(\text{Number of parameters in a Conv2D
+layer} = (h_{\text{kernel}} \cdot w_{\text{kernel}} \cdot
+n_{\text{channels}} + 1) \cdot n_{\text{filters}}\)</span></p>
+<p>where,</p>
+<ul>
+<li>
+<span class="math inline">\(h_{\text{kernel}}\)</span> is the height
+of the kernel</li>
+<li>
+<span class="math inline">\(w_{\text{kernel}}\)</span> is the width
+of the kernel</li>
+<li>
+<span class="math inline">\(n_{\text{channels}}\)</span> is the
+number of channels or the free dimension in the previous layer</li>
+<li>the constant 1 represents the bias parameter for a single
+filter</li>
+<li>
+<span class="math inline">\(n_{\text{filters}}\)</span> is the total
+number of filters in a Conv2D layer</li>
+</ul>
+<p>And thus for our present model,</p>
+<ol style="list-style-type: decimal">
+<li>in the first Conv2D layer, the above expression computes to
+<code>(3 * 3 * 3 + 1) * 50 = 1400</code>, and</li>
+<li>in the second Conv2D layer, instead of number of channels, we have
+50 filters in the previous Conv2D layer; and therefore the expression
+computes to <code>(3 * 3 * 50 + 1) * 50 = 22550</code>
+</li>
+</ol>
+<hr>
+<br><h3 id="4-advanced-layer-types-headingInstructor3">
+<a href="4-advanced-layer-types.html#headingInstructor3">Demonstrate searching for existing architectures</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor3"></a>
 </h3>
 <p>At this point it can be nice to apply above callout box and
 demonstrate searching for state-of-the-art implementations. If you
@@ -536,13 +572,13 @@ deeper, the input and output layer are still the same. The aim is to
 demonstrate that what we are learning is really the basis for more
 complex models, and you do not need to reinvent the wheel.</p>
 <hr>
-<br><h3 id="4-advanced-layer-types-headingInstructor3">
-<a href="4-advanced-layer-types.html#headingInstructor3">BREAK</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor3"></a>
+<br><h3 id="4-advanced-layer-types-headingInstructor4">
+<a href="4-advanced-layer-types.html#headingInstructor4">BREAK</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor4"></a>
 </h3>
 <p>This is a good time for switching instructor and/or a break.</p>
 <hr>
-<br><h3 id="4-advanced-layer-types-headingInstructor4">
-<a href="4-advanced-layer-types.html#headingInstructor4">Comparison with a network with only dense layers</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor4"></a>
+<br><h3 id="4-advanced-layer-types-headingInstructor5">
+<a href="4-advanced-layer-types.html#headingInstructor5">Comparison with a network with only dense layers</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor5"></a>
 </h3>
 <p>The callout box below compares the CNN approach with a network with
 only dense layers. Depending on time, the following discussion can be
@@ -559,8 +595,8 @@ would look like and make the comparison.</li>
 reaches 18% accuracy, considerably worse than our simple CNN.</li>
 </ol>
 <hr>
-<br><h3 id="4-advanced-layer-types-headingInstructor5">
-<a href="4-advanced-layer-types.html#headingInstructor5">Do a live demo instead of live coding</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor5"></a>
+<br><h3 id="4-advanced-layer-types-headingInstructor6">
+<a href="4-advanced-layer-types.html#headingInstructor6">Do a live demo instead of live coding</a><a class="anchor" aria-label="anchor" href="#4-advanced-layer-types-headingInstructor6"></a>
 </h3>
 <p>You might want to demonstrate this section on hyperparameter tuning
 instead of doing live coding. The goal is to show that hyperparameter
@@ -628,8 +664,8 @@ passionate about.</p>
   "url": "https://carpentries-lab.github.io/deep-learning-intro/instructor/instructor-notes.html",
   "identifier": "https://carpentries-lab.github.io/deep-learning-intro/instructor/instructor-notes.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2025-09-02",
-  "datePublished": "2025-09-02"
+  "dateModified": "2025-09-03",
+  "datePublished": "2025-09-03"
 }
 
   </script><script>
