@@ -46,6 +46,13 @@ authors:
   - name: Toby Hodges
     orcid: 0000-0003-1766-456X
     affiliation: 8
+  - name: Kjartan Thor Wikfeldt
+    orcid: 0000-0002-1655-3676
+    affiliation: 9
+  - name: Ashwin Vishnu Mohanan
+    orcid: 0000-0002-2979-6327
+    affiliation: 9    
+        
     
 
 affiliations:
@@ -65,6 +72,8 @@ affiliations:
    index: 7
  - name: The Carpentries, USA
    index: 8
+ - name: RISE Research Institutes of Sweden, Sweden
+   index: 9   
 date: 8 August 2023
 bibliography: paper.bib
 
