@@ -102,6 +102,10 @@ We use data with permissive licenses and designed for real world use cases:
 - The Dollar Street Dataset (@gaviria_rojas_dollar_2022) is representative and contains accurate demographic information to ensure their robustness and fairness, especially for smaller subpopulations.
 
 # Statement of Need
+
+This lesson addresses the need for an introductory lesson on deep learning that is open-source, and can be used by instructors in a workshop as well as for self-study.
+While generally usable, its target audience are academic researchers.
+
 There are many free online course materials on deep learning, 
 see for example: @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
 
@@ -116,8 +120,8 @@ Whereas this lesson is a general introduction to applied deep learning showing v
 Many computing centers offer (local) deep learning courses, such as @noauthor_csc-_nodate. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
 
-What works well for learners is to both make them familiar with the key concepts, and also let them 
-practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
+The pedagogical approach of this lesson is both to make learners familiar with the key concepts, and let them 
+practice with how to implement them -- eventually resulting in an increase in confidence and the conviction that 'I can do this myself'.
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
 During the course, learners type in the commands that are explained by the instructor on their own computer.
 This design is based on the Software Carpentry [@wilson_software_2006] philosophy.
