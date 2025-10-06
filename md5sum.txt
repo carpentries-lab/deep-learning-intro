@@ -18,5 +18,5 @@
 "instructors/survey-templates.md" "ea5d46e7b54d335f79e57a7bc31d1c5c" "site/built/survey-templates.md" "2025-02-11"
 "learners/reference.md" "2ff8ad45ffba9a6603b89340c4879d94" "site/built/reference.md" "2025-09-03"
 "learners/setup.md" "2e741a6d76091da5c832ab010380f0e1" "site/built/setup.md" "2025-09-01"
-"paper/paper.md" "57a59f3beda9f98476f0e8004593d3d3" "site/built/paper.md" "2025-10-06"
+"paper/paper.md" "e0598f7bd1045e28327eaa0e7cfc213d" "site/built/paper.md" "2025-10-06"
 "profiles/learner-profiles.md" "ef0f26dd0874387d80ed3fd468b99e23" "site/built/learner-profiles.md" "2025-02-11"
