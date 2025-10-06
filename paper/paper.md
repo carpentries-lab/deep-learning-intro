@@ -135,6 +135,19 @@ Demand for our workshops and feedback gathered from students demonstrated the
 need for a low-threshold lesson that lets researchers take the first steps in the field of deep learning.
 This impression was validated by other instructors who taught the lesson independently to their own audiences and provided us with feedback on their experience.
 
+# Lesson Development
+
+In 2018, the Netherlands eScience Center initiated the development of this lesson to fill the gap identified above.
+Over the years, the lesson has attracted a broad community of individuals and organizations that have used the material for teaching workshops, and contributed to the improvement of the lesson significantly.
+
+The diversity of the involved parties has facilitated the integration of various viewpoints on the lesson material.
+Apart from the feedback gathered from students while teaching the workshop (see below), the mix of contributors includes educators, data scientists, and, most prominently, (research) software engineers.
+Some of them have had years of experience in the deep learning domain, while others have used the lesson as a first step into the field.
+
+Development sprints of typically two full working days have regularly facilitated focussed collaboration sessions that have brought together various contributors to tackle specific issues identified in the lesson material.
+These sessions have also provided a fruitful ground for discussing the various experiences with and insights about the material.
+They have facilitated the iterative improvement of the material, resulting in a mature and well-tested set of episodes.
+
 # Instructional design
 This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook [@becker_carpentries_nodate].
 Most importantly, we used 'backward design': we started with identifying learning objectives, the core skills and concepts that learners should acquire as a result of the lesson.
