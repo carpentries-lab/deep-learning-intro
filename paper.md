@@ -10,14 +10,35 @@ authors:
   - name: Sven A. van der Burg
     orcid: 0000-0003-1250-6968
     affiliation: 1 # (Multiple affiliations must be quoted, like "1, 2")
+  - name: Pranav Chandramouli
+    orcid: 0000-0002-7896-2969
+    affiliation: 1
   - name: Anne Fouilloux
     orcid: 0000-0002-1784-2920
     affiliation: 2
+  - name: Cunliang Geng
+    orcid: 0000-0002-1409-8358
+    affiliation: 1
+  - name: Toby Hodges
+    orcid: 0000-0003-1766-456X
+    affiliation: 8
   - name: Florian Huber
     orcid: 0000-0002-3535-9406
     affiliation: "1, 3"
   - name: Dafne van Kuppevelt
     orcid: 0000-0002-2662-1994
+    affiliation: 1
+  - name: Ashwin Vishnu Mohanan
+    orcid: 0000-0002-2979-6327
+    affiliation: 9    
+  - name: Colin Sauze
+    orcid: 0000-0001-5368-9217
+    affiliation: 5
+  - name: Carsten Schnober
+    orcid: 0000-0001-9139-1577
+    affiliation: 1
+  - name: Djura Smits
+    orcid: 0000-0003-4096-0260
     affiliation: 1
   - name: Peter Steinbach
     orcid: 0000-0002-4974-230X
@@ -25,34 +46,12 @@ authors:
   - name: Berend Weel
     orcid: 0000-0002-9693-9332
     affiliation: 1
-  - name: Colin Sauze
-    orcid: 0000-0001-5368-9217
-    affiliation: 5
-  - name: Samantha Wittke
-    orcid: 0000-0002-9625-7235
-    affiliation: "6,7"
-  - name: Djura Smits
-    orcid: 0000-0003-4096-0260
-    affiliation: 1
-  - name: Cunliang Geng
-    orcid: 0000-0002-1409-8358
-    affiliation: 1
-  - name: Pranav Chandramouli
-    orcid: 0000-0002-7896-2969
-    affiliation: 1
-  - name: Carsten Schnober
-    orcid: 0000-0001-9139-1577
-    affiliation: 1
-  - name: Toby Hodges
-    orcid: 0000-0003-1766-456X
-    affiliation: 8
   - name: Kjartan Thor Wikfeldt
     orcid: 0000-0002-1655-3676
     affiliation: 9
-  - name: Ashwin Vishnu Mohanan
-    orcid: 0000-0002-2979-6327
-    affiliation: 9    
-        
+  - name: Samantha Wittke
+    orcid: 0000-0002-9625-7235
+    affiliation: "6,7"
     
 
 affiliations:
