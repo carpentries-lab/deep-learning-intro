@@ -102,6 +102,10 @@ We use data with permissive licenses and designed for real world use cases:
 - The Dollar Street Dataset (@gaviria_rojas_dollar_2022) is representative and contains accurate demographic information to ensure their robustness and fairness, especially for smaller subpopulations.
 
 # Statement of Need
+
+This lesson addresses the need for an introductory lesson on deep learning that is open-source, and can be used by instructors in a workshop as well as for self-study.
+While generally usable, its target audience are academic researchers.
+
 There are many free online course materials on deep learning, 
 see for example: @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
 
@@ -116,8 +120,8 @@ Whereas this lesson is a general introduction to applied deep learning showing v
 Many computing centers offer (local) deep learning courses, such as @noauthor_csc-_nodate. 
 But the lesson material, if it is available, is not easily adopted outside the course organisation.
 
-What works well for learners is to both make them familiar with the key concepts, and also let them 
-practice with how to implement it. Eventually resulting in an increase in confidence and  the conviction that 'I can do this myself'. 
+The pedagogical approach of this lesson is both to make learners familiar with the key concepts, and let them 
+practice with how to implement them -- eventually resulting in an increase in confidence and the conviction that 'I can do this myself'.
 The key to getting there is live coding: before the course, learners have to setup a working environment on their own computer.
 During the course, learners type in the commands that are explained by the instructor on their own computer.
 This design is based on the Software Carpentry [@wilson_software_2006] philosophy.
@@ -130,6 +134,19 @@ To accomplish this, we created a lesson that can be taught in 2 consecutive days
 Demand for our workshops and feedback gathered from students demonstrated the
 need for a low-threshold lesson that lets researchers take the first steps in the field of deep learning.
 This impression was validated by other instructors who taught the lesson independently to their own audiences and provided us with feedback on their experience.
+
+# Lesson Development
+
+In 2018, the Netherlands eScience Center initiated the development of this lesson to fill the gap identified above.
+Over the years, the lesson has attracted a broad community of individuals and organizations that have used the material for teaching workshops, and contributed to the improvement of the lesson significantly.
+
+The diversity of the involved parties has facilitated the integration of various viewpoints on the lesson material.
+Apart from the feedback gathered from students while teaching the workshop (see below), the mix of contributors includes educators, data scientists, and, most prominently, (research) software engineers.
+Some of them have had years of experience in the deep learning domain, while others have used the lesson as a first step into the field.
+
+Development sprints of typically two full working days have regularly facilitated focussed collaboration sessions that have brought together various contributors to tackle specific issues identified in the lesson material.
+These sessions have also provided a fruitful ground for discussing the various experiences with and insights about the material.
+They have facilitated the iterative improvement of the material, resulting in a mature and well-tested set of episodes.
 
 # Instructional design
 This lesson material was designed using the concepts from The Carpentries Curriculum Development Handbook [@becker_carpentries_nodate].
