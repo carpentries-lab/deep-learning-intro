@@ -12,61 +12,62 @@ authors:
     name-particle: A.
     email: s.vanderburg@esciencecenter.nl
     orcid: 'https://orcid.org/0000-0003-1250-6968'
+  - given-names: Pranav
+    family-names: Chandramouli
+    orcid: 'https://orcid.org/0000-0002-7896-2969'
+    email: p.chandramouli@esciencecenter.nl
   - given-names: Anne
     family-names: Fouilloux
     orcid: 'https://orcid.org/0000-0002-1784-2920'
     email: a.c.fouilloux@geo.uio.no
+  - given-names: Cunliang
+    family-names: Geng
+    orcid: 'https://orcid.org/0000-0002-1409-8358'
+    email: c.geng@esciencecenter.nl
+  - given-names: Toby
+    family-names: Hodges
   - given-names: Florian
     family-names: Huber
     email: florian.huber@hs-duesseldorf.de
     orcid: 'https://orcid.org/0000-0002-3535-9406'
   - given-names: Dafne
     family-names: van Kuppevelt
-  - given-names: Peter
-    family-names: Steinbach
-    orcid: 'https://orcid.org/0000-0002-4974-230X'
-    email: p.steinbach@hzdr.de
-  - given-names: Berend
-    family-names: Weel
-    orcid: 'https://orcid.org/0000-0002-9693-9332'
+    email: d.vankuppevelt@esciencecenter.nl
+  - given-names: Ashwin Vishnu
+    family-names: Mohanan
+    orcid: https://orcid.org/0000-0002-2979-6327
+    email: ashwin.mohanan@ri.se
   - given-names: Colin
     family-names: Sauze
     orcid: 'https://orcid.org/0000-0001-5368-9217'
     email: colin.sauze@noc.ac.uk
-  - given-names: Samantha
-    family-names: Wittke
-    orcid: 'https://orcid.org/0000-0002-9625-7235'
-    email: samantha.wittke@aalto.fi
-  - given-names: Djura
-    family-names: Smits
-    orcid: 'https://orcid.org/0000-0003-4096-0260'
-    email: d.smits@esciencecenter.nl
-  - given-names: Cunliang
-    family-names: Geng
-    orcid: 'https://orcid.org/0000-0002-1409-8358'
-    email: c.geng@esciencecenter.nl
-  - given-names: Pranav
-    family-names: Chandramouli
-    orcid: 'https://orcid.org/0000-0002-7896-2969'
-    email: p.chandramouli@esciencecenter.nl
   - given-names: Carsten
     family-names: Schnober
     orcid: https://orcid.org/0000-0001-9139-1577
     email: c.schnober@esciencecenter.nl
-  - given-names: Toby
-    family-names: Hodges
-  - given-names: Ashwin Vishnu
-    family-names: Mohanan
-    orcid: https://orcid.org/0000-0002-2979-6327
-    email: ashwin.mohanan@ri.se 
+  - given-names: Djura
+    family-names: Smits
+    orcid: 'https://orcid.org/0000-0003-4096-0260'
+    email: d.smits@esciencecenter.nl
+  - given-names: Peter
+    family-names: Steinbach
+    orcid: 'https://orcid.org/0000-0002-4974-230X'
+    email: p.steinbach@hzdr.de
   - given-names: Yonglei
     family-names: Wang
     orcid: https://orcid.org/0000-0003-3393-7257
     email: yonglei@nsc.liu.se
+  - given-names: Berend
+    family-names: Weel
+    orcid: 'https://orcid.org/0000-0002-9693-9332'
   - given-names: Kjartan Thor
     family-names: Wikfeldt
     orcid: https://orcid.org/0000-0002-1655-3676
     email: thor.wikfeldt@ri.se
+  - given-names: Samantha
+    family-names: Wittke
+    orcid: 'https://orcid.org/0000-0002-9625-7235'
+    email: samantha.wittke@aalto.fi
 
 repository-code: >-
   https://github.com/carpentries-lab/deep-learning-intro
