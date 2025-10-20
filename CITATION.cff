@@ -63,6 +63,10 @@ authors:
     family-names: Wang
     orcid: https://orcid.org/0000-0003-3393-7257
     email: yonglei@nsc.liu.se
+  - given-names: Kjartan Thor
+    family-names: Wikfeldt
+    orcid: https://orcid.org/0000-0002-1655-3676
+    email: thor.wikfeldt@ri.se
 
 repository-code: >-
   https://github.com/carpentries-lab/deep-learning-intro
