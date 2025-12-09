@@ -17,6 +17,8 @@ title: Reference
 * [class imbalance](https://glosario.carpentries.org/en/#class_imbalance)
 * [overfitting](https://glosario.carpentries.org/en/#overfitting)
 * [hidden layer](https://glosario.carpentries.org/en/#hidden_layer)
+* [fine-tuning](https://glosario.carpentries.org/en/#fine_tuning)
+* [transfer learning](https://glosario.carpentries.org/en/#transfer_learning)
 
 ## External references
 Here is a (non exhaustive) list of external resources for further study after this lesson:
