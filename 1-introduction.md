@@ -133,7 +133,7 @@ In most neural networks, neurons are aggregated into layers. Signals travel from
 The image below shows an example of a neural network with three layers, each circle is a neuron, each line is an edge and the arrows indicate the direction data moves in.
 
 ![
-Image credit: Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, 
+Image credit: Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons,
 [original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
 ](fig/01_neural_net.png){
 alt='A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.'
@@ -487,12 +487,16 @@ Keras also benefits from a very good set of [online documentation](https://keras
 Follow the [setup instructions](learners/setup.md#packages) to install Keras, Seaborn and scikit-learn.
 
 ## Testing Keras Installation
-Keras is available as a module within TensorFlow, as described in the [setup instructions](learners/setup.md#packages).
+Keras is available as a standalone package, as described in the [setup instructions](learners/setup.md#packages).
 Let's therefore check whether you have a suitable version of TensorFlow installed.
 Open up a new Jupyter notebook or interactive python console and run the following commands:
 ```python
-import tensorflow
-print(tensorflow.__version__)
+# Note: Before importing Keras, we have to instruct it to use PyTorch as the backend.
+import os
+os.environ['KERAS_BACKEND'] = 'torch'
+
+import keras
+print(keras.__version__)
 ```
 ```output
 2.17.0
