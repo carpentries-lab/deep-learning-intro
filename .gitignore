@@ -56,3 +56,5 @@ renv/sandbox # OPTIONAL
 **/.DS_Store
 .ipynb_checkpoints
 
+.venv/
+venv/
