@@ -4,7 +4,9 @@
 cff-version: 1.2.0
 title: Introduction to deep learning
 message: Learn deep learning with Python
-doi: 10.5281/zenodo.8308392
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.8308391
 type: software
 authors:
   - given-names: Sven
