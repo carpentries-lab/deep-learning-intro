@@ -228,6 +228,9 @@ The output of the previous layer is the input to the next layer.
 Note that the color coding refers to different layer types that will be introduced one by one
 as we proceed in this lesson.](fig/01_deep_network.png){alt='An example of a deep neural network'}
 
+![As a result of the optimization process, the different layers of a neural network tend to learn increasingly abstract representations of the input data.
+](fig/01_nn_abstraction_layers.png)
+
 ### How do neural networks learn?
 What happens in a neural network during the training process?
 The ultimate goal is of course to find a model that makes predictions that are as close to the target value as possible.
