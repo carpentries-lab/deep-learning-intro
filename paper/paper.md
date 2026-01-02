@@ -234,7 +234,7 @@ You can find all details of the review process on GitHub: https://github.com/car
 # Conclusion
 This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and Python.
 It can also be taught in a broader curriculum after an introduction to Python programming (for example: @azalee_bostroem_software_2016) 
-and an introduction to machine learning (for example: @noauthor_scikit-learn_2023).
+and an introduction to machine learning (for example: @esteve_inriascikit-learn-mooc_2022).
 Concluding, the described lesson material is a unique and essential resource aimed at researchers and designed specifically for a live-coding teaching style.
 Hopefully, it will help many researchers to set their first steps in a successful application of deep learning to their own domain.
 
