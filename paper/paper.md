@@ -107,7 +107,7 @@ This lesson addresses the need for an introductory lesson on deep learning that 
 While generally usable, its target audience are academic researchers.
 
 There are many free online course materials on deep learning, 
-see for example: @howard2020deep; @mishra_free_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @ng_deep_nodate; @freecodecamporg_pytorch_2022. 
+see for example: @howard2020deep; @mishra_free_nodate; @noauthor_udemy_nodate-1; @slim_free_nodate; @ng_deep_nodate; @freecodecamporg_pytorch_2022. 
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
