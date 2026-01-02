@@ -107,7 +107,7 @@ This lesson addresses the need for an introductory lesson on deep learning that 
 While generally usable, its target audience are academic researchers.
 
 There are many free online course materials on deep learning, 
-see for example: @noauthor_fastai_nodate; @noauthor_udemy_nodate; @noauthor_udemy_nodate-1; @noauthor_udemy_nodate-2; @noauthor_coursera_nodate; @noauthor_freecodecamporg_2022. 
+see for example: @howard2020deep; @mishra_free_nodate; @slim_free_nodate; @noauthor_udemy_nodate-2; @ng_deep_nodate; @bourke_pytorch_2022. 
 
 Nonetheless, these resources are often not available open-source and can thus not be easily adapted to the students' needs. 
 Also, these resources are intended to use for self-study. Our material can be used for self-study, but it is primarily developed for instructors to use in a workshop.
@@ -205,7 +205,7 @@ with some responses from students to the question 'What was your favourite or mo
 
 Below are two tables summarizing results from our post-workshop survey. We use the students' feedback to continuously improve the lesson. 
 
-|                                                                                            |          STRONGLY DISAGREE    |     DISAGREE    |     UNDECIDED    |     AGREE    |     STRONGLY AGREE    |     TOTAL    |     WEIGHTED AVERAGE    |
+|                                                                                            |          Strongly Disagree    |     Disagree    |     Undecided    |     Agree    |     Strongly Agree    |     Total    |     Weighted Average    |
 |--------------------------------------------------------------------------------------------|-------------------------------|-----------------|------------------|--------------|-----------------------|--------------|-------------------------|
 | I can immediately apply what I learned at this workshop.                                   | 0                             | 5               | 6                | 19           | 8                     | 38           | 3,8                     |
 | The setup and installation instructions for the lesson were complete and easy to follow.   | 0                             | 0               | 4                | 13           | 21                    | 38           | 4,4                     |
@@ -214,7 +214,7 @@ Below are two tables summarizing results from our post-workshop survey. We use t
 Table 1: Agreement on statements by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
-|                                                                           |          POOR    |     FAIR    |     GOOD    |     VERY GOOD    |     EXCELLENT    |     N/A    |     TOTAL    |     WEIGHTED AVERAGE    |
+|                                                                           |          Poor    |     Fair    |     Good    |     Very Good    |     Excellent    |     N/A    |     Total    |     Weighted Average    |
 |---------------------------------------------------------------------------|------------------|-------------|-------------|------------------|------------------|------------|--------------|-------------------------|
 |     Introduction into Deep Learning                                       | 0 (0%)           | 2 (5%)      | 10 (27%)    | 8 (22%)          | 17 (46%)         | 0 (0%)     | 37           | 4,1                     |
 |     Classification by a Neural Network using Keras (penguins dataset)     | 0 (0%)           | 1 (3%)      | 5 (13%)     | 16 (42%)         | 16 (42%)         | 0 (0%)     | 38           | 4,2                     |
@@ -227,14 +227,14 @@ The results from these 2 workshops are a good representation of the general feed
 ## Carpentries Lab review process
 Prior to submitting this paper the lesson went through the substantial review in the process of becoming an official Carpentries Lab (https://carpentries-lab.org/) lesson. This led to a number of improvements to the lesson. In general the accessibility and user-friendliness improved, for example by updating alt-texts and using more beginner-friendly and clearer wording. Additionally, the instructor notes were improved and many missing explanations of important deep learning concepts were added to the lesson. 
 
-Most importantly, the reviewers pointed out that the CIFAR-10 [@noauthor_cifar-10_nodate] dataset that we initially used does not have a license. We were surprised to find out that this dataset, that is one of the most widely used datasets in the field of machine learning and deep learning, is actually unethically scraped from the internet without permission from image owners. As an alternative we now use 'Dollar street 10' [@van_der_burg_dollar_2024], a dataset that was adapted for this lesson from The Dollar Street Dataset (@gaviria_rojas_dollar_2022). The Dollar Street Dataset is representative and contains accurate demographic information to ensure their robustness and fairness, especially for smaller subpopulations. In addition, it is a great entry point to teach learners about ethical AI and bias in datasets.
+Most importantly, the reviewers pointed out that the CIFAR-10 [krizhevsky_learning_2009] dataset that we initially used does not have a license. We were surprised to find out that this dataset, that is one of the most widely used datasets in the field of machine learning and deep learning, is actually unethically scraped from the internet without permission from image owners. As an alternative we now use 'Dollar street 10' [@van_der_burg_dollar_2024], a dataset that was adapted for this lesson from The Dollar Street Dataset (@gaviria_rojas_dollar_2022). The Dollar Street Dataset is representative and contains accurate demographic information to ensure their robustness and fairness, especially for smaller subpopulations. In addition, it is a great entry point to teach learners about ethical AI and bias in datasets.
 
 You can find all details of the review process on GitHub: https://github.com/carpentries-lab/reviews/issues/25.
 
 # Conclusion
 This lesson can be taught as a stand-alone workshop to students already familiar with machine learning and Python.
 It can also be taught in a broader curriculum after an introduction to Python programming (for example: @azalee_bostroem_software_2016) 
-and an introduction to machine learning (for example: @noauthor_scikit-learn_2023).
+and an introduction to machine learning (for example: @esteve_inriascikit-learn-mooc_2022).
 Concluding, the described lesson material is a unique and essential resource aimed at researchers and designed specifically for a live-coding teaching style.
 Hopefully, it will help many researchers to set their first steps in a successful application of deep learning to their own domain.
 
