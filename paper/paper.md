@@ -205,7 +205,7 @@ with some responses from students to the question 'What was your favourite or mo
 
 Below are two tables summarizing results from our post-workshop survey. We use the students' feedback to continuously improve the lesson. 
 
-|                                                                                            |          STRONGLY DISAGREE    |     DISAGREE    |     UNDECIDED    |     AGREE    |     STRONGLY AGREE    |     TOTAL    |     WEIGHTED AVERAGE    |
+|                                                                                            |          Strongly Disagree    |     Disagree    |     Undecided    |     Agree    |     Strongly Agree    |     Total    |     Weighted Average    |
 |--------------------------------------------------------------------------------------------|-------------------------------|-----------------|------------------|--------------|-----------------------|--------------|-------------------------|
 | I can immediately apply what I learned at this workshop.                                   | 0                             | 5               | 6                | 19           | 8                     | 38           | 3,8                     |
 | The setup and installation instructions for the lesson were complete and easy to follow.   | 0                             | 0               | 4                | 13           | 21                    | 38           | 4,4                     |
@@ -214,7 +214,7 @@ Below are two tables summarizing results from our post-workshop survey. We use t
 Table 1: Agreement on statements by students from 2 workshops taught at the Netherlands eScience Center. 
 The results from these 2 workshops are a good representation of the general feedback we get when teaching this workshop.
 
-|                                                                           |          POOR    |     FAIR    |     GOOD    |     VERY GOOD    |     EXCELLENT    |     N/A    |     TOTAL    |     WEIGHTED AVERAGE    |
+|                                                                           |          Poor    |     Fair    |     Good    |     Very Good    |     Excellent    |     N/A    |     Total    |     Weighted Average    |
 |---------------------------------------------------------------------------|------------------|-------------|-------------|------------------|------------------|------------|--------------|-------------------------|
 |     Introduction into Deep Learning                                       | 0 (0%)           | 2 (5%)      | 10 (27%)    | 8 (22%)          | 17 (46%)         | 0 (0%)     | 37           | 4,1                     |
 |     Classification by a Neural Network using Keras (penguins dataset)     | 0 (0%)           | 1 (3%)      | 5 (13%)     | 16 (42%)         | 16 (42%)         | 0 (0%)     | 38           | 4,2                     |
