@@ -1,5 +1,5 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-lab/deep-learning-intro/scaffolds)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8308391.svg)](https://doi.org/10.5281/zenodo.8308391)
+[![DOI](https://jose.theoj.org/papers/10.21105/jose.00307/status.svg)](https://doi.org/10.21105/jose.00307)
 [![The Carpentries Lab Review Status](http://badges.carpentries-lab.org/25_status.svg)](https://github.com/carpentries-lab/reviews/issues/25)
 
 # Introduction to deep learning
