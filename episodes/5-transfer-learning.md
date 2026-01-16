@@ -268,7 +268,7 @@ The final validation accuracy reaches 64%, this is a huge improvement over 30% a
 In many domains, large networks are available that have been trained on vast amounts of data, such as in computer vision and natural language processing. Using transfer learning, you can benefit from the knowledge that was captured from another machine learning task. In many fields, transfer learning will outperform models trained from scratch, especially if your dataset is small or of poor quality.
 
 Transfer learning adapts a model to a specific dataset. This typically leads to improvements in the particular domain covered by the data.
-[Research](https://www.nature.com/articles/s41586-025-09937-5) has shown, however, that fine-tuning the model weights like this can have negative side-effects on the model performance in other domains so that a specialized, fine-tuned model must be re-evaluated before using it for more generic tasks.
+[Research](https://www.nature.com/articles/s41586-025-09937-5) has shown, however, that fine-tuning the model weights like this can have negative side effects on the model performance in other domains so that a specialized, fine-tuned model must be re-evaluated before using it for more generic tasks.
 
 ::: keypoints
 - Large pre-trained models capture generic knowledge about a domain
