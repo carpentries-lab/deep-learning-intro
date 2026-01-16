@@ -11,7 +11,11 @@
 | 2023-05-23        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
 | 2023-05-30        | UW-Madison                  | Madison, USA               |          |
 | 2023-08-21        | Netherlands eScience Center | Online                     |          |
+| 2023-09-19        | University of Auckland      | Online                     |          |
 | 2024-02-05        | Netherlands eScience Center | Online                     |          |
+| 2024-05-27        | University of Auckland      | Online                     |          |
+| 2024-08-05        | University of Auckland      | Online                     |          |
+| 2024-10-29        | University of Auckland      | Online                     |          |
 | 2025-01-28        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
 | 2025-03-03        | CASTIEL2                    | Online                     | Part of a course `Multi-GPU AI Train-the-Trainer` |
 | 2025-05-06        | EuroCC National Competence Center Sweden | Online        |          |
