@@ -511,7 +511,7 @@ the data:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>penguins.head()</span></code></pre>
 </div>
-<table style="width:100%;" class="table"><colgroup><col width="6%"><col width="14%"><col width="13%"><col width="17%"><col width="11%"><col width="11%"><col width="11%"><col width="11%"></colgroup><thead><tr class="header"><th align="right"></th>
+<table style="width:100%;" class="table"><colgroup><col width="6%"><col width="14%"><col width="13%"><col width="17%"><col width="11%"><col width="11%"><col width="11%"><col width="11%"></colgroup><thead><tr><th align="right"></th>
 <th align="right">species</th>
 <th align="right">island</th>
 <th align="right">bill_length_mm</th>
@@ -519,7 +519,7 @@ the data:</p>
 <th align="right">flipper_length_mm</th>
 <th align="right">body_mass_g</th>
 <th align="right">sex</th>
-</tr></thead><tbody><tr class="odd"><td align="right">0</td>
+</tr></thead><tbody><tr><td align="right">0</td>
 <td align="right">Adelie</td>
 <td align="right">Torgersen</td>
 <td align="right">39.1</td>
@@ -527,7 +527,7 @@ the data:</p>
 <td align="right">181.0</td>
 <td align="right">3750.0</td>
 <td align="right">Male</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">Adelie</td>
 <td align="right">Torgersen</td>
 <td align="right">39.5</td>
@@ -535,7 +535,7 @@ the data:</p>
 <td align="right">186.0</td>
 <td align="right">3800.0</td>
 <td align="right">Female</td>
-</tr><tr class="odd"><td align="right">2</td>
+</tr><tr><td align="right">2</td>
 <td align="right">Adelie</td>
 <td align="right">Torgersen</td>
 <td align="right">40.3</td>
@@ -543,7 +543,7 @@ the data:</p>
 <td align="right">195.0</td>
 <td align="right">3250.0</td>
 <td align="right">Female</td>
-</tr><tr class="even"><td align="right">3</td>
+</tr><tr><td align="right">3</td>
 <td align="right">Adelie</td>
 <td align="right">Torgersen</td>
 <td align="right">NaN</td>
@@ -551,7 +551,7 @@ the data:</p>
 <td align="right">NaN</td>
 <td align="right">NaN</td>
 <td align="right">NaN</td>
-</tr><tr class="odd"><td align="right">4</td>
+</tr><tr><td align="right">4</td>
 <td align="right">Adelie</td>
 <td align="right">Torgersen</td>
 <td align="right">36.7</td>
@@ -1325,47 +1325,47 @@ to a pandas dataframe to easily see the labels.</p>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
 <span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>prediction</span></code></pre>
 </div>
-<table class="table"><tbody><tr class="odd"><td align="right">0</td>
+<table class="table"><tbody><tr><td align="right">0</td>
 <td align="right">0.304484</td>
 <td align="right">0.192893</td>
 <td align="right">0.502623</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">0.527107</td>
 <td align="right">0.095888</td>
 <td align="right">0.377005</td>
-</tr><tr class="odd"><td align="right">2</td>
+</tr><tr><td align="right">2</td>
 <td align="right">0.373989</td>
 <td align="right">0.195604</td>
 <td align="right">0.430406</td>
-</tr><tr class="even"><td align="right">3</td>
+</tr><tr><td align="right">3</td>
 <td align="right">0.493643</td>
 <td align="right">0.154104</td>
 <td align="right">0.352253</td>
-</tr><tr class="odd"><td align="right">4</td>
+</tr><tr><td align="right">4</td>
 <td align="right">0.309051</td>
 <td align="right">0.308646</td>
 <td align="right">0.382303</td>
-</tr><tr class="even"><td align="right">…</td>
+</tr><tr><td align="right">…</td>
 <td align="right">…</td>
 <td align="right">…</td>
 <td align="right">…</td>
-</tr><tr class="odd"><td align="right">64</td>
+</tr><tr><td align="right">64</td>
 <td align="right">0.406074</td>
 <td align="right">0.191430</td>
 <td align="right">0.402496</td>
-</tr><tr class="even"><td align="right">65</td>
+</tr><tr><td align="right">65</td>
 <td align="right">0.645621</td>
 <td align="right">0.077174</td>
 <td align="right">0.277204</td>
-</tr><tr class="odd"><td align="right">66</td>
+</tr><tr><td align="right">66</td>
 <td align="right">0.356284</td>
 <td align="right">0.185958</td>
 <td align="right">0.457758</td>
-</tr><tr class="even"><td align="right">67</td>
+</tr><tr><td align="right">67</td>
 <td align="right">0.393868</td>
 <td align="right">0.159575</td>
 <td align="right">0.446557</td>
-</tr><tr class="odd"><td align="right">68</td>
+</tr><tr><td align="right">68</td>
 <td align="right">0.509837</td>
 <td align="right">0.144219</td>
 <td align="right">0.345943</td>
@@ -1663,7 +1663,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.20.0" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
