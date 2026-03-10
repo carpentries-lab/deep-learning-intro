@@ -110,8 +110,8 @@ Combine the following statements to the correct activation function:
 6. (optional) This function is not differentiable at 0
 7. (optional) This function is the default for Dense layers (search the Keras documentation!)
 
-*Activation function plots by Laughsinthestocks - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=44920411,
-https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikimedia.org/w/index.php?curid=44920533*
+_Activation function plots by Laughsinthestocks - Own work, CC BY-SA 4.0, <https://commons.wikimedia.org/w/index.php?curid=44920411>,
+<https://commons.wikimedia.org/w/index.php?curid=44920600>, <https://commons.wikimedia.org/w/index.php?curid=44920533>_
 
 ::: solution
 ## Solution
@@ -134,7 +134,7 @@ The image below shows an example of a neural network with three layers, each cir
 
 ![
 Image credit: Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, 
-[original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
+original source: <https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg>
 ](fig/01_neural_net.png){
 alt='A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.'
 }
@@ -198,6 +198,7 @@ a.
 | 0  | 1  | **1** |
 | 1  | 1  | **0** |
 | 1  | 0  | **1** |
+
 b. This solves the XOR logical problem, the output is 1 if only one of the two inputs is 1.
 
 :::
@@ -229,7 +230,7 @@ Note that the color coding refers to different layer types that will be introduc
 as we proceed in this lesson.](fig/01_deep_network.png){alt='An example of a deep neural network'}
 
 ![As a result of the optimization process, the different layers of a neural network tend to learn increasingly abstract representations of the input data.
-](fig/01_nn_abstraction_layers.png)
+](fig/01_nn_abstraction_layers.png){alt='Example of two different neural networks and how each layer process different abstract representations of input data'}
 
 ### How do neural networks learn?
 What happens in a neural network during the training process?
@@ -249,7 +250,7 @@ To solve it:
 3.  Click on "Math Renderer".
 4.  Click on "Common HTML".
 
-from: https://physics.meta.stackexchange.com/questions/14408/bug-in-mathjax-rendering-using-chrome
+from: <https://physics.meta.stackexchange.com/questions/14408/bug-in-mathjax-rendering-using-chrome>
 :::
 
 :::: challenge
@@ -455,10 +456,10 @@ Think about a problem you would like to use deep learning to solve.
 2. What data inputs and outputs will you have?
 3. Do you think you will need to train the network or will a pre-trained network be suitable?
 4. What data do you have to train with? What preparation will your data need? Consider both the data you are going to predict/classify from and the data you will use to train the network.
+:::
 
 ::: solution
 Discuss your answers with the group or the person next to you.
-:::
 ::::
 
 
@@ -470,11 +471,11 @@ There are many software libraries available for deep learning including:
 
 [TensorFlow](https://www.tensorflow.org/) was developed by Google and is one of the older deep learning libraries, ported across many languages since it was first released to the public in 2015. It is very versatile and capable of much more than deep learning but as a result it often takes a lot more lines of code to write deep learning operations in TensorFlow than in other libraries. It offers (almost) seamless integration with GPU accelerators and Google's own TPU (Tensor Processing Unit) chips that are built specially for machine learning.
 
-### PyTorch
+### PyTorch <!-- no-patch -->
 
 [PyTorch](https://pytorch.org/) was developed by Facebook in 2016 and is a popular choice for deep learning applications. It was developed for Python from the start and feels a lot more "pythonic" than TensorFlow. Like TensorFlow it was designed to do more than just deep learning and offers some very low level interfaces. [PyTorch Lightning](https://www.pytorchlightning.ai/) offers a higher level interface to PyTorch to set up experiments. Like TensorFlow it is also very easy to integrate PyTorch with a GPU. In many benchmarks it outperforms the other libraries.
 
-### Keras
+### Keras <!-- no-patch -->
 
 [Keras](https://keras.io/) is designed to be easy to use and usually requires fewer lines of code than other libraries. We have chosen it for this lesson for that reason. Keras can actually work on top of TensorFlow (and several other libraries), hiding away the complexities of TensorFlow while still allowing you to make use of their features.
 
@@ -484,10 +485,10 @@ Keras also benefits from a very good set of [online documentation](https://keras
 
 ### Installing Keras and other dependencies
 
-Follow the [setup instructions](learners/setup.md#packages) to install Keras, Seaborn and scikit-learn.
+Follow the [setup instructions](./setup.md#packages) to install Keras, Seaborn and scikit-learn.
 
 ## Testing Keras Installation
-Keras is available as a module within TensorFlow, as described in the [setup instructions](learners/setup.md#packages).
+Keras is available as a module within TensorFlow, as described in the [setup instructions](./setup.md#packages).
 Let's therefore check whether you have a suitable version of TensorFlow installed.
 Open up a new Jupyter notebook or interactive python console and run the following commands:
 ```python
