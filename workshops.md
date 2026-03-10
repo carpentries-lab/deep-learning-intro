@@ -1,0 +1,26 @@
+| Date (YYYY-MM-DD) | Organisation                | Location                   | Comments |
+|-------------------|-----------------------------|----------------------------|----------|
+| 2021-11-22        | Netherlands eScience Center | Online                     |          |
+| 2022-01-25        | Netherlands eScience Center | Online                     |          |
+| 2022-02-22        | EuroCC National Competence Center Sweden | Online        |          |
+| 2022-02-28        | EMBL Heidelberg             | Online                     |          |
+| 2022-09-26        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2022-11-16        | EMBL Heidelberg             | Heidelberg, Germany        |          |
+| 2022-12-05        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2023-03-25        | University of Auckland      | Online                     |          |
+| 2023-05-23        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2023-05-30        | UW-Madison                  | Madison, USA               |          |
+| 2023-08-21        | Netherlands eScience Center | Online                     |          |
+| 2023-09-19        | University of Auckland      | Online                     |          |
+| 2024-02-05        | Netherlands eScience Center | Online                     |          |
+| 2024-05-27        | University of Auckland      | Online                     |          |
+| 2024-08-05        | University of Auckland      | Online                     |          |
+| 2024-10-29        | University of Auckland      | Online                     |          |
+| 2025-01-28        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2025-03-03        | CASTIEL2                    | Online                     | Part of a course `Multi-GPU AI Train-the-Trainer` |
+| 2025-05-06        | EuroCC National Competence Center Sweden | Online        |          |
+| 2025-10-27 to 29      | Helmholtz-Zentrum Dresden-Rossendorf, Germany | Online        |          |
+| 2026-01-30        | CASTIEL2                    | Online                     | For 2026 edition of [`Multi-GPU AI Train-the-Trainer`](https://enccs.github.io/castiel-multi-gpu-ai/) course, up to episode 3. |
+| 2026-02-11        | UC-Santa Barbara            | Santa Barbara, CA, USA     | Only up to episode 3 `Monitor the training process` |
+| 2026-02-17        | Mimer AI Factory            | Online                     | First time teaching with both Keras and PyTorch |
+
