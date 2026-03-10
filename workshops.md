@@ -20,4 +20,7 @@
 | 2025-03-03        | CASTIEL2                    | Online                     | Part of a course `Multi-GPU AI Train-the-Trainer` |
 | 2025-05-06        | EuroCC National Competence Center Sweden | Online        |          |
 | 2025-10-27 to 29      | Helmholtz-Zentrum Dresden-Rossendorf, Germany | Online        |          |
+| 2026-01-30        | CASTIEL2                    | Online                     | For 2026 edition of [`Multi-GPU AI Train-the-Trainer`](https://enccs.github.io/castiel-multi-gpu-ai/) course, up to episode 3. |
 | 2026-02-11        | UC-Santa Barbara            | Santa Barbara, CA, USA     | Only up to episode 3 `Monitor the training process` |
+| 2026-02-17        | Mimer AI Factory            | Online                     | First time teaching with both Keras and PyTorch |
+
