@@ -111,12 +111,13 @@ How many features does one image in the Dollar Street 10 dataset have?
 - C. 12288
 - D. 878
 
+:::
 
 ::: solution
 The correct solution is C: 12288
 
 There are 4096 pixels in one image (64 * 64), each pixel has 3 channels (RGB). So 4096 * 3 = 12288.
-:::
+
 ::::
 
 
@@ -150,13 +151,48 @@ The values of the labels range between `0` and `9`, denoting 10 different classe
 
 ## 3. Prepare data
 
-The training set consists of 878 images of `64x64` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
+The training set consists of 878 images of `64x64` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`.
 
+::::::: group-tab
+
+###### Keras
 
 ```python
 train_images = train_images / 255.0
 val_images = val_images / 255.0
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+In PyTorch, one common pattern to load and transform complex data is to define a custom `Dataset` class. The class must define two methods: the `__len__` method must return how many samples are in the dataset, while the `__getitem__` method must return the sample corresponding to a specific id. These methods will be automatically called by the dataloader during training or evaluation to build each individual batch.
+
+In previous lessons, we have used the `TensorDataset` class, which is a built-in type of `Dataset` designed for tabular data.
+
+In this case, we utilize the constructor of the dataset to load images and labels for the correct data split (train or test). In `__len__`, we simply return how many images are in the split. In `__getitem__`, we return the correct image and label. We convert both the image and label to PyTorch tensors (as we did in the input to the `TensorDataset`s in previous lessons) and we permute the dimensions of the image from `64x64x3` to `3x64x64`, as this is the expected convention in PyTorch.
+
+```python
+class DollarStreetDataset(torch.utils.data.Dataset):
+    def __init__(self, root, train=True):
+        prefix = "test"
+        if train == True:
+            prefix = "train"
+        self.images = np.load(root / f'{prefix}_images.npy') / 255.
+        self.labels = np.load(root / f'{prefix}_labels.npy')
+        
+    def __getitem__(self, idx):
+        x = torch.permute(torch.tensor(self.images[idx], dtype=torch.float), (2, 0, 1))
+        y = torch.tensor(self.labels[idx], dtype=torch.long)
+        return x, y
+        
+    def __len__(self):
+        return self.images.shape[0]
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 
 ## 4. Choose a pretrained model or start building architecture from scratch
 
@@ -165,8 +201,11 @@ In the previous episodes, we used 'fully connected layers' , that connected all 
 This results in many connections, and thus many weights to be learned, in the network.
 Note that our input dimension is now quite high (even with small pictures of `64x64` pixels): we have 12288 features.
 
+(parameters-exercise-1)=
 :::: challenge
-## Number of parameters{#parameters-exercise-1}
+
+## Number of parameters
+
 Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?
 
 - A. 1228800
@@ -265,9 +304,12 @@ in the context of applying a _Gaussian blur_.
 :::
 ::::
 
+(parameters-exercise-3)=
 :::: challenge
-## Number of model parameters{#parameters-exercise-3}
-Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 64 * 64 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
+
+## Number of model parameters
+
+Suppose we apply a convolutional layer with 100 kernels of size 3 _3_ 3 (the last dimension applies to the rgb channels) to our images of 64 _64_ 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the earlier exercise, ["Number of Parameters"](#parameters-exercise-1).
 
 ::: solution
 ## Solution
@@ -275,7 +317,13 @@ We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27 * 100 = 27
 :::
 ::::
 
-So let us look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.
+So let us look at a network with a few convolutional layers.
+
+::::::: group-tab
+
+###### Keras
+
+We need to finish with a fully-connected `Dense` layer to connect the output cells of the convolutional layer to the outputs for our classes.
 
 ```python
 from tensorflow import keras
@@ -316,6 +364,59 @@ Model: "dollar_street_model_small"
  Non-trainable params: 0 (0.00 B)
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+We need to finish with a fully-connected `Linear` layer to connect the output cells of the convolutional layer to the outputs for our classes.
+
+```python
+class DollarStreetModelSmall(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Conv2d(3, 50, 3),
+            nn.ReLU(),
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.Flatten(),
+            nn.Linear(50*60*60, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+
+model = DollarStreetModelSmall()
+summary(model, input_size=(1, 3, 64, 64))
+```
+
+```output
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DollarStreetModelSmall                   [1, 10]                   --
+├─Sequential: 1-1                        [1, 10]                   --
+│    └─Conv2d: 2-1                       [1, 50, 62, 62]           1,400
+│    └─ReLU: 2-2                         [1, 50, 62, 62]           --
+│    └─Conv2d: 2-3                       [1, 50, 60, 60]           22,550
+│    └─ReLU: 2-4                         [1, 50, 60, 60]           --
+│    └─Flatten: 2-5                      [1, 180000]               --
+│    └─Linear: 2-6                       [1, 10]                   1,800,010
+==========================================================================================
+Total params: 1,823,960
+Trainable params: 1,823,960
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 88.36
+==========================================================================================
+Input size (MB): 0.05
+Forward/backward pass size (MB): 2.98
+Params size (MB): 7.30
+Estimated Total Size (MB): 10.32
+==========================================================================================
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 :::: challenge
 ## Convolutional Neural Network
 
@@ -329,7 +430,7 @@ We can get inspiration for neural network architectures that could work on our d
 ::: solution
 ## Solution
 * The Flatten layer converts the 60x60x50 output of the convolutional layer into a single one-dimensional vector, that can be used as input for a dense layer.
-* The last dense layer has the most parameters. This layer connects every single output 'pixel' from the convolutional layer to the 10 output classes.
+* The last fully-connected `Dense` / `Linear` layer has the most parameters. This layer connects every single output 'pixel' from the convolutional layer to the 10 output classes.
 That results in a large number of connections, so a large number of parameters. This undermines a bit the expressiveness of the convolutional layers, that have much fewer parameters.
 :::
 ::::
@@ -385,6 +486,9 @@ Often in convolutional neural networks, the convolutional layers are intertwined
 
 Let's put it into practice. We compose a Convolutional network with two convolutional layers and two pooling layers.
 
+::::::: group-tab
+
+###### Keras
 
 ```python
 def create_nn(input_shape):
@@ -434,19 +538,80 @@ Model: "dollar_street_model"
  Non-trainable params: 0 (0.00 B)
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+class DollarStreetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Conv2d(3, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Flatten(),
+            nn.Linear(14*14*50, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+
+model = DollarStreetModel()
+summary(model, input_size=(1, 3, 64, 64))
+```
+
+```output
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DollarStreetModel                        [1, 10]                   --
+├─Sequential: 1-1                        [1, 10]                   --
+│    └─Conv2d: 2-1                       [1, 50, 62, 62]           1,400
+│    └─ReLU: 2-2                         [1, 50, 62, 62]           --
+│    └─MaxPool2d: 2-3                    [1, 50, 31, 31]           --
+│    └─Conv2d: 2-4                       [1, 50, 29, 29]           22,550
+│    └─ReLU: 2-5                         [1, 50, 29, 29]           --
+│    └─MaxPool2d: 2-6                    [1, 50, 14, 14]           --
+│    └─Flatten: 2-7                      [1, 9800]                 --
+│    └─Linear: 2-8                       [1, 50]                   490,050
+│    └─ReLU: 2-9                         [1, 50]                   --
+│    └─Linear: 2-10                      [1, 10]                   510
+==========================================================================================
+Total params: 514,510
+Trainable params: 514,510
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 24.84
+==========================================================================================
+Input size (MB): 0.05
+Forward/backward pass size (MB): 1.87
+Params size (MB): 2.06
+Estimated Total Size (MB): 3.98
+==========================================================================================
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 ## 5. Choose a loss function and optimizer
 
 We compile the model using the adam optimizer (other optimizers could also be used here!).
 Similar to the penguin classification task, we will use the crossentropy function to calculate the model's loss.
 This loss function is appropriate to use when the data has two or more label classes.
 
+::::::: group-tab
+
+###### Keras
 Remember that our target class is represented by a single integer, whereas the output of our network has 10 nodes, one for each class.
 So, we should have actually one-hot encoded the targets and used a softmax activation for the neurons in our output layer!
 Luckily, there is a quick fix to calculate crossentropy loss for data that
 has its classes represented by integers, the `SparseCategoricalCrossentropy()` function. 
 Adding the argument `from_logits=True` accounts for the fact that the output has a linear activation instead of softmax.
 This is what is often done in practice, because it spares you from having to worry about one-hot encoding.
-
 
 ```python
 def compile_model(model):
@@ -455,6 +620,20 @@ def compile_model(model):
                   metrics=['accuracy'])
 compile_model(model)
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+We choose the optimizer and loss function classes and will instantiate them inside the `fit` function.
+
+```python
+optim = torch.optim.Adam
+loss_fn = torch.nn.CrossEntropyLoss
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
 
 :::callout
 
@@ -469,7 +648,7 @@ If the data is highly imbalanced and 90 of these images are dogs, the model will
 This high number looks like the model performs great, but it is misleading; the model might not have learned to identify a cat image at all.
 In such an imbalanced dataset, other metrics such as [precision](https://keras.io/api/metrics/classification_metrics/#precision-class) and [recall](https://keras.io/api/metrics/classification_metrics/#recall-class) are more suitable.
 
-The documentation provides a comprehensive list of [metrics available in Keras](https://keras.io/api/metrics/), suitable for different tasks and datasets.
+The documentation provides a comprehensive list of [metrics available in Keras](https://keras.io/api/metrics/), suitable for different tasks and datasets. Similarly, the [`torchmetrics` package provides a variety of metrics for deep learning in PyTorch](https://lightning.ai/docs/torchmetrics/stable/all-metrics.html).
 :::
 
 ::: instructor
@@ -479,12 +658,78 @@ This is a good time for switching instructor and/or a break.
 
 ## 6. Train the model
 
-We then train the model for 10 epochs:
+We then train the model:
+
+::::::: group-tab
+
+###### Keras
 
 ```python
 history = model.fit(train_images, train_labels, epochs=10,
                     validation_data=(val_images, val_labels))
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+Here we define a `fit` function which iterates over several epochs and trains the model while computing and recording the history of losses and metrics, just as it was done in the previous episode.
+The `train` and `test` functions are defined to iterate over the training and validation dataloaders for one epoch each.
+Refer to the notebook to see how they are defined exactly.
+
+```python
+def train(dl, model, loss_fn, optimizer, device=torch.device("cuda:0")):
+    model = model.to(device)
+    model.train()
+
+    avg_loss = 0.0
+    avg_acc = 0.0
+    
+    for step, (x, y) in enumerate(tqdm(dl)):    
+        # Train
+        # Compute losses and metric (accuracy)
+        ...
+    
+    return avg_loss, avg_acc
+        
+        
+def test(dl, model, loss_fn, device=torch.device("cuda:0")):
+    model = model.to(device)
+    model.eval()
+    ...
+    
+    with torch.no_grad():
+        for step, (x, y) in enumerate(dl):
+            # Compute losses and metric (accuracy)
+            ...
+    
+    return avg_loss, avg_acc
+
+
+def fit(model, optimizer, loss, train_ds, val_ds, batch_size=32, learning_rate=0.001, num_epochs=20):
+
+    # instantiate optimizer and loss_fn
+    loss_fn = loss()
+    optim = optimizer(model.parameters(), lr=learning_rate)
+
+    train_dl = torch.utils.data.DataLoader(train_ds, batch_size=batch_size, shuffle=True)
+    val_dl = torch.utils.data.DataLoader(val_ds, batch_size=1, shuffle=False)
+
+    history = {"loss": [], "val_loss": [], "accuracy": [], "val_accuracy": []}
+    for epoch in range(num_epochs):
+        train_loss, train_acc = train(train_dl, model, loss_fn, optim, device=device)
+        val_loss, val_acc = test(val_dl, model, loss_fn, device=device)
+
+        for k, v in [("loss", train_loss), ("val_loss", val_loss), ("accuracy", train_acc), ("val_accuracy", val_acc)]:
+            history[k].append(v)
+    
+    return history
+
+history = fit(model, optim, loss_fn, train_ds, val_ds, learning_rate=0.0001)
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
 
 ## 7. Perform a Prediction/Classification
 Here we skip performing a prediction, and continue to measuring the performance.
@@ -538,11 +783,16 @@ This will take 30-45 minutes and might deviate the focus away from CNNs.
 3. You can just mention that a simple network with only dense layers reaches 18% accuracy, considerably worse than our simple CNN.
 :::
 
-::: callout
+::::::::::: callout
 ## Comparison with a network with only dense layers
 How does this simple CNN compare to a neural network with only dense layers?
 
 We can define a neural network with only dense layers:
+
+::::::: group-tab
+
+###### Keras
+
 ```python
 def create_dense_model():
     inputs = keras.Input(shape=train_images.shape[1:])
@@ -579,30 +829,81 @@ Model: "dense_model"
 
  Non-trainable params: 0 (0.00 B)
 ```
-As you can see this model has more parameters than our simple CNN, let's train and evaluate it!
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
 
 ```python
-compile_model(dense_model)
-history = dense_model.fit(train_images, train_labels, epochs=20,
-                    validation_data=(val_images, val_labels))
-plot_history(history, ['accuracy', 'val_accuracy'])
+class DenseModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(12288, 50),
+            nn.ReLU(),
+            nn.Linear(50, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+
+dense_model = DenseModel()
+summary(dense_model, input_size=(1, 3, 64, 64))
 ```
+
+```output
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DenseModel                               [1, 10]                   --
+├─Sequential: 1-1                        [1, 10]                   --
+│    └─Flatten: 2-1                      [1, 12288]                --
+│    └─Linear: 2-2                       [1, 50]                   614,450
+│    └─ReLU: 2-3                         [1, 50]                   --
+│    └─Linear: 2-4                       [1, 50]                   2,550
+│    └─ReLU: 2-5                         [1, 50]                   --
+│    └─Linear: 2-6                       [1, 10]                   510
+==========================================================================================
+Total params: 617,510
+Trainable params: 617,510
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 0.62
+==========================================================================================
+Input size (MB): 0.05
+Forward/backward pass size (MB): 0.00
+Params size (MB): 2.47
+Estimated Total Size (MB): 2.52
+==========================================================================================
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
+As you can see this model has more parameters than our simple CNN, let's train and evaluate it!
+
 ![](fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers, showing training accuracy increasing to approximately 0.22 and validation accuracy plateauing around 0.18. Both values show relatively large fluctations as training progresses."}
 
 As you can see the validation accuracy only reaches about 18%, whereas the CNN reached about 28% accuracy.
 
 This demonstrates that convolutional layers are a big improvement over dense layers for these kind of datasets.
-:::
+:::::::::::
 
 ## 9. Refine the model
 
-:::: challenge
+::::::::::: challenge
 ## Network depth
 What, do you think, will be the effect of adding a convolutional layer to your model? Will this model have more or fewer parameters?
 Try it out. Create a `model` that has an additional `Conv2d` layer with 50 filters and another MaxPooling2D layer after the last MaxPooling2D layer. Train it for 10 epochs and plot the results.
 
 **HINT**:
 The model definition that we used previously needs to be adjusted as follows:
+
+::::::: group-tab
+
+###### Keras
+
 ```python
 inputs = keras.Input(shape=train_images.shape[1:])
 x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
@@ -615,10 +916,43 @@ x = keras.layers.Dense(50, activation='relu')(x)
 outputs = keras.layers.Dense(10)(x)
 ```
 
-::: solution
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+class DollarStreetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Conv2d(3, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            # Add your extra layers here
+            nn.Flatten(),
+            nn.Linear(14*14*50, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
+::::::::: solution
 
 ## Solution
 We add an extra Conv2D layer after the second pooling layer:
+
+::::::: group-tab
+
+###### Keras
+
 ```python
 def create_nn_extra_layer():
     inputs = keras.Input(shape=train_images.shape[1:])
@@ -691,8 +1025,38 @@ plot_history(history, ['accuracy', 'val_accuracy'])
 
 ![](fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model, showing training accuracy increasing steadily by approximately 0.04 per epoch up to around 0.55 while validation accuracy increases before plateauing around 0.25."}
 
-:::
-::::
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```py
+class DollarStreetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Conv2d(3, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Flatten(),
+            nn.Linear(6*6*50, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+```
+        
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
+:::::::::
+:::::::::::
 
 ::: callout
 ## Other types of data
@@ -746,6 +1110,10 @@ In practice, however, dropout is computationally a very elegant solution which d
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a prediction step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
 Let us add a dropout layer after each pooling layer towards the end of the network that randomly drops 80% of the nodes.
+
+::::::: group-tab
+
+###### Keras
 
 ```python
 def create_nn_with_dropout():
@@ -814,20 +1182,80 @@ Model: "dropout_model"
  Non-trainable params: 0 (0.00 B)
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+class ModelDropout(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.s = nn.Sequential(
+            nn.Conv2d(3, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Dropout(0.5),  # This is new!
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Dropout(0.5),  # This is new!
+            nn.Conv2d(50, 50, 3),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Dropout(0.5),  # This is new!
+            nn.Flatten(),
+            nn.Linear(1800, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
+    def forward(self, x):
+        return self.s(x)
+
+dropout_model = ModelDropout()
+summary(dropout_model, input_size=(1, 3, 64, 64))
+```
+
+```output
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+ModelDropout                             [1, 10]                   --
+├─Sequential: 1-1                        [1, 10]                   --
+│    └─Conv2d: 2-1                       [1, 50, 62, 62]           1,400
+│    └─ReLU: 2-2                         [1, 50, 62, 62]           --
+│    └─MaxPool2d: 2-3                    [1, 50, 31, 31]           --
+│    └─Dropout: 2-4                      [1, 50, 31, 31]           --
+│    └─Conv2d: 2-5                       [1, 50, 29, 29]           22,550
+│    └─ReLU: 2-6                         [1, 50, 29, 29]           --
+│    └─MaxPool2d: 2-7                    [1, 50, 14, 14]           --
+│    └─Dropout: 2-8                      [1, 50, 14, 14]           --
+│    └─Conv2d: 2-9                       [1, 50, 12, 12]           22,550
+│    └─ReLU: 2-10                        [1, 50, 12, 12]           --
+│    └─MaxPool2d: 2-11                   [1, 50, 6, 6]             --
+│    └─Dropout: 2-12                     [1, 50, 6, 6]             --
+│    └─Flatten: 2-13                     [1, 1800]                 --
+│    └─Linear: 2-14                      [1, 50]                   90,050
+│    └─ReLU: 2-15                        [1, 50]                   --
+│    └─Linear: 2-16                      [1, 10]                   510
+==========================================================================================
+Total params: 137,060
+Trainable params: 137,060
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 27.68
+==========================================================================================
+Input size (MB): 0.05
+Forward/backward pass size (MB): 1.93
+Params size (MB): 0.55
+Estimated Total Size (MB): 2.53
+==========================================================================================
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 We can see that the dropout does not alter the dimensions of the image, and has zero parameters.
 
-We again compile and train the model.
-```python
-compile_model(model_dropout)
-
-history = model_dropout.fit(train_images, train_labels, epochs=20,
-                    validation_data=(val_images, val_labels))
-```
-
-And inspect the training results:
-```python
-plot_history(history, ['accuracy', 'val_accuracy'])
-```
+We again compile and train the model, and inspect the training results.
 
 ![](fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model, showing both values increasing before they diverge after around 10 epochs, with training accuracy reaching approximately 0.4 while validation accuracy plateaus around 0.3"}
 
@@ -905,7 +1333,11 @@ The goal is to show that hyperparameter tuning can be done easily with `keras_tu
 :::
 
 Recall that hyperparameters are model configuration settings that are chosen before the training process and affect the model's learning behavior and performance, for example the dropout rate. In general, if you are varying hyperparameters to find the combination of hyperparameters with the best model performance this is called hyperparameter tuning. A naive way to do this is to write a for-loop and train a slightly different model in every cycle.
-However, it is better to use the `keras_tuner` package for this.
+However, it is better to use existing packages for this.
+
+::::::: group-tab
+
+###### Keras
 
 Let's first define a function that creates a neuronal network given 2 hyperparameters, namely the dropout rate and the number of layers:
 ```python
@@ -923,9 +1355,40 @@ def create_nn_with_hp(dropout_rate, n_layers):
     return model
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+class HPModel(nn.Module):
+    def __init__(self, dropout_rate, n_layers):
+        super().__init__()
+        self.in_layer = nn.Sequential(nn.Conv2d(3, 50, 3), nn.ReLU(), nn.MaxPool2d(2))
+        self.hidden_layers = nn.Sequential(*[nn.Sequential(nn.Conv2d(50, 50, 3), nn.ReLU(), nn.MaxPool2d(2)) for n in range(n_layers-1)])
+        n_features_after_flatten = 64
+        for n in range(n_layers):
+            n_features_after_flatten = (n_features_after_flatten - 2)//2
+
+        n_features_after_flatten = n_features_after_flatten ** 2 * 50
+        self.head = nn.Sequential(nn.Dropout(dropout_rate), nn.Flatten(), nn.Linear(n_features_after_flatten , 50), nn.ReLU(), nn.Linear(50, 10))
+
+    def forward(self, x):
+        x = self.in_layer(x)
+        x = self.hidden_layers(x)
+        x = self.head(x)
+        return x
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 Now, let's find the best combination of hyperparameters using grid search.
 Grid search is the simplest hyperparameter tuning strategy,
 you test all the combinations of predefined values for the hyperparameters that you want to vary.
+
+::::::: group-tab
+
+###### Keras
 
 For this we will make use of the package `keras_tuner`, we can install it by typing in the command line:
 ```bash
@@ -1007,6 +1470,51 @@ n_layers: 2
 dropout_rate: 0.5
 Score: 2.143627882003784
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+n_layers_grid = [1, 2]
+dropout_rate_grid = np.linspace(.2, .8, 3)
+
+best = None
+best_loss = float("inf")
+best_model = None
+histories = {}
+trial = 0
+
+for n_layers in n_layers_grid:
+    for dropout_rate in dropout_rate_grid:
+
+        history = fit(HPModel(dropout_rate, n_layers), optim, loss_fn, train_ds, val_ds, learning_rate=0.0001)
+        histories[n_layers, dropout_rate] = history
+
+        val_loss = min(history["loss"])
+        if val_loss < best_loss:
+            best_loss = val_loss
+            best = (n_layers, float(dropout_rate),)
+            best_model = model
+            
+        print(
+            f"trial {trial}: params: {n_layers=}, {dropout_rate}; "
+            f"best: {best_loss} at (n_layers, dropout_rate)={best}"
+        )
+        trial += 1
+
+print(f"best val loss: {best_loss:.4f} at (n_layers, dropout_rate)={best}")
+print("trials executed:", trial)
+```
+
+```output
+[...more output here...]
+best val loss: 1.5804577001503535 at (n_layers, dropout_rate)={(1, 0.8)
+trials executed: 6
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
 
 :::: challenge
 
@@ -1119,11 +1627,7 @@ Instead, `random search` randomly samples combinations of hyperparemeters, allow
 Next to grid search and random search there are many different hyperparameter tuning strategies, including [neural architecture search](https://en.wikipedia.org/wiki/Neural_architecture_search) where a separate neural network is trained to find the best architecture for a model!
 
 ## 10. Share model
-Let's save our model
-
-```python
-model.save('cnn_model.keras')
-```
+Let's save our model as done previously.
 
 ## Conclusion and next steps
 How successful were we with creating a model here?
