@@ -1,31 +1,33 @@
 ---
-title: "Classification by a neural network using Keras"
+title: "Classification by a neural network using Pytorch/Keras"
 teaching: 60
 exercises: 50
 ---
 
 ::: questions
-- How do I compose a neural network using Keras?
+
+- How do I compose a neural network using Pytorch/Keras?
 - How do I train this network on a dataset?
 - How do I get insight into learning process?
 - How do I measure the performance of the network?
 :::
 
 ::: objectives
+
 - Use the deep learning workflow to structure the notebook
 - Explore the dataset using pandas and seaborn
 - Identify the inputs and outputs of a deep neural network.
-- Use one-hot encoding to prepare data for classification in Keras
+- Use one-hot encoding to prepare data for classification in Pytorch/Keras
 - Describe a fully connected layer
-- Implement a fully connected layer with Keras
-- Use Keras to train a small fully connected network on prepared data
+- Implement a fully connected layer with Pytorch/Keras
+- Use Pytorch/Keras to train a small fully connected network on prepared data
 - Interpret the loss curve of the training process
 - Use a confusion matrix to measure the trained networks' performance on a test set
 :::
 
-
 ## Introduction
-In this episode we will learn how to create and train a neural network using Keras to solve a simple classification task.
+
+In this episode we will learn how to create and train a neural network using PyTorch or Keras to solve a simple classification task.
 
 The goal of this episode is to quickly get your hands dirty in actually defining and training a neural network,
 without going into depth of how neural networks work on a technical or mathematical level.
@@ -35,7 +37,7 @@ In fact, this is also what we would recommend you to do when working on real-wor
 First quickly build a working pipeline, while taking shortcuts.
 Then, slowly make the pipeline more advanced while you keep on evaluating the approach.
 
-In [episode 3](episodes/3-monitor-the-model.md) we will expand on the concepts that are lightly introduced in this episode.
+In [episode 3](./3-monitor-the-model.md) we will expand on the concepts that are lightly introduced in this episode.
 Some of these concepts include: how to monitor the training progress and how optimization works.
 
 ::: instructor
@@ -60,7 +62,9 @@ As a reminder below are the steps of the deep learning workflow:
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
 
 ::: callout
+
 ## GPU usage
+
 For this lesson having a [GPU (graphics processing unit)](https://glosario.carpentries.org/en/#gpu) available is not needed.
 We specifically use very small toy problems so that you do not need one.
 However, Keras will use your GPU automatically when it is available.
@@ -69,13 +73,16 @@ require a more complex neural network.
 :::
 
 ## 1. Formulate/outline the problem: penguin classification
+
 In this episode we will be using the [penguin dataset](https://zenodo.org/record/3960218). This is a dataset that was published in 2020 by Allison Horst and contains data on three different species of the penguins.
 
 We will use the penguin dataset to train a neural network which can classify which species a
 penguin belongs to, based on their physical characteristics.
 
 ::: callout
+
 ## Goal
+
 The goal is to predict a penguins' species using the attributes available in this dataset.
 :::
 
@@ -84,13 +91,12 @@ The physical attributes measured are flipper length, beak length, beak width, bo
 
 ![*Artwork by @allison_horst*][palmer-penguins]
 
-
 ![*Artwork by @allison_horst*][penguin-beaks]
-
 
 These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palmer Station Long Term Ecological Research Program](https://lternet.edu/site/palmer-antarctica-lter/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://edirepository.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://lternet.edu/data-access-policy/).
 
 ## 2. Identify inputs and outputs
+
 To identify the inputs and outputs that we will use to design the neural network we need to familiarize
 ourselves with the dataset. This step is sometimes also called data exploration.
 
@@ -103,6 +109,7 @@ import seaborn as sns
 ```
 
 We can load the penguin dataset using
+
 ```python
 penguins = sns.load_dataset('penguins')
 ```
@@ -110,7 +117,9 @@ penguins = sns.load_dataset('penguins')
 This will give you a pandas dataframe which contains the penguin data.
 
 ### Inspecting the data
+
 Using the pandas `head` function gives us a quick look at the data:
+
 ```python
 penguins.head()
 ```
@@ -134,10 +143,12 @@ Let's look at the shape of the dataset:
 There are 344 samples and 7 columns (plus the index column), so 6 features.
 
 ### Visualization
+
 Looking at numbers like this usually does not give a very good intuition about the data we are
 working with, so let us create a visualization.
 
 #### Pair Plot
+
 One nice visualization for datasets with relatively few attributes is the Pair Plot.
 This can be created using `sns.pairplot(...)`. It shows a scatterplot of each attribute plotted against each of the other attributes.
 By using the `hue='species'` setting for the pairplot the graphs on the diagonal are layered kernel density estimate plots for the different values of the `species` column.
@@ -154,15 +165,17 @@ sns.pairplot(penguins, hue="species")
 
 Take a look at the pairplot we created. Consider the following questions:
 
-* Is there any class that is easily distinguishable from the others?
-* Which combination of attributes shows the best separation for all 3 class labels at once?
-* (optional) Create a similar pairplot, but with `hue="sex"`. Explain the patterns you see.
+- Is there any class that is easily distinguishable from the others?
+- Which combination of attributes shows the best separation for all 3 class labels at once?
+- (optional) Create a similar pairplot, but with `hue="sex"`. Explain the patterns you see.
 Which combination of features distinguishes the two sexes best?
 
 ::: solution
+
 ## Solution
-* The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
-* The other two seem to be separable by a combination of bill length and bill
+
+- The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
+- The other two seem to be separable by a combination of bill length and bill
 depth (other combinations are also possible such as bill length and flipper length).
 
 Answer to optional question:
@@ -181,6 +194,7 @@ The combination of `bill_depth_mm` and `body_mass_g` gives the best separation.
 ::::
 
 ### Input and Output Selection
+
 Now that we have familiarized ourselves with the dataset we can select the data attributes to use
 as input for the neural network and the target that we want to predict.
 
@@ -188,38 +202,45 @@ In the rest of this episode we will use the `bill_length_mm`, `bill_depth_mm`, `
 The target for the classification task will be the `species`.
 
 ::: callout
+
 ## Data Exploration
+
 Exploring the data is an important step to familiarize yourself with the problem and to help you
 determine the relevant inputs and outputs.
 :::
 
 ## 3. Prepare data
-The input data and target data are not yet in a format that is suitable to use for training a neural network.
 
+The input data and target data are not yet in a format that is suitable to use for training a neural network.
 
 For now we will only use the numerical features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g` only,
 so let's drop the categorical columns:
+
 ```python
 # Drop categorical columns
 penguins_filtered = penguins.drop(columns=['island', 'sex'])
 ```
 
 ### Clean missing values
+
 During the exploration phase you may have noticed that some rows in the dataset have missing (NaN)
 values, leaving such values in the input data will ruin the training, so we need to deal with them.
 There are many ways to deal with missing values, but for now we will just remove the offending rows by adding a call to `dropna()`:
+
 ```python
 # Drop the rows that have NaN values in them
 penguins_filtered = penguins_filtered.dropna()
 ```
 
 Finally, we select only the features
+
 ```python
 # Extract columns corresponding to features
 features = penguins_filtered.drop(columns=['species'])
 ```
 
 ### Prepare target data for training
+
 Second, the target data is also in a format that cannot be used in training.
 A neural network can only take numerical inputs and outputs, and learns by
 calculating how "far away" the species predicted by the neural network is
@@ -233,6 +254,7 @@ the other columns.
 For instance, for a penguin of the Adelie species the one-hot encoding would be 1 0 0.
 
 Fortunately, Pandas is able to generate this encoding for us.
+
 ```python
 import pandas as pd
 
@@ -241,29 +263,34 @@ target.head() # print out the top 5 to see what it looks like.
 ```
 
 :::: challenge
+
 ## One-hot encoding
+
 How many output neurons will our network have now that we one-hot encoded the target class?
 
-* A: 1
-* B: 2
-* C: 3
+- A: 1
+- B: 2
+- C: 3
+:::
 
 ::: solution
+
 ## Solution
+
 C: 3, one for each output variable class
 
-:::
 ::::
 
 ### Split data into training and test set
-Finally, we will split the dataset into a training set and a test set.
-As the names imply we will use the training set to train the neural network,
-while the test set is kept separate.
-We will use the test set to assess the performance of the trained neural network
-on unseen samples.
-In many cases a validation set is also kept separate from the training and test sets (i.e. the dataset is split into 3 parts).
-This validation set is then used to select the values of the parameters of the neural network and the training methods.
-For this episode we will keep it at just a training and test set however.
+
+Then, we will split the dataset into a training set and a test set. As the
+names imply we will use the training set to train the neural network, while the
+test set is kept separate. We will use the test set to assess the performance
+of the trained neural network on unseen samples. In many cases a validation set
+is also kept separate from the training and test sets (i.e. the dataset is
+split into 3 parts). This validation set is then used to select the values of
+the parameters of the neural network and the training methods. For this episode
+we will keep it at just a training and test set.
 
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
@@ -285,21 +312,54 @@ X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=
 ```
 
 ::: callout
+
 ## Importance of using the same train-test split
+
 By setting `random_state=0` we ensure that everyone has the same train-test split.
 When doing machine learning and deep learning it is crucial that you use the same train and test dataset for different experiments.
 Comparing evaluation metrics between experiments run on different data splits is meaningless,
 because the accuracy of a model depends on the data used to train and test it.
 :::
 
+### Scale the input features
+
+If you take a look back at the initial data inspection, you can see that the
+various features have different scales. `bill_length_mm` and `bill_depth_mm`
+are in the order of {math}`10^1`, while `flipper_length_mm` and `body_mass_g` are in
+the order of {math}`10^2` and {math}`10^3` respectively. Machine learning models work best
+when all features present similar scales, with values centered around zero.
+
+Therefore, it is good practice to scale the input features to bring all of them
+to a similar range. `scikit-learn` offers several convienent scaler classes to
+do this. In this case, we use `RobustScaler`, which provides a good default
+that is suitable for a variety of datasets. In particular, as the name
+suggests, it is robust to "outliers", i.e. entries in the dataset that present
+abnormal values. The `scikit-learn` documentation provides a detailed
+comparison of the [effects of different scalers on data with
+outliers](https://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html).
+
+```python
+from sklearn.preprocessing import RobustScaler
+
+feature_scaler = RobustScaler()
+X_train_scaled = feature_scaler.fit_transform(X_train)
+X_test_scaled = feature_scaler.transform(X_test)
+```
+
 ::: instructor
+
 ## BREAK
+
 This is a good time for switching instructor and/or a break.
 :::
 
 ## 4. Build an architecture from scratch
 
-### Keras for neural networks
+### Import the deep learning framework
+
+::::::: group-tab
+
+###### Keras
 
 Keras is a machine learning framework with ease of use as one of its main features.
 It is part of the tensorflow python package and can be imported using `from tensorflow import keras`.
@@ -308,19 +368,64 @@ Keras includes functions, classes and definitions to define deep learning models
 
 Before we move on to the next section of the workflow we need to make sure we have Keras imported.
 We do this as follows:
+
 ```python
 from tensorflow import keras
 ```
 
-For this episode it is useful if everyone gets the same results from their training.
-Keras uses a random number generator at certain points during its execution.
-Therefore we will need to set two random seeds, one for numpy and one for tensorflow:
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+PyTorch is a popular deep learning framework designed to enable developers to implement any type of neural network in environments ranging from academic research to industrial applications.
+Thus, PyTorch includes functions and classes to define deep learning models, cost functions and optimizers (optimizers are used to train a model).
+
+Before we move on to the next section of the workflow we need to make sure we have PyTorch imported.
+We do this as follows:
+
 ```python
+import torch
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
+### Set the seeds
+
+For this episode it is useful if everyone gets the same results from their training.
+Keras and PyTorch uses a random number generator at certain points during its execution.
+
+::::::: group-tab
+
+###### Keras
+
+```python
+from numpy.random import seed
+seed(1)
+
 keras.utils.set_random_seed(2)
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+```python
+from numpy.random import seed
+seed(1)
+
+torch.manual_seed(2)
+```
+
+<!-- end-tab --><!-- end-tab -->
+:::::::
+
 ::: callout
+
+(when-to-use-random-seeds)=
+
 ## When to use random seeds?
+
 We use a random seed here to ensure that we get the same results every time we run this code.
 This makes our results reproducible and allows us to better compare results between different experiments.
 
@@ -331,7 +436,11 @@ So, to get truly replicable deep learning pipelines you need to run the notebook
 
 ### Build a neural network from scratch
 
-We will now build a simple neural network from scratch using Keras.
+We will now build a simple neural network from scratch.
+
+::::::: group-tab
+
+###### Keras
 
 With Keras you compose a neural network by creating layers and linking them
 together. For now we will only use one type of layer called a fully connected
@@ -354,6 +463,7 @@ inputs = keras.Input(shape=(X_train.shape[1],))
 We store a reference to this input class in a variable so we can pass it to the creation of
 our hidden layer.
 Creating the hidden layer can then be done as follows:
+
 ```python
 hidden_layer = keras.layers.Dense(10, activation="relu")(inputs)
 ```
@@ -377,6 +487,7 @@ Finally we store a reference in the `hidden_layer` variable so we can pass it to
 
 Now we create another layer that will be our output layer.
 Again we use a Dense layer and so the call is very similar to the previous one.
+
 ```python
 output_layer = keras.layers.Dense(3, activation="softmax")(hidden_layer)
 ```
@@ -390,34 +501,89 @@ species.
 
 Now that we have defined the layers of our neural network we can combine them into
 a Keras model which facilitates training the network.
+
 ```python
 model = keras.Model(inputs=inputs, outputs=output_layer)
+```
+
+Now that the neural network is created, we can inspect it:
+
+```python
 model.summary()
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+In Pytorch, the architecture of a neural network is defined in a class that
+inherits from `torch.nn.Module`. The network itself is created by stacking
+layers and linking them together. In this episode, we will only use one type of
+layer called *fully connected* or *dense*, which PyTorch dubs `Linear`; the
+number of neurons is prescribed by the user. For fully connected layers, each
+neuron gets an edge (i.e. connection) to **all** of the input neurons and
+**all** of the output neurons. The hidden layer in the image in the
+introduction of this episode is a fully connected layer. A possible
+architecture for a penguin classifier using one hidden layer is proposed below:
+
+```python
+class PenguinModel(torch.nn.Module):
+    def __init__(self, input_shape):
+        super().__init__()
+        self.hidden_layer = torch.nn.Linear(input_shape, 10)
+        self.output_layer = torch.nn.Linear(10, 3)
+
+    def forward(self, x):
+        x = self.hidden_layer(x)
+        x = torch.nn.functional.relu(x)
+        x = self.output_layer(x)
+        x = torch.nn.functional.softmax(x, dim=1)
+        return x
+
+model = PenguinModel(X_train.shape[1]).to(device)
+```
+
+In Pytorch, the layers are defined in the constructor of the class. The dimension of the input is defined implicitly by the size of the hidden layer (`torch.nn.Linear(X_train.shape[1], 10)`). The number of neurons is prescribed in the second parameter of the linear layer (10); this quantity is a hyperparameter that we have to choose and tune based on the specific task the network has to perform. We will get back to this in the section on refining the model. The output layer is then constructed based on the size of the hidden layer (10) and the number of classes (3), since we are using one-hot encoding.
+
+What happens to the input throughout the network is defined in the `forward()` method: it goes through the first layer, which is then activated by a `ReLU`, which is commonly used in deep neural networks. After that we have the output layer with three neurons (since we have three classes). This layer uses a `softmax()` activation, which makes sure that the three output neurons produce values in the range (0,1) and that their sum is 1. These values can be interpreted as the `probability` that the sample belongs to a certain class. 
+
+Now that the neural network is created, we can inspect it:
+
+```python
+from torchinfo import summary 
+summary(model, input_size=X_train.shape[1:], batch_dim=0, device=device)
+```
+
+
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
 
 The model summary here can show you some information about the neural network we have defined.
 
 ::: callout
+
 ## Trainable and non-trainable parameters
-Keras distinguishes between two types of weights, namely:
+
+Both Pytorch and Keras distinguish between two types of weights, namely:
 
 - trainable parameters: these are weights of the neurons that are modified when we train the model in order to minimize our loss function (we will learn about loss functions shortly!).
 
-- non-trainable parameters: these are weights of the neurons that are not changed when we train the model. These could be for many reasons - using a pre-trained model, choice of a particular filter for a convolutional neural network, and statistical weights for batch normalization are some examples.  
+- non-trainable parameters: these are weights of the neurons that are not changed when we train the model. These could be for many reasons - using a pre-trained model, choice of a particular filter for a convolutional neural network, and statistical weights for batch normalization are some examples.
 
 If these reasons are not clear right away, don't worry! In later episodes of this course, we will touch upon a couple of these concepts.
-::: 
-
+:::
 
 ::: instructor
 For optional question 3 in the challenge below named 'Visualizing the model', the goal is to visualize the network. It supplements the textual explanation of output from `model.summary()`.
 You could choose to show and discuss the resulting visualization to the learners, so that learners who did not finish the optional exercise can also learn from the visualization of the model.
 :::
 
+::::::::: challenge
 
-:::: challenge
 ## Create the neural network
-With the code snippets above, we defined a Keras model with 1 hidden layer with
+
+With the code snippets above, we defined a model with 1 hidden layer with
 10 neurons and an output layer with 3 neurons.
 
 1. How many parameters does the resulting model have?
@@ -425,7 +591,8 @@ With the code snippets above, we defined a Keras model with 1 hidden layer with
  in the hidden layer?
 
 #### (optional) Visualizing the model
-Optionally, you can also visualize the same information as `model.summary()` in graph form.
+
+Optionally, you can also visualize the same information as `model.summary()` / `torchinfo.summary()` in graph form.
 This step requires the command-line tool `dot` from Graphviz installed, you installed it by following the setup instructions.
 You can check that the installation was successful by executing `dot -V` in the command line. You should get something
 as follows:
@@ -434,6 +601,9 @@ as follows:
 $ dot -V
 dot - graphviz version 2.43.0 (0)
 ```
+:::: group-tab
+
+### Keras
 
 3. (optional) Provided you have `dot` installed, execute the `plot_model` function
    as shown below.
@@ -448,7 +618,8 @@ keras.utils.plot_model(
 )
 ```
 
-#### (optional) Keras Sequential vs Functional API
+**(optional) Keras Sequential vs Functional API**
+
 So far we have used the [Functional API](https://keras.io/guides/functional_api/) of Keras.
 You can also implement neural networks using [the Sequential model](https://keras.io/guides/sequential_model/).
 As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
@@ -456,9 +627,47 @@ where each layer has **exactly one input tensor and one output tensor**.
 
 4. (optional) Use the Sequential model to implement the same network
 
-::: solution
+
+<!-- end-tab -->
+
+### PyTorch
+
+3. (optional) Provided you have `dot` and `torchview` installed, execute `draw_graph` function
+   as shown below.
+
+```python
+from torchview
+model_graph = draw_graph(model, input_size=(1, 10), expand_nested=True)
+model_graph.visual_graph
+```
+
+**(optional) PyTorch Sequential vs Object-oriented API**
+
+So far we have used the [Object-oriented API](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html) of PyTorch.
+You can also implement neural networks using 
+[`torch.nn.Sequential`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html).
+As you can read in the documentation, the Sequential model is appropriate for **a plain stack of layers**
+where each layer has **exactly one input tensor and one output tensor**.
+
+4. (optional) Use `torch.nn.Sequential` model to implement the same network
+
+
+<!-- end-tab -->
+
+::::
+
+
+
+:::::::: solution
+
 ## Solution
+
+::::::: group-tab
+
+###### Keras
+
 Have a look at the output of `model.summary()`:
+
 ```python
 model.summary()
 ```
@@ -483,9 +692,10 @@ Model: "functional"
  Non-trainable params: 0 (0.00 B)
 
 ```
-The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of 
-the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also 
-connected to each of the 3 outputs in the `dense_1` output layer, resulting in a further 30 weights that can be trained. 
+
+The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of
+the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also
+connected to each of the 3 outputs in the `dense_1` output layer, resulting in a further 30 weights that can be trained.
 By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
 hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
@@ -501,6 +711,7 @@ print(model.dtype)
 ```output
 float32
 ```
+
 The model weights are represented using `float32` data type, which consumes 32 bits or 4 bytes for each weight.
 We have 83 parameters, and therefore in total, the model requires `83*4=332` bytes of memory to load
 into the computer's memory.
@@ -513,14 +724,16 @@ So in total 8 extra parameters.
 
 *The name in quotes within the string `Model: "functional"` may be different in your view; this detail is not important.*
 
-#### (optional) Visualizing the model
+**(optional) Visualizing the model**
+
 3. Upon executing the `plot_model` function, you should see the following image.
 
 ![Output of *keras.utils.plot_model()* function][plot-model]
 
+**(optional) Keras Sequential vs Functional API**
 
-#### (optional) Keras Sequential vs Functional API
 4. This implements the same model using the Sequential API:
+
 ```python
 model = keras.Sequential(
     [
@@ -532,12 +745,85 @@ model = keras.Sequential(
 ```
 
 We will use the Functional API for the remainder of this course, since it is more flexible and more explicit.
-:::
-::::
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+Have a look at the output of `torchinfo.summary()`:
+
+```python
+from torchinfo import summary 
+summary(model, input_size=X_train.shape[1:], batch_dim=0, device=device)
+```
+
+```output
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+PenguinModel                             [1, 3]                    --
+├─Linear: 1-1                            [1, 10]                   50
+├─Linear: 1-2                            [1, 3]                    33
+==========================================================================================
+Total params: 83
+Trainable params: 83
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 0.00
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.00
+Estimated Total Size (MB): 0.00
+==========================================================================================
+```
+
+The model has 83 trainable parameters. Each of the 10 neurons in the in the `Linear: 1-1` hidden layer is connected to each of
+the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also
+connected to each of the 3 outputs in the `Linear: 1-2` output layer, resulting in a further 30 weights that can be trained.
+By default `Linear` layers in PyTorch also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
+hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
+
+Note that the output shape always contains `1` as the first entry of the tuple. This is the *flexible* dimension which is used by the model when processing several samples at the same time, what is usually called a `batch`. You will learn more about batching in lesson 3.
+
+**FIXME**: *Discuss memory footprint*
+
+If you increase the number of neurons in the hidden layer the number of
+trainable parameters in both the hidden and output layer increases or
+decreases in accordance with the number of neurons added.
+Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3 weights connected to the output layer.
+So in total 8 extra parameters.
+
+**(optional) Visualizing the model**
+
+3. **FIXME**: *To be completed using* `torchview.draw_graph`.
+
+**(optional) PyTorch Sequential vs Object-oriented API**
+
+4. This implements the same model using the Sequential API:
+
+```python
+model = torch.nn.Sequential(
+    torch.nn.Linear(X_train.shape[1], 10),
+    torch.nn.ReLU(),
+    torch.nn.Linear(10, 3),
+    torch.nn.Softmax(dim=1)
+).to(device)
+```
+
+We will use the object-oriented API inheriting from `torch.nn.Module` for the remainder of this course,
+since it is more flexible and more reusable.
+
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
+
+::::::::
+:::::::::
 
 ::: callout
+
 ## How to choose an architecture?
+
 Even for this small neural network, we had to make a choice on the number of hidden neurons.
 Other choices to be made are the number of layers and type of layers (as we will see later).
 You might wonder how you should make these architectural choices.
@@ -547,39 +833,46 @@ Another best practice is to start with a relatively simple architecture. Once ru
 :::
 
 ### Choose a pretrained model
+
 If your data and problem is very similar to what others have done, you can often use a *pretrained network*.
 Even if your problem is different, but the data type is common (for example images), you can use a pretrained network and finetune it for your problem.
 A large number of openly available pretrained networks can be found on [Hugging Face](https://huggingface.co/models) (especially LLMs), [MONAI](https://monai.io/) (medical imaging), the [Model Zoo](https://modelzoo.co/), [pytorch hub](https://pytorch.org/hub/) or [tensorflow hub](https://www.tensorflow.org/hub/).
 
-We will cover the concept of Transfer Learning in [episode 5](./5-transfer-learning.html)
+We will cover the concept of Transfer Learning in [episode 5](./5-transfer-learning.md)
 
 ## 5. Choose a loss function and optimizer
-We have now designed a neural network that in theory we should be able to
-train to classify Penguins.
-However, we first need to select an appropriate loss
-function that we will use during training.
-This loss function tells the training algorithm how wrong, or how 'far away' from the true
-value the predicted value is.
 
-For the one-hot encoding that we selected earlier a suitable loss function is the Categorical Crossentropy loss.
-In Keras this is implemented in the `keras.losses.CategoricalCrossentropy` class.
-This loss function works well in combination with the `softmax` activation function
-we chose earlier.
-The Categorical Crossentropy works by comparing the probabilities that the
-neural network predicts with 'true' probabilities that we generated using the one-hot encoding.
-This is a measure for how close the distribution of the three neural network outputs corresponds to the distribution of the three values in the one-hot encoding.
-It is lower if the distributions are more similar.
+We have now designed a neural network that in theory we should be able to train
+to classify Penguins. However, we first need to select an appropriate loss
+function that we will use during training. This loss function tells the
+training algorithm how wrong, or how 'far away' from the true value the
+predicted value is.
 
-For more information on the available loss functions in Keras you can check the
-[documentation](https://www.tensorflow.org/api_docs/python/tf/keras/losses).
+For the one-hot encoding that we selected earlier a suitable loss function is
+the Categorical Crossentropy loss. In Keras this is implemented in the
+`keras.losses.CategoricalCrossentropy` class, whereas Pytorch uses
+`torch.nn.CrossEntropyLoss`. This loss function works well in combination with
+the `softmax` activation function we chose earlier. The Categorical
+Crossentropy works by comparing the probabilities that the neural network
+predicts with 'true' probabilities that we generated using the one-hot
+encoding. This is a measure for how close the distribution of the three neural
+network outputs corresponds to the distribution of the three values in the
+one-hot encoding. It is lower if the distributions are more similar.
+
+For more information on the available loss functions in the two frameworks you can check the
+documentation for [Keras](https://www.tensorflow.org/api_docs/python/tf/keras/losses) and [Pytorch](https://docs.pytorch.org/docs/stable/nn.html#loss-functions) respectively.
 
 Next we need to choose which optimizer to use and, if this optimizer has parameters, what values
 to use for those. Furthermore, we need to specify how many times to show the training samples to the optimizer.
 
-Once more, Keras gives us plenty of choices all of which have their own pros and cons,
+Once more, both frameworks give us plenty of choices all of which have their own pros and cons,
 but for now let us go with the widely used [Adam optimizer](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam).
 Adam has a number of parameters, but the default values work well for most problems.
 So we will use it with its default parameters.
+
+::::::: group-tab
+
+###### Keras
 
 Combining this with the loss function we decided on earlier we can now compile the
 model using `model.compile`.
@@ -589,10 +882,31 @@ Compiling the model prepares it to start the training.
 model.compile(optimizer='adam', loss=keras.losses.CategoricalCrossentropy())
 ```
 
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+In Pytorch, we define the loss function and optimizers. Moreover, we need DataLoaders to feed the train dataset into the neural network. The model is then set in "training mode" using `model.train()`:
+
+```python
+
+loss_fn = torch.nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters())
+
+```
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
+
 ## 6. Train model
+
 We are now ready to train the model.
 
-Training the model is done using the `fit` method, it takes the input data and
+::::::: group-tab
+
+###### Keras
+
+In Keras, training the model is done using the `fit` method, it takes the input data and
 target data as inputs and it has several other parameters for certain options
 of the training.
 Here we only set a different number of `epochs`.
@@ -607,13 +921,64 @@ The fit method returns a history object that has a history attribute with the tr
 potentially other metrics per training epoch.
 It can be very insightful to plot the training loss to see how the training progresses.
 Using seaborn we can do this as follows:
+
 ```python
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ```
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+In Pytorch, the training loop has to be defined explicitly:
+
+```python
+train_dataset = torch.utils.data.TensorDataset(
+    torch.tensor(X_train_scaled, dtype = torch.float),
+    torch.tensor(y_train.values, dtype = torch.float)
+)
+train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size = 128, shuffle = True)
+history = {
+    'loss': []
+}
+epochs = 100
+
+for epoch in range(epochs):
+    running_loss = 0.0
+
+    for X_batch, y_batch in train_dataloader:
+        X_batch, y_batch = X_batch.to(device), y_batch.to(device)
+
+        y_pred = model(X_batch)
+        loss = loss_fn(y_pred, y_batch)
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+
+        running_loss += loss.item()
+
+    train_loss = running_loss / len(train_dataloader)
+    history['loss'].append(train_loss)
+    print(f'Epoch {epoch+1:>3d} completed; loss: {train_loss:.4f}')
+```
+
+The training loss can then be plotted:
+
+```python
+sns.lineplot(x=range(epochs), y=history['loss'])
+```
+
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
+
 ![][training_curve]{alt="Plot of the Cross Entropy loss, showing a sharp decrease in the first around 10 epochs, and converging at a low value afterwards."}
 
+
 ::: callout
+
 ## I get a different plot
+
 It could be that you get a different plot than the one shown here.
 This could be because of a different random initialization of the model or a different split of the data.
 This difference can be avoided by setting `random_state` and random seed in the same way like we discussed
@@ -624,13 +989,15 @@ This plot can be used to identify whether the training is well configured or whe
 are problems that need to be addressed.
 
 :::: challenge
+
 ## The Training Curve
+
 Looking at the training curve we have just made.
 
 1. How does the training progress?
-   * Does the training loss increase or decrease?
-   * Does it change quickly or slowly?
-   * Does the graph look very jittery?
+   - Does the training loss increase or decrease?
+   - Does it change quickly or slowly?
+   - Does the graph look very jittery?
 2. Do you think the resulting trained network will work well on the test set?
 
 When the training process does not go well:
@@ -638,9 +1005,12 @@ When the training process does not go well:
 3. (optional) Something went wrong here during training. What could be the problem, and how do you see that in the training curve?
 Also compare the range on the y-axis with the previous training curve.
 ![][bad-training-curve]
+:::
 
 ::: solution
+
 ## Solution
+
 1. The training loss decreases quickly. It drops in a smooth line with little jitter.
 This is ideal for a training curve.
 2. The results of the training give very little information on its performance on a test set.
@@ -659,12 +1029,16 @@ In this case the graph was created by training on nonsense data, so this a train
 
 We will take a closer look at training curves in the next episode. Some of the concepts touched upon here will also be further explained there.
 
-:::
 ::::
 
 ## 7. Perform a prediction/classification
+
 Now that we have a trained neural network, we can use it to predict new samples
-of penguin using the `predict` function.
+of penguins.
+
+::::::: group-tab
+
+###### Keras
 
 We will use the neural network to predict the species of the test set
 using the `predict` function.
@@ -672,11 +1046,13 @@ We will be using this prediction in the next step to measure the performance of 
 trained network.
 This will return a `numpy` matrix, which we convert
 to a pandas dataframe to easily see the labels.
+
 ```python
 y_pred = model.predict(X_test)
 prediction = pd.DataFrame(y_pred, columns=target.columns)
 prediction
 ```
+
 |     |          |           |          |
 | --: | -------: | --------: | -------: |
 | 0   | 0.304484 | 0.192893  | 0.502623 |
@@ -691,9 +1067,42 @@ prediction
 | 67  | 0.393868 | 0.159575  | 0.446557 |
 | 68  | 0.509837 | 0.144219  | 0.345943 |
 
-
 Remember that the output of the network uses the `softmax` activation function and has three
 outputs, one for each species. This dataframe shows this nicely.
+
+<!-- end-tab --><!-- end-tab -->
+
+###### PyTorch
+
+To run inference (i.e. make predictions) with Pytorch, we need to set the model in "evaluation mode".
+Moreover, we wrap the prediction in a `torch.no_grad()` context so that the execution is faster (more on that later).
+
+```python
+model.eval()
+with torch.no_grad():
+    y_pred = model(torch.tensor(X_test_scaled, dtype=torch.float, device=device))
+
+prediction = pd.DataFrame(y_pred.to('cpu'), columns=target.columns)
+prediction
+```
+
+```output
+  Adelie  Chinstrap  Gentoo
+0  0.786800  0.108887  0.104313
+1  0.874215  0.083492  0.042294
+2  0.903556  0.066898  0.029546
+3  0.126868  0.097586  0.775546
+4  0.628735  0.208464  0.162801
+...  ...  ...  ...
+64  0.900963  0.073662  0.025375
+65  0.926656  0.052395  0.020949
+66  0.840132  0.116230  0.043638
+67  0.097195  0.085259  0.817547
+68  0.043282  0.044229  0.912489
+```
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
 
 We now need to transform this output to one penguin species per sample.
 We can do this by looking for the index of highest valued output and converting that
@@ -720,13 +1129,15 @@ predicted_species
 Length: 69, dtype: object
 ```
 
-
 ::: instructor
+
 ## BREAK
+
 This is a good time for switching instructor and/or a break.
 :::
 
 ## 8. Measuring performance
+
 Now that we have a trained neural network it is important to assess how well it performs.
 We want to know how well it will perform in a realistic prediction scenario, measuring
 performance will also come back when refining the model.
@@ -735,6 +1146,7 @@ We have created a test set (i.e. y_test) during the data preparation stage which
 now to create a confusion matrix.
 
 ### Confusion matrix
+
 With the predicted species we can now create a confusion matrix and display it using seaborn.
 
 A confusion matrix is an `N x N` matrix used for evaluating the performance of a classification model, where `N` is the number of target classes.
@@ -753,6 +1165,7 @@ true_species = y_test.idxmax(axis="columns")
 matrix = confusion_matrix(true_species, predicted_species)
 print(matrix)
 ```
+
 ```output
 [[22  0  8]
  [ 5  0  9]
@@ -780,6 +1193,7 @@ the heatmap.
 ```python
 sns.heatmap(confusion_df, annot=True, cmap='Blues')
 ```
+
 ![][confusion_matrix]
 
 Here are more explanations of this confusion matrix and the classification model.
@@ -789,16 +1203,21 @@ Here are more explanations of this confusion matrix and the classification model
 - The third row: There are 25 Gentoo penguins in the test data, with 6 identified as Adelie (invalid), none being recognized as Chinstrap (invalid), and 19 Gentoos are identified as Gentoo (valid).
 
 :::: challenge
+
 ## Confusion Matrix
+
 Measure the performance of the neural network you trained and
 visualize a confusion matrix.
 
 - Did the neural network perform well on the test set?
 - Did you expect this from the training loss you saw?
 - What could we do to improve the performance?
+:::
 
 ::: solution
+
 ## Solution
+
 The confusion matrix shows that the predictions for Adelie and Gentoo are decent, but could be improved. However, Chinstrap is not predicted ever.
 
 If we go back to the [**Pair Plot**](#pair-plot) in the Visualization section above, we can figure out that the biggest challenge is distinguishing the Chinstrap penguins from the marginal distributions of the four features (bill length, bill depth, flipper length, and body mass). That means that there is no single variable that separates Chinstrap penguins from all other species. Only the combination of bill length and bill depth gives a good separation of Chinstrap from Adelie and Gentoo penguins.
@@ -810,41 +1229,55 @@ We can try many things to improve the performance from here. One of the first th
 Furthermore, the constructed neural network has a limited number of parameters.
 A practical workaround is to increase the number of dense layers and also the number of neurons in each dense layers.
 
-In addition, adjusting the learning rate can also help achieving a high score for the prediction. You will get more info in the [**Advanced layer types**](./4-advanced-layer-types.html) episode.
+In addition, adjusting the learning rate can also help achieving a high score for the prediction. You will get more info in the [**Advanced layer types**](./4-advanced-layer-types.md) episode.
 
 Note that the outcome you have might be slightly different from what is shown in this tutorial.
-:::
 ::::
 
 ## 9. Refine the model
+
 As we discussed before the design and training of a neural network comes with
 many hyperparameter and model architecture choices.
 We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
-pick hyperparameter values. 
-
+pick hyperparameter values.
 
 ## 10. Share model
+
 It is very useful to be able to use the trained neural network at a later
 stage without having to retrain it.
-This can be done by using the `save` method of the model.
+
+::::::: group-tab
+
+###### Keras
+
+In Keras, this can be done by using the `save` method of the model.
 It takes a string as a parameter which is the path of a directory where the model is stored.
+However, we are also using the `RobustScaler` from `sklearn` to scale the data, thus we also need it in inference. An efficient way to do this is to use the pickler from `joblib`. Thus the whole pipeline can be serialised to disk in the following manner:
+
+```python
+import joblib
+
+joblib.dump(feature_scaler, 'penguins_scaler.gz')
+```
 
 ```python
 model.save('my_first_model.keras')
 ```
 
 This saved model can be loaded again by using the `load_model` method as follows:
+
 ```python
 pretrained_model = keras.models.load_model('my_first_model.keras')
+pretrained_scaler = joblib.load('penguins_scaler.gz')
 ```
 
 This loaded model can be used as before to predict.
 
 ```python
 # use the pretrained model here
-y_pretrained_pred = pretrained_model.predict(X_test)
+y_pretrained_pred = pretrained_model.predict(pretrained_scaler.transform(X_test))
 pretrained_prediction = pd.DataFrame(y_pretrained_pred, columns=target.columns.values)
 
 # idxmax will select the column for each row with the highest value
@@ -867,7 +1300,46 @@ print(pretrained_predicted_species)
 Length: 69, dtype: object
 ```
 
+<!-- end-tab --><!-- end-tab -->
 
+###### PyTorch
+
+In Pytorch, we can use the `torch.save()` method to save the architecture (and its weights and biases) to disk.
+However, we are also using the `RobustScaler` from `sklearn` to scale the data, thus we also need it in inference. An efficient way to do this is to use the pickler from `joblib`. Thus the whole pipeline can be serialised to disk in the following manner:
+
+```python
+import joblib
+
+joblib.dump(feature_scaler, 'penguins_scaler.gz')
+torch.save(model.state_dict(), 'penguins_classification.pt')
+```
+
+Then we can reload it from disk using the `load_state_dict` method for the network and the `joblib.load()` method for the scaler:
+
+```python
+pretrained_model = PenguinModel(X_train.shape[1]).to(device)
+pretrained_model.load_state_dict(torch.load('penguins_classification.pt'))
+pretrained_scaler = joblib.load('penguins_scaler.gz')
+```
+
+The inference is done exactly as before:
+
+```python
+model.eval()
+with torch.no_grad():
+    X_test_scaled = torch.tensor(pretrained_scaler.transform(X_test), dtype=torch.float, device=device)
+    y_pretrained_pred = model(X_test_scaled)
+
+pretrained_prediction = pd.DataFrame(y_pretrained_pred.to('cpu'), columns=target.columns.values)
+
+# idxmax will select the column for each row with the highest value
+pretrained_predicted_species = pretrained_prediction.idxmax(axis="columns")
+print(pretrained_predicted_species)
+```
+
+<!-- end-tab --><!-- end-tab -->
+
+:::::::
 [palmer-penguins]: fig/palmer_penguins.png "Palmer Penguins"
 {alt='Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele'}
 
@@ -892,14 +1364,15 @@ Length: 69, dtype: object
 [confusion_matrix]: fig/confusion_matrix.png "Confusion Matrix"
 {alt='Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap'}
 
-
 :::: keypoints
+
 - The deep learning workflow is a useful tool to structure your approach, it helps to make sure you do not forget any important steps.
 - Exploring the data is an important step to familiarize yourself with the problem and to help you determine the relavent inputs and outputs.
-- One-hot encoding is a preprocessing step to prepare labels for classification in Keras.
+- One-hot encoding is a preprocessing step to prepare labels for classification.
 - A fully connected layer is a layer which has connections to all neurons in the previous and subsequent layers.
-- keras.layers.Dense is an implementation of a fully connected layer, you can set the number of neurons in the layer and the activation function used.
+- `keras.layers.Dense` and `torch.nn.Linear` are implementations of a fully connected layer, you can set the number of neurons in the layer. In Keras, you can also set the activation function used.
 - To train a neural network with Keras we need to first define the network using layers and the Model class. Then we can train it using the model.fit function.
+- To train a neural network with PyTorch we need to first define a class inheriting from `torch.nn.Module`.Then, we define the layers in the `__init__` method and the forward pass in the `forward` method. Finally, we can train it using a custom training loop.
 - Plotting the loss curve can be used to identify and troubleshoot the training process.
 - The loss curve on the training set does not provide any information on how well a network performs in a real setting.
 - Creating a confusion matrix with results from a test set gives better insight into the network's performance.

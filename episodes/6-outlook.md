@@ -174,7 +174,7 @@ But there is still so much to learn and do!
 
 Here are some suggestions for next steps you can take in your endeavor to become a deep learning expert:
 
-* Learn more by going through a few of [the learning resources we have compiled for you](learners/reference.md#external-references)
+* Learn more by going through a few of [the learning resources we have compiled for you](./reference.md#external-references)
 * Apply what you have learned to your own projects. Use the deep learning workflow to structure your work.
 Start as simple as possible, and incrementally increase the complexity of your approach.
 * Compete in a [Kaggle competition](https://www.kaggle.com/competitions) to practice what you have learned.
