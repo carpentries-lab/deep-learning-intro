@@ -281,7 +281,7 @@ the same results (assuming you give the same integer) every time it is called.
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
+x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
 
 ::: callout
@@ -302,19 +302,21 @@ This is a good time for switching instructor and/or a break.
 ### Keras for neural networks
 
 Keras is a machine learning framework with ease of use as one of its main features.
-It is part of the tensorflow python package and can be imported using `from tensorflow import keras`.
+It is a standalone python package that supports multiple deep learning frameworks as backends, and it can be imported using `import keras`.
+Here, we will use Keras with the PyTorch backend.
 
 Keras includes functions, classes and definitions to define deep learning models, cost functions and optimizers (optimizers are used to train a model).
 
 Before we move on to the next section of the workflow we need to make sure we have Keras imported.
 We do this as follows:
 ```python
-from tensorflow import keras
+import keras
 ```
 
 For this episode it is useful if everyone gets the same results from their training.
 Keras uses a random number generator at certain points during its execution.
-Therefore we will need to set two random seeds, one for numpy and one for tensorflow:
+Therefore, we will need to set two random seeds: one for NumPy and one for PyTorch.
+We can use a built-in Keras function to achieve this in one line of code:
 ```python
 keras.utils.set_random_seed(2)
 ```
@@ -348,7 +350,7 @@ and outputs a layer needs and therefore how many edges need to be created.
 This means we need to inform Keras how big our input is going to be. We do this by instantiating a `keras.Input` class and tell it how big our input is, thus the number of columns it contains.
 
 ```python
-inputs = keras.Input(shape=(X_train.shape[1],))
+inputs = keras.Input(shape=(x_train.shape[1],))
 ```
 
 We store a reference to this input class in a variable so we can pass it to the creation of
@@ -369,7 +371,7 @@ for inputs that are 0 and below and the identity function (returning the same va
 for inputs above 0.
 This is a commonly used activation function in deep neural networks that is proven to work well.
 
-Next we see an extra set of parenthenses with inputs in them. This means that after creating an
+Next we see an extra set of parenthenses with `inputs` in them. This means that after creating an
 instance of the Dense layer we call it as if it was a function.
 This tells the Dense layer to connect the layer passed as a parameter, in this case the inputs.
 
@@ -383,7 +385,7 @@ output_layer = keras.layers.Dense(3, activation="softmax")(hidden_layer)
 
 Because we chose the one-hot encoding, we use three neurons for the output layer.
 
-The `softmax` activation ensures that the three output neurons produce values in the range
+The [`softmax`](https://keras.io/api/layers/activations/#softmax-function) activation ensures that the three output neurons produce values in the range
 (0, 1) and they sum to 1.
 We can interpret this as a kind of 'probability' that the sample belongs to a certain
 species.
@@ -403,10 +405,10 @@ Keras distinguishes between two types of weights, namely:
 
 - trainable parameters: these are weights of the neurons that are modified when we train the model in order to minimize our loss function (we will learn about loss functions shortly!).
 
-- non-trainable parameters: these are weights of the neurons that are not changed when we train the model. These could be for many reasons - using a pre-trained model, choice of a particular filter for a convolutional neural network, and statistical weights for batch normalization are some examples.  
+- non-trainable parameters: these are weights of the neurons that are not changed when we train the model. These could be for many reasons - using a pre-trained model, choice of a particular filter for a convolutional neural network, and statistical weights for batch normalization are some examples.
 
 If these reasons are not clear right away, don't worry! In later episodes of this course, we will touch upon a couple of these concepts.
-::: 
+:::
 
 
 ::: instructor
@@ -483,9 +485,9 @@ Model: "functional"
  Non-trainable params: 0 (0.00 B)
 
 ```
-The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of 
-the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also 
-connected to each of the 3 outputs in the `dense_1` output layer, resulting in a further 30 weights that can be trained. 
+The model has 83 trainable parameters. Each of the 10 neurons in the in the `dense` hidden layer is connected to each of
+the 4 inputs in the input layer resulting in 40 weights that can be trained. The 10 neurons in the hidden layer are also
+connected to each of the 3 outputs in the `dense_1` output layer, resulting in a further 30 weights that can be trained.
 By default `Dense` layers in Keras also contain 1 bias term for each neuron, resulting in a further 10 bias values for the
 hidden layer and 3 bias terms for the output layer. `40+30+10+3=83` trainable parameters.
 
@@ -524,7 +526,7 @@ So in total 8 extra parameters.
 ```python
 model = keras.Sequential(
     [
-        keras.Input(shape=(X_train.shape[1],)),
+        keras.Input(shape=(x_train.shape[1],)),
         keras.layers.Dense(10, activation="relu"),
         keras.layers.Dense(3, activation="softmax"),
     ]
@@ -571,13 +573,13 @@ This is a measure for how close the distribution of the three neural network out
 It is lower if the distributions are more similar.
 
 For more information on the available loss functions in Keras you can check the
-[documentation](https://www.tensorflow.org/api_docs/python/tf/keras/losses).
+[documentation](https://keras.io/api/losses/).
 
 Next we need to choose which optimizer to use and, if this optimizer has parameters, what values
 to use for those. Furthermore, we need to specify how many times to show the training samples to the optimizer.
 
 Once more, Keras gives us plenty of choices all of which have their own pros and cons,
-but for now let us go with the widely used [Adam optimizer](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam).
+but for now let us go with the widely used [Adam optimizer](https://keras.io/api/optimizers/adam/).
 Adam has a number of parameters, but the default values work well for most problems.
 So we will use it with its default parameters.
 
@@ -600,7 +602,7 @@ One training epoch means that every sample in the training data has been shown
 to the neural network and used to update its parameters.
 
 ```python
-history = model.fit(X_train, y_train, epochs=100)
+history = model.fit(x_train, y_train, epochs=100)
 ```
 
 The fit method returns a history object that has a history attribute with the training loss and
@@ -673,7 +675,7 @@ trained network.
 This will return a `numpy` matrix, which we convert
 to a pandas dataframe to easily see the labels.
 ```python
-y_pred = model.predict(X_test)
+y_pred = model.predict(x_test)
 prediction = pd.DataFrame(y_pred, columns=target.columns)
 prediction
 ```
@@ -822,7 +824,7 @@ many hyperparameter and model architecture choices.
 We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
-pick hyperparameter values. 
+pick hyperparameter values.
 
 
 ## 10. Share model
@@ -844,7 +846,7 @@ This loaded model can be used as before to predict.
 
 ```python
 # use the pretrained model here
-y_pretrained_pred = pretrained_model.predict(X_test)
+y_pretrained_pred = pretrained_model.predict(x_test)
 pretrained_prediction = pd.DataFrame(y_pretrained_pred, columns=target.columns.values)
 
 # idxmax will select the column for each row with the highest value

@@ -28,7 +28,7 @@ Open a terminal (Mac/Linux) or Command Prompt (Windows) and run the following co
 
 ::: spoiler
 
-### On Linux/macOs
+### On Linux/MacOS
 
 ```shell
 python3 -m venv dl_workshop
@@ -50,7 +50,7 @@ py -m venv dl_workshop
 
 ::: spoiler
 
-### On Linux/macOs
+### On Linux/MacOS
 
 ```shell
 source dl_workshop/bin/activate
@@ -74,14 +74,11 @@ Remember that you need to activate your environment every time you restart your 
 
 ::: spoiler
 
-### On Linux/macOs
+### On Linux/MacOS
 
 ```shell
-python3 -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
+python3 -m pip install jupyter seaborn scikit-learn pandas keras torch pydot
 ```
-
-Note for MacOS users: there is a package `tensorflow-metal` which accelerates the training of machine learning models with TensorFlow on a recent Mac with a Silicon chip (M1/M2/M3).
-However, the installation is currently broken in the most recent version (as of January 2025), see the [developer forum](https://developer.apple.com/forums/thread/772147).
 
 :::
 
@@ -90,16 +87,11 @@ However, the installation is currently broken in the most recent version (as of 
 ### On Windows
 
 ```shell
-py -m pip install jupyter seaborn scikit-learn pandas tensorflow pydot
+py -m pip install jupyter seaborn scikit-learn pandas keras torch pydot
 ```
 
 :::
-
-Note: Tensorflow makes Keras available as a module too.
-
-An [optional challenge in episode 2](episodes/2-keras.md) requires installation of Graphviz
-and instructions for doing that can be found
-[by following this link](https://graphviz.org/download/).
+An [optional challenge in episode 2](episodes/2-keras.md) requires installation of Graphviz. Instructions for doing that can be found [by following this link](https://graphviz.org/download/).
 
 ## Starting Jupyter Lab
 
@@ -108,7 +100,7 @@ Jupyter Lab is compatible with Firefox, Chrome, Safari and Chromium-based browse
 Note that Internet Explorer and Edge are *not* supported.
 See the [Jupyter Lab documentation](https://jupyterlab.readthedocs.io/en/latest/getting_started/accessibility.html#compatibility-with-browsers-and-assistive-technology) for an up-to-date list of supported browsers.
 
-To start Jupyter Lab, open a terminal (Mac/Linux) or Command Prompt (Windows), 
+To start Jupyter Lab, open a terminal (Mac/Linux) or Command Prompt (Windows),
 make sure that you activated the virtual environment you created for this course,
 and type the command:
 
@@ -121,31 +113,38 @@ To check whether all packages installed correctly, start a jupyter notebook in j
 explained above. Run the following lines of code:
 ```python
 import sklearn
-print('sklearn version: ', sklearn.__version__)
+print(f'Sklearn version: {sklearn.__version__}')
 
 import seaborn
-print('seaborn version: ', seaborn.__version__)
+print(f'Seaborn version: {seaborn.__version__}')
 
 import pandas
-print('pandas version: ', pandas.__version__)
+print(f'Pandas version: {pandas.__version__}')
 
-import tensorflow
-print('Tensorflow version: ', tensorflow.__version__)
+import torch
+print(f'PyTorch version: {torch.__version__}')
+
+# Note: Before importing Keras, we have to instruct it to use PyTorch as the backend.
+import os
+os.environ['KERAS_BACKEND'] = 'torch'
+
+import keras
+print(f'Keras version: {keras.__version__}')
 ```
 
 This should output the versions of all required packages without giving errors.
 Most versions will work fine with this lesson, but:
-- For Keras and Tensorflow, the minimum version is 2.12.0
+- For Keras, the minimum version is 2.12.0
 - For sklearn, the minimum version is 1.2.2
 
 ## Fallback option: cloud environment
 If a local installation does not work for you, it is also possible to run this lesson in [Binder Hub](https://mybinder.org/v2/gh/carpentries-lab/deep-learning-intro/scaffolds). This should give you an environment with all the required software and data to run this lesson, nothing which is saved will be stored, please copy any files you want to keep. Note that if you are the first person to launch this in the last few days it can take several minutes to startup. The second person who loads it should find it loads in under a minute. Instructors who intend to use this option should start it themselves shortly before the workshop begins.
 
-Alternatively you can use [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of Jupyter Lab.
+Alternatively you can use [Google Colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that Google Colab uses jupyter notebook instead of Jupyter Lab.
 
 ## Downloading the required datasets
 
-Download the [weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]
+Download the [Weather dataset prediction csv][weatherdata] and [Dollar street dataset (4 files in total)][dollar-street]
 
 [dollar-street]: https://zenodo.org/api/records/10970014/files-archive
 [jupyter]: http://jupyter.org/
